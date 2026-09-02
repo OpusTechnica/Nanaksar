@@ -1,0 +1,60 @@
+---
+import { BRAND_INFO } from '../data/restaurantData';
+import BookTableInlineForm from './BookTableInlineForm';
+---
+
+<section id="book-table" class="py-14 sm:py-20 bg-[#0A0A0A] text-white border-t border-white/10 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Premium Obsidian Black Container Card -->
+    <div class="rounded-3xl bg-[#0D0D0D] border border-white/15 p-6 sm:p-10 md:p-12 relative overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
+      
+      <!-- Top Decorative Eyebrow Ribbon -->
+      <div class="flex items-center justify-between gap-4 mb-6 sm:mb-8 border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#141414] border border-[#E4A834]/40">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#E4A834]"></span>
+          <span class="font-display text-[10px] sm:text-xs font-bold tracking-[0.25em] text-[#E4A834] uppercase">
+            SEWA TABLE RESERVATIONS
+          </span>
+        </div>
+
+        <div class="text-xs font-mono text-white/50">
+          <span>5 Indore Hubs • Daily 11:45 AM – 3:00 AM</span>
+        </div>
+      </div>
+
+      <!-- Main Grid: Narrative (Left) & Direct Booking Form (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Column: Heritage Hospitality Narrative -->
+        <div class="lg:col-span-5 space-y-4">
+          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white leading-[1.02]">
+            Reserve Your <span class="text-[#D01B1B]">Table</span>
+          </h2>
+
+          <p class="font-editorial italic text-base sm:text-lg text-[#F7F4EB]/90 leading-relaxed">
+            "{BRAND_INFO.motto}"
+          </p>
+
+          <p class="text-xs sm:text-sm text-white/70 font-sans leading-relaxed">
+            Direct family seating across all 5 Indore locations. Enjoy slow-simmered 24-hour Dal Makhani, hand-crushed Chur Chur Naan, and authentic Malwa dishes with zero waiting hassle.
+          </p>
+
+          <div class="pt-2 flex flex-wrap items-center gap-2 text-[11px] font-mono text-white/60">
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">100% Pure Veg</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Jain Stations</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">15-Min Hold</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Direct Interactive Booking Form Island -->
+        <div class="lg:col-span-7">
+          <BookTableInlineForm client:load />
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
