@@ -1,0 +1,65 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+import Header from '../components/Header';
+import CartDrawer from '../components/CartDrawer';
+import TableReservationModal from '../components/TableReservationModal';
+import StructuredData from '../components/StructuredData.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Nanaksar Dhaba Indore | Ghar Jaisa Swad. Seva Wala Pyar. | Est. 1980",
+  description = "Nanaksar Dhaba Indore - Roots since 1980, first highway hearth established 2005. Famous 24-Hour Slow-Cooked Dal Makhani, Clay-Oven Chur Chur Naan & 100% Pure Vegetarian North Indian Cuisine across 5 Indore Outlets.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href="/assets/Logo.png" />
+
+    <!-- Google Fonts Preconnect & Preload (Option A: Royal Highway Heritage) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@1,600&family=JetBrains+Mono:wght@600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/assets/New-Back.png" />
+    <meta property="og:type" content="restaurant" />
+    <meta name="theme-color" content="#0F0F0F" />
+
+    <!-- Astro SPA View Transitions Router -->
+    <ClientRouter />
+
+    <!-- Schema.org JSON-LD for AI Search Crawlers -->
+    <StructuredData />
+  </head>
+  <body class="bg-[#0F0F0F] text-[#F7F4EB] font-sans antialiased overflow-x-hidden selection:bg-[#D01B1B] selection:text-white">
+    <!-- Global Sticky Navigation Header -->
+    <Header client:load />
+
+    <!-- Main Page Content Slot -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Global Cart Drawer Island -->
+    <CartDrawer client:load />
+
+    <!-- Global Table Reservation Modal Island -->
+    <TableReservationModal client:idle />
+  </body>
+</html>

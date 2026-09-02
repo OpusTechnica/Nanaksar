@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SignaturesShowcase from '../components/SignaturesShowcase';
+import BestsellersShowcase from '../components/BestsellersShowcase';
+import OutletsDirectory from '../components/OutletsDirectory.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import HeritageStory from '../components/HeritageStory.astro';
+import PlatformsSection from '../components/PlatformsSection.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <!-- Hero & 4-Pillar Verified Trust Stats Bar -->
+  <Hero />
+
+  <!-- ZONE 1: The Daytime Feast & Menu Discovery (#F7F4EB Warm Makkhan Cream) -->
+  <!-- 1. Crown Signatures (6 Flagship Dishes in 3x2 Grid) -->
+  <SignaturesShowcase client:load />
+
+  <!-- 2. Top Bestsellers & Highway Combos -->
+  <BestsellersShowcase client:load />
+
+  <!-- 3. Loved Across Indore (Verified Reviews) -->
+  <ReviewsSection />
+
+  <!-- 4. Official Available Delivery & Discovery Platforms (Warm Cream) -->
+  <PlatformsSection />
+
+  <!-- ZONE 2: The Highway Hearth & Destinations (#0F0F0F Deep Obsidian) -->
+  <!-- 5. Heritage Highway Story & 24-Hour Bhatti Craft (Samvayra Bento) -->
+  <HeritageStory />
+
+  <!-- 6. Five Indore Outlets Directory & Booking Hub -->
+  <OutletsDirectory />
+
+  <!-- Grounded Brand Footer -->
+  <Footer />
+</Layout>

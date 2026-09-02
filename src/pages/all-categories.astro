@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import MenuExplorer from '../components/MenuExplorer';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Full Menu Directory & Categories | Nanaksar Dhaba Indore | Est. 1980"
+  description="Explore the complete 19+ North Indian vegetarian menu of Nanaksar Dhaba Indore. Filter live by Jain and Swaminarayan preparation across all 5 Indore branches."
+>
+  <!-- Sub-page Breadcrumb & Header Banner -->
+  <section class="pt-28 pb-10 bg-[#0F0F0F] text-white border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb Navigation (Zero '#' URLs) -->
+      <nav class="flex items-center gap-2 text-xs font-mono text-white/50 mb-4">
+        <a href="/" class="hover:text-[#E5A93C] transition">Home</a>
+        <span>/</span>
+        <span class="text-[#E5A93C]">All Categories</span>
+      </nav>
+
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D01B1B]/15 text-[#D01B1B] text-xs font-mono font-bold uppercase tracking-wider mb-3">
+          ● 100% SHUDDH VEGETARIAN MENU
+        </span>
+        <h1 class="font-display text-4xl sm:text-6xl font-bold uppercase tracking-tight text-white leading-none">
+          Explore All Categories
+        </h1>
+        <p class="mt-3 text-sm sm:text-base text-white/70 font-sans leading-relaxed">
+          From 24-Hour Slow-Cooked Dal Makhani and hand-crushed Chur Chur Naan to authentic Indori Sev Tamatar and Malwa Butter Khichdi. Direct takeaway ordering to your nearest Indore branch.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Complete 19+ Dish Interactive Catalog Island -->
+  <MenuExplorer client:load />
+
+  <!-- Global Footer -->
+  <Footer />
+</Layout>

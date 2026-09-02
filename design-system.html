@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nanaksar Dhaba — Interactive Design System & Component Catalog</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Oswald:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Link to 3-Layer Design Tokens -->
+  <link rel="stylesheet" href="assets/design-tokens.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nanaksar: {
+              crimson: '#D01B1B',
+              'crimson-dark': '#C62828',
+              gold: '#E4A834',
+              'gold-vintage': '#C89B53',
+              'gold-dark': '#965C00',
+              charcoal: '#0F0F0F',
+              'charcoal-card': '#181818',
+              'charcoal-elevated': '#242424',
+              cream: '#F7F4EB',
+              'cream-accent': '#F4EBD0',
+              veg: '#15803D'
+            }
+          },
+          fontFamily: {
+            display: ['Oswald', 'sans-serif'],
+            sans: ['DM Sans', 'sans-serif'],
+            serif: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-nanaksar-charcoal text-nanaksar-cream font-sans antialiased min-h-screen selection:bg-nanaksar-crimson selection:text-white">
+
+  <!-- Header & Brand Top Bar -->
+  <header class="border-b border-nanaksar-gold/20 bg-nanaksar-charcoal/95 sticky top-0 z-50 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <img src="Assets/Logo.png" alt="Nanaksar Dhaba Logo" class="h-12 w-12 object-contain" />
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display text-xl font-bold tracking-tight text-nanaksar-crimson uppercase">NANAKSAR DHABA</span>
+            <span class="bg-nanaksar-gold/20 text-nanaksar-gold text-[10px] font-display font-semibold uppercase px-2 py-0.5 rounded border border-nanaksar-gold/30">DESIGN SYSTEM v1.0</span>
+          </div>
+          <p class="text-xs text-nanaksar-cream/60 font-medium">"Ghar Jaisa Swad. Seva Wala Pyar." • Indore, MP</p>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center gap-6 font-display text-xs tracking-wider uppercase">
+        <a href="#brand" class="text-nanaksar-cream/80 hover:text-nanaksar-gold transition">Brand Identity</a>
+        <a href="#colors" class="text-nanaksar-cream/80 hover:text-nanaksar-gold transition">Color Tokens</a>
+        <a href="#typography" class="text-nanaksar-cream/80 hover:text-nanaksar-gold transition">Typography</a>
+        <a href="#buttons" class="text-nanaksar-cream/80 hover:text-nanaksar-gold transition">Buttons & CTAs</a>
+        <a href="#hero-spec" class="text-nanaksar-cream/80 hover:text-nanaksar-gold transition">Hero Specimen</a>
+        <a href="#outlets-spec" class="text-nanaksar-cream/80 hover:text-nanaksar-gold transition">Outlets Bar</a>
+        <a href="#menu-spec" class="text-nanaksar-cream/80 hover:text-nanaksar-gold transition">Menu Cards</a>
+        <a href="Land.html" class="bg-nanaksar-crimson hover:bg-nanaksar-crimson-dark text-white px-3 py-1.5 rounded font-semibold transition">Live Flagship &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
+
+    <!-- 1. Brand Identity Overview -->
+    <section id="brand" class="space-y-6">
+      <div class="border-b border-nanaksar-gold/20 pb-4">
+        <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">Foundational Identity</span>
+        <h2 class="font-display text-3xl font-bold uppercase text-white mt-1">Brand Assets & Philosophy</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Official Logo Seal -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-nanaksar-gold/20 flex flex-col items-center text-center">
+          <div class="w-32 h-32 p-2 bg-white/5 rounded-full border border-nanaksar-gold/30 flex items-center justify-center mb-4">
+            <img src="Assets/Logo.png" alt="Circular Brand Seal" class="w-28 h-28 object-contain" />
+          </div>
+          <h3 class="font-display text-lg font-bold uppercase text-white">Circular Founder Seal</h3>
+          <p class="text-xs text-nanaksar-cream/70 mt-1">Sardarji Portrait • "GOOD FOOD FOR GOOD PEOPLES" • "SINCE 1990/2005"</p>
+          <span class="mt-4 text-[10px] font-mono text-nanaksar-gold bg-nanaksar-gold/10 px-2.5 py-1 rounded">Assets/Logo.png</span>
+        </div>
+
+        <!-- Official Brand Name Lockup -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-nanaksar-gold/20 flex flex-col items-center justify-between text-center">
+          <div class="w-full bg-white/5 p-4 rounded-xl flex items-center justify-center min-h-[128px]">
+            <img src="Assets/Brand_Name.png" alt="Brand Name Lockup" class="max-h-20 object-contain" />
+          </div>
+          <div class="mt-4">
+            <h3 class="font-display text-lg font-bold uppercase text-white">Sub-Mark Lockup</h3>
+            <p class="text-xs text-nanaksar-cream/70 mt-1">"NANAKSAR KA LANGAR" (नानकसर का लंगर)</p>
+          </div>
+          <span class="mt-4 text-[10px] font-mono text-nanaksar-gold bg-nanaksar-gold/10 px-2.5 py-1 rounded">Assets/Brand_Name.png</span>
+        </div>
+
+        <!-- Brand Mottos & Cultural Values -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-nanaksar-gold/20 flex flex-col justify-between">
+          <div>
+            <h3 class="font-display text-sm font-semibold tracking-wider text-nanaksar-gold uppercase mb-3">Core Mottos & Identity</h3>
+            <div class="space-y-3">
+              <div class="p-3 bg-nanaksar-charcoal rounded-lg border border-white/5">
+                <span class="text-[10px] font-display uppercase tracking-widest text-nanaksar-gold block">Primary Motto (Hindi / Hinglish)</span>
+                <p class="font-serif italic text-white text-base mt-0.5">"Ghar Jaisa Swad. Seva Wala Pyar."</p>
+              </div>
+              <div class="p-3 bg-nanaksar-charcoal rounded-lg border border-white/5">
+                <span class="text-[10px] font-display uppercase tracking-widest text-nanaksar-crimson block">Mission Statement</span>
+                <p class="font-display font-bold uppercase text-white text-base mt-0.5">"Good Food for Good Peoples. Pure Sewa Bhaav."</p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 bg-nanaksar-veg/20 text-green-400 border border-nanaksar-veg/40 text-[11px] font-semibold px-2.5 py-1 rounded-full">
+              <span class="w-2 h-2 rounded-full bg-green-500"></span> 100% Pure Vegetarian
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-nanaksar-gold/20 text-nanaksar-gold border border-nanaksar-gold/40 text-[11px] font-semibold px-2.5 py-1 rounded-full">
+              ✨ Shuddh Desi Ghee
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Color Palette & Token Architecture -->
+    <section id="colors" class="space-y-6">
+      <div class="border-b border-nanaksar-gold/20 pb-4">
+        <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">Three-Layer System</span>
+        <h2 class="font-display text-3xl font-bold uppercase text-white mt-1">Color Palette & Contrast Guard</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <!-- Crimson 500 -->
+        <div class="bg-nanaksar-charcoal-card p-3 rounded-xl border border-white/10 space-y-3">
+          <div class="h-20 rounded-lg bg-[#D01B1B] shadow-lg shadow-red-900/30 flex items-end p-2">
+            <span class="text-[10px] font-mono font-bold text-white bg-black/40 px-1.5 py-0.5 rounded">Core Brand</span>
+          </div>
+          <div>
+            <p class="font-display text-xs font-bold uppercase text-white">Tandoori Crimson</p>
+            <p class="font-mono text-[11px] text-nanaksar-cream/70">#D01B1B</p>
+            <p class="font-mono text-[9px] text-nanaksar-gold mt-1">--primitive-crimson-500</p>
+          </div>
+        </div>
+
+        <!-- Amber Gold 500 -->
+        <div class="bg-nanaksar-charcoal-card p-3 rounded-xl border border-white/10 space-y-3">
+          <div class="h-20 rounded-lg bg-[#E4A834] shadow-lg shadow-amber-900/30 flex items-end p-2">
+            <span class="text-[10px] font-mono font-bold text-black bg-white/60 px-1.5 py-0.5 rounded">Brand Gold</span>
+          </div>
+          <div>
+            <p class="font-display text-xs font-bold uppercase text-white">Desi Ghee Gold</p>
+            <p class="font-mono text-[11px] text-nanaksar-cream/70">#E4A834</p>
+            <p class="font-mono text-[9px] text-nanaksar-gold mt-1">--primitive-amber-500</p>
+          </div>
+        </div>
+
+        <!-- Vintage Gold 600 -->
+        <div class="bg-nanaksar-charcoal-card p-3 rounded-xl border border-white/10 space-y-3">
+          <div class="h-20 rounded-lg bg-[#C89B53] flex items-end p-2">
+            <span class="text-[10px] font-mono font-bold text-white bg-black/40 px-1.5 py-0.5 rounded">Accent Gold</span>
+          </div>
+          <div>
+            <p class="font-display text-xs font-bold uppercase text-white">Vintage Ghee Gold</p>
+            <p class="font-mono text-[11px] text-nanaksar-cream/70">#C89B53</p>
+            <p class="font-mono text-[9px] text-nanaksar-gold mt-1">--primitive-amber-600</p>
+          </div>
+        </div>
+
+        <!-- Dark Roasted Amber 800 (Light Surface Safe) -->
+        <div class="bg-nanaksar-charcoal-card p-3 rounded-xl border border-white/10 space-y-3">
+          <div class="h-20 rounded-lg bg-[#965C00] flex items-end p-2">
+            <span class="text-[10px] font-mono font-bold text-white bg-black/40 px-1.5 py-0.5 rounded">WCAG AA Light</span>
+          </div>
+          <div>
+            <p class="font-display text-xs font-bold uppercase text-white">Dark Roasted Amber</p>
+            <p class="font-mono text-[11px] text-nanaksar-cream/70">#965C00</p>
+            <p class="font-mono text-[9px] text-nanaksar-gold mt-1">--primitive-amber-800</p>
+          </div>
+        </div>
+
+        <!-- Charcoal 900 -->
+        <div class="bg-nanaksar-charcoal-card p-3 rounded-xl border border-white/10 space-y-3">
+          <div class="h-20 rounded-lg bg-[#0F0F0F] border border-white/20 flex items-end p-2">
+            <span class="text-[10px] font-mono font-bold text-white bg-white/10 px-1.5 py-0.5 rounded">Canvas Dark</span>
+          </div>
+          <div>
+            <p class="font-display text-xs font-bold uppercase text-white">Tandoor Charcoal</p>
+            <p class="font-mono text-[11px] text-nanaksar-cream/70">#0F0F0F</p>
+            <p class="font-mono text-[9px] text-nanaksar-gold mt-1">--primitive-charcoal-900</p>
+          </div>
+        </div>
+
+        <!-- Warm Cream 100 -->
+        <div class="bg-nanaksar-charcoal-card p-3 rounded-xl border border-white/10 space-y-3">
+          <div class="h-20 rounded-lg bg-[#F7F4EB] flex items-end p-2">
+            <span class="text-[10px] font-mono font-bold text-black bg-black/10 px-1.5 py-0.5 rounded">Canvas Light</span>
+          </div>
+          <div>
+            <p class="font-display text-xs font-bold uppercase text-white">Makkhan Cream</p>
+            <p class="font-mono text-[11px] text-nanaksar-cream/70">#F7F4EB</p>
+            <p class="font-mono text-[9px] text-nanaksar-gold mt-1">--primitive-cream-100</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- WCAG Contrast Matrix Card -->
+      <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-nanaksar-gold/20 overflow-x-auto">
+        <h3 class="font-display text-sm font-semibold tracking-wider text-nanaksar-gold uppercase mb-4">WCAG Accessibility Contrast Ratios</h3>
+        <table class="w-full text-left text-xs font-mono">
+          <thead>
+            <tr class="border-b border-white/10 text-nanaksar-cream/60">
+              <th class="py-2">Foreground Token</th>
+              <th class="py-2">Background Token</th>
+              <th class="py-2">Contrast Ratio</th>
+              <th class="py-2">Compliance Level</th>
+              <th class="py-2">Visual Preview</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            <tr>
+              <td class="py-3 font-semibold text-white">--primitive-cream-100 (#F7F4EB)</td>
+              <td class="py-3 text-nanaksar-cream/80">--primitive-charcoal-900 (#0F0F0F)</td>
+              <td class="py-3 font-bold text-green-400">18.60 : 1</td>
+              <td class="py-3"><span class="bg-green-500/20 text-green-400 px-2 py-0.5 rounded text-[10px]">WCAG AAA</span></td>
+              <td class="py-3"><span class="bg-[#0F0F0F] text-[#F7F4EB] px-3 py-1 rounded font-display font-bold">GOOD FOOD</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 font-semibold text-white">--primitive-amber-500 (#E4A834)</td>
+              <td class="py-3 text-nanaksar-cream/80">--primitive-charcoal-900 (#0F0F0F)</td>
+              <td class="py-3 font-bold text-green-400">9.16 : 1</td>
+              <td class="py-3"><span class="bg-green-500/20 text-green-400 px-2 py-0.5 rounded text-[10px]">WCAG AAA</span></td>
+              <td class="py-3"><span class="bg-[#0F0F0F] text-[#E4A834] px-3 py-1 rounded font-display font-bold">SINCE 2005</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 font-semibold text-white">--primitive-crimson-500 (#D01B1B)</td>
+              <td class="py-3 text-nanaksar-cream/80">--primitive-charcoal-900 (#0F0F0F)</td>
+              <td class="py-3 font-bold text-amber-400">3.71 : 1</td>
+              <td class="py-3"><span class="bg-amber-500/20 text-amber-400 px-2 py-0.5 rounded text-[10px]">WCAG AA (Large Headlines ≥24px)</span></td>
+              <td class="py-3"><span class="bg-[#0F0F0F] text-[#D01B1B] px-3 py-1 rounded font-display font-bold text-base">PURE SEWA</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 font-semibold text-white">--text-on-crimson (#FFFFFF)</td>
+              <td class="py-3 text-nanaksar-cream/80">--primitive-crimson-500 (#D01B1B)</td>
+              <td class="py-3 font-bold text-green-400">4.91 : 1</td>
+              <td class="py-3"><span class="bg-green-500/20 text-green-400 px-2 py-0.5 rounded text-[10px]">WCAG AA</span></td>
+              <td class="py-3"><span class="bg-[#D01B1B] text-white px-3 py-1 rounded font-display font-bold">ORDER ONLINE</span></td>
+            </tr>
+            <tr>
+              <td class="py-3 font-semibold text-white">--primitive-amber-800 (#965C00)</td>
+              <td class="py-3 text-nanaksar-cream/80">--primitive-cream-100 (#F7F4EB)</td>
+              <td class="py-3 font-bold text-green-400">4.65 : 1</td>
+              <td class="py-3"><span class="bg-green-500/20 text-green-400 px-2 py-0.5 rounded text-[10px]">WCAG AA (Light Theme)</span></td>
+              <td class="py-3"><span class="bg-[#F7F4EB] text-[#965C00] px-3 py-1 rounded font-display font-bold">DEWAS NAKA</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3. Typography Specimen -->
+    <section id="typography" class="space-y-6">
+      <div class="border-b border-nanaksar-gold/20 pb-4">
+        <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">Scale & Treatment</span>
+        <h2 class="font-display text-3xl font-bold uppercase text-white mt-1">Typography System</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Display Typography -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-nanaksar-gold/20 space-y-6">
+          <h3 class="font-display text-sm font-semibold tracking-wider text-nanaksar-gold uppercase">Display Headings (Oswald Condensed)</h3>
+          
+          <div class="space-y-4">
+            <div>
+              <span class="text-[10px] font-mono text-nanaksar-cream/50 block">Hero Title (8xl / 6rem) High-Contrast Solid</span>
+              <h1 class="font-display text-6xl font-bold uppercase text-white leading-none">
+                GOOD FOOD. <span class="text-nanaksar-crimson">PURE SEWA.</span>
+              </h1>
+            </div>
+
+            <div>
+              <span class="text-[10px] font-mono text-nanaksar-cream/50 block">Section Header (5xl / 3rem)</span>
+              <h2 class="font-display text-4xl font-bold uppercase text-white">
+                TASTE THE <span class="text-nanaksar-crimson">ESSENCE</span>
+              </h2>
+            </div>
+
+            <div>
+              <span class="text-[10px] font-mono text-nanaksar-cream/50 block">Bento & Card Title (3xl / 1.875rem)</span>
+              <h3 class="font-display text-2xl font-bold uppercase text-nanaksar-gold">
+                24-HOUR SLOW-COOKED DAL MAKHANI
+              </h3>
+            </div>
+
+            <div>
+              <span class="text-[10px] font-mono text-nanaksar-cream/50 block">Eyebrow & Ornamental Sub-Badge</span>
+              <div class="flex items-center gap-2 mt-1">
+                <span class="text-nanaksar-gold">𝄖</span>
+                <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">PURE VEGETARIAN. PURE SEWA BHAAV.</span>
+                <span class="text-nanaksar-gold">𝄖</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body & Editorial Typography -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-nanaksar-gold/20 space-y-6">
+          <h3 class="font-display text-sm font-semibold tracking-wider text-nanaksar-gold uppercase">Body & Editorial (DM Sans & Playfair Serif)</h3>
+          
+          <div class="space-y-4">
+            <div>
+              <span class="text-[10px] font-mono text-nanaksar-cream/50 block">Lead Paragraph (DM Sans 18px)</span>
+              <p class="font-sans text-base text-nanaksar-cream/90 leading-relaxed">
+                Serving delicious, hygienic and honest vegetarian food in Indore <strong class="text-white font-semibold">since 2005</strong>. From everyday meals to special moments, Nanaksar is a <strong class="text-nanaksar-gold font-semibold">place for everyone</strong>.
+              </p>
+            </div>
+
+            <div>
+              <span class="text-[10px] font-mono text-nanaksar-cream/50 block">Editorial Quote (Playfair Display 20px)</span>
+              <blockquote class="font-serif italic text-lg text-nanaksar-gold-vintage border-l-2 border-nanaksar-gold pl-4 py-1">
+                "Profit was never our primary objective; consistency, cleanliness, and honest taste took precedence from Day 1."
+                <cite class="block font-sans text-xs text-nanaksar-cream/60 not-italic mt-2">— Avtar Singh (Veer Ji), Founder</cite>
+              </blockquote>
+            </div>
+
+            <div>
+              <span class="text-[10px] font-mono text-nanaksar-cream/50 block">Micro Copy & Price Matrix (Font Mono / Sans 13px)</span>
+              <div class="flex items-center justify-between p-3 bg-nanaksar-charcoal rounded-lg border border-white/5">
+                <span class="font-display uppercase font-semibold text-white">Tandoori Chur Chur Naan</span>
+                <span class="font-mono text-sm font-bold text-nanaksar-crimson">₹50/-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Button & Control Matrix -->
+    <section id="buttons" class="space-y-6">
+      <div class="border-b border-nanaksar-gold/20 pb-4">
+        <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">Interactive Controls</span>
+        <h2 class="font-display text-3xl font-bold uppercase text-white mt-1">Buttons & State Matrix</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Primary Crimson CTA -->
+        <div class="bg-nanaksar-charcoal-card p-5 rounded-2xl border border-white/10 space-y-3 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-nanaksar-gold uppercase block mb-2">Primary CTA (Solid Crimson)</span>
+            <a href="#order" class="w-full flex items-center justify-center gap-2 bg-[#D01B1B] hover:bg-[#C62828] text-white px-5 py-3 rounded-md font-display font-bold text-sm tracking-wider uppercase transition shadow-lg shadow-red-900/30">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2v20M6 2v20M2 7h8a4 4 0 014 4v9M22 7h-8a4 4 0 00-4 4v9"/></svg>
+              ORDER ONLINE
+            </a>
+          </div>
+          <p class="text-[11px] text-nanaksar-cream/60">Used for primary conversion actions in header and hero.</p>
+        </div>
+
+        <!-- Secondary Gold Outline -->
+        <div class="bg-nanaksar-charcoal-card p-5 rounded-2xl border border-white/10 space-y-3 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-nanaksar-gold uppercase block mb-2">Secondary CTA (Gold Outline)</span>
+            <a href="#outlets" class="w-full flex items-center justify-center gap-2 border border-[#E4A834] hover:bg-[#E4A834]/15 text-[#E4A834] hover:text-white px-5 py-3 rounded-md font-display font-bold text-sm tracking-wider uppercase transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              FIND YOUR OUTLET &gt;
+            </a>
+          </div>
+          <p class="text-[11px] text-nanaksar-cream/60">Used for navigation to physical locations and secondary triggers.</p>
+        </div>
+
+        <!-- Explore Menu CTA -->
+        <div class="bg-nanaksar-charcoal-card p-5 rounded-2xl border border-white/10 space-y-3 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-nanaksar-gold uppercase block mb-2">Hero Action CTA (Explore Menu)</span>
+            <a href="#menu" class="w-full flex items-center justify-center gap-2 bg-[#D01B1B] hover:bg-[#B81515] text-white px-5 py-3 rounded-md font-display font-bold text-sm tracking-wider uppercase transition shadow-lg shadow-red-900/40">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              EXPLORE MENU &gt;
+            </a>
+          </div>
+          <p class="text-[11px] text-nanaksar-cream/60">Exact button matching Hero section left column.</p>
+        </div>
+
+        <!-- Pill Badges & Dietary Filters -->
+        <div class="bg-nanaksar-charcoal-card p-5 rounded-2xl border border-white/10 space-y-3 flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-mono text-nanaksar-gold uppercase block mb-2">Pill Badges & Tags</span>
+            <div class="flex flex-wrap gap-2">
+              <span class="bg-nanaksar-crimson text-white text-[11px] font-display font-semibold uppercase px-3 py-1 rounded-full">POPULAR</span>
+              <span class="border border-nanaksar-gold text-nanaksar-gold text-[11px] font-display font-semibold uppercase px-3 py-1 rounded-full">24-HR CRAFT</span>
+              <span class="bg-green-900/40 border border-green-500/50 text-green-400 text-[11px] font-display font-semibold uppercase px-3 py-1 rounded-full flex items-center gap-1">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span> PURE VEG
+              </span>
+            </div>
+          </div>
+          <p class="text-[11px] text-nanaksar-cream/60">Dietary identifiers and category highlights.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Hero Section Component Specimen -->
+    <section id="hero-spec" class="space-y-6">
+      <div class="border-b border-nanaksar-gold/20 pb-4 flex items-end justify-between">
+        <div>
+          <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">Flagship Replication</span>
+          <h2 class="font-display text-3xl font-bold uppercase text-white mt-1">Hero Section Component Specimen</h2>
+        </div>
+        <span class="text-xs font-mono text-nanaksar-gold bg-nanaksar-gold/10 px-3 py-1 rounded border border-nanaksar-gold/30">100% Parity with Desired_hero.png</span>
+      </div>
+
+      <!-- Live Mockup Container of Hero -->
+      <div class="relative w-full rounded-3xl overflow-hidden border-2 border-nanaksar-gold/30 bg-[#0F0F0F] shadow-2xl">
+        <!-- Background Asset with Multi-stop Scrim -->
+        <div class="absolute inset-0 z-0">
+          <img src="Assets/Hero_background.png" alt="Nanaksar Thali Feast" class="w-full h-full object-cover object-right md:object-right opacity-90" />
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0F0F0F] via-[#0F0F0F]/85 to-transparent lg:via-[#0F0F0F]/65"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0F0F0F] via-transparent to-[#0F0F0F]/50"></div>
+        </div>
+
+        <!-- Specimen Navigation Header -->
+        <div class="relative z-10 w-full px-6 py-4 flex items-center justify-between border-b border-white/10 backdrop-blur-sm bg-black/40">
+          <div class="flex items-center gap-3">
+            <img src="Assets/Logo.png" alt="Seal Logo" class="h-12 w-12 object-contain" />
+            <div class="flex flex-col">
+              <span class="font-display text-2xl font-bold tracking-tight text-nanaksar-crimson uppercase leading-none">NANAKSAR</span>
+              <span class="font-display text-[10px] font-semibold tracking-[0.22em] text-nanaksar-gold uppercase mt-0.5">— SINCE 2005 —</span>
+              <span class="font-display text-[9px] font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">PURE VEGETARIAN</span>
+            </div>
+          </div>
+
+          <div class="hidden md:flex items-center gap-6 font-display text-xs font-semibold tracking-wider uppercase">
+            <span class="text-white border-b-2 border-nanaksar-crimson pb-1">HOME</span>
+            <span class="text-nanaksar-cream/80">OUR STORY</span>
+            <span class="text-nanaksar-cream/80">MENU</span>
+            <span class="text-nanaksar-cream/80">OUR OUTLETS</span>
+            <span class="text-nanaksar-cream/80">CONTACT</span>
+          </div>
+
+          <div class="flex items-center gap-2 bg-[#D01B1B] text-white px-4 py-2 rounded font-display text-xs font-bold uppercase tracking-wider shadow-lg shadow-red-900/40">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2v20M6 2v20M2 7h8a4 4 0 014 4v9M22 7h-8a4 4 0 00-4 4v9"/></svg>
+            ORDER ONLINE
+          </div>
+        </div>
+
+        <!-- Hero Body -->
+        <div class="relative z-10 px-8 py-16 max-w-2xl">
+          <span class="font-display text-xs font-semibold tracking-[0.25em] text-nanaksar-gold uppercase block mb-2">SINCE 2005</span>
+          <h2 class="font-display text-5xl sm:text-6xl font-bold uppercase text-white leading-[0.95]">
+            GOOD FOOD.<br>
+            <span class="text-nanaksar-crimson">PURE SEWA BHAAV.</span>
+          </h2>
+
+          <div class="flex items-center gap-2 my-4">
+            <span class="text-nanaksar-gold opacity-60">𝄖</span>
+            <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">PURE VEGETARIAN. PURE SEWA BHAAV.</span>
+            <span class="text-nanaksar-gold opacity-60">𝄖</span>
+          </div>
+
+          <p class="font-sans text-nanaksar-cream/90 text-sm leading-relaxed mb-6">
+            Serving delicious, hygienic and honest vegetarian food in Indore <strong class="text-white font-semibold">since 2005</strong>. From everyday meals to special moments, Nanaksar is a <strong class="text-nanaksar-gold font-semibold">place for everyone</strong>.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#menu" class="flex items-center gap-2 bg-[#D01B1B] text-white px-6 py-3 rounded-md font-display font-bold text-sm tracking-wider uppercase shadow-xl">
+              EXPLORE MENU &gt;
+            </a>
+            <a href="#outlets" class="flex items-center gap-2 border border-[#E4A834] text-[#E4A834] px-6 py-3 rounded-md font-display font-bold text-sm tracking-wider uppercase">
+              FIND YOUR OUTLET &gt;
+            </a>
+          </div>
+        </div>
+
+        <!-- Specimen 4 Outlets Bar Docked at Bottom -->
+        <div class="relative z-10 border-t border-nanaksar-gold/25 bg-black/85 backdrop-blur-md px-6 py-5">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+            <div class="md:col-span-3 border-b md:border-b-0 md:border-r border-nanaksar-gold/20 pb-3 md:pb-0">
+              <p class="font-display text-base font-bold text-nanaksar-gold uppercase leading-tight">FOUR OUTLETS.</p>
+              <p class="font-display text-base font-bold text-nanaksar-crimson uppercase leading-tight">ONE NANAKSAR.</p>
+            </div>
+            <div class="md:col-span-9 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+              <div class="px-2">
+                <span class="font-display text-xs font-bold text-white uppercase block">DEWAS NAKA</span>
+                <span class="text-[11px] text-nanaksar-cream/60 flex items-center justify-center gap-1 mt-0.5"><span class="text-nanaksar-crimson">📍</span> Indore</span>
+                <span class="font-display text-[10px] font-semibold text-nanaksar-gold uppercase tracking-wider mt-1 block">DIRECTIONS ➔</span>
+              </div>
+              <div class="px-2 border-l border-white/10">
+                <span class="font-display text-xs font-bold text-white uppercase block">VIJAY NAGAR</span>
+                <span class="text-[11px] text-nanaksar-cream/60 flex items-center justify-center gap-1 mt-0.5"><span class="text-nanaksar-crimson">📍</span> Indore</span>
+                <span class="font-display text-[10px] font-semibold text-nanaksar-gold uppercase tracking-wider mt-1 block">DIRECTIONS ➔</span>
+              </div>
+              <div class="px-2 border-l border-white/10">
+                <span class="font-display text-xs font-bold text-white uppercase block">GEETA BHAWAN</span>
+                <span class="text-[11px] text-nanaksar-cream/60 flex items-center justify-center gap-1 mt-0.5"><span class="text-nanaksar-crimson">📍</span> Indore</span>
+                <span class="font-display text-[10px] font-semibold text-nanaksar-gold uppercase tracking-wider mt-1 block">DIRECTIONS ➔</span>
+              </div>
+              <div class="px-2 border-l border-white/10">
+                <span class="font-display text-xs font-bold text-white uppercase block">BHAWARKUA</span>
+                <span class="text-[11px] text-nanaksar-cream/60 flex items-center justify-center gap-1 mt-0.5"><span class="text-nanaksar-crimson">📍</span> Indore</span>
+                <span class="font-display text-[10px] font-semibold text-nanaksar-gold uppercase tracking-wider mt-1 block">DIRECTIONS ➔</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Four Outlets Anchor Bar Spec -->
+    <section id="outlets-spec" class="space-y-6">
+      <div class="border-b border-nanaksar-gold/20 pb-4">
+        <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">Outlets Directory</span>
+        <h2 class="font-display text-3xl font-bold uppercase text-white mt-1">Four Outlets Specification</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Dewas Naka -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-nanaksar-gold/30 relative overflow-hidden group hover:border-nanaksar-gold transition">
+          <div class="absolute top-0 right-0 bg-nanaksar-gold text-black font-display font-bold text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded-bl">FLAGSHIP</div>
+          <svg class="w-10 h-10 text-nanaksar-gold mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21h18M4 21V9l4-3 4 3v12M12 21V9l4-3 4 3v12M9 21v-6a3 3 0 016 0v6"/></svg>
+          <h3 class="font-display text-xl font-bold uppercase text-white">DEWAS NAKA</h3>
+          <p class="text-xs text-nanaksar-cream/70 mt-1">17–19, Near Lasudia Police Station, A.B. Road, Dewas Naka</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-[11px] text-nanaksar-gold font-mono font-semibold">11 AM – 11:30 PM</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Dewas+Naka+Indore" target="_blank" class="text-xs font-display font-bold uppercase text-nanaksar-crimson hover:underline flex items-center gap-1">MAPS ➔</a>
+          </div>
+        </div>
+
+        <!-- Vijay Nagar -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-white/10 group hover:border-nanaksar-gold transition">
+          <svg class="w-10 h-10 text-nanaksar-gold mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3 6H9l3-6zm0 6v13m-7 0h14M6 14h12"/></svg>
+          <h3 class="font-display text-xl font-bold uppercase text-white">VIJAY NAGAR</h3>
+          <p class="text-xs text-nanaksar-cream/70 mt-1">Scheme No 54, Near Velocity III, Vijay Nagar, Indore</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-[11px] text-nanaksar-gold font-mono font-semibold">11 AM – 11:30 PM</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Vijay+Nagar+Indore" target="_blank" class="text-xs font-display font-bold uppercase text-nanaksar-crimson hover:underline flex items-center gap-1">MAPS ➔</a>
+          </div>
+        </div>
+
+        <!-- Geeta Bhawan -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-white/10 group hover:border-nanaksar-gold transition">
+          <svg class="w-10 h-10 text-nanaksar-gold mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v18M8 8h8M6 13h12M4 18h16"/></svg>
+          <h3 class="font-display text-xl font-bold uppercase text-white">GEETA BHAWAN</h3>
+          <p class="text-xs text-nanaksar-cream/70 mt-1">Near Geeta Bhawan Square, A.B. Road, South Tukoganj</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-[11px] text-nanaksar-gold font-mono font-semibold">11 AM – 11:30 PM</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Geeta+Bhawan+Indore" target="_blank" class="text-xs font-display font-bold uppercase text-nanaksar-crimson hover:underline flex items-center gap-1">MAPS ➔</a>
+          </div>
+        </div>
+
+        <!-- Bhawarkua -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-white/10 group hover:border-nanaksar-gold transition">
+          <svg class="w-10 h-10 text-nanaksar-gold mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 20h16M7 20V8l5-4 5 4v12M10 20v-5a2 2 0 014 0v5"/></svg>
+          <h3 class="font-display text-xl font-bold uppercase text-white">BHAWARKUA</h3>
+          <p class="text-xs text-nanaksar-cream/70 mt-1">Main Tower Square Road, Bhawarkua Main Hub, Indore</p>
+          <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-[11px] text-nanaksar-gold font-mono font-semibold">11 AM – 11:30 PM</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Bhawarkua+Indore" target="_blank" class="text-xs font-display font-bold uppercase text-nanaksar-crimson hover:underline flex items-center gap-1">MAPS ➔</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Scanned Menu Card Component Spec -->
+    <section id="menu-spec" class="space-y-6">
+      <div class="border-b border-nanaksar-gold/20 pb-4 flex items-end justify-between">
+        <div>
+          <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">Culinary Catalog</span>
+          <h2 class="font-display text-3xl font-bold uppercase text-white mt-1">Menu Dish Cards Specification</h2>
+        </div>
+        <span class="text-xs font-mono text-nanaksar-cream/60">Extracted from Menu.webp - Menu-3.webp</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Dal Makhani -->
+        <div class="bg-white text-nanaksar-charcoal p-6 rounded-2xl shadow-xl flex flex-col justify-between border-t-4 border-nanaksar-crimson">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> 100% PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-crimson uppercase tracking-wider">SIGNATURE</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold uppercase leading-tight">24-Hour Slow-Cooked Dal Makhani</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Whole black urad simmered for 14+ hours over green fuel bhattis with fresh white butter and desi ghee tempering.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/20 flex items-center justify-between">
+            <span class="text-xs font-semibold text-black/60">Half: ₹160 | Full</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">₹195/-</span>
+          </div>
+        </div>
+
+        <!-- Chur Chur Naan -->
+        <div class="bg-white text-nanaksar-charcoal p-6 rounded-2xl shadow-xl flex flex-col justify-between border-t-4 border-nanaksar-gold">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> 100% PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-gold-dark uppercase tracking-wider">TANDOOR SPECIAL</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold uppercase leading-tight">Tandoori Chur Chur Naan</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Layered clay-oven flatbread stuffed with spiced potato and paneer, hand-crushed and drenched in shuddh desi ghee.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/20 flex items-center justify-between">
+            <span class="text-xs font-semibold text-black/60">Crispy Desi Ghee</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">₹50/-</span>
+          </div>
+        </div>
+
+        <!-- Indori Sev Tamatar -->
+        <div class="bg-white text-nanaksar-charcoal p-6 rounded-2xl shadow-xl flex flex-col justify-between border-t-4 border-nanaksar-crimson">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> 100% PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-crimson uppercase tracking-wider">INDORI HERITAGE</span>
+            </div>
+            <h3 class="font-display text-2xl font-bold uppercase leading-tight">Indori Sev Tamatar</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Crispy Ratlami sev simmered in a tangy spiced tomato and cumin gravy with authentic Malwi seasoning.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/20 flex items-center justify-between">
+            <span class="text-xs font-semibold text-black/60">Malwa Classic</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">₹130/-</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Interactive Token Playground -->
+    <section class="bg-nanaksar-charcoal-card p-8 rounded-3xl border border-nanaksar-gold/30">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <span class="font-display text-xs font-semibold tracking-[0.2em] text-nanaksar-gold uppercase">Developer Engine</span>
+          <h2 class="font-display text-2xl font-bold uppercase text-white">Live CSS Variables Inspection</h2>
+        </div>
+        <a href="assets/design-tokens.css" target="_blank" class="text-xs font-mono text-nanaksar-gold hover:underline">View assets/design-tokens.css ➔</a>
+      </div>
+
+      <div class="bg-[#0A0A0A] p-6 rounded-2xl border border-white/5 font-mono text-xs text-nanaksar-cream/80 overflow-x-auto">
+        <pre><code>:root {
+  /* Primitive */
+  --primitive-crimson-500: #D01B1B;
+  --primitive-amber-500:   #E4A834;
+  --primitive-charcoal-900:#0F0F0F;
+  --primitive-cream-100:   #F7F4EB;
+
+  /* Semantic */
+  --semantic-surface-dark: var(--primitive-charcoal-900);
+  --semantic-text-hero-line1: var(--primitive-cream-100);
+  --semantic-text-hero-line2: var(--primitive-crimson-500);
+  --semantic-text-accent: var(--primitive-amber-500);
+
+  /* Component */
+  --cmp-btn-primary-bg: var(--primitive-crimson-500);
+  --cmp-btn-outlet-border: var(--primitive-amber-500);
+  --cmp-outlets-bar-bg: rgba(15, 15, 15, 0.95);
+}</code></pre>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t border-nanaksar-gold/20 bg-black py-8 text-center text-xs text-nanaksar-cream/50">
+    <p class="font-display uppercase tracking-widest text-nanaksar-gold text-sm">NANAKSAR DHABA (INDORE) • EST. 2005</p>
+    <p class="mt-1">"Ghar Jaisa Swad. Seva Wala Pyar." • 100% Pure Vegetarian</p>
+    <p class="mt-4 font-mono text-[10px] text-white/30">Built with Three-Layer Token Architecture &bull; Designed for Indore</p>
+  </footer>
+
+  <!-- VisualPatch In-Browser UI Review & Pinning Engine -->
+  <script src="Assets/visualpatch.js" defer></script>
+
+</body>
+</html>

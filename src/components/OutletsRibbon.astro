@@ -1,0 +1,67 @@
+---
+import { OUTLETS } from '../data/restaurantData';
+---
+
+<div class="relative z-20 w-full border-t border-[#E4A834]/25 bg-[#0F0F0F]/95 backdrop-blur-md py-4 sm:py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      
+      <!-- Left Anchor Title -->
+      <div class="flex items-center gap-3 lg:pr-6 lg:border-r lg:border-white/10 shrink-0">
+        <span class="w-2 h-8 bg-[#D01B1B] rounded-full hidden sm:block"></span>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display text-sm sm:text-base font-bold uppercase tracking-wider text-[#E4A834]">
+              Five Outlets
+            </span>
+            <span class="bg-[#D01B1B] text-white text-[9px] font-mono font-bold px-1.5 py-0.5 rounded">
+              INDORE
+            </span>
+          </div>
+          <p class="text-[11px] text-white/60 font-medium">Open Daily: 11:00 AM - 11:30 PM</p>
+        </div>
+      </div>
+
+      <!-- Outlets Container (Mobile: Swipeable Snap Ribbon | Desktop: Flex Row) -->
+      <div class="flex w-full overflow-x-auto snap-x snap-mandatory no-scrollbar touch-pan-x gap-3 lg:gap-4 py-1 lg:py-0 lg:overflow-visible lg:justify-end">
+        {OUTLETS.map((outlet) => (
+          <a
+            href={outlet.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="snap-start shrink-0 w-[240px] sm:w-[260px] lg:w-auto bg-[#181818] hover:bg-[#222222] border border-white/10 hover:border-[#E4A834]/50 rounded-xl p-3 flex flex-col justify-between transition group focus:outline-none focus:ring-2 focus:ring-[#E4A834]"
+          >
+            <div class="flex items-center justify-between gap-2 mb-1">
+              <span class="font-display text-xs font-bold text-white uppercase tracking-wider group-hover:text-[#E4A834] transition">
+                {outlet.name}
+              </span>
+              {outlet.isFlagship ? (
+                <span class="text-[9px] font-mono text-[#E4A834] bg-[#E4A834]/15 px-1.5 py-0.5 rounded font-bold">
+                  FLAGSHIP
+                </span>
+              ) : outlet.isNew ? (
+                <span class="text-[9px] font-mono text-green-400 bg-green-950/60 px-1.5 py-0.5 rounded font-bold">
+                  NEW
+                </span>
+              ) : (
+                <span class="text-[9px] font-mono text-white/50">
+                  INDORE
+                </span>
+              )}
+            </div>
+
+            <p class="text-[11px] text-white/60 line-clamp-1">
+              {outlet.subtitle}
+            </p>
+
+            <div class="flex items-center justify-between pt-2 mt-1 border-t border-white/5 text-[10px] font-mono text-[#E4A834]">
+              <span>Directions</span>
+              <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</div>

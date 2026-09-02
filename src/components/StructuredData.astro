@@ -1,0 +1,68 @@
+---
+import { OUTLETS, MENU_ITEMS, BRAND_INFO } from '../data/restaurantData';
+---
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Restaurant",
+      "@id": "https://nanaksardhaba.com/#restaurant",
+      "name": "Nanaksar Dhaba Indore",
+      "image": "https://nanaksardhaba.com/assets/Logo.png",
+      "foundingDate": "1980",
+      "founder": {
+        "@type": "Person",
+        "name": "Avtar Singh (Veer Ji)"
+      },
+      "description": "Indore's legendary 100% Pure Vegetarian Dhaba established in 1980. Famous for 24-Hour Slow-Cooked Bhatti Dal Makhani, Clay-Oven Chur Chur Naan, and North Indian vegetarian cuisine in pure desi ghee.",
+      "servesCuisine": ["North Indian", "Punjabi", "Pure Vegetarian"],
+      "priceRange": "₹₹",
+      "currenciesAccepted": "INR",
+      "paymentAccepted": "Cash, Credit Card, UPI",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.5",
+        "bestRating": "5",
+        "ratingCount": "5000",
+        "reviewCount": "5000"
+      },
+      "hasMenu": {
+        "@type": "Menu",
+        "name": "Nanaksar Dhaba Official Menu",
+        "url": "https://nanaksardhaba.com/all-categories",
+        "hasMenuSection": [
+          {
+            "@type": "MenuSection",
+            "name": "Crown Signatures",
+            "hasMenuItem": MENU_ITEMS.filter(i => i.isSignature).map(i => ({
+              "@type": "MenuItem",
+              "name": i.name,
+              "description": i.description,
+              "offers": {
+                "@type": "Offer",
+                "price": String(i.priceSingle || i.priceHalf || i.priceFull),
+                "priceCurrency": "INR"
+              },
+              "suitableForDiet": "https://schema.org/VegetarianDiet"
+            }))
+          }
+        ]
+      },
+      "subOrganization": OUTLETS.map(o => ({
+        "@type": "LocalBusiness",
+        "name": `Nanaksar Dhaba - ${o.name}`,
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": o.address,
+          "addressLocality": "Indore",
+          "addressRegion": "Madhya Pradesh",
+          "postalCode": "452010",
+          "addressCountry": "IN"
+        },
+        "telephone": o.phone,
+        "openingHours": "Mo-Su 11:00-23:30"
+      }))
+    }
+  ]
+})} />

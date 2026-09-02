@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeritageStory from '../components/HeritageStory.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Our Story & Highway Heritage | Nanaksar Dhaba Indore | Est. 1980"
+  description="The authentic journey of Avtar Singh (Veer Ji) — Roots since 1980, first official highway hearth established on Dewas Naka in 2005. 24-hour bhatti slow-cooking and pure vegetarian sewa in Indore."
+>
+  <!-- Sub-page Breadcrumb & Header -->
+  <section class="pt-28 pb-8 bg-[#0F0F0F] text-white border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <nav class="flex items-center gap-2 text-xs font-mono text-white/50 mb-4">
+        <a href="/" class="hover:text-[#E4A834] transition">Home</a>
+        <span>/</span>
+        <span class="text-[#E4A834]">Our Story</span>
+      </nav>
+
+      <h1 class="font-display text-4xl sm:text-6xl font-bold uppercase tracking-tight text-white leading-none">
+        Built on Food. <span class="text-[#D01B1B]">Rooted in Sewa.</span>
+      </h1>
+      <p class="mt-3 text-sm sm:text-base text-white/70 font-sans max-w-2xl">
+        Roots grounded in 1980 and our first official highway restaurant established in 2005. A journey of genuine sewa bhaav, eco-friendly bhattis, and uncompromising pure desi ghee tradition in Indore.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Full Heritage Story Component with 24-hr Bhatti Breakdown & Trust Closer -->
+  <HeritageStory />
+
+  <!-- Global Footer -->
+  <Footer />
+</Layout>

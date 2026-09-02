@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nanaksar Dhaba Indore | Ghar Jaisa Swad. Seva Wala Pyar. | Est. 2005</title>
+  <meta name="description" content="Nanaksar Dhaba Indore â€” Famous 24-Hour Slow-Cooked Dal Makhani, Clay-Oven Chur Chur Naan & Authentic North Indian & Indori Pure Vegetarian Cuisine across 4 Outlets.">
+  
+  <!-- Fonts (Option A: Royal Highway Heritage) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@1,600&family=JetBrains+Mono:wght@600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS & Lucide Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- 3-Layer Design System Tokens -->
+  <link rel="stylesheet" href="assets/design-tokens.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nanaksar: {
+              crimson: '#D01B1B',
+              'crimson-hover': '#B81414',
+              'crimson-dark': '#C62828',
+              gold: '#E4A834',
+              'gold-vintage': '#C89B53',
+              'gold-dark': '#965C00',
+              saffron: '#F27A24',
+              'saffron-dark': '#842F06',
+              charcoal: '#0F0F0F',
+              'charcoal-card': '#181818',
+              'charcoal-elevated': '#202020',
+              cream: '#F7F4EB',
+              'cream-accent': '#F4EBD0',
+              veg: '#15803D'
+            }
+          },
+          fontFamily: {
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Cinzel"', '"Cormorant Garamond"', 'serif'],
+            editorial: ['"Cormorant Garamond"', 'serif'],
+            mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #0F0F0F;
+      color: #F7F4EB;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    .font-serif {
+      font-family: 'Cinzel', serif;
+    }
+
+    .font-editorial {
+      font-family: 'Cormorant Garamond', serif;
+    }
+
+    .hero-bg-scrim {
+      background: 
+        linear-gradient(90deg, #0F0F0F 0%, rgba(15,15,15,0.96) 38%, rgba(15,15,15,0.65) 65%, rgba(15,15,15,0.15) 100%),
+        linear-gradient(180deg, rgba(15,15,15,0.7) 0%, transparent 25%, transparent 75%, #0F0F0F 100%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0F0F0F;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D01B1B;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #F58220;
+    }
+  </style>
+</head>
+<body class="antialiased overflow-x-hidden selection:bg-nanaksar-crimson selection:text-white">
+
+  <!-- =========================================================================
+       1. HERO SECTION (100% REPLICATION OF DESIRED_HERO.PNG)
+       ========================================================================= -->
+  <section id="home" class="relative min-h-screen w-full bg-[#0F0F0F] text-white flex flex-col justify-between overflow-hidden">
+    
+    <!-- Hero Background Image & Gradient Scrim -->
+    <div class="absolute inset-0 z-0">
+      <img src="Assets/New-Back.png" alt="Nanaksar Dal Makhani & Authentic Thali Feast" 
+           class="w-full h-full object-cover object-right-top md:object-right select-none" />
+      <div class="absolute inset-0 hero-bg-scrim"></div>
+    </div>
+
+    <!-- Header Navigation Bar -->
+    <header class="relative z-30 w-full px-6 py-5 max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand Logo Lockup -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <img src="Assets/Logo.png" alt="Nanaksar Dhaba Circular Seal" class="h-12 w-12 sm:h-14 sm:w-14 object-contain drop-shadow-md group-hover:scale-105 transition-transform" />
+        <img src="Assets/Brand_Name.png" alt="Nanaksar Dhaba" class="h-8 sm:h-10 w-auto object-contain" />
+      </a>
+
+      <!-- Navigation Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-7 lg:gap-9 font-display text-sm font-semibold tracking-wider uppercase">
+        <a href="#home" class="relative text-white/90 hover:text-white py-1 transition-colors group">
+          HOME
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
+        </a>
+        <a href="#story" class="relative text-white/90 hover:text-white py-1 transition-colors group">
+          OUR STORY
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
+        </a>
+        <a href="#menu" class="relative text-white/90 hover:text-white py-1 transition-colors group">
+          MENU
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
+        </a>
+        <a href="#outlets" class="relative text-white/90 hover:text-white py-1 transition-colors group">
+          OUR OUTLETS
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
+        </a>
+        <a href="#contact" class="relative text-white/90 hover:text-white py-1 transition-colors group">
+          CONTACT
+          <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <!-- Right Header Actions -->
+      <div class="flex items-center gap-3">
+        <!-- Order Online CTA Button -->
+        <a href="#menu" class="flex items-center gap-2 bg-[#D01B1B] hover:bg-[#B81515] text-white px-5 py-2.5 sm:px-6 sm:py-3 rounded-md font-display text-xs sm:text-sm font-bold tracking-wider uppercase transition shadow-lg shadow-red-950/50 hover:scale-[1.02]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M18 2v20M6 2v20M2 7h8a4 4 0 014 4v9M22 7h-8a4 4 0 00-4 4v9"/>
+          </svg>
+          <span>ORDER ONLINE</span>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-toggle" type="button" class="md:hidden text-white/90 hover:text-white p-2 rounded-lg bg-white/10" aria-label="Toggle Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex flex-col justify-between p-8 transform translate-x-full transition-transform duration-300 md:hidden">
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center gap-3">
+          <img src="Assets/Logo.png" alt="Logo" class="h-10 w-10 object-contain" />
+          <img src="Assets/Brand_Name.png" alt="Nanaksar" class="h-7 w-auto object-contain" />
+        </div>
+        <button id="mobile-menu-close" type="button" class="text-white/80 hover:text-white p-2">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-6 font-display text-xl font-bold uppercase tracking-wider my-auto">
+        <a href="#home" class="text-[#F58220] mobile-nav-link">Home</a>
+        <a href="#story" class="text-white/90 hover:text-[#F58220] mobile-nav-link">Our Story</a>
+        <a href="#menu" class="text-white/90 hover:text-[#F58220] mobile-nav-link">Menu & Specialties</a>
+        <a href="#outlets" class="text-white/90 hover:text-[#F58220] mobile-nav-link">Four Outlets (Indore)</a>
+        <a href="#book" class="text-white/90 hover:text-[#F58220] mobile-nav-link">Book a Table</a>
+        <a href="#reviews" class="text-white/90 hover:text-[#F58220] mobile-nav-link">Reviews</a>
+      </div>
+      <div class="border-t border-white/10 pt-4 text-center">
+        <p class="text-xs text-white/60 font-medium">"Ghar Jaisa Swad. Seva Wala Pyar."</p>
+        <p class="text-[11px] text-[#F58220] mt-1 font-mono">Dewas Naka â€¢ Vijay Nagar â€¢ Geeta Bhawan â€¢ Bhawarkua</p>
+      </div>
+    </div>
+
+    <!-- Hero Content (Left Lockup) -->
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-10 md:py-16 lg:py-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7 flex flex-col items-start text-left">
+        
+        <!-- Eyebrow -->
+        <span class="font-display text-sm sm:text-base font-semibold tracking-[0.25em] text-[#F58220] uppercase mb-2 sm:mb-3">
+          SINCE 2005
+        </span>
+
+        <!-- Main Headline -->
+        <h1 class="font-display text-5xl sm:text-7xl lg:text-[5.5rem] font-bold uppercase tracking-tight leading-[0.9] sm:leading-[0.88] mb-4">
+          <span class="text-[#F7F4EB] block">GOOD FOOD.</span>
+          <span class="text-[#D01B1B] block">PURE SEWA BHAAV.</span>
+        </h1>
+
+        <!-- Decorative Sub-Badge -->
+        <div class="flex items-center gap-3 my-3 sm:my-4">
+          <span class="text-[#F58220] opacity-70">ð„–</span>
+          <span class="font-display text-xs sm:text-sm font-semibold tracking-[0.22em] text-[#F58220] uppercase">
+            PURE VEGETARIAN. PURE SEWA BHAAV.
+          </span>
+          <span class="text-[#F58220] opacity-70">ð„–</span>
+        </div>
+
+        <!-- Narrative Copy -->
+        <p class="font-sans text-[#F7F4EB]/90 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed mb-8">
+          Serving delicious, hygienic and honest vegetarian food in Indore <strong class="text-white font-semibold">since 2005</strong>. From everyday meals to special moments, Nanaksar is a <strong class="text-[#F58220] font-semibold">place for everyone</strong>.
+        </p>
+
+        <!-- Dual Action CTAs -->
+        <div class="flex flex-wrap items-center gap-4">
+          <!-- Primary CTA: Explore Menu -->
+          <a href="#menu" class="flex items-center gap-2.5 bg-[#D01B1B] hover:bg-[#B81515] text-white px-7 py-3.5 sm:px-8 sm:py-4 rounded-md font-display text-sm sm:text-base font-bold tracking-wider uppercase transition shadow-xl shadow-red-950/60 hover:scale-[1.02]">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            <span>EXPLORE MENU &gt;</span>
+          </a>
+          
+          <!-- Secondary CTA: Find Your Outlet -->
+          <a href="#outlets" class="flex items-center gap-2.5 border border-[#F58220] hover:bg-[#F58220]/15 text-[#F58220] hover:text-white px-7 py-3.5 sm:px-8 sm:py-4 rounded-md font-display text-sm sm:text-base font-bold tracking-wider uppercase transition backdrop-blur-sm hover:border-[#F58220]">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            <span>FIND YOUR OUTLET &gt;</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 4-Outlets Bottom Anchor Bar ("FOUR OUTLETS. ONE NANAKSAR.") -->
+    <div class="relative z-20 w-full border-t border-[#F58220]/25 bg-[#0F0F0F]/90 backdrop-blur-md py-6 px-6 lg:px-10">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+        
+        <!-- Left Title Lockup -->
+        <div class="md:col-span-3 flex flex-col justify-center border-b md:border-b-0 md:border-r border-[#F58220]/20 pb-4 md:pb-0 pr-0 md:pr-6">
+          <h3 class="font-display text-xl sm:text-2xl font-bold tracking-wider text-[#F58220] uppercase leading-tight">FOUR OUTLETS.</h3>
+          <h3 class="font-display text-xl sm:text-2xl font-bold tracking-wider text-[#D01B1B] uppercase leading-tight">ONE NANAKSAR.</h3>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-8 h-0.5 bg-[#F58220]"></span>
+            <span class="text-[#F58220] text-xs">âœ¦</span>
+            <span class="w-8 h-0.5 bg-[#F58220]"></span>
+          </div>
+        </div>
+
+        <!-- 4 Outlets Columns -->
+        <div class="md:col-span-9 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          
+          <!-- 1. Dewas Naka (Flagship) -->
+          <div class="flex flex-col items-center text-center px-2 group">
+            <svg class="w-8 h-8 text-[#F58220] mb-1.5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M3 21h18M4 21V9l4-3 4 3v12M12 21V9l4-3 4 3v12M9 21v-6a3 3 0 016 0v6"/>
+            </svg>
+            <span class="font-display text-sm sm:text-base font-bold text-white uppercase tracking-wider">DEWAS NAKA</span>
+            <span class="text-xs text-[#F7F4EB]/70 flex items-center gap-1 mt-0.5"><span class="text-[#D01B1B]">ðŸ“</span> Indore</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Dewas+Naka+Indore" target="_blank" class="font-display text-[11px] font-semibold text-[#F58220] uppercase tracking-wider flex items-center gap-1 mt-1 hover:underline">
+              DIRECTIONS âž”
+            </a>
+          </div>
+
+          <!-- 2. Vijay Nagar -->
+          <div class="flex flex-col items-center text-center px-2 border-l border-white/10 group">
+            <svg class="w-8 h-8 text-[#F58220] mb-1.5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M12 2l3 6H9l3-6zm0 6v13m-7 0h14M6 14h12"/>
+            </svg>
+            <span class="font-display text-sm sm:text-base font-bold text-white uppercase tracking-wider">VIJAY NAGAR</span>
+            <span class="text-xs text-[#F7F4EB]/70 flex items-center gap-1 mt-0.5"><span class="text-[#D01B1B]">ðŸ“</span> Indore</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Vijay+Nagar+Indore" target="_blank" class="font-display text-[11px] font-semibold text-[#F58220] uppercase tracking-wider flex items-center gap-1 mt-1 hover:underline">
+              DIRECTIONS âž”
+            </a>
+          </div>
+
+          <!-- 3. Geeta Bhawan -->
+          <div class="flex flex-col items-center text-center px-2 border-l border-white/10 group">
+            <svg class="w-8 h-8 text-[#F58220] mb-1.5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M12 3v18M8 8h8M6 13h12M4 18h16"/>
+            </svg>
+            <span class="font-display text-sm sm:text-base font-bold text-white uppercase tracking-wider">GEETA BHAWAN</span>
+            <span class="text-xs text-[#F7F4EB]/70 flex items-center gap-1 mt-0.5"><span class="text-[#D01B1B]">ðŸ“</span> Indore</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Geeta+Bhawan+Indore" target="_blank" class="font-display text-[11px] font-semibold text-[#F58220] uppercase tracking-wider flex items-center gap-1 mt-1 hover:underline">
+              DIRECTIONS âž”
+            </a>
+          </div>
+
+          <!-- 4. Bhawarkua -->
+          <div class="flex flex-col items-center text-center px-2 border-l border-white/10 group">
+            <svg class="w-8 h-8 text-[#F58220] mb-1.5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path d="M4 20h16M7 20V8l5-4 5 4v12M10 20v-5a2 2 0 014 0v5"/>
+            </svg>
+            <span class="font-display text-sm sm:text-base font-bold text-white uppercase tracking-wider">BHAWARKUA</span>
+            <span class="text-xs text-[#F7F4EB]/70 flex items-center gap-1 mt-0.5"><span class="text-[#D01B1B]">ðŸ“</span> Indore</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Bhawarkua+Indore" target="_blank" class="font-display text-[11px] font-semibold text-[#F58220] uppercase tracking-wider flex items-center gap-1 mt-1 hover:underline">
+              DIRECTIONS âž”
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       2. MARQUEE CULINARY SOUL TICKER
+       ========================================================================= -->
+  <div class="overflow-hidden border-b border-black/10 bg-nanaksar-cream py-5 select-none">
+    <div class="animate-marquee whitespace-nowrap">
+      <div class="flex items-center gap-8 px-4 font-display text-3xl sm:text-5xl font-bold uppercase tracking-tight">
+        <span class="text-black/20">24-Hour Slow Simmered</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black">Dal Makhani</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black/20">Clay-Oven Tandoori</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black">Chur Chur Naan</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black/20">100% Shuddh</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black">Desi Ghee Preparation</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black/20">Indori Sev Tamatar</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black">Sewa Bhaav Since 2005</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <!-- Seamless Repeat -->
+        <span class="text-black/20">24-Hour Slow Simmered</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black">Dal Makhani</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black/20">Clay-Oven Tandoori</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+        <span class="text-black">Chur Chur Naan</span>
+        <span class="text-nanaksar-crimson text-xl">â—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       3. BENTO HERITAGE & THE 2005 HIGHWAY STORY SECTION
+       ========================================================================= -->
+  <section id="story" class="bg-nanaksar-cream px-4 sm:px-8 py-20">
+    <div class="mx-auto max-w-7xl">
+      
+      <!-- Section Header -->
+      <div class="mb-12 text-center md:text-left">
+        <span class="font-display text-xs font-semibold uppercase tracking-[0.25em] text-nanaksar-crimson">Our Heritage</span>
+        <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase text-nanaksar-charcoal leading-none mt-2">
+          17+ Years of <span class="text-nanaksar-crimson">Highway Soul</span> & Sewa
+        </h2>
+        <p class="mt-4 max-w-2xl text-sm sm:text-base text-black/70 leading-relaxed font-sans">
+          From a humble highway stop on Dewas Naka in 2005 founded by Avtar Singh ("Veer Ji"), Nanaksar Dhaba has grown into Indore's iconic institution for authentic, honest, slow-cooked North Indian and Punjabi vegetarian cuisine.
+        </p>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 h-auto lg:h-[760px]">
+        
+        <!-- Bento 1: Sewa Bhaav Philosophy (Span 2x1) -->
+        <div class="group relative flex flex-col justify-between overflow-hidden rounded-[2rem] bg-white p-8 shadow-xl border border-black/5 hover:-translate-y-1 transition-all lg:col-span-2 lg:row-span-1">
+          <div>
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-nanaksar-crimson/10 text-nanaksar-crimson">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            </div>
+            <h3 class="font-display text-3xl font-bold uppercase tracking-tight text-nanaksar-charcoal">The Spirit of "Sewa Bhaav"</h3>
+            <p class="mt-3 text-sm text-black/70 leading-relaxed">
+              Profit was never the primary objective. Founded on selfless hospitality, we ensure every guest experiences wholesome, comforting meals prepared with pure desi ghee, untouched hygiene, and heartwarming generosity.
+            </p>
+          </div>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="rounded-full bg-nanaksar-cream px-3 py-1 text-[11px] font-display font-semibold uppercase tracking-wider text-black/70">100% Pure Desi Ghee</span>
+            <span class="rounded-full bg-nanaksar-cream px-3 py-1 text-[11px] font-display font-semibold uppercase tracking-wider text-black/70">Dewas Naka Genesis</span>
+            <span class="rounded-full bg-nanaksar-cream px-3 py-1 text-[11px] font-display font-semibold uppercase tracking-wider text-black/70">Family Dining Icon</span>
+          </div>
+        </div>
+
+        <!-- Bento 2: 24-Hr Dal Makhani Bhatti Process (Span 1x2 Vertical) -->
+        <div class="relative overflow-hidden rounded-[2rem] bg-black shadow-xl lg:col-span-1 lg:row-span-2 group border border-white/10">
+          <img src="Assets/Hero_background.png" alt="24-Hour Simmered Dal Makhani" class="h-full w-full object-cover opacity-75 group-hover:scale-110 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 p-7">
+            <span class="text-nanaksar-gold font-display text-xs font-semibold tracking-widest uppercase block mb-1">CULINARY SIGNATURE</span>
+            <h3 class="font-display text-3xl font-bold uppercase leading-none text-white">24-Hour Dal Makhani</h3>
+            <p class="mt-2 text-xs text-white/80 leading-relaxed">
+              Whole black urad simmered for 14 continuous hours over eco-friendly green fuel bhattis with fresh white butter.
+            </p>
+            <div class="mt-4 inline-flex items-center gap-1.5 text-xs font-display font-bold uppercase text-nanaksar-gold">
+              <span>EXPLORE CRAFT</span> <span>âž”</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 3: Clay-Oven Chur Chur Naan (Span 1x1) -->
+        <div class="flex flex-col justify-between rounded-[2rem] bg-[#D01B1B] p-8 text-white shadow-xl lg:col-span-1 lg:row-span-1 hover:scale-[1.02] transition-transform">
+          <div>
+            <span class="text-[11px] font-display font-semibold tracking-widest uppercase text-white/80 block mb-1">CLAY-OVEN SPECIALTY</span>
+            <h3 class="font-display text-3xl font-bold uppercase leading-tight">Chur Chur Naan</h3>
+            <p class="mt-2 text-xs text-white/90 leading-relaxed">
+              Stuffed with spiced paneer and potatoes, hand-crushed to flaky perfection and bathed in desi ghee.
+            </p>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <span class="font-mono text-sm font-bold text-white">Starting â‚¹40/-</span>
+            <a href="#menu" class="w-10 h-10 rounded-full bg-white text-[#D01B1B] flex items-center justify-center hover:bg-black hover:text-white transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bento 4: Sub-Mark "Nanaksar Ka Langar" (Span 1x1) -->
+        <div class="relative overflow-hidden rounded-[2rem] bg-nanaksar-charcoal p-8 text-white shadow-xl lg:col-span-1 lg:row-span-1 flex flex-col justify-between border border-white/10">
+          <div>
+            <img src="Assets/Brand_Name.png" alt="Nanaksar Ka Langar" class="h-10 object-contain mb-3" />
+            <h4 class="font-display text-xl font-bold uppercase text-nanaksar-gold">Ghar Jaisa Swad</h4>
+            <p class="mt-1 text-xs text-white/70">Comfort food that tastes exactly like home, crafted with pure devotion.</p>
+          </div>
+          <div class="mt-3 flex items-center gap-2 text-[10px] font-mono text-green-400">
+            <span class="w-2 h-2 rounded-full bg-green-500"></span> 100% PURE VEG GUARANTEE
+          </div>
+        </div>
+
+        <!-- Bento 5: Four Operational Outlets (Span 2x1) -->
+        <div class="flex flex-col justify-between rounded-[2rem] bg-nanaksar-charcoal p-8 text-white shadow-xl lg:col-span-2 lg:row-span-1 border border-nanaksar-gold/30">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-display text-xs font-semibold tracking-widest text-nanaksar-gold uppercase">EXPANDING ACROSS INDORE</span>
+              <span class="bg-nanaksar-crimson text-white text-[10px] font-display font-bold uppercase px-2.5 py-0.5 rounded">4 OUTLETS</span>
+            </div>
+            <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight">Dewas Naka â€¢ Vijay Nagar â€¢ Geeta Bhawan â€¢ Bhawarkua</h3>
+            <p class="mt-2 text-xs sm:text-sm text-white/70 leading-relaxed">
+              Consistently serving thousands of happy families and highway travelers daily with prompt service and ample dining seating.
+            </p>
+          </div>
+          <div class="mt-4 flex items-center justify-between pt-3 border-t border-white/10">
+            <span class="text-xs text-nanaksar-gold font-mono">Open Daily: 11:00 AM â€“ 11:30 PM</span>
+            <a href="#outlets" class="text-xs font-display font-bold uppercase text-white hover:text-nanaksar-gold flex items-center gap-1">
+              LOCATE BRANCHES âž”
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       4. AUTHENTIC MENU SHOWCASE (FULL SCANNED MENUS INTEGRATION)
+       ========================================================================= -->
+  <section id="menu" class="bg-white py-24 px-4 sm:px-8 border-t border-black/5">
+    <div class="mx-auto max-w-7xl">
+      
+      <!-- Menu Header -->
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="font-display text-xs font-semibold uppercase tracking-[0.25em] text-nanaksar-crimson">The Authentic Menu</span>
+          <h2 class="mt-1 font-display text-5xl sm:text-7xl font-bold uppercase tracking-tighter text-nanaksar-charcoal leading-none">
+            Taste The <span class="text-nanaksar-crimson">Essence</span>
+          </h2>
+          <p class="mt-2 text-sm text-black/60 font-medium">Extracted directly from our official Indore Dhaba menu cards.</p>
+        </div>
+
+        <!-- Filter & Search Controls -->
+        <div class="flex flex-wrap items-center gap-3">
+          <button id="jain-filter-toggle" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-green-600 bg-green-50 text-green-800 text-xs font-semibold uppercase tracking-wider hover:bg-green-100 transition">
+            <span class="w-2 h-2 rounded-full bg-green-600"></span> Jain Friendly Only
+          </button>
+          <a href="#book" class="inline-flex items-center gap-2 rounded-full bg-nanaksar-crimson text-white px-5 py-2 text-xs font-display font-bold uppercase tracking-wider hover:bg-nanaksar-crimson-dark transition shadow-lg shadow-red-900/30">
+            Reserve Table
+          </a>
+        </div>
+      </div>
+
+      <!-- Category Tabs (Horizontal Scrollable) -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 border-b border-black/10 no-scrollbar">
+        <button class="menu-tab-btn active px-5 py-2.5 rounded-full font-display text-xs font-bold uppercase tracking-wider bg-nanaksar-charcoal text-white transition" data-category="all">
+          All Specialties
+        </button>
+        <button class="menu-tab-btn px-5 py-2.5 rounded-full font-display text-xs font-bold uppercase tracking-wider bg-gray-100 text-black/70 hover:bg-black/5 transition" data-category="dal">
+          Dal Specialties
+        </button>
+        <button class="menu-tab-btn px-5 py-2.5 rounded-full font-display text-xs font-bold uppercase tracking-wider bg-gray-100 text-black/70 hover:bg-black/5 transition" data-category="paneer">
+          Paneer Main Course
+        </button>
+        <button class="menu-tab-btn px-5 py-2.5 rounded-full font-display text-xs font-bold uppercase tracking-wider bg-gray-100 text-black/70 hover:bg-black/5 transition" data-category="sabjiya">
+          Indori Sabjiya & Sev
+        </button>
+        <button class="menu-tab-btn px-5 py-2.5 rounded-full font-display text-xs font-bold uppercase tracking-wider bg-gray-100 text-black/70 hover:bg-black/5 transition" data-category="chaap">
+          Dhaba Soya Chaap
+        </button>
+        <button class="menu-tab-btn px-5 py-2.5 rounded-full font-display text-xs font-bold uppercase tracking-wider bg-gray-100 text-black/70 hover:bg-black/5 transition" data-category="roti">
+          Tandoor Breads & Naan
+        </button>
+        <button class="menu-tab-btn px-5 py-2.5 rounded-full font-display text-xs font-bold uppercase tracking-wider bg-gray-100 text-black/70 hover:bg-black/5 transition" data-category="sweets">
+          Sweets & Lassi
+        </button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div id="menu-items-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Dish 1: Dal Makhani -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="dal" data-jain="false">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-crimson uppercase">SIGNATURE 24-HR</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">24-Hour Slow-Cooked Dal Makhani</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Whole black urad simmered for 14 hours over green fuel bhattis with fresh white butter and pure desi ghee.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Half: â‚¹160 | Full</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹195/-</span>
+          </div>
+        </div>
+
+        <!-- Dish 2: Desi Ghee Dal Tadka -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="dal" data-jain="true">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-green-700 uppercase">JAIN OPTION</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">Desi Ghee Dal Tadka</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Yellow arhar lentils tempered with cumin, whole red chillies, and smoking ladles of pure desi ghee.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Half: â‚¹170 | Full</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹200/-</span>
+          </div>
+        </div>
+
+        <!-- Dish 3: Nanaksar Special Paneer -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="paneer" data-jain="true">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-gold-dark uppercase">CHEF SPECIAL</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">Nanaksar Special Paneer</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Fresh soft cottage cheese cubes simmered in our signature medium-spicy aromatic tomato and cashew cream gravy.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Authentic Dhaba Gravy</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹200/-</span>
+          </div>
+        </div>
+
+        <!-- Dish 4: Indori Sev Tamatar -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="sabjiya" data-jain="true">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-crimson uppercase">MALWA FAVORITE</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">Indori Sev Tamatar</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Crispy Ratlami sev tossed into a piping hot tangy spiced tomato and hing gravy. A Central Indian staple.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Indori Style</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹130/-</span>
+          </div>
+        </div>
+
+        <!-- Dish 5: Doodh Sev / Sev Mawa -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="sabjiya" data-jain="true">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-gold-dark uppercase">CREAMY SPECIAL</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">Dudh Sev / Sev Mawa</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Rich Malwa preparation of sev braised in fresh whole milk reduction and spiced mawa.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Rich Festive Curry</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹140/-</span>
+          </div>
+        </div>
+
+        <!-- Dish 6: Malai Soya Chaap Gravy -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="chaap" data-jain="false">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-crimson uppercase">TANDOORI SPECIAL</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">Malai Soya Chaap Gravy</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Tender tandoor-roasted soya chaap simmered in a luscious cashew cream, black pepper, and cardamom gravy.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Half: â‚¹300 | Full</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹320/-</span>
+          </div>
+        </div>
+
+        <!-- Dish 7: Tandoori Chur Chur Naan -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="roti" data-jain="true">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-gold-dark uppercase">CLAY TANDOOR</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">Tandoori Chur Chur Naan</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Layered clay-oven flatbread stuffed with spiced potato and paneer, hand-crushed and bathed in shuddh desi ghee.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Single / Special</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹40 - â‚¹50/-</span>
+          </div>
+        </div>
+
+        <!-- Dish 8: Cheese Chilli Garlic Naan -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="roti" data-jain="false">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-crimson uppercase">HOT FAVORITE</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">Cheese Chilli Garlic Naan</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Tandoor-baked naan loaded with melted cheese, toasted garlic granules, and fresh green chillies.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Per Piece</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹65/-</span>
+          </div>
+        </div>
+
+        <!-- Dish 9: Shahi Kheer & Lassi -->
+        <div class="menu-card bg-nanaksar-cream/60 p-6 rounded-2xl border border-black/5 hover:border-nanaksar-crimson hover:shadow-xl transition flex flex-col justify-between" data-category="sweets" data-jain="true">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex items-center gap-1 text-[10px] font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-600"></span> PURE VEG
+              </span>
+              <span class="font-display text-xs font-bold text-nanaksar-gold-dark uppercase">DESSERT SOUL</span>
+            </div>
+            <h3 class="font-display text-xl font-bold uppercase text-nanaksar-charcoal">Malwa Shahi Kheer</h3>
+            <p class="text-xs text-black/70 mt-2 leading-relaxed">Slow-reduced full cream milk pudding simmered with basmati rice, fragrant saffron strands, and roasted almonds.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-dashed border-black/15 flex items-center justify-between">
+            <span class="text-xs text-black/60 font-medium">Half: â‚¹110 | Full</span>
+            <span class="font-mono text-lg font-bold text-nanaksar-crimson">â‚¹180/-</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Menu Footer Note -->
+      <div class="mt-12 p-6 bg-nanaksar-cream rounded-2xl border border-black/5 flex flex-col sm:flex-row items-center justify-between text-xs text-black/60 gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-green-600 flex-shrink-0"></span>
+          <span>100% Pure Vegetarian Kitchen &bull; Parcel packaging charges extra &bull; 5% GST additional as printed.</span>
+        </div>
+        <a href="design-system.html" class="font-display font-bold uppercase text-nanaksar-crimson hover:underline">
+          View Complete Token & Component Specs âž”
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       5. FOUR OUTLETS & LIVE TABLE BOOKING SECTION
+       ========================================================================= -->
+  <section id="outlets" class="bg-nanaksar-charcoal py-24 px-4 sm:px-8 text-white border-t border-nanaksar-gold/20">
+    <div class="mx-auto max-w-7xl">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="font-display text-xs font-semibold uppercase tracking-[0.25em] text-nanaksar-gold">Visit Us In Indore</span>
+        <h2 class="mt-2 font-display text-4xl sm:text-6xl font-bold uppercase tracking-tight">Four Outlets. One Soul.</h2>
+        <p class="mt-4 text-sm sm:text-base text-white/70">
+          Experience the authentic highway flavors at any of our four conveniently located family dining outlets across Indore.
+        </p>
+      </div>
+
+      <!-- 4 Outlets Detail Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        
+        <!-- Dewas Naka (Flagship) -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-nanaksar-gold/40 flex flex-col justify-between relative group hover:border-nanaksar-gold transition">
+          <div class="absolute top-0 right-0 bg-nanaksar-gold text-black font-display font-bold text-[9px] uppercase tracking-widest px-2.5 py-0.5 rounded-bl">ORIGINAL FLAGSHIP</div>
+          <div>
+            <svg class="w-10 h-10 text-nanaksar-gold mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 21h18M4 21V9l4-3 4 3v12M12 21V9l4-3 4 3v12M9 21v-6a3 3 0 016 0v6"/></svg>
+            <h3 class="font-display text-2xl font-bold uppercase">DEWAS NAKA</h3>
+            <p class="text-xs text-white/70 mt-2 leading-relaxed">17â€“19, Near Lasudia Police Station, A.B. Road, Dewas Naka, Indore</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 space-y-2">
+            <span class="text-[11px] text-nanaksar-gold font-mono block">â° 11:00 AM â€“ 11:30 PM (7 Days)</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Dewas+Naka+Indore" target="_blank" class="w-full inline-flex items-center justify-center gap-1 bg-white/10 hover:bg-nanaksar-gold hover:text-black text-white text-xs font-display font-bold uppercase py-2.5 rounded transition">
+              <span>GET DIRECTIONS</span> <span>âž”</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Vijay Nagar -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between group hover:border-nanaksar-gold transition">
+          <div>
+            <svg class="w-10 h-10 text-nanaksar-gold mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2l3 6H9l3-6zm0 6v13m-7 0h14M6 14h12"/></svg>
+            <h3 class="font-display text-2xl font-bold uppercase">VIJAY NAGAR</h3>
+            <p class="text-xs text-white/70 mt-2 leading-relaxed">Scheme No 54, Near Velocity III & Apollo Premier, Vijay Nagar, Indore</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 space-y-2">
+            <span class="text-[11px] text-nanaksar-gold font-mono block">â° 11:00 AM â€“ 11:30 PM (7 Days)</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Vijay+Nagar+Indore" target="_blank" class="w-full inline-flex items-center justify-center gap-1 bg-white/10 hover:bg-nanaksar-gold hover:text-black text-white text-xs font-display font-bold uppercase py-2.5 rounded transition">
+              <span>GET DIRECTIONS</span> <span>âž”</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Geeta Bhawan -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between group hover:border-nanaksar-gold transition">
+          <div>
+            <svg class="w-10 h-10 text-nanaksar-gold mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v18M8 8h8M6 13h12M4 18h16"/></svg>
+            <h3 class="font-display text-2xl font-bold uppercase">GEETA BHAWAN</h3>
+            <p class="text-xs text-white/70 mt-2 leading-relaxed">Near Geeta Bhawan Square, A.B. Road, South Tukoganj, Central Indore</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 space-y-2">
+            <span class="text-[11px] text-nanaksar-gold font-mono block">â° 11:00 AM â€“ 11:30 PM (7 Days)</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Geeta+Bhawan+Indore" target="_blank" class="w-full inline-flex items-center justify-center gap-1 bg-white/10 hover:bg-nanaksar-gold hover:text-black text-white text-xs font-display font-bold uppercase py-2.5 rounded transition">
+              <span>GET DIRECTIONS</span> <span>âž”</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bhawarkua -->
+        <div class="bg-nanaksar-charcoal-card p-6 rounded-2xl border border-white/10 flex flex-col justify-between group hover:border-nanaksar-gold transition">
+          <div>
+            <svg class="w-10 h-10 text-nanaksar-gold mb-3" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 20h16M7 20V8l5-4 5 4v12M10 20v-5a2 2 0 014 0v5"/></svg>
+            <h3 class="font-display text-2xl font-bold uppercase">BHAWARKUA</h3>
+            <p class="text-xs text-white/70 mt-2 leading-relaxed">Main Tower Square Road, Bhawarkua Student Hub, South Indore</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 space-y-2">
+            <span class="text-[11px] text-nanaksar-gold font-mono block">â° 11:00 AM â€“ 11:30 PM (7 Days)</span>
+            <a href="https://maps.google.com/?q=Nanaksar+Dhaba+Bhawarkua+Indore" target="_blank" class="w-full inline-flex items-center justify-center gap-1 bg-white/10 hover:bg-nanaksar-gold hover:text-black text-white text-xs font-display font-bold uppercase py-2.5 rounded transition">
+              <span>GET DIRECTIONS</span> <span>âž”</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Table Reservation Form Section -->
+      <div id="book" class="bg-nanaksar-charcoal-card rounded-[2.5rem] border border-nanaksar-gold/30 p-8 sm:p-12 max-w-4xl mx-auto shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-80 h-80 bg-nanaksar-crimson/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+        <div class="text-center max-w-xl mx-auto mb-8 relative z-10">
+          <span class="font-display text-xs font-semibold uppercase tracking-widest text-nanaksar-gold">Sewa Table Booking</span>
+          <h3 class="font-display text-3xl sm:text-4xl font-bold uppercase text-white mt-1">Book Your Family Table</h3>
+          <p class="text-xs sm:text-sm text-white/70 mt-2">Skip the weekend wait. Reserve your seating for an authentic dhaba feast.</p>
+        </div>
+
+        <form id="reservation-form" class="grid grid-cols-1 sm:grid-cols-2 gap-4 relative z-10">
+          <div>
+            <label class="block text-[11px] font-display uppercase tracking-wider text-nanaksar-cream/70 mb-1">Your Full Name</label>
+            <input type="text" required placeholder="e.g. Rahul Sharma" class="w-full bg-black/40 border border-white/15 focus:border-nanaksar-gold outline-none rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 transition">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-display uppercase tracking-wider text-nanaksar-cream/70 mb-1">Phone Number</label>
+            <input type="tel" required placeholder="e.g. +91 98260 00000" class="w-full bg-black/40 border border-white/15 focus:border-nanaksar-gold outline-none rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 transition">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-display uppercase tracking-wider text-nanaksar-cream/70 mb-1">Select Branch</label>
+            <select class="w-full bg-[#121212] border border-white/15 focus:border-nanaksar-gold outline-none rounded-xl px-4 py-3 text-sm text-white transition">
+              <option>Dewas Naka (Flagship Highway Outlet)</option>
+              <option>Vijay Nagar Outlet</option>
+              <option>Geeta Bhawan Outlet</option>
+              <option>Bhawarkua Outlet</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-display uppercase tracking-wider text-nanaksar-cream/70 mb-1">Number of Guests</label>
+            <select class="w-full bg-[#121212] border border-white/15 focus:border-nanaksar-gold outline-none rounded-xl px-4 py-3 text-sm text-white transition">
+              <option>2 Guests</option>
+              <option>3 - 4 Guests</option>
+              <option>5 - 8 Guests (Family Table)</option>
+              <option>9 - 15+ Guests (Sewa Banquet)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-display uppercase tracking-wider text-nanaksar-cream/70 mb-1">Date</label>
+            <input type="date" required class="w-full bg-black/40 border border-white/15 focus:border-nanaksar-gold outline-none rounded-xl px-4 py-3 text-sm text-white transition">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-display uppercase tracking-wider text-nanaksar-cream/70 mb-1">Preferred Time Slot</label>
+            <select class="w-full bg-[#121212] border border-white/15 focus:border-nanaksar-gold outline-none rounded-xl px-4 py-3 text-sm text-white transition">
+              <option>Lunch (12:30 PM â€“ 3:30 PM)</option>
+              <option>Evening Dinner (7:30 PM â€“ 9:30 PM)</option>
+              <option>Late Night Highway Halt (9:30 PM â€“ 11:30 PM)</option>
+            </select>
+          </div>
+
+          <div class="sm:col-span-2 mt-2">
+            <button type="submit" class="w-full bg-[#D01B1B] hover:bg-[#B81515] text-white font-display font-bold uppercase tracking-wider text-sm py-4 rounded-xl transition shadow-xl shadow-red-950/60 flex items-center justify-center gap-2">
+              <span>CONFIRM TABLE RESERVATION</span>
+              <span>âž”</span>
+            </button>
+            <p class="text-center text-[11px] text-white/50 mt-2 font-mono">Instant confirmation & directions will be shared to your phone.</p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       6. PATRON REVIEWS & NOSTALGIA SECTION
+       ========================================================================= -->
+  <section id="reviews" class="bg-nanaksar-cream py-20 px-4 sm:px-8 border-t border-black/5">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 mb-4 shadow-sm">
+          <span class="flex gap-1 text-nanaksar-crimson text-xs">â˜…â˜…â˜…â˜…â˜…</span>
+          <span class="text-[11px] font-display font-semibold uppercase tracking-wider text-black/70">Rated 4.8 / 5.0 (1,200+ Patrons)</span>
+        </div>
+        <h2 class="font-display text-4xl sm:text-6xl font-bold uppercase text-nanaksar-charcoal">Loved Across Indore</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Review 1 -->
+        <div class="bg-white p-8 rounded-2xl shadow-md border border-black/5 flex flex-col justify-between">
+          <div>
+            <div class="flex text-nanaksar-crimson gap-0.5 mb-3 text-sm">â˜…â˜…â˜…â˜…â˜…</div>
+            <p class="text-sm text-black/80 leading-relaxed font-serif italic">
+              "The 24-hour Dal Makhani at Nanaksar is unmatched anywhere in Central India. You can taste the real slow-simmered bhatti smoke and pure desi ghee. Unbelievable taste and generous portions."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-black/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-nanaksar-crimson/10 text-nanaksar-crimson font-display font-bold text-sm flex items-center justify-center">AS</div>
+            <div>
+              <h4 class="font-display text-sm font-bold uppercase text-nanaksar-charcoal">Amit Sharma</h4>
+              <p class="text-[10px] text-black/50 font-mono">Indore Foodie &bull; Dewas Naka Regular</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="bg-white p-8 rounded-2xl shadow-md border border-black/5 flex flex-col justify-between">
+          <div>
+            <div class="flex text-nanaksar-crimson gap-0.5 mb-3 text-sm">â˜…â˜…â˜…â˜…â˜…</div>
+            <p class="text-sm text-black/80 leading-relaxed font-serif italic">
+              "Hot Chur Chur Naan crushed right in front of you with butter melting over it, paired with Sev Tamatar and Dal Makhani. This is true highway soul brought to Indore city!"
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-black/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-nanaksar-gold/20 text-nanaksar-gold-dark font-display font-bold text-sm flex items-center justify-center">PG</div>
+            <div>
+              <h4 class="font-display text-sm font-bold uppercase text-nanaksar-charcoal">Pooja Gupta</h4>
+              <p class="text-[10px] text-black/50 font-mono">Vijay Nagar Family Dining</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="bg-white p-8 rounded-2xl shadow-md border border-black/5 flex flex-col justify-between">
+          <div>
+            <div class="flex text-nanaksar-crimson gap-0.5 mb-3 text-sm">â˜…â˜…â˜…â˜…â˜…</div>
+            <p class="text-sm text-black/80 leading-relaxed font-serif italic">
+              "Pure Sewa Bhaav is real here. The staff serves with genuine love and care. Outstanding hygienic food and 100% pure vegetarian. A must-visit place for family dinners."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-black/10 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-nanaksar-crimson/10 text-nanaksar-crimson font-display font-bold text-sm flex items-center justify-center">GS</div>
+            <div>
+              <h4 class="font-display text-sm font-bold uppercase text-nanaksar-charcoal">Gurpreet Singh</h4>
+              <p class="text-[10px] text-black/50 font-mono">Geeta Bhawan Patron</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       7. FOOTER SECTION
+       ========================================================================= -->
+  <footer id="contact" class="bg-black text-white pt-16 pb-12 px-6 border-t border-nanaksar-gold/20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+      
+      <!-- Brand & Story Col -->
+      <div class="md:col-span-4 space-y-4">
+        <div class="flex items-center gap-3">
+          <img src="Assets/Logo.png" alt="Nanaksar Seal" class="h-14 w-14 object-contain" />
+          <div>
+            <span class="font-display text-2xl font-bold tracking-tight text-[#D01B1B] uppercase leading-none">NANAKSAR DHABA</span>
+            <span class="text-[10px] font-display font-semibold tracking-widest text-[#F58220] uppercase block mt-0.5">INDORE â€¢ EST. 2005</span>
+          </div>
+        </div>
+        <p class="font-serif italic text-sm text-white/70 leading-relaxed">
+          "Ghar Jaisa Swad. Seva Wala Pyar." â€” 17+ years of pure vegetarian highway tradition, slow-cooked 24-hour Dal Makhani, and clay-oven tandoor craft.
+        </p>
+        <div class="pt-2">
+          <img src="Assets/Brand_Name.png" alt="Nanaksar Ka Langar" class="h-8 object-contain" />
+        </div>
+      </div>
+
+      <!-- Quick Nav Links -->
+      <div class="md:col-span-2 space-y-3">
+        <h4 class="font-display text-sm font-bold uppercase tracking-wider text-[#F58220]">Quick Links</h4>
+        <ul class="space-y-2 text-xs text-white/70 font-display uppercase tracking-wider">
+          <li><a href="#home" class="hover:text-white transition">Home</a></li>
+          <li><a href="#story" class="hover:text-white transition">Our Story</a></li>
+          <li><a href="#menu" class="hover:text-white transition">Authentic Menu</a></li>
+          <li><a href="#outlets" class="hover:text-white transition">Four Outlets</a></li>
+          <li><a href="#book" class="hover:text-white transition">Table Booking</a></li>
+          <li><a href="design-system.html" class="hover:text-[#F58220] text-white transition">Design System Styleguide âž”</a></li>
+        </ul>
+      </div>
+
+      <!-- Outlets Directory -->
+      <div class="md:col-span-3 space-y-3">
+        <h4 class="font-display text-sm font-bold uppercase tracking-wider text-[#F58220]">Four Indore Outlets</h4>
+        <ul class="space-y-2 text-xs text-white/70">
+          <li><strong>Dewas Naka (Flagship):</strong> 17-19, Near Lasudia P.S.</li>
+          <li><strong>Vijay Nagar:</strong> Scheme 54, Near Velocity III</li>
+          <li><strong>Geeta Bhawan:</strong> Near Geeta Bhawan Sq, A.B. Road</li>
+          <li><strong>Bhawarkua:</strong> Tower Square Main Road</li>
+        </ul>
+      </div>
+
+      <!-- Hours & Support -->
+      <div class="md:col-span-3 space-y-3">
+        <h4 class="font-display text-sm font-bold uppercase tracking-wider text-[#F58220]">Hours & Direct Orders</h4>
+        <p class="text-xs text-white/70">Open All 7 Days: <strong>11:00 AM â€“ 11:30 PM</strong></p>
+        <p class="text-xs text-white/70">Takeaway & Highway Parcel available across all outlets.</p>
+        <div class="pt-2">
+          <a href="#book" class="inline-flex items-center gap-2 bg-[#D01B1B] text-white px-4 py-2 rounded text-xs font-display font-bold uppercase tracking-wider shadow">
+            Book Table / Call Us
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="max-w-7xl mx-auto pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-white/40 font-mono gap-4">
+      <p>Â© 2005 - 2026 Nanaksar Dhaba (Indore). All Rights Reserved.</p>
+      <p class="text-[11px] text-white/30">100% Pure Vegetarian &bull; Shuddh Desi Ghee &bull; Indore, M.P.</p>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       JAVASCRIPT INTERACTIVITY (Menu Tabs, Filter, Mobile Drawer, Form)
+       ========================================================================= -->
+  <script>
+    // 1. Mobile Menu Drawer
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    if (mobileMenuToggle && mobileMenu && mobileMenuClose) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
+      });
+      mobileMenuClose.addEventListener('click', () => {
+        mobileMenu.classList.add('translate-x-full');
+      });
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('translate-x-full');
+        });
+      });
+    }
+
+    // 2. Interactive Menu Category Filtering
+    const tabButtons = document.querySelectorAll('.menu-tab-btn');
+    const menuCards = document.querySelectorAll('.menu-card');
+    const jainToggle = document.getElementById('jain-filter-toggle');
+    let jainOnlyActive = false;
+    let currentCategory = 'all';
+
+    function filterMenu() {
+      menuCards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        const isJain = card.getAttribute('data-jain') === 'true';
+
+        const matchesCat = (currentCategory === 'all' || cardCat === currentCategory);
+        const matchesJain = (!jainOnlyActive || isJain);
+
+        if (matchesCat && matchesJain) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => {
+          b.classList.remove('active', 'bg-nanaksar-charcoal', 'text-white');
+          b.classList.add('bg-gray-100', 'text-black/70');
+        });
+        btn.classList.add('active', 'bg-nanaksar-charcoal', 'text-white');
+        btn.classList.remove('bg-gray-100', 'text-black/70');
+
+        currentCategory = btn.getAttribute('data-category');
+        filterMenu();
+      });
+    });
+
+    if (jainToggle) {
+      jainToggle.addEventListener('click', () => {
+        jainOnlyActive = !jainOnlyActive;
+        if (jainOnlyActive) {
+          jainToggle.classList.remove('bg-green-50', 'text-green-800');
+          jainToggle.classList.add('bg-green-700', 'text-white');
+        } else {
+          jainToggle.classList.add('bg-green-50', 'text-green-800');
+          jainToggle.classList.remove('bg-green-700', 'text-white');
+        }
+        filterMenu();
+      });
+    }
+
+    // 3. Table Reservation Form Mock Submission
+    const resForm = document.getElementById('reservation-form');
+    if (resForm) {
+      resForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Table reservation requested successfully! Nanaksar Dhaba Indore will send a confirmation SMS & WhatsApp message shortly.');
+        resForm.reset();
+      });
+    }
+  </script>
+
+  <!-- =========================================================================
+       8. VISUALPATCH IN-BROWSER FEEDBACK & PINPOINT INSPECTION ENGINE
+       ========================================================================= -->
+  <script src="Assets/visualpatch.js" defer></script>
+
+</body>
+</html>

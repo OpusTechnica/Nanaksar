@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --nanaksar-crimson: #D01B1B;
+    --nanaksar-crimson-dark: #C62828;
+    --nanaksar-gold: #E4A834;
+    --nanaksar-gold-dark: #965C00;
+    --nanaksar-charcoal: #0F0F0F;
+    --nanaksar-charcoal-card: #181818;
+    --nanaksar-cream: #F7F4EB;
+    --nanaksar-veg: #15803D;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #0F0F0F;
+    color: #F7F4EB;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* Optical Invariants: Zero Blurry Glows or Fuzzy Shadows */
+  *, ::before, ::after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Form Input Styling for iOS Safari (Prevent Auto-Zoom) */
+  input, select, textarea, button {
+    font-size: 16px;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+  @media (min-width: 768px) {
+    input, select, textarea, button {
+      font-size: 14px;
+    }
+  }
+}
+
+@layer utilities {
+  /* Safe Area Padding for Notched Mobile Screens */
+  .pb-safe {
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 1.25rem));
+  }
+  .pt-safe {
+    padding-top: max(1rem, env(safe-area-inset-top, 1rem));
+  }
+
+  /* Custom No-Scrollbar utility for smooth horizontal touch swipe */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Directional Gradient Scrims (Intelligent Photographic Reveal) */
+  .hero-scrim {
+    background: 
+      /* Horizontal Scrim: Solid black on left for typography, smoothly fading to reveal naan, rice, and dal */
+      linear-gradient(90deg, #0F0F0F 0%, rgba(15,15,15,0.95) 28%, rgba(15,15,15,0.68) 48%, rgba(15,15,15,0.18) 72%, rgba(15,15,15,0.02) 88%, rgba(15,15,15,0.12) 100%),
+      /* Vertical Scrim: Gentle top anchor, soft bottom floor */
+      linear-gradient(180deg, rgba(15,15,15,0.70) 0%, rgba(15,15,15,0.05) 25%, transparent 60%, rgba(15,15,15,0.85) 100%);
+  }
+
+  @media (max-width: 767px) {
+    .hero-scrim {
+      background: linear-gradient(180deg, rgba(15,15,15,0.92) 0%, rgba(15,15,15,0.78) 42%, rgba(15,15,15,0.35) 75%, rgba(15,15,15,0.92) 100%);
+    }
+  }
+
+  /* Specular Hairline Borders (Crisp 1px Optical Contrast) */
+  .hairline-white {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .hairline-gold {
+    border: 1px solid rgba(228, 168, 52, 0.25);
+  }
+  .hairline-cream-card {
+    border: 1px solid rgba(15, 15, 15, 0.08);
+  }
+  .hairline-charcoal {
+    border: 1px solid rgba(15, 15, 15, 0.12);
+  }
+}
+
+/* Custom Scrollbar for Desktop */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0F0F0F;
+}
+::-webkit-scrollbar-thumb {
+  background: #D01B1B;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E4A834;
+}
+
+/* Guaranteed Solid Obsidian Navigation Bar - Prevents any white line / background leakage */
+.header-solid-obsidian {
+  background-color: #0F0F0F !important;
+}

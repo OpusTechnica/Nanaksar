@@ -1,0 +1,269 @@
+﻿/* ==========================================================================
+   NANAKSAR DHABA (INDORE) â€” DESIGN TOKENS SYSTEM
+   Motto: "Ghar Jaisa Swad. Seva Wala Pyar."
+   Architecture: Three-Layer Hierarchy (Primitive -> Semantic -> Component)
+   ========================================================================== */
+
+:root {
+  /* ==========================================================================
+     1. PRIMITIVE TOKENS (Raw values)
+     ========================================================================== */
+  
+  /* Brand Tandoori Crimson Spectrum */
+  --primitive-crimson-50:  #FFF1F1;
+  --primitive-crimson-100: #FFE1E1;
+  --primitive-crimson-200: #FFC4C4;
+  --primitive-crimson-300: #F88A8A;
+  --primitive-crimson-400: #E53935;
+  --primitive-crimson-500: #D01B1B; /* Core Brand Tandoori Red */
+  --primitive-crimson-600: #C62828; /* Primary Button Hover */
+  --primitive-crimson-700: #B71C1C; /* Deep Red Shadow */
+  --primitive-crimson-800: #8B0E0E; /* Dark Border Accent */
+  --primitive-crimson-900: #5B0606;
+
+  /* Brand Desi Ghee Gold & Amber Spectrum */
+  --primitive-amber-50:  #FEF9EC;
+  --primitive-amber-100: #FDF2D3;
+  --primitive-amber-200: #FBE4A3;
+  --primitive-amber-300: #F7D26E;
+  --primitive-amber-400: #FFA347;
+  --primitive-amber-500: #F58220; /* Core Brand Ghee Gold */
+  --primitive-amber-600: #D97014; /* Vintage Desi Gold */
+  --primitive-amber-700: #B8860B; /* Deep Amber */
+  --primitive-amber-800: #A33E00; /* WCAG AAA Accessible on Light */
+  --primitive-amber-900: #683E00;
+
+  /* Dhaba Tandoor & Charcoal Dark Spectrum */
+  --primitive-charcoal-50:  #F6F6F6;
+  --primitive-charcoal-100: #E7E7E7;
+  --primitive-charcoal-200: #D1D1D1;
+  --primitive-charcoal-300: #B0B0B0;
+  --primitive-charcoal-400: #888888;
+  --primitive-charcoal-500: #555555;
+  --primitive-charcoal-600: #333333;
+  --primitive-charcoal-700: #242424;
+  --primitive-charcoal-800: #181818;
+  --primitive-charcoal-900: #0F0F0F; /* Hero Canvas Dark */
+  --primitive-charcoal-950: #070707; /* Ultra-deep Vignette */
+
+  /* Makkhan Warm Cream Spectrum */
+  --primitive-cream-50:  #FDFCFA;
+  --primitive-cream-100: #F7F4EB; /* Primary Light Background */
+  --primitive-cream-200: #EFEAD9;
+  --primitive-cream-300: #F4EBD0; /* Spiced Accent Cream */
+  --primitive-cream-400: #E3D6B5;
+
+  /* Pure Veg & Natural Green Spectrum */
+  --primitive-veg-500: #16A34A;
+  --primitive-veg-600: #15803D;
+
+  /* Typography Fonts */
+  --font-family-display: 'Oswald', 'Impact', sans-serif;
+  --font-family-body:    'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-serif:   'Playfair Display', Georgia, serif;
+
+  /* Spacing Scale (4px Base Grid) */
+  --space-0-5: 2px;
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+
+  /* Radii */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   16px;
+  --radius-2xl:  24px;
+  --radius-3xl:  32px;
+  --radius-full: 9999px;
+
+  /* Elevation Shadows */
+  --shadow-sm:      0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:      0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg:      0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl:      0 20px 25px -5px rgba(0, 0, 0, 0.25), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+  --shadow-crimson: 0 10px 30px -5px rgba(208, 27, 27, 0.45);
+  --shadow-gold:    0 10px 30px -5px rgba(245, 130, 32, 0.35);
+
+  /* ==========================================================================
+     2. SEMANTIC TOKENS (Purpose Aliases)
+     ========================================================================== */
+  
+  /* Surfaces */
+  --surface-canvas-dark:    var(--primitive-charcoal-900);
+  --surface-canvas-light:   var(--primitive-cream-100);
+  --surface-card-dark:      var(--primitive-charcoal-800);
+  --surface-card-light:     #FFFFFF;
+  --surface-card-cream:     var(--primitive-cream-200);
+  --surface-overlay-dark:   rgba(15, 15, 15, 0.88);
+  --surface-overlay-header: rgba(15, 15, 15, 0.94);
+  --surface-scrim-left:     linear-gradient(90deg, #0F0F0F 0%, rgba(15, 15, 15, 0.95) 35%, rgba(15, 15, 15, 0.6) 65%, rgba(15, 15, 15, 0.1) 100%);
+  --surface-scrim-top:      linear-gradient(180deg, rgba(15, 15, 15, 0.8) 0%, transparent 30%, transparent 70%, #0F0F0F 100%);
+
+  /* Text & Hierarchy */
+  --text-display-cream:     var(--primitive-cream-100);
+  --text-display-crimson:   var(--primitive-crimson-500);
+  --text-accent-gold:       var(--primitive-amber-500);
+  --text-accent-gold-light: var(--primitive-amber-800); /* Contrast-safe on cream */
+  --text-body-dark:         rgba(247, 244, 235, 0.88);
+  --text-body-light:        var(--primitive-charcoal-700);
+  --text-muted-dark:        rgba(247, 244, 235, 0.6);
+  --text-muted-light:       rgba(15, 15, 15, 0.6);
+  --text-on-crimson:        #FFFFFF;
+
+  /* Borders & Dividers */
+  --border-gold-subtle:     rgba(245, 130, 32, 0.35);
+  --border-gold-medium:     var(--primitive-amber-500);
+  --border-crimson:         var(--primitive-crimson-500);
+  --border-dark-subtle:     rgba(255, 255, 255, 0.12);
+  --border-light-subtle:    rgba(15, 15, 15, 0.08);
+
+  /* Interactive States */
+  --interactive-primary:       var(--primitive-crimson-500);
+  --interactive-primary-hover: var(--primitive-crimson-600);
+  --interactive-primary-active:var(--primitive-crimson-700);
+  --interactive-accent:        var(--primitive-amber-500);
+  --interactive-accent-hover:  var(--primitive-amber-400);
+
+  /* ==========================================================================
+     3. COMPONENT TOKENS
+     ========================================================================== */
+  
+  /* Navbar */
+  --cmp-navbar-bg:               var(--surface-overlay-header);
+  --cmp-navbar-border:           var(--border-gold-subtle);
+  --cmp-navbar-logo-height:      56px;
+  --cmp-navbar-link-active:      var(--primitive-crimson-500);
+  --cmp-navbar-link-hover:       var(--primitive-amber-400);
+
+  /* Hero Section */
+  --cmp-hero-eyebrow:            var(--primitive-amber-500);
+  --cmp-hero-heading-white:      var(--primitive-cream-100);
+  --cmp-hero-heading-crimson:    var(--primitive-crimson-500);
+  --cmp-hero-flourish:           var(--primitive-amber-500);
+  --cmp-hero-copy:               rgba(247, 244, 235, 0.9);
+  
+  /* Buttons */
+  --cmp-btn-primary-bg:          var(--primitive-crimson-500);
+  --cmp-btn-primary-text:        #FFFFFF;
+  --cmp-btn-primary-hover-bg:    var(--primitive-crimson-600);
+  --cmp-btn-primary-shadow:      var(--shadow-crimson);
+
+  --cmp-btn-outlet-border:       var(--primitive-amber-500);
+  --cmp-btn-outlet-text:         var(--primitive-amber-400);
+  --cmp-btn-outlet-hover-bg:     rgba(245, 130, 32, 0.15);
+
+  /* Four Outlets Bottom Bar */
+  --cmp-outlets-bar-bg:          rgba(15, 15, 15, 0.92);
+  --cmp-outlets-bar-border:      rgba(245, 130, 32, 0.25);
+  --cmp-outlets-icon-gold:       var(--primitive-amber-500);
+  --cmp-outlets-title-white:     #FFFFFF;
+  --cmp-outlets-link-gold:       var(--primitive-amber-400);
+
+  /* Menu Items */
+  --cmp-menu-pure-veg-color:     var(--primitive-veg-600);
+  --cmp-menu-price-color:        var(--primitive-crimson-600);
+  --cmp-menu-ribbon-bg:          var(--primitive-crimson-500);
+}
+
+/* ==========================================================================
+   UTILITY HELPER CLASSES & STYLES
+   ========================================================================== */
+
+/* Font Families */
+.font-display { font-family: var(--font-family-display); }
+.font-body    { font-family: var(--font-family-body); }
+.font-serif   { font-family: var(--font-family-serif); }
+
+/* Background Gradients */
+.hero-scrim-left {
+  background: var(--surface-scrim-left);
+}
+.hero-scrim-top {
+  background: var(--surface-scrim-top);
+}
+
+/* Button Components */
+.btn-nanaksar-primary {
+  background-color: var(--cmp-btn-primary-bg);
+  color: var(--cmp-btn-primary-text);
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  box-shadow: var(--cmp-btn-primary-shadow);
+}
+.btn-nanaksar-primary:hover {
+  background-color: var(--cmp-btn-primary-hover-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px -4px rgba(208, 27, 27, 0.6);
+}
+
+.btn-nanaksar-outlet {
+  background-color: transparent;
+  color: var(--cmp-btn-outlet-text);
+  border: 1px solid var(--cmp-btn-outlet-border);
+  font-family: var(--font-family-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+.btn-nanaksar-outlet:hover {
+  background-color: var(--cmp-btn-outlet-hover-bg);
+  border-color: var(--primitive-amber-400);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+/* Marquee Animation */
+@keyframes nanaksar-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: nanaksar-marquee 30s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface-canvas-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primitive-crimson-500);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primitive-amber-500);
+}
+

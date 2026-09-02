@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Nanaksar Dhaba Design Tokens",
+  "version": "1.0.0",
+  "brand": {
+    "name": "Nanaksar Dhaba",
+    "legalName": "Nanaksar Dhaba (Indore)",
+    "subMark": "Nanaksar Ka Langar",
+    "motto": "Ghar Jaisa Swad. Seva Wala Pyar.",
+    "subMotto": "Good Food for Good Peoples. Pure Sewa Bhaav.",
+    "foundedYear": 2005,
+    "dietaryType": "100% Pure Vegetarian",
+    "specialty": "24-Hour Slow-Cooked Dal Makhani & Clay-Oven Chur Chur Naan",
+    "outlets": [
+      { "name": "Dewas Naka", "city": "Indore", "isFlagship": true, "mapsQuery": "Nanaksar+Dhaba+Dewas+Naka+Indore" },
+      { "name": "Vijay Nagar", "city": "Indore", "isFlagship": false, "mapsQuery": "Nanaksar+Dhaba+Vijay+Nagar+Indore" },
+      { "name": "Geeta Bhawan", "city": "Indore", "isFlagship": false, "mapsQuery": "Nanaksar+Dhaba+Geeta+Bhawan+Indore" },
+      { "name": "Bhawarkua", "city": "Indore", "isFlagship": false, "mapsQuery": "Nanaksar+Dhaba+Bhawarkua+Indore" }
+    ]
+  },
+  "tokens": {
+    "primitive": {
+      "color": {
+        "crimson": {
+          "50":  { "value": "#FFF1F1", "type": "color" },
+          "100": { "value": "#FFE1E1", "type": "color" },
+          "200": { "value": "#FFC4C4", "type": "color" },
+          "300": { "value": "#F88A8A", "type": "color" },
+          "400": { "value": "#E53935", "type": "color" },
+          "500": { "value": "#D01B1B", "type": "color", "comment": "Brand Flagship Tandoori Crimson" },
+          "600": { "value": "#C62828", "type": "color" },
+          "700": { "value": "#B71C1C", "type": "color" },
+          "800": { "value": "#8B0E0E", "type": "color" },
+          "900": { "value": "#5B0606", "type": "color" }
+        },
+        "amber": {
+          "50":  { "value": "#FEF9EC", "type": "color" },
+          "100": { "value": "#FDF2D3", "type": "color" },
+          "200": { "value": "#FBE4A3", "type": "color" },
+          "300": { "value": "#F7D26E", "type": "color" },
+          "400": { "value": "#F5BA42", "type": "color" },
+          "500": { "value": "#E4A834", "type": "color", "comment": "Brand Desi Ghee Gold" },
+          "600": { "value": "#C89B53", "type": "color", "comment": "Vintage Desi Gold Accent" },
+          "700": { "value": "#B8860B", "type": "color" },
+          "800": { "value": "#965C00", "type": "color", "comment": "Accessible Amber for Light Backgrounds (WCAG AA)" },
+          "900": { "value": "#683E00", "type": "color" }
+        },
+        "charcoal": {
+          "50":  { "value": "#F6F6F6", "type": "color" },
+          "100": { "value": "#E7E7E7", "type": "color" },
+          "200": { "value": "#D1D1D1", "type": "color" },
+          "300": { "value": "#B0B0B0", "type": "color" },
+          "400": { "value": "#888888", "type": "color" },
+          "500": { "value": "#555555", "type": "color" },
+          "600": { "value": "#333333", "type": "color" },
+          "700": { "value": "#242424", "type": "color" },
+          "800": { "value": "#181818", "type": "color" },
+          "900": { "value": "#0F0F0F", "type": "color", "comment": "Hero Canvas Black" },
+          "950": { "value": "#070707", "type": "color", "comment": "Deep Vignette Black" }
+        },
+        "cream": {
+          "50":  { "value": "#FDFCFA", "type": "color" },
+          "100": { "value": "#F7F4EB", "type": "color", "comment": "Brand Makkhan Warm Cream Canvas" },
+          "200": { "value": "#EFEAD9", "type": "color" },
+          "300": { "value": "#F4EBD0", "type": "color", "comment": "Spiced Cream Accent" },
+          "400": { "value": "#E3D6B5", "type": "color" }
+        }
+      },
+      "typography": {
+        "fontFamily": {
+          "display": { "value": "'Oswald', 'Impact', sans-serif", "type": "fontFamily" },
+          "body":    { "value": "'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif", "type": "fontFamily" },
+          "serif":   { "value": "'Playfair Display', Georgia, serif", "type": "fontFamily" }
+        },
+        "fontSize": {
+          "xs":   { "value": "0.75rem",  "lineHeight": "1rem" },
+          "sm":   { "value": "0.875rem", "lineHeight": "1.25rem" },
+          "base": { "value": "1rem",     "lineHeight": "1.5rem" },
+          "lg":   { "value": "1.125rem", "lineHeight": "1.75rem" },
+          "xl":   { "value": "1.25rem",  "lineHeight": "1.75rem" },
+          "2xl":  { "value": "1.5rem",   "lineHeight": "2rem" },
+          "3xl":  { "value": "1.875rem", "lineHeight": "2.25rem" },
+          "4xl":  { "value": "2.25rem",  "lineHeight": "2.5rem" },
+          "5xl":  { "value": "3rem",     "lineHeight": "1" },
+          "6xl":  { "value": "3.75rem",  "lineHeight": "1" },
+          "7xl":  { "value": "4.5rem",   "lineHeight": "0.95" },
+          "8xl":  { "value": "6rem",     "lineHeight": "0.9" }
+        },
+        "fontWeight": {
+          "regular":  { "value": "400" },
+          "medium":   { "value": "500" },
+          "semibold": { "value": "600" },
+          "bold":     { "value": "700" },
+          "extrabold":{ "value": "800" }
+        }
+      },
+      "spacing": {
+        "1":  { "value": "4px" },
+        "2":  { "value": "8px" },
+        "3":  { "value": "12px" },
+        "4":  { "value": "16px" },
+        "5":  { "value": "20px" },
+        "6":  { "value": "24px" },
+        "8":  { "value": "32px" },
+        "10": { "value": "40px" },
+        "12": { "value": "48px" },
+        "16": { "value": "64px" },
+        "20": { "value": "80px" },
+        "24": { "value": "96px" }
+      },
+      "borderRadius": {
+        "none": { "value": "0px" },
+        "sm":   { "value": "4px" },
+        "md":   { "value": "6px" },
+        "lg":   { "value": "12px" },
+        "xl":   { "value": "16px" },
+        "2xl":  { "value": "24px" },
+        "3xl":  { "value": "32px" },
+        "full": { "value": "9999px" }
+      },
+      "shadow": {
+        "sm":     { "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)" },
+        "md":     { "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)" },
+        "lg":     { "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)" },
+        "xl":     { "value": "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04)" },
+        "crimson":{ "value": "0 10px 30px -5px rgba(208, 27, 27, 0.45)" },
+        "gold":   { "value": "0 10px 30px -5px rgba(228, 168, 52, 0.35)" }
+      }
+    },
+    "semantic": {
+      "surface": {
+        "canvasDark":    { "value": "{primitive.color.charcoal.900.value}" },
+        "canvasLight":   { "value": "{primitive.color.cream.100.value}" },
+        "cardDark":      { "value": "{primitive.color.charcoal.800.value}" },
+        "cardLight":     { "value": "#FFFFFF" },
+        "overlayDark":   { "value": "rgba(15, 15, 15, 0.88)" },
+        "overlayHeader": { "value": "rgba(15, 15, 15, 0.94)" }
+      },
+      "text": {
+        "heroLine1":         { "value": "{primitive.color.cream.100.value}" },
+        "heroLine2":         { "value": "{primitive.color.crimson.500.value}" },
+        "accentGold":        { "value": "{primitive.color.amber.500.value}" },
+        "accentGoldOnLight": { "value": "{primitive.color.amber.800.value}" },
+        "bodyDark":          { "value": "rgba(247, 244, 235, 0.85)" },
+        "bodyLight":         { "value": "{primitive.color.charcoal.700.value}" },
+        "mutedDark":         { "value": "rgba(247, 244, 235, 0.6)" },
+        "mutedLight":        { "value": "rgba(15, 15, 15, 0.6)" },
+        "onCrimson":         { "value": "#FFFFFF" }
+      },
+      "border": {
+        "goldSubtle":    { "value": "rgba(228, 168, 52, 0.3)" },
+        "goldMedium":    { "value": "{primitive.color.amber.500.value}" },
+        "crimson":       { "value": "{primitive.color.crimson.500.value}" },
+        "dividerDark":   { "value": "rgba(255, 255, 255, 0.12)" },
+        "dividerLight":  { "value": "rgba(15, 15, 15, 0.08)" }
+      },
+      "interactive": {
+        "primary":       { "value": "{primitive.color.crimson.500.value}" },
+        "primaryHover":  { "value": "{primitive.color.crimson.600.value}" },
+        "primaryActive": { "value": "{primitive.color.crimson.700.value}" },
+        "accent":        { "value": "{primitive.color.amber.500.value}" },
+        "accentHover":   { "value": "{primitive.color.amber.400.value}" },
+        "focusRing":     { "value": "{primitive.color.amber.400.value}" }
+      }
+    },
+    "component": {
+      "navbar": {
+        "background": "{semantic.surface.overlayHeader.value}",
+        "borderColor": "{semantic.border.goldSubtle.value}",
+        "logoSize": "56px",
+        "activeLinkBorder": "{primitive.color.crimson.500.value}"
+      },
+      "hero": {
+        "eyebrowColor": "{semantic.text.accentGold.value}",
+        "headlineLine1": "{semantic.text.heroLine1.value}",
+        "headlineLine2": "{semantic.text.heroLine2.value}",
+        "badgeBorder": "{semantic.border.goldSubtle.value}",
+        "badgeText": "{semantic.text.accentGold.value}"
+      },
+      "button": {
+        "orderOnline": {
+          "background": "{semantic.interactive.primary.value}",
+          "hoverBackground": "{semantic.interactive.primaryHover.value}",
+          "text": "{semantic.text.onCrimson.value}",
+          "shadow": "{primitive.shadow.crimson.value}"
+        },
+        "findOutlet": {
+          "border": "{semantic.border.goldMedium.value}",
+          "hoverBackground": "rgba(228, 168, 52, 0.15)",
+          "text": "{semantic.text.accentGold.value}"
+        }
+      },
+      "outletsBar": {
+        "background": "rgba(15, 15, 15, 0.95)",
+        "borderColor": "{semantic.border.goldSubtle.value}",
+        "iconColor": "{semantic.text.accentGold.value}",
+        "titleColor": "#FFFFFF",
+        "directionLinkColor": "{semantic.text.accentGold.value}"
+      },
+      "menuCard": {
+        "background": "{semantic.surface.cardLight.value}",
+        "titleColor": "{primitive.color.charcoal.900.value}",
+        "priceColor": "{primitive.color.crimson.600.value}",
+        "badgePureVeg": "#15803D",
+        "ribbonBackground": "{primitive.color.crimson.500.value}"
+      }
+    }
+  }
+}

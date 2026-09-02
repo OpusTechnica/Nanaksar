@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OutletsDirectory from '../components/OutletsDirectory.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Five Indore Outlets Directory | Nanaksar Dhaba | Timings & Directions"
+  description="Locate all 5 Nanaksar Dhaba branches across Indore: Dewas Naka Highway Flagship, Vijay Nagar, Geeta Bhawan, Bhawarkua, and Sudama Nagar. Daily 11:45 AM - 3:00 AM."
+>
+  <!-- Sub-page Breadcrumb & Header -->
+  <section class="pt-28 pb-8 bg-[#0F0F0F] text-white border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <nav class="flex items-center gap-2 text-xs font-mono text-white/50 mb-4">
+        <a href="/" class="hover:text-[#E4A834] transition">Home</a>
+        <span>/</span>
+        <span class="text-[#E4A834]">Five Indore Outlets</span>
+      </nav>
+
+      <h1 class="font-display text-4xl sm:text-6xl font-bold uppercase tracking-tight text-white leading-none">
+        Five Outlets. One Sacred Swad.
+      </h1>
+      <p class="mt-3 text-sm sm:text-base text-white/70 font-sans max-w-2xl">
+        Visit our family dining rooms across Indore for pure vegetarian highway comfort, open 365 days from 11:45 AM to 3:00 AM.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Complete 5-Outlets Directory Component with Phone & Directions -->
+  <OutletsDirectory />
+
+  <!-- Global Footer -->
+  <Footer />
+</Layout>
