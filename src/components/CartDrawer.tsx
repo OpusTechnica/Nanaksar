@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useStore } from '@nanostores/react';
 import {
   X,
@@ -37,6 +37,7 @@ const POPULAR_ACCOMPANIMENTS = [
     portion: 'single' as const,
     portionLabel: '1 Pc (Desi Ghee Hand-Crushed)',
     price: 50,
+    image: '/assets/menu/chur-chur-naan.png',
   },
   {
     id: 'shahi-kheer',
@@ -44,6 +45,7 @@ const POPULAR_ACCOMPANIMENTS = [
     portion: 'half' as const,
     portionLabel: 'Half (Rich Almond & Pistachio)',
     price: 110,
+    image: '/assets/menu/shahi-kheer.png',
   },
 ];
 
@@ -51,6 +53,11 @@ export default function CartDrawer() {
   const isOpen = useStore($isCartOpen);
   const cart = useStore($cart);
   const selectedOutletId = useStore($selectedOutletId);
+
+  // Memoized O(1) Menu Dictionary for Zero-Lag Image & Details Resolution
+  const menuDictionary = useMemo(() => {
+    return new Map(MENU_ITEMS.map((item) => [item.id, item]));
+  }, []);
 
   // Two-Stage Progressive Flow: 'review' (Feast Focus) -> 'dispatch' (Pickup & WhatsApp)
   const [stage, setStage] = useState<'review' | 'dispatch'>('review');
@@ -319,69 +326,96 @@ export default function CartDrawer() {
                 <>
                   {/* Dish Cards List */}
                   <div className="space-y-3">
-                    {summary.items.map((item) => (
-                      <div
-                        key={item.id}
-                        className="bg-[#181818] p-3.5 sm:p-4 rounded-2xl border border-white/10 hover:border-[#E4A834]/30 transition shadow-sm space-y-2.5"
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-display text-sm font-bold text-white uppercase tracking-wide leading-snug">
-                              {item.name}
-                            </h4>
-                            <div className="flex items-center gap-1.5 mt-1 flex-wrap">
-                              <span className="text-[10px] font-mono font-bold text-[#E4A834] bg-[#E4A834]/10 px-2 py-0.5 rounded border border-[#E4A834]/20">
-                                {item.portionLabel} • ₹{item.price}
-                              </span>
-                              {item.isJain && (
-                                <span className="text-[9px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800">
-                                  JAIN PREP
-                                </span>
-                              )}
-                              {item.isSwaminarayan && (
-                                <span className="text-[9px] font-bold text-amber-300 bg-amber-950/80 px-1.5 py-0.5 rounded border border-amber-800">
-                                  SWAMINARAYAN
-                                </span>
-                              )}
+                    {summary.items.map((item) => {
+                      const menuItem = menuDictionary.get(item.menuItemId);
+                      const imageUrl = menuItem?.image || '/assets/menu/dal-makhani.png';
+
+                      return (
+                        <div
+                          key={item.id}
+                          className="bg-[#181818] p-3.5 sm:p-4 rounded-2xl border border-white/10 hover:border-[#E4A834]/30 transition shadow-sm flex flex-col gap-3"
+                        >
+                          {/* ROW 1: 60px Fixed Thumbnail + Title/Badges + 44px Touch Trash */}
+                          <div className="flex items-start gap-3 w-full">
+                            {/* 60px Fixed Thumbnail with Branded Skeleton Fallback */}
+                            <div className="w-[60px] h-[60px] shrink-0 rounded-xl bg-[#121212] border border-white/10 overflow-hidden relative flex items-center justify-center">
+                              <TrayIcon className="absolute w-6 h-6 text-[#E4A834]/20" />
+                              <img
+                                src={imageUrl}
+                                alt={item.name}
+                                loading="eager"
+                                decoding="sync"
+                                className="relative z-10 w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none';
+                                }}
+                              />
                             </div>
+
+                            {/* Title & Badges */}
+                            <div className="flex-1 min-w-0 pt-0.5">
+                              <h4 className="font-display text-sm font-bold text-white uppercase tracking-wide leading-snug line-clamp-2">
+                                {item.name}
+                              </h4>
+                              <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
+                                <span className="text-[10px] font-mono font-bold text-[#E4A834] bg-[#E4A834]/10 px-2 py-0.5 rounded border border-[#E4A834]/20">
+                                  {item.portionLabel}
+                                </span>
+                                {item.isJain && (
+                                  <span className="text-[9px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800">
+                                    JAIN PREP
+                                  </span>
+                                )}
+                                {item.isSwaminarayan && (
+                                  <span className="text-[9px] font-bold text-amber-300 bg-amber-950/80 px-1.5 py-0.5 rounded border border-amber-800">
+                                    SWAMINARAYAN
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* 44px Touch Target Trash */}
+                            <button
+                              onClick={() => removeFromCart(item.id)}
+                              className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center text-white/40 hover:text-red-400 rounded-xl hover:bg-white/5 transition -mt-1 -mr-1 shrink-0 active:scale-95"
+                              title="Remove item"
+                              aria-label={`Remove ${item.name} from tray`}
+                            >
+                              <Trash2 className="w-[18px] h-[18px]" />
+                            </button>
                           </div>
 
-                          <button
-                            onClick={() => removeFromCart(item.id)}
-                            className="w-8 h-8 flex items-center justify-center text-white/40 hover:text-red-400 rounded-lg hover:bg-white/5 transition shrink-0"
-                            title="Remove item"
-                            aria-label={`Remove ${item.name} from tray`}
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
+                          {/* ROW 2: 44px Stepper & Line Subtotal (Full Card Width) */}
+                          <div className="flex items-center justify-between pt-2.5 border-t border-white/5">
+                            {/* 44px Ergonomic Stepper */}
+                            <div className="flex items-center bg-[#121212] rounded-xl border border-white/15 overflow-hidden h-11">
+                              <button
+                                onClick={() => updateCartQuantity(item.id, -1)}
+                                className="w-11 h-full min-w-[44px] flex items-center justify-center hover:bg-[#D01B1B] text-white transition active:scale-95"
+                                aria-label="Decrease quantity"
+                              >
+                                {item.quantity === 1 ? <Trash2 className="w-4 h-4 text-red-400" /> : <Minus className="w-4 h-4" />}
+                              </button>
+                              <span className="w-8 text-center font-mono text-xs font-bold text-white">
+                                {item.quantity}
+                              </span>
+                              <button
+                                onClick={() => updateCartQuantity(item.id, 1)}
+                                className="w-11 h-full min-w-[44px] flex items-center justify-center hover:bg-[#E4A834] hover:text-black text-white transition active:scale-95"
+                                aria-label="Increase quantity"
+                              >
+                                <Plus className="w-4 h-4" />
+                              </button>
+                            </div>
 
-                        {/* Tactile Recessed Stepper Pill & Line Subtotal */}
-                        <div className="flex items-center justify-between pt-2 border-t border-white/5">
-                          <div className="flex items-center bg-[#121212] rounded-xl border border-white/15 overflow-hidden">
-                            <button
-                              onClick={() => updateCartQuantity(item.id, -1)}
-                              className="w-9 h-9 min-w-[36px] flex items-center justify-center hover:bg-[#D01B1B] text-white transition active:scale-95"
-                              aria-label="Decrease quantity"
-                            >
-                              {item.quantity === 1 ? <Trash2 className="w-3.5 h-3.5 text-red-400" /> : <Minus className="w-3.5 h-3.5" />}
-                            </button>
-                            <span className="w-7 text-center font-mono text-xs font-bold text-white">{item.quantity}</span>
-                            <button
-                              onClick={() => updateCartQuantity(item.id, 1)}
-                              className="w-9 h-9 min-w-[36px] flex items-center justify-center hover:bg-[#E4A834] hover:text-black text-white transition active:scale-95"
-                              aria-label="Increase quantity"
-                            >
-                              <Plus className="w-3.5 h-3.5" />
-                            </button>
+                            {/* Line Item Subtotal */}
+                            <span className="font-mono text-base sm:text-lg font-bold text-[#E4A834]">
+                              ₹{item.price * item.quantity}/-
+                            </span>
                           </div>
-
-                          <span className="font-mono text-base font-bold text-white">
-                            ₹{item.price * item.quantity}/-
-                          </span>
                         </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
 
                   {/* ========================================================================= */}
@@ -401,15 +435,30 @@ export default function CartDrawer() {
                         return (
                           <div
                             key={acc.id}
-                            className="p-2.5 rounded-xl bg-[#141414] border border-white/10 flex flex-col justify-between gap-2 hover:border-[#E4A834]/30 transition"
+                            className="p-2.5 rounded-xl bg-[#141414] border border-white/10 flex flex-col justify-between gap-2.5 hover:border-[#E4A834]/30 transition"
                           >
-                            <div>
-                              <h5 className="font-display text-xs font-bold text-white uppercase truncate">
-                                {acc.name}
-                              </h5>
-                              <span className="text-[10px] font-mono text-[#E4A834] font-bold">
-                                ₹{acc.price}/-
-                              </span>
+                            <div className="flex items-center gap-2">
+                              <div className="w-10 h-10 shrink-0 rounded-lg bg-[#181818] border border-white/10 overflow-hidden relative flex items-center justify-center">
+                                <TrayIcon className="absolute w-4 h-4 text-[#E4A834]/20" />
+                                <img
+                                  src={acc.image}
+                                  alt={acc.name}
+                                  loading="eager"
+                                  decoding="sync"
+                                  className="relative z-10 w-full h-full object-cover"
+                                  onError={(e) => {
+                                    e.currentTarget.style.display = 'none';
+                                  }}
+                                />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <h5 className="font-display text-xs font-bold text-white uppercase truncate">
+                                  {acc.name}
+                                </h5>
+                                <span className="text-[10px] font-mono text-[#E4A834] font-bold block">
+                                  ₹{acc.price}/-
+                                </span>
+                              </div>
                             </div>
 
                             <button
