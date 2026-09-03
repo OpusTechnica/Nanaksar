@@ -480,3 +480,31 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   animation: slideInUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ==========================================================================
+   Luxury Silky Marquee (Zero-Jitter GPU Composited Infinite Vertical Glide)
+   ========================================================================== */
+@keyframes marqueeVertical {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, -50%, 0);
+  }
+}
+
+.marquee-track {
+  animation: marqueeVertical var(--marquee-duration, 45s) linear infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Instant Silk Pause on Hover & Active Touch (Preserves exact subpixel position without jumping) */
+.marquee-group:hover .marquee-track,
+.marquee-group:active .marquee-track {
+  animation-play-state: paused;
+}
+
+

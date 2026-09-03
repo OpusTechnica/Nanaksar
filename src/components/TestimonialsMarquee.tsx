@@ -114,21 +114,21 @@ export default function TestimonialsMarquee() {
           {/* Column 1: Visible on all screens */}
           <TestimonialsColumn
             testimonials={firstColumn}
-            duration={22}
+            duration={42}
             className="w-full sm:w-auto"
           />
 
           {/* Column 2: Visible on tablet (md:) and desktop */}
           <TestimonialsColumn
             testimonials={secondColumn}
-            duration={28}
+            duration={52}
             className="hidden md:block w-auto"
           />
 
           {/* Column 3: Visible on desktop (lg:) */}
           <TestimonialsColumn
             testimonials={thirdColumn}
-            duration={25}
+            duration={46}
             className="hidden lg:block w-auto"
           />
         </div>
