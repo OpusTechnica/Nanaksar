@@ -79,15 +79,15 @@ export default function TableReservationModal() {
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/85 animate-fadeIn p-0 md:p-4"
+      className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/90 animate-fadeIn p-0 md:p-4"
     >
       <div className="absolute inset-0" onClick={handleClose} />
 
-      <div className="relative z-10 w-full md:max-w-xl bg-[#181818] text-white rounded-t-3xl md:rounded-2xl max-h-[90dvh] overflow-y-auto border border-white/10 pb-safe">
+      <div className="relative z-10 w-full md:max-w-xl bg-[#0D0D0D] text-white rounded-t-3xl md:rounded-2xl max-h-[90dvh] overflow-y-auto border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.95)] pb-safe">
         
-        <div className="sticky top-0 z-20 p-4 sm:p-5 border-b border-white/10 bg-[#0F0F0F] flex items-center justify-between">
+        <div className="sticky top-0 z-20 p-4 sm:p-5 border-b border-white/10 bg-[#0D0D0D] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-[#E4A834]/15 text-[#E4A834] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-[#141414] border border-[#E4A834]/40 text-[#E4A834] flex items-center justify-center">
               <Calendar className="w-5 h-5" />
             </div>
             <div>
@@ -101,7 +101,7 @@ export default function TableReservationModal() {
           </div>
           <button
             onClick={handleClose}
-            className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/10 text-white hover:bg-white/20"
+            className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#141414] border border-white/15 text-white hover:bg-white/10 transition"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -119,7 +119,7 @@ export default function TableReservationModal() {
             <p className="text-xs sm:text-sm text-white/70 max-w-md mx-auto">
               Your booking ticket for <strong className="text-white">{partySize} guests</strong> at <strong className="text-[#E4A834]">{currentOutlet.name}</strong> has been routed to the outlet manager.
             </p>
-            <div className="p-4 rounded-xl bg-black/60 border border-white/10 font-mono text-xs max-w-sm mx-auto text-left space-y-1 text-white/80">
+            <div className="p-4 rounded-xl bg-[#121212] border border-white/10 font-mono text-xs max-w-sm mx-auto text-left space-y-1 text-white/85">
               <p><span className="text-[#E4A834]">Booking Ref:</span> #{bookingRef}</p>
               <p><span className="text-[#E4A834]">Date:</span> {reservationDate} ({timeSlot})</p>
               <p><span className="text-[#E4A834]">Outlet:</span> {currentOutlet.name}</p>
@@ -138,7 +138,7 @@ export default function TableReservationModal() {
         ) : (
           <form onSubmit={handleBookingSubmit} className="p-4 sm:p-6 space-y-4">
             
-            {/* 1. Branch Selector Chips */}
+            {/* 1. Branch Selector Chips (Clean Obsidian with Crisp Hairline Borders) */}
             <div>
               <label className="block text-xs font-display font-bold uppercase tracking-wider text-[#E4A834] mb-2">
                 1. Select Indore Outlet:
@@ -151,8 +151,8 @@ export default function TableReservationModal() {
                     onClick={() => setOutletId(o.id)}
                     className={`px-3 py-2 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider ${
                       outletId === o.id
-                        ? 'bg-[#E4A834]/20 border-[#E4A834] text-white ring-1 ring-[#E4A834]'
-                        : 'bg-[#202020] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
+                        ? 'bg-[#181818] border-[#E4A834] text-[#E4A834] ring-1 ring-[#E4A834]'
+                        : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
                     }`}
                   >
                     {o.name}
@@ -181,7 +181,7 @@ export default function TableReservationModal() {
                       className={`py-2 px-1 rounded-xl border text-center font-display text-xs font-bold transition ${
                         partySize === p.value
                           ? 'bg-[#D01B1B] border-[#D01B1B] text-white'
-                          : 'bg-[#202020] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
+                          : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
                       }`}
                     >
                       {p.label}
@@ -228,7 +228,7 @@ export default function TableReservationModal() {
                   placeholder="e.g. Gurpreet Singh"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-[#202020] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2 text-base md:text-xs text-white placeholder-white/40"
+                  className="w-full bg-[#121212] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-base md:text-xs text-white placeholder-white/40"
                 />
               </div>
 
@@ -243,14 +243,14 @@ export default function TableReservationModal() {
                   placeholder="e.g. 98260 00000"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full bg-[#202020] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2 text-base md:text-xs text-white placeholder-white/40"
+                  className="w-full bg-[#121212] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-base md:text-xs text-white placeholder-white/40"
                 />
               </div>
             </div>
 
             {/* 15-Minute Policy Alert */}
-            <div className="p-2.5 rounded-xl bg-black/60 border border-white/10 flex items-center gap-2 text-xs text-white/70">
-              <AlertCircle className="w-3.5 h-3.5 text-[#E4A834] shrink-0" />
+            <div className="p-3 rounded-xl bg-[#121212] border border-white/10 flex items-center gap-2 text-xs text-white/75">
+              <AlertCircle className="w-4 h-4 text-[#E4A834] shrink-0" />
               <span>Tables held for 15 mins past reserved time.</span>
             </div>
 

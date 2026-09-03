@@ -12,11 +12,34 @@ export interface Outlet {
   isNew?: boolean;
 }
 
+export type MenuCategory = 
+  | 'dal'
+  | 'paneer'
+  | 'sabjiya'
+  | 'chaap'
+  | 'tandoori-chaap'
+  | 'kofta'
+  | 'roti'
+  | 'breads'
+  | 'rice'
+  | 'rice-pulao'
+  | 'chinese-starter'
+  | 'tandoori-starter'
+  | 'starter'
+  | 'soups'
+  | 'salad'
+  | 'sweets'
+  | 'desserts'
+  | 'coldrinks'
+  | 'combos'
+  | 'signatures'
+  | 'bestsellers';
+
 export interface MenuItem {
   id: string;
   slug: string;
   name: string;
-  category: 'signatures' | 'bestsellers' | 'dal' | 'paneer' | 'chaap' | 'sabjiya' | 'breads' | 'combos' | 'rice' | 'desserts' | 'soups';
+  category: MenuCategory;
   categoryLabel: string;
   description: string;
   image: string;
@@ -329,9 +352,9 @@ export const MENU_ITEMS: MenuItem[] = [
 
   // ADDITIONAL AUTHENTIC MENU ITEMS (EXPLORE ALL CATEGORIES)
   {
-    id: 'indori-sev-tamatar',
-    slug: 'indori-sev-tamatar',
-    name: 'Indori Sev Tamatar',
+    id: 'indori-sev-tamatar-gravy',
+    slug: 'indori-sev-tamatar-gravy',
+    name: 'Indori Sev Tamatar (Dhaba Style)',
     category: 'sabjiya',
     categoryLabel: 'Indori Sabjiya & Sev',
     description: 'Authentic Malwa-style juicy, tangy tomato gravy tempered with hing, cumin, and spices, topped with generous thick crunchy Ratlami sev.',
@@ -482,5 +505,275 @@ export const MENU_ITEMS: MenuItem[] = [
     isSwaminarayanAvailable: true,
     spiceLevel: 'mild',
     packagingFee: 10,
+  },
+
+  // CHINESE STARTER (from Menu_1.webp)
+  {
+    id: 'veg-manchurian',
+    slug: 'veg-manchurian',
+    name: 'Veg Manchurian (Dry / Gravy)',
+    category: 'chinese-starter',
+    categoryLabel: 'Chinese Starter',
+    description: 'Crispy minced vegetable balls tossed with garlic, ginger, spring onions & soy reduction sauce.',
+    image: '/assets/menu/chur-chur-naan.png',
+    priceSingle: 170,
+    isSignature: false,
+    isBestseller: true,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: false,
+    spiceLevel: 'medium',
+    packagingFee: 20,
+  },
+  {
+    id: 'chilli-paneer',
+    slug: 'chilli-paneer',
+    name: 'Chilli Paneer (Dry / Gravy)',
+    category: 'chinese-starter',
+    categoryLabel: 'Chinese Starter',
+    description: 'Crispy diced fresh paneer wok-tossed with capsicum, onions, crushed pepper & spicy chilli sauce.',
+    image: '/assets/menu/paneer-angara.png',
+    priceSingle: 220,
+    isSignature: false,
+    isBestseller: true,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: false,
+    spiceLevel: 'spicy',
+    packagingFee: 20,
+  },
+  {
+    id: 'hakka-noodles',
+    slug: 'hakka-noodles',
+    name: 'Vegetable Hakka Noodles',
+    category: 'chinese-starter',
+    categoryLabel: 'Chinese Starter',
+    description: 'Classic wok-tossed noodles with shredded cabbage, bell peppers, carrots, and mild seasonings.',
+    image: '/assets/menu/chur-chur-naan-stuffed.png',
+    priceSingle: 140,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'mild',
+    packagingFee: 15,
+  },
+
+  // TANDOORI STARTER (from Menu_1.webp)
+  {
+    id: 'paneer-tikka',
+    slug: 'paneer-tikka',
+    name: 'Classic Paneer Tikka (Tandoori)',
+    category: 'tandoori-starter',
+    categoryLabel: 'Tandoori Starter',
+    description: 'Char-grilled succulent paneer cubes marinated in spiced mustard oil, hung curd, and ajwain.',
+    image: '/assets/menu/paneer-angara.png',
+    priceSingle: 300,
+    isSignature: false,
+    isBestseller: true,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'medium',
+    packagingFee: 20,
+  },
+  {
+    id: 'malai-paneer-tikka',
+    slug: 'malai-paneer-tikka',
+    name: 'Malai Paneer Tikka',
+    category: 'tandoori-starter',
+    categoryLabel: 'Tandoori Starter',
+    description: 'Tender cottage cheese steeped in rich cashew cream, mild spices, and tandoor-roasted to perfection.',
+    image: '/assets/menu/nanaksar-special-paneer.png',
+    priceSingle: 320,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'mild',
+    packagingFee: 20,
+  },
+
+  // KOFTA (from Menu_1.webp)
+  {
+    id: 'malai-kofta',
+    slug: 'malai-kofta',
+    name: 'Shahi Malai Kofta',
+    category: 'kofta',
+    categoryLabel: 'Kofta',
+    description: 'Melt-in-mouth paneer & mawa stuffed koftas resting in a velvety sweet-spiced cashew white gravy.',
+    image: '/assets/menu/nanaksar-special-paneer.png',
+    priceSingle: 250,
+    isSignature: false,
+    isBestseller: true,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'mild',
+    packagingFee: 20,
+  },
+  {
+    id: 'paneer-kofta',
+    slug: 'paneer-kofta',
+    name: 'Paneer Kofta Curry',
+    category: 'kofta',
+    categoryLabel: 'Kofta',
+    description: 'Stuffed cottage cheese dumplings simmered in rich royal red gravy with aromatic Indian spices.',
+    image: '/assets/menu/paneer-angara.png',
+    priceSingle: 250,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'medium',
+    packagingFee: 20,
+  },
+
+  // STARTER & SNACKS (from Menu.webp)
+  {
+    id: 'hara-bhara-kabab',
+    slug: 'hara-bhara-kabab',
+    name: 'Crispy Hara Bhara Kabab',
+    category: 'starter',
+    categoryLabel: 'Starter',
+    description: 'Golden spiced patties made with fresh spinach, green peas, mashed potatoes, and roasted gram flour.',
+    image: '/assets/menu/chur-chur-naan-stuffed.png',
+    priceSingle: 180,
+    isSignature: false,
+    isBestseller: true,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'medium',
+    packagingFee: 15,
+  },
+  {
+    id: 'crispy-corn',
+    slug: 'crispy-corn',
+    name: 'Chatpata Crispy Corn',
+    category: 'starter',
+    categoryLabel: 'Starter',
+    description: 'Fried sweet corn kernels seasoned with tangy chaat masala, lemon juice, green chillies & fresh coriander.',
+    image: '/assets/menu/sev-tamatar-combo.png',
+    priceSingle: 180,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'medium',
+    packagingFee: 15,
+  },
+  {
+    id: 'masala-papad',
+    slug: 'masala-papad',
+    name: 'Tawa Masala Papad',
+    category: 'starter',
+    categoryLabel: 'Starter',
+    description: 'Crisp roasted lentil papad loaded with finely chopped onions, juicy tomatoes, coriander & spices.',
+    image: '/assets/menu/chur-chur-naan.png',
+    priceSingle: 40,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'mild',
+    packagingFee: 10,
+  },
+
+  // SALAD (from Menu.webp)
+  {
+    id: 'green-salad',
+    slug: 'green-salad',
+    name: 'Fresh Farm Green Salad',
+    category: 'salad',
+    categoryLabel: 'Salad',
+    description: 'Crisp cucumber slices, garden tomatoes, fresh radish, carrots, and green chillies with lemon wedges.',
+    image: '/assets/menu/indori-sev-tamatar.png',
+    priceSingle: 60,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'mild',
+    packagingFee: 10,
+  },
+  {
+    id: 'kachumber-salad',
+    slug: 'kachumber-salad',
+    name: 'Indori Spiced Kachumber Salad',
+    category: 'salad',
+    categoryLabel: 'Salad',
+    description: 'Finely diced garden cucumbers, tomatoes, and onions tossed with roasted cumin, chaat masala, and lemon.',
+    image: '/assets/menu/indori-sev-tamatar.png',
+    priceSingle: 60,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'mild',
+    packagingFee: 10,
+  },
+
+  // COLDRINKS (from Menu_1.webp)
+  {
+    id: 'punjabi-lassi',
+    slug: 'punjabi-lassi',
+    name: 'Special Punjabi Sweet Lassi',
+    category: 'coldrinks',
+    categoryLabel: 'Coldrinks',
+    description: 'Thick hand-churned fresh sweet curd lassi topped with thick malai cream and saffron strands.',
+    image: '/assets/menu/shahi-kheer.png',
+    priceSingle: 50,
+    isSignature: false,
+    isBestseller: true,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'mild',
+    packagingFee: 10,
+  },
+  {
+    id: 'namkeen-chach',
+    slug: 'namkeen-chach',
+    name: 'Desi Spiced Namkeen Chach',
+    category: 'coldrinks',
+    categoryLabel: 'Coldrinks',
+    description: 'Traditional buttermilk tempered with roasted cumin, rock salt, fresh mint, and hing.',
+    image: '/assets/menu/shahi-kheer.png',
+    priceSingle: 30,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: true,
+    isSwaminarayanAvailable: true,
+    spiceLevel: 'mild',
+    packagingFee: 10,
+  },
+
+  // TANDOORI CHAAP (from Menu_1.webp)
+  {
+    id: 'soya-achari-chaap',
+    slug: 'soya-achari-chaap',
+    name: 'Soya Achari Chaap Gravy',
+    category: 'tandoori-chaap',
+    categoryLabel: 'Tandoori Chaap',
+    description: 'Tandoori soya chunks infused with tangy pickle spices and simmered in aromatic gravy.',
+    image: '/assets/menu/jagga-daku-soya-chaap.png',
+    priceHalf: 190,
+    priceFull: 320,
+    isSignature: false,
+    isBestseller: false,
+    isPureVeg: true,
+    isJainAvailable: false,
+    isSwaminarayanAvailable: false,
+    spiceLevel: 'spicy',
+    packagingFee: 20,
   },
 ];

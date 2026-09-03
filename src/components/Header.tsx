@@ -36,10 +36,10 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 w-full z-40 transition-colors duration-200 border-b header-solid-obsidian ${
+        className={`fixed top-0 left-0 right-0 w-full z-40 transition-[border-color,background-color] duration-200 border-b header-solid-obsidian py-3 sm:py-3.5 ${
           scrolled
-            ? 'bg-[#0F0F0F] py-2.5 sm:py-3 border-[#E4A834]/30'
-            : 'bg-[#0F0F0F] py-3 sm:py-4 border-white/10'
+            ? 'bg-[#0F0F0F] border-[#E4A834]/30 shadow-md'
+            : 'bg-[#0F0F0F] border-white/10'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-2 sm:gap-4">

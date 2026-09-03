@@ -4,10 +4,10 @@ import { BRAND_INFO } from '../data/restaurantData';
 import heroBg from '../assets/BB.png';
 ---
 
-<section id="home" class="relative w-full min-h-[100dvh] bg-[#0F0F0F] text-white flex flex-col justify-between overflow-hidden pt-20 sm:pt-24 pb-6 sm:pb-8">
+<section id="home" class="relative w-full min-h-[100svh] sm:min-h-[100dvh] bg-[#0F0F0F] text-white flex flex-col justify-between overflow-x-clip pt-20 sm:pt-24 pb-6 sm:pb-8">
   
   <!-- Hero Background Image & High-Contrast Gradient Scrim -->
-  <div class="absolute inset-0 z-0">
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
     <img
       src={heroBg.src}
       alt="Nanaksar Dal Makhani and Authentic Thali Feast"

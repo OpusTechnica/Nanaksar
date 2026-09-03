@@ -33,7 +33,8 @@ export const $reservationOutletId = atom<string>('dewas-naka');
 export function addToCart(
   item: MenuItem,
   portion: 'half' | 'full' | 'single',
-  dietaryChoice: 'regular' | 'jain' | 'swaminarayan' = 'regular'
+  dietaryChoice: 'regular' | 'jain' | 'swaminarayan' = 'regular',
+  shouldOpenDrawer: boolean = false
 ) {
   let price = item.priceSingle || item.priceFull || 0;
   let portionLabel = 'Standard';
@@ -81,7 +82,17 @@ export function addToCart(
     ]);
   }
 
+  if (shouldOpenDrawer) {
+    $isCartOpen.set(true);
+  }
+}
+
+export function openCart() {
   $isCartOpen.set(true);
+}
+
+export function closeCart() {
+  $isCartOpen.set(false);
 }
 
 export function updateCartQuantity(cartItemId: string, delta: number) {
