@@ -83,11 +83,11 @@ export default function TableReservationModal() {
     >
       <div className="absolute inset-0" onClick={handleClose} />
 
-      <div className="relative z-10 w-full md:max-w-xl bg-[#0D0D0D] text-white rounded-t-3xl md:rounded-2xl max-h-[90dvh] overflow-y-auto border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.95)] pb-safe">
+      <div className="relative z-10 w-full md:max-w-xl bg-[#0F0F0F] text-white rounded-t-3xl md:rounded-2xl max-h-[90dvh] overflow-y-auto border border-white/15 pb-safe">
         
-        <div className="sticky top-0 z-20 p-4 sm:p-5 border-b border-white/10 bg-[#0D0D0D] flex items-center justify-between">
+        <div className="sticky top-0 z-20 p-4 sm:p-5 border-b border-white/10 bg-[#0F0F0F] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-[#141414] border border-[#E4A834]/40 text-[#E4A834] flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-[#181818] border border-[#E4A834]/40 text-[#E4A834] flex items-center justify-center">
               <Calendar className="w-5 h-5" />
             </div>
             <div>
@@ -101,7 +101,7 @@ export default function TableReservationModal() {
           </div>
           <button
             onClick={handleClose}
-            className="w-10 h-10 flex items-center justify-center rounded-lg bg-[#141414] border border-white/15 text-white hover:bg-white/10 transition"
+            className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl bg-[#181818] border border-white/15 text-white hover:bg-white/10 transition active:scale-95"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />

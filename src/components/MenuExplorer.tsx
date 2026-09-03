@@ -209,35 +209,6 @@ export default function MenuExplorer() {
           </p>
         </div>
 
-        {/* Mobile Horizontal Category Rail (< lg screens) */}
-        <div className="lg:hidden flex items-center gap-2 overflow-x-auto pb-3 mb-4 no-scrollbar touch-pan-x touch-pan-y">
-          {CATEGORIES.map((cat) => {
-            const count = getCategoryCount(cat.id);
-            const isSelected = selectedCategory === cat.id;
-            const isDisabled = count === 0 && !isSelected;
-
-            return (
-              <button
-                key={cat.id}
-                disabled={isDisabled}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`snap-start shrink-0 px-3.5 py-2 rounded-xl font-display text-xs font-bold uppercase tracking-wider transition min-h-[40px] flex items-center gap-1.5 border ${
-                  isSelected
-                    ? 'bg-[#0F0F0F] text-white border-[#0F0F0F]'
-                    : isDisabled
-                    ? 'bg-white/50 text-[#0F0F0F]/30 border-[#0F0F0F]/5 cursor-not-allowed'
-                    : 'bg-white text-[#0F0F0F]/75 border-[#0F0F0F]/10 hover:bg-[#0F0F0F]/5'
-                }`}
-              >
-                <span>{cat.label}</span>
-                <span className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${isSelected ? 'bg-white/20 text-white' : 'bg-[#F7F4EB] text-[#0F0F0F]/60'}`}>
-                  {count}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
         {/* 2-Column Catalog Grid: Left Sticky Sidebar (Desktop) + Main Product Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
