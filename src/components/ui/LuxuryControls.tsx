@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Calendar as CalendarIcon, ChevronDown, ChevronLeft, ChevronRight, Check } from 'lucide-react';
+import { Calendar as CalendarIcon, ChevronDown, ChevronLeft, ChevronRight, Check } from './Icon';
 
 interface LuxurySelectProps {
   label: string;
@@ -196,35 +196,35 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-1.5 w-72 bg-[#0A0A0A] border border-[#E4A834]/50 rounded-2xl p-4 shadow-[0_15px_50px_rgba(0,0,0,0.95)] z-50 animate-fadeIn">
+        <div className="absolute top-full right-0 mt-1.5 w-[258px] max-w-[calc(100vw-2rem)] bg-[#0A0A0A] border border-[#E4A834]/50 rounded-2xl p-3 shadow-[0_15px_50px_rgba(0,0,0,0.95)] z-50 animate-fadeIn">
           
           {/* Header: Month & Chevrons */}
-          <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
-            <span className="font-display text-sm font-bold uppercase tracking-wider text-[#E4A834]">
+          <div className="flex items-center justify-between pb-2 border-b border-white/10 mb-2">
+            <span className="font-display text-xs font-bold uppercase tracking-wider text-[#E4A834]">
               {monthNames[viewMonth]} {viewYear}
             </span>
             <div className="flex items-center gap-1">
               <button
                 type="button"
                 onClick={prevMonth}
-                className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#E4A834]/20 text-white hover:text-[#E4A834] transition"
+                className="w-6 h-6 flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#E4A834]/20 text-white hover:text-[#E4A834] transition"
                 aria-label="Previous Month"
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-3.5 h-3.5" />
               </button>
               <button
                 type="button"
                 onClick={nextMonth}
-                className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#E4A834]/20 text-white hover:text-[#E4A834] transition"
+                className="w-6 h-6 flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#E4A834]/20 text-white hover:text-[#E4A834] transition"
                 aria-label="Next Month"
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>
 
           {/* Days of Week */}
-          <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-display font-bold text-[#E4A834]/70 uppercase mb-1.5">
+          <div className="grid grid-cols-7 gap-1 text-center text-[10px] font-display font-bold text-[#E4A834]/70 uppercase mb-1">
             <span>Su</span>
             <span>Mo</span>
             <span>Tu</span>
@@ -237,7 +237,7 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
           {/* Days Grid */}
           <div className="grid grid-cols-7 gap-1 text-center">
             {Array.from({ length: firstDayIndex }).map((_, i) => (
-              <div key={`empty-${i}`} className="w-8 h-8" />
+              <div key={`empty-${i}`} className="w-7 h-7" />
             ))}
 
             {days.map((item) => (
@@ -249,7 +249,7 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
                   onChange(item.dateStr);
                   setIsOpen(false);
                 }}
-                className={`w-8 h-8 rounded-lg text-xs font-mono font-medium flex items-center justify-center transition-all ${
+                className={`w-7 h-7 rounded-lg text-[11px] font-mono font-medium flex items-center justify-center transition-all ${
                   item.isSelected
                     ? 'bg-[#D01B1B] text-white font-bold ring-1 ring-[#E4A834] scale-105'
                     : item.isPast
@@ -263,7 +263,7 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
           </div>
 
           {/* Quick Shortcuts: Today / Tomorrow */}
-          <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
+          <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
             <button
               type="button"
               onClick={() => setShortcutDate(0)}

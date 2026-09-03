@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from '@nanostores/react';
-import { X, Calendar, Clock, Utensils, CheckCircle, AlertCircle } from 'lucide-react';
+import { X, Calendar, Clock, Utensils, CheckCircle, AlertCircle } from './ui/Icon';
 import { $isReservationOpen, $reservationOutletId } from '../data/cartStore';
 import { OUTLETS, BRAND_INFO } from '../data/restaurantData';
 import { LuxurySelect, LuxuryDatePicker } from './ui/LuxuryControls';

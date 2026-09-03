@@ -41,25 +41,54 @@ const {
     <meta property="og:type" content="restaurant" />
     <meta name="theme-color" content="#0F0F0F" />
 
-    <!-- Astro SPA View Transitions Router -->
-    <ClientRouter />
+    <!-- Astro SPA View Transitions Router with Instant Swap -->
+    <ClientRouter fallback="swap" />
 
     <!-- Schema.org JSON-LD for AI Search Crawlers -->
     <StructuredData />
   </head>
   <body class="bg-[#0F0F0F] text-[#F7F4EB] font-sans antialiased overflow-x-hidden selection:bg-[#D01B1B] selection:text-white">
-    <!-- Global Sticky Navigation Header -->
-    <Header client:load />
+    <!-- Instant Top Navigation Progress Bar (0ms tactile feedback) -->
+    <div
+      id="nav-progress-bar"
+      class="fixed top-0 left-0 h-[2.5px] bg-[#D01B1B] z-[9999] pointer-events-none transition-all duration-200 opacity-0 w-0"
+      aria-hidden="true"
+    ></div>
+    <script is:inline>
+      document.addEventListener('astro:before-preparation', () => {
+        const bar = document.getElementById('nav-progress-bar');
+        if (bar) {
+          bar.style.transition = 'width 0.25s ease-out, opacity 0.1s ease';
+          bar.style.opacity = '1';
+          bar.style.width = '70%';
+        }
+      });
+      document.addEventListener('astro:page-load', () => {
+        const bar = document.getElementById('nav-progress-bar');
+        if (bar) {
+          bar.style.width = '100%';
+          setTimeout(() => {
+            bar.style.opacity = '0';
+            setTimeout(() => {
+              bar.style.width = '0';
+            }, 150);
+          }, 100);
+        }
+      });
+    </script>
+
+    <!-- Global Sticky Navigation Header (Persisted across pages) -->
+    <Header client:load transition:persist />
 
     <!-- Main Page Content Slot -->
     <main>
       <slot />
     </main>
 
-    <!-- Global Cart Drawer Island -->
-    <CartDrawer client:load />
+    <!-- Global Cart Drawer Island (Persisted state) -->
+    <CartDrawer client:load transition:persist />
 
-    <!-- Global Table Reservation Modal Island -->
-    <TableReservationModal client:idle />
+    <!-- Global Table Reservation Modal Island (Persisted state) -->
+    <TableReservationModal client:idle transition:persist />
   </body>
 </html>

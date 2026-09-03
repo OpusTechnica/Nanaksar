@@ -260,6 +260,111 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   color: #D01B1B;
 }
 
+/* Tailored Kinetic Hero Nav Button (Back to Top / Hero Section) */
+.kinetic-hero-btn {
+  width: 175px;
+  height: 48px;
+  overflow: hidden;
+  border: none;
+  color: #F7F4EB;
+  background: none;
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+}
+
+.kinetic-hero-btn > .text-wrap,
+.kinetic-hero-btn > .clone-wrap,
+.kinetic-hero-btn > svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.kinetic-hero-btn:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  background: #D01B1B;
+  transition: transform 0.25s ease-out;
+}
+
+.kinetic-hero-btn:hover:before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.kinetic-hero-btn .clone-wrap > *,
+.kinetic-hero-btn .text-wrap > * {
+  opacity: 1;
+  font-size: 0.85rem;
+  transition: 0.2s;
+  margin-left: 1.5px;
+}
+
+.kinetic-hero-btn .clone-wrap > * {
+  transform: translateY(45px);
+  color: #E4A834;
+}
+
+.kinetic-hero-btn:hover .clone-wrap > * {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.kinetic-hero-btn:hover .text-wrap > * {
+  opacity: 0;
+  transform: translateY(-45px);
+  transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(1) { transition-delay: 0.04s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(2) { transition-delay: 0.07s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(3) { transition-delay: 0.10s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(4) { transition-delay: 0.13s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(5) { transition-delay: 0.16s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(6) { transition-delay: 0.19s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(7) { transition-delay: 0.22s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(8) { transition-delay: 0.25s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(9) { transition-delay: 0.28s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(10) { transition-delay: 0.31s; }
+.kinetic-hero-btn:hover .clone-wrap > :nth-child(11) { transition-delay: 0.34s; }
+
+.kinetic-hero-btn svg {
+  width: 18px;
+  height: 18px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-50deg);
+  transition: 0.25s ease-out;
+  color: #E4A834;
+}
+
+.kinetic-hero-btn:hover svg {
+  transform: translateY(-50%) rotate(-90deg);
+  color: #D01B1B;
+}
+
+/* Fast and Responsive Astro View Transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 120ms;
+}
+
 /* Tailored Social Media Container Icons */
 .socials-row {
   display: flex;
@@ -290,11 +395,6 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 .containerWhatsApp:hover {
   background-color: #25D366;
   border-color: #25D366;
-}
-
-.containerTwitter:hover {
-  background-color: #1DA1F2;
-  border-color: #1DA1F2;
 }
 
 .containerGoogle:hover {

@@ -7,19 +7,20 @@ import BookTableInlineForm from './BookTableInlineForm';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Premium Obsidian Black Container Card -->
-    <div class="rounded-3xl bg-[#0D0D0D] border border-white/15 p-6 sm:p-10 md:p-12 relative overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
+    <div class="rounded-2xl sm:rounded-3xl bg-[#0D0D0D] border border-white/15 p-4 sm:p-8 md:p-12 relative overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
       
       <!-- Top Decorative Eyebrow Ribbon -->
-      <div class="flex items-center justify-between gap-4 mb-6 sm:mb-8 border-b border-white/10 pb-4">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#141414] border border-[#E4A834]/40">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between items-start gap-2.5 sm:gap-4 mb-6 sm:mb-8 border-b border-white/10 pb-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141414] border border-[#E4A834]/40 shrink-0">
           <span class="w-1.5 h-1.5 rounded-full bg-[#E4A834]"></span>
-          <span class="font-display text-[10px] sm:text-xs font-bold tracking-[0.25em] text-[#E4A834] uppercase">
+          <span class="font-display text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#E4A834] uppercase">
             SEWA TABLE RESERVATIONS
           </span>
         </div>
 
-        <div class="text-xs font-mono text-white/50">
-          <span>5 Indore Hubs • Daily 11:45 AM – 3:00 AM</span>
+        <div class="flex items-center gap-2 text-[11px] sm:text-xs font-display font-medium tracking-wider text-white/80">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#E4A834] shrink-0"></span>
+          <span>5 Indore Hubs <span class="text-[#E4A834]">•</span> Daily 11:45 AM – 3:00 AM</span>
         </div>
       </div>
 
@@ -27,8 +28,8 @@ import BookTableInlineForm from './BookTableInlineForm';
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         <!-- Left Column: Heritage Hospitality Narrative -->
-        <div class="lg:col-span-5 space-y-4">
-          <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white leading-[1.02]">
+        <div class="lg:col-span-5 space-y-3.5 sm:space-y-4">
+          <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white leading-tight">
             Reserve Your <span class="text-[#D01B1B]">Table</span>
           </h2>
 
@@ -40,10 +41,19 @@ import BookTableInlineForm from './BookTableInlineForm';
             Direct family seating across all 5 Indore locations. Enjoy slow-simmered 24-hour Dal Makhani, hand-crushed Chur Chur Naan, and authentic Malwa dishes with zero waiting hassle.
           </p>
 
-          <div class="pt-2 flex flex-wrap items-center gap-2 text-[11px] font-mono text-white/60">
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">100% Pure Veg</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Jain Stations</span>
-            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">15-Min Hold</span>
+          <div class="pt-3 flex flex-wrap items-center gap-2.5">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#15803D]/15 border border-[#15803D]/30 font-display text-[11px] font-bold uppercase tracking-wider text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+              100% Pure Veg
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#141414] border border-white/15 font-display text-[11px] font-semibold uppercase tracking-wider text-white/90">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#E4A834]"></span>
+              Jain Stations
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#141414] border border-white/15 font-display text-[11px] font-semibold uppercase tracking-wider text-white/90">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400/80"></span>
+              15-Min Hold
+            </span>
           </div>
         </div>
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useStore } from '@nanostores/react';
-import { ShoppingBag, Utensils, Menu as MenuIcon, X } from 'lucide-react';
+import { ShoppingBag, Utensils, Menu as MenuIcon, X } from './ui/Icon';
 import { $cart, $isCartOpen, $isReservationOpen, getCartSummary } from '../data/cartStore';
 import { BRAND_INFO } from '../data/restaurantData';
 
@@ -52,13 +52,13 @@ export default function Header() {
             <img
               src="/assets/Logo.png"
               alt="Nanaksar Dhaba Seal"
-              className="h-10 w-10 sm:h-12 sm:w-12 md:h-13 md:w-13 object-contain group-hover:scale-105 transition-transform shrink-0"
+              className="h-11 w-11 sm:h-13 sm:w-13 md:h-14 md:w-14 object-contain group-hover:scale-105 transition-transform shrink-0"
             />
             <div className="flex flex-col justify-center">
               <img
                 src="/assets/Brand_Name.png"
                 alt="Nanaksar Dhaba"
-                className="h-7 sm:h-9 md:h-10 lg:h-11 w-auto object-contain"
+                className="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain"
               />
               <span className="text-[9px] sm:text-[10px] md:text-[11px] font-display font-semibold tracking-widest text-[#E4A834] uppercase -mt-0.5">
                 ESTD. {BRAND_INFO.established} • INDORE
@@ -68,19 +68,19 @@ export default function Header() {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-6 xl:gap-8 font-display text-xs xl:text-sm font-semibold tracking-wider uppercase">
-            <a href="/" className="relative text-white/90 hover:text-[#E4A834] py-1 transition-colors group">
+            <a href="/" data-astro-prefetch="hover" className="relative text-white/90 hover:text-[#E4A834] py-1 transition-colors group">
               Home
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
             </a>
-            <a href="/all-categories" className="relative text-white/90 hover:text-[#E4A834] py-1 transition-colors group">
+            <a href="/all-categories" data-astro-prefetch="hover" className="relative text-white/90 hover:text-[#E4A834] py-1 transition-colors group">
               All Categories
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
             </a>
-            <a href="/story" className="relative text-white/90 hover:text-[#E4A834] py-1 transition-colors group">
+            <a href="/story" data-astro-prefetch="hover" className="relative text-white/90 hover:text-[#E4A834] py-1 transition-colors group">
               Our Story
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
             </a>
-            <a href="/outlets" className="relative text-white/90 hover:text-[#E4A834] py-1 transition-colors group">
+            <a href="/outlets" data-astro-prefetch="hover" className="relative text-white/90 hover:text-[#E4A834] py-1 transition-colors group">
               5 Outlets
               <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#D01B1B] transition-all duration-200 group-hover:w-full"></span>
             </a>
@@ -151,6 +151,7 @@ export default function Header() {
           <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col justify-center gap-5 font-display text-xl font-bold uppercase tracking-wider bg-[#0F0F0F]">
             <a
               href="/"
+              data-astro-prefetch="hover"
               onClick={() => {
                 document.body.style.overflow = '';
                 setMobileMenuOpen(false);
@@ -161,6 +162,7 @@ export default function Header() {
             </a>
             <a
               href="/all-categories"
+              data-astro-prefetch="hover"
               onClick={() => {
                 document.body.style.overflow = '';
                 setMobileMenuOpen(false);
@@ -171,6 +173,7 @@ export default function Header() {
             </a>
             <a
               href="/story"
+              data-astro-prefetch="hover"
               onClick={() => {
                 document.body.style.overflow = '';
                 setMobileMenuOpen(false);
@@ -181,6 +184,7 @@ export default function Header() {
             </a>
             <a
               href="/outlets"
+              data-astro-prefetch="hover"
               onClick={() => {
                 document.body.style.overflow = '';
                 setMobileMenuOpen(false);

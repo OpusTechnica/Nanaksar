@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStore } from '@nanostores/react';
-import { X, Plus, Minus, Trash2, Send, ShoppingBag, MapPin, AlertTriangle } from 'lucide-react';
+import { X, Plus, Minus, Trash2, Send, ShoppingBag, MapPin, AlertTriangle } from './ui/Icon';
 import {
   $cart,
   $isCartOpen,

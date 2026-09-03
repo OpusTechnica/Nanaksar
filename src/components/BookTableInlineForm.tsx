@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle, Clock, Utensils } from 'lucide-react';
+import { CheckCircle, Clock, Utensils } from './ui/Icon';
 import { OUTLETS } from '../data/restaurantData';
 import { LuxurySelect, LuxuryDatePicker } from './ui/LuxuryControls';
 
@@ -89,8 +89,9 @@ export default function BookTableInlineForm() {
           <p><span className="text-[#E4A834]">Outlet:</span> {currentOutlet.name}</p>
           <p><span className="text-[#E4A834]">Contact:</span> {name} ({phone})</p>
         </div>
-        <p className="text-[11px] text-amber-300 font-medium">
-          • Tables held for 15 minutes past reserved time before release.
+        <p className="text-xs text-[#E4A834] font-display font-medium tracking-wide flex items-center justify-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#E4A834]"></span>
+          <span>Tables held for 15 minutes past reserved time before release.</span>
         </p>
         <button
           type="button"
@@ -228,8 +229,9 @@ export default function BookTableInlineForm() {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
 
-        <p className="text-[11px] text-center text-white/50 font-mono">
-          * Tables are held for 15 mins past reserved time
+        <p className="text-xs text-center text-white/70 font-display tracking-wide flex items-center justify-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#E4A834]"></span>
+          <span>Tables are held for 15 mins past reserved time</span>
         </p>
       </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Plus, Check, Flame } from 'lucide-react';
+import { Plus, Check, Flame } from './ui/Icon';
 import { MENU_ITEMS, type MenuItem } from '../data/restaurantData';
 import { addToCart } from '../data/cartStore';
 

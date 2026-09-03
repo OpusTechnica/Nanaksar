@@ -683,6 +683,27 @@
       background: rgba(255, 255, 255, 0.12);
     }
 
+    .vp-btn-card-copy {
+      padding: 0 9px;
+      height: 28px;
+      border: none;
+      background: transparent;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .vp-btn-card-copy:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #38bdf8;
+    }
+
     .vp-btn-agent-send {
       padding: 0 11px;
       height: 28px;
@@ -1014,7 +1035,20 @@
 
   // Pure In-Browser DOM Canvas Auto-Snap Engine (using html-to-image)
   async function captureElementAutoSnap(targetElement, cropBox) {
-    if (!targetElement || targetElement === document.body || targetElement === document.documentElement) return null;
+    if (!targetElement) return null;
+
+    // If an inner SVG element (path, g, rect) was clicked, grab the parent SVG container
+    if (targetElement.tagName && targetElement.tagName.toLowerCase() !== 'svg' && targetElement.closest && targetElement.closest('svg')) {
+      targetElement = targetElement.closest('svg');
+    }
+
+    if (targetElement === document.body || targetElement === document.documentElement) {
+      if (cropBox && cropBox.width > 0 && cropBox.height > 0) {
+        targetElement = document.getElementById('root') || document.querySelector('main') || document.body.firstElementChild || document.body;
+      } else {
+        return null;
+      }
+    }
 
     try {
       const effectiveBg = getEffectiveBackgroundColor(targetElement);
@@ -1041,12 +1075,37 @@
           const pad = 8;
           const padPx = Math.round(pad * dpr);
           const cropCanvas = document.createElement('canvas');
-          cropCanvas.width = canvas.width + padPx * 2;
-          cropCanvas.height = canvas.height + padPx * 2;
+          const elRect = targetElement.getBoundingClientRect ? targetElement.getBoundingClientRect() : null;
+
+          let sx = 0, sy = 0, sw = canvas.width, sh = canvas.height;
+          let cw = canvas.width + padPx * 2, ch = canvas.height + padPx * 2;
+          let dx = padPx, dy = padPx;
+
+          // If cropBox represents a marquee crop of an area
+          if (cropBox && elRect && (cropBox.width < elRect.width * 0.95 || cropBox.height < elRect.height * 0.95)) {
+            const relX = Math.max(0, (cropBox.x - elRect.left) * dpr);
+            const relY = Math.max(0, (cropBox.y - elRect.top) * dpr);
+            const relW = Math.min(canvas.width - relX, cropBox.width * dpr);
+            const relH = Math.min(canvas.height - relY, cropBox.height * dpr);
+
+            if (relW > 16 && relH > 16) {
+              sx = relX;
+              sy = relY;
+              sw = relW;
+              sh = relH;
+              cw = relW;
+              ch = relH;
+              dx = 0;
+              dy = 0;
+            }
+          }
+
+          cropCanvas.width = cw;
+          cropCanvas.height = ch;
           const cropCtx = cropCanvas.getContext('2d');
           cropCtx.fillStyle = effectiveBg;
           cropCtx.fillRect(0, 0, cropCanvas.width, cropCanvas.height);
-          cropCtx.drawImage(canvas, padPx, padPx, canvas.width, canvas.height);
+          cropCtx.drawImage(canvas, sx, sy, sw, sh, dx, dy, sw, sh);
           return cropCanvas.toDataURL('image/png');
         }
       }
@@ -1231,11 +1290,16 @@
             <span style="font-size: 9.5px; opacity: 0.65; font-family: monospace;">↵</span>
           </button>
           <div class="vp-capsule-divider"></div>
+          <button class="vp-btn-card-copy" id="visualpatch-btn-card-copy" title="Copy Feedback & Snaps for AI (Ctrl+C)">
+            <span>Copy</span>
+            <span style="font-size: 8.5px; opacity: 0.85; font-family: monospace; background: rgba(0, 0, 0, 0.25); padding: 1px 3.5px; border-radius: 3px;">Ctrl+C</span>
+          </button>
+          <div class="vp-capsule-divider"></div>
           <button class="vp-btn-agent-send" id="visualpatch-btn-card-send-agent" title="Transmit to Agent (Ctrl+Enter)">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
               <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
             </svg>
-            <span>Send to Agent</span>
+            <span>Send</span>
             <span style="font-size: 8.5px; opacity: 0.85; font-family: monospace; background: rgba(0, 0, 0, 0.25); padding: 1px 3.5px; border-radius: 3px;">Ctrl+↵</span>
           </button>
         </div>
@@ -1291,6 +1355,11 @@
 
     card.querySelector('#visualpatch-card-close-btn')?.addEventListener('click', () => cardsContainer.innerHTML = '');
     card.querySelector('#visualpatch-btn-save-pin')?.addEventListener('click', saveNote);
+    card.querySelector('#visualpatch-btn-card-copy')?.addEventListener('click', () => {
+      if (input) item.note = input.value.trim();
+      saveStorage();
+      copyForAI();
+    });
     card.querySelector('#visualpatch-btn-del-pin')?.addEventListener('click', deleteNote);
     card.querySelector('#visualpatch-btn-card-send-agent')?.addEventListener('click', () => {
       if (input) item.note = input.value.trim();
@@ -1306,6 +1375,15 @@
         } else if (e.key === 'Escape') {
           e.preventDefault();
           cardsContainer.innerHTML = '';
+        } else if ((e.key === 'c' || e.key === 'C' || e.code === 'KeyC') && (e.ctrlKey || e.metaKey) && !e.shiftKey) {
+          const hasSel = typeof input.selectionStart === 'number' && input.selectionStart !== input.selectionEnd;
+          if (!hasSel) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (input) item.note = input.value.trim();
+            saveStorage();
+            copyForAI();
+          }
         }
       });
     }
@@ -1457,23 +1535,192 @@
     });
   });
 
-  // Direct 0-Token AI Agent Bridge
-  async function sendToAgent() {
+  // Active Note Synchronizer
+  function syncActiveNote() {
     const input = shadow.querySelector('#visualpatch-note-input');
-    if (input && annotations.length) {
-      const last = annotations[annotations.length - 1];
-      if (last && !last.note) last.note = input.value.trim();
-      saveStorage();
-      cardsContainer.innerHTML = '';
+    const card = cardsContainer.querySelector('.vp-card');
+    if (input && card && annotations.length) {
+      const cardId = card.dataset.id;
+      const targetItem = annotations.find(a => a.id === cardId) || annotations[annotations.length - 1];
+      if (targetItem) {
+        targetItem.note = input.value.trim();
+        saveStorage();
+      }
     }
+  }
+
+  // Wait for Pending Screenshot Captures to Finish
+  async function waitForPendingScreenshots(timeoutMs = 1800) {
+    const start = Date.now();
+    while (annotations.some(a => a.screenshot === 'pending') && Date.now() - start < timeoutMs) {
+      await new Promise(r => setTimeout(r, 60));
+    }
+  }
+
+  // Convert Base64 Data URL to Blob
+  async function dataUrlToBlob(dataUrl) {
+    if (!dataUrl || !dataUrl.startsWith('data:image/')) return null;
+    try {
+      const res = await fetch(dataUrl);
+      return await res.blob();
+    } catch (e) {
+      try {
+        const parts = dataUrl.split(',');
+        const mimeMatch = parts[0].match(/:(.*?);/);
+        const mime = mimeMatch ? mimeMatch[1] : 'image/png';
+        const bstr = atob(parts[1]);
+        let n = bstr.length;
+        const u8arr = new Uint8Array(n);
+        while (n--) {
+          u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], { type: mime });
+      } catch (err) {
+        return null;
+      }
+    }
+  }
+
+  // Build a Combined PNG Blob for Clipboard
+  async function buildSnapsBlob(items) {
+    const snaps = items.filter(it => it.screenshot && it.screenshot.startsWith('data:image/'));
+    if (!snaps.length) return null;
+    if (snaps.length === 1) {
+      return await dataUrlToBlob(snaps[0].screenshot);
+    }
+
+    try {
+      const loaded = await Promise.all(snaps.map(it => new Promise(resolve => {
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = () => resolve({ img, item: it });
+        img.onerror = () => resolve(null);
+        img.src = it.screenshot;
+      })));
+
+      const valid = loaded.filter(Boolean);
+      if (!valid.length) return null;
+      if (valid.length === 1) return await dataUrlToBlob(valid[0].item.screenshot);
+
+      const padding = 16;
+      const headerHeight = 32;
+      let maxWidth = 480;
+      valid.forEach(v => {
+        if (v.img.naturalWidth > maxWidth) maxWidth = Math.min(1000, v.img.naturalWidth);
+      });
+
+      let currentY = padding;
+      const positions = valid.map(v => {
+        const scale = v.img.naturalWidth > (maxWidth - padding * 2)
+          ? (maxWidth - padding * 2) / v.img.naturalWidth
+          : 1;
+        const drawW = Math.round(v.img.naturalWidth * scale);
+        const drawH = Math.round(v.img.naturalHeight * scale);
+        const y = currentY;
+        currentY += headerHeight + drawH + padding;
+        return { ...v, drawW, drawH, y };
+      });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = maxWidth;
+      canvas.height = currentY;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return await dataUrlToBlob(snaps[0].screenshot);
+
+      ctx.fillStyle = '#0f172a';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      positions.forEach(({ img, item, drawW, drawH, y }) => {
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+        const label = `Pin #${item.number}: ${item.selector}${item.note ? ` — "${item.note.slice(0, 36)}"` : ''}`;
+        ctx.fillText(label, padding, y + 20);
+        ctx.drawImage(img, padding, y + headerHeight, drawW, drawH);
+      });
+
+      return new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    } catch (e) {
+      return await dataUrlToBlob(snaps[0].screenshot);
+    }
+  }
+
+  // Write Multi-MIME to System Clipboard (image/png + text/html + text/plain)
+  async function writeToClipboardWithSnaps(mdText, htmlContent, imageBlob) {
+    let success = false;
+
+    if (navigator.clipboard && navigator.clipboard.write && window.ClipboardItem) {
+      // 1. Try full multi-representation: image/png + text/html + text/plain
+      if (imageBlob) {
+        try {
+          const itemMap = {
+            'text/plain': new Blob([mdText], { type: 'text/plain' }),
+            'text/html': new Blob([htmlContent], { type: 'text/html' }),
+            'image/png': imageBlob
+          };
+          await navigator.clipboard.write([new ClipboardItem(itemMap)]);
+          success = true;
+        } catch (e1) {
+          console.warn('[VisualPatch] Multi-MIME write with image/png failed, trying html+text:', e1);
+        }
+      }
+
+      // 2. Try rich HTML + plain text (HTML contains <img src="data:image..."> tags)
+      if (!success) {
+        try {
+          await navigator.clipboard.write([new ClipboardItem({
+            'text/plain': new Blob([mdText], { type: 'text/plain' }),
+            'text/html': new Blob([htmlContent], { type: 'text/html' })
+          })]);
+          success = true;
+        } catch (e2) {
+          console.warn('[VisualPatch] html+text write failed, falling back to writeText:', e2);
+        }
+      }
+    }
+
+    // 3. Fallback to standard writeText with embedded markdown image
+    if (!success && navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(mdText);
+        success = true;
+      } catch (e3) {
+        console.warn('[VisualPatch] writeText failed:', e3);
+      }
+    }
+
+    // 4. Ultimate textarea fallback
+    if (!success) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = mdText;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        ta.remove();
+        success = true;
+      } catch (e4) {}
+    }
+
+    return success;
+  }
+
+  // Copy Feedback & Snapshots for AI (Ctrl+C)
+  async function copyForAI(options = {}) {
+    syncActiveNote();
 
     if (!annotations.length) {
       showToast('No annotations yet · Drop pins first');
-      return;
+      return false;
     }
 
     const count = annotations.length;
-    showToast(`⚡ Transmitting ${count} item${count > 1 ? 's' : ''} to Agent...`);
+    showToast(`📋 Copying ${count} item${count > 1 ? 's' : ''} & snaps...`);
+
+    // Ensure all pending auto-snaps finish resolving before copying
+    await waitForPendingScreenshots(1800);
 
     const payload = {
       url: window.location.href,
@@ -1491,44 +1738,92 @@
     };
 
     let sent = false;
+    let bridgeData = null;
     try {
       const bridgeRes = await fetch('http://127.0.0.1:44922/api/inbox', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
-      if (bridgeRes.ok) sent = true;
+      if (bridgeRes.ok) {
+        sent = true;
+        bridgeData = await bridgeRes.json();
+      }
     } catch (e) {}
 
+    // Build clean Markdown containing notes AND snapshot images
     let md = `### 📌 VisualPatch UI Task Queue\n`;
     md += `**Source URL:** \`${window.location.href}\`\n`;
     md += `**Total Items:** ${count}\n\n`;
 
     annotations.forEach((item, index) => {
-      md += `#### ${index + 1}. Element: \`${item.selector}\`${item.screenshot ? ' 📸 [Snapshot Attached]' : ''}\n`;
+      const pinNum = item.number || index + 1;
+      md += `#### ${index + 1}. Element: \`${item.selector}\`\n`;
+      if (item.component) md += `- **Component:** \`<${item.component}>\`\n`;
+      if (item.sourceFile) md += `- **Source File:** \`${item.sourceFile}\`\n`;
       if (item.textSnippet) md += `- **Rendered Text:** "${item.textSnippet}"\n`;
-      md += `- **Requested Change:** ${item.note || 'Inspect and refine component styling.'}\n\n`;
+      md += `- **Requested Change:** ${item.note || 'Inspect and refine component styling.'}\n`;
+      if (bridgeData?.images && bridgeData.images[index]) {
+        md += `- **Local Snapshot File:** \`.visualpatch/${bridgeData.images[index]}\`\n`;
+      }
+      if (item.screenshot && item.screenshot.startsWith('data:image/')) {
+        md += `- **Visual Snapshot:**\n![Snapshot ${pinNum}](${item.screenshot})\n`;
+      }
+      md += `\n`;
     });
 
-    try {
-      await navigator.clipboard.writeText(md);
-    } catch (e) {}
+    // Build rich HTML containing rendered text AND <img> snapshot tags
+    let html = `<div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.5; color: #0f172a; max-width: 800px;">\n`;
+    html += `<h3 style="margin: 0 0 6px 0; color: #0f172a;">📌 VisualPatch UI Task Queue</h3>\n`;
+    html += `<p style="margin: 2px 0; font-size: 13px; color: #475569;"><strong>Source URL:** <code>${window.location.href}</code></p>\n`;
+    html += `<p style="margin: 2px 0 10px 0; font-size: 13px; color: #475569;"><strong>Total Items:** ${count}</p>\n`;
+    html += `<hr style="margin: 10px 0; border: none; border-top: 1px solid #e2e8f0;" />\n`;
 
-    annotations = [];
-    currentPinNumber = 1;
+    annotations.forEach((item, index) => {
+      const pinNum = item.number || index + 1;
+      html += `<div style="margin-bottom: 16px; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc;">\n`;
+      html += `<h4 style="margin: 0 0 6px 0; color: #0f172a;">${index + 1}. Element: <code>${item.selector}</code></h4>\n`;
+      if (item.component) html += `<p style="margin: 2px 0; font-size: 13px;"><strong>Component:</strong> <code>&lt;${item.component}&gt;</code></p>\n`;
+      if (item.textSnippet) html += `<p style="margin: 2px 0; font-size: 13px;"><strong>Rendered Text:</strong> &ldquo;${item.textSnippet}&rdquo;</p>\n`;
+      html += `<p style="margin: 2px 0; font-size: 13px;"><strong>Requested Change:</strong> ${item.note || 'Inspect and refine component styling.'}</p>\n`;
+      if (item.screenshot && item.screenshot.startsWith('data:image/')) {
+        html += `<div style="margin-top: 8px;">\n`;
+        html += `<p style="margin: 0 0 4px 0; font-size: 12px; font-weight: 600; color: #64748b;">📸 Captured Snapshot:</p>\n`;
+        html += `<img src="${item.screenshot}" alt="Snapshot ${pinNum}" style="max-width: 100%; border-radius: 6px; border: 1px solid #cbd5e1; box-shadow: 0 2px 4px rgba(0,0,0,0.06); display: block;" />\n`;
+        html += `</div>\n`;
+      }
+      html += `</div>\n`;
+    });
+    html += `</div>`;
+
+    const imageBlob = await buildSnapsBlob(annotations);
+    await writeToClipboardWithSnaps(md, html, imageBlob);
+
     saveStorage();
-    renderPins();
     cardsContainer.innerHTML = '';
 
+    const snapCount = annotations.filter(a => a.screenshot && a.screenshot.startsWith('data:image/')).length;
     if (sent) {
-      showToast(`⚡ Saved to .visualpatch/inbox.md!`);
+      showToast(`⚡ Saved to .visualpatch/inbox.md & copied ${snapCount} snap${snapCount !== 1 ? 's' : ''}!`);
     } else {
-      showToast(`📋 Copied clean Markdown to clipboard`);
+      showToast(`📋 Copied feedback & ${snapCount} snap${snapCount !== 1 ? 's' : ''} to clipboard!`);
     }
+
+    if (options.clearQueue) {
+      annotations = [];
+      currentPinNumber = 1;
+      saveStorage();
+      renderPins();
+      updateCount();
+    }
+
+    return true;
   }
 
-  async function copyForAI() {
-    await sendToAgent();
+  // Direct 0-Token AI Agent Bridge
+  async function sendToAgent() {
+    await copyForAI({ clearQueue: true });
+    showToast('⚡ Transmitted to Agent & queue cleared!');
   }
 
   // Hover Outline
@@ -1671,6 +1966,30 @@
       e.stopPropagation();
       sendToAgent();
       return;
+    }
+
+    // Ctrl + C to Copy Feedback & Snaps for AI
+    const isCopyKey = (e.key === 'c' || e.key === 'C' || e.code === 'KeyC') && (e.ctrlKey || e.metaKey) && !e.shiftKey && !e.altKey;
+    if (isCopyKey) {
+      const activeEl = shadow.activeElement || document.activeElement;
+      const isInsideVP = shadow.contains(activeEl) || Boolean(activeEl?.closest?.('#visualpatch-host'));
+      const isInput = activeEl && ['INPUT', 'TEXTAREA', 'SELECT'].includes(activeEl.tagName);
+
+      const windowSel = (window.getSelection ? window.getSelection().toString() : '').trim();
+      const inputSel = isInput && typeof activeEl.selectionStart === 'number' && activeEl.selectionStart !== activeEl.selectionEnd;
+      const hasTextSelection = Boolean(windowSel || inputSel);
+
+      // If user highlighted text in an input or webpage, allow native copy of that text snippet.
+      // BUT if no text is selected, or if user is interacting with VisualPatch without text selection:
+      if (!hasTextSelection || (isInsideVP && activeEl?.id !== 'visualpatch-note-input')) {
+        if (activeEl?.id === 'visualpatch-note-input') {
+          syncActiveNote();
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        copyForAI();
+        return;
+      }
     }
 
     const activeEl = shadow.activeElement || document.activeElement;
