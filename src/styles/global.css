@@ -452,3 +452,31 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     opacity: 1;
   }
 }
+
+/* Luxury Drawer Slide Keyframes */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-drawer-desktop {
+  animation: slideInRight 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-drawer-mobile {
+  animation: slideInUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

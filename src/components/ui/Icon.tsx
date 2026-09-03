@@ -71,6 +71,23 @@ export const ChevronRight = (props: IconProps) => <Icon name="chevron-right" {..
 export const Search = (props: IconProps) => <Icon name="search" {...props} />;
 export const Check = (props: IconProps) => <Icon name="check" {...props} />;
 export const ArrowRight = (props: IconProps) => <Icon name="arrow-right" {...props} />;
+export function ArrowLeft({ className = 'w-5 h-5', ...props }: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      {...props}
+    >
+      <path d="m12 19-7-7 7-7" />
+      <path d="M19 12H5" />
+    </svg>
+  );
+}
 export const Star = (props: IconProps) => <Icon name="star" {...props} />;
 export const Flame = (props: IconProps) => <Icon name="flame" {...props} />;
 
