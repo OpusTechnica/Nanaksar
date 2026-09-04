@@ -74,6 +74,9 @@ export default function BestsellersShowcase() {
                         </span>
                       )}
                     </div>
+                    <div className="absolute top-3 right-3 bg-[#965C00] text-white font-display text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded shadow-sm">
+                      BESTSELLER
+                    </div>
                   </div>
 
                   <div className="p-5">

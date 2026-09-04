@@ -488,11 +488,15 @@ export default function MenuExplorer() {
                               </span>
                             )}
                           </div>
-                          {item.isSignature && (
+                          {item.isSignature ? (
                             <div className="absolute top-2.5 right-2.5 bg-[#D01B1B] text-white font-display text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
                               SIGNATURE
                             </div>
-                          )}
+                          ) : item.isBestseller ? (
+                            <div className="absolute top-2.5 right-2.5 bg-[#965C00] text-white font-display text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
+                              BESTSELLER
+                            </div>
+                          ) : null}
                         </div>
 
                         {/* Snug Content & Pricing Details */}

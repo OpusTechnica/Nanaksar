@@ -3,8 +3,13 @@ import { Plus, Check, Flame } from './ui/Icon';
 import { MENU_ITEMS, type MenuItem } from '../data/restaurantData';
 import { addToCart } from '../data/cartStore';
 
+// Top 3 Verified Crown Signatures of Nanaksar Dhaba
+const CROWN_SIGNATURE_IDS = ['dal-makhani', 'chur-chur-naan-stuffed', 'paneer-angara'];
+
 export default function SignaturesShowcase() {
-  const signatures = MENU_ITEMS.filter((item) => item.isSignature);
+  const signatures = CROWN_SIGNATURE_IDS.map((id) =>
+    MENU_ITEMS.find((item) => item.id === id)
+  ).filter((item): item is MenuItem => Boolean(item));
   const [addedItem, setAddedItem] = useState<string | null>(null);
 
   const handleAdd = (item: MenuItem) => {
@@ -28,12 +33,12 @@ export default function SignaturesShowcase() {
             Crown <span className="text-[#D01B1B]">Signatures</span>
           </h2>
           <p className="mt-4 text-sm sm:text-base text-[#0F0F0F]/75 font-sans max-w-xl mx-auto leading-relaxed">
-            The six hallmark dishes that established our culinary authority in Central India. Slow-cooked over traditional bhattis, finished in pure cow desi ghee, and served with sewa.
+            The three hallmark dishes that established our culinary authority in Central India. Slow-cooked over traditional bhattis, finished in pure cow desi ghee, and served with sewa.
           </p>
         </div>
 
-        {/* 6 Signature Cards Grid (Symmetric 3x2 Desktop Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 items-stretch">
+        {/* 3 Crown Signature Cards Grid (High-Impact 3-Column Grid) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch max-w-6xl mx-auto">
           {signatures.map((item) => {
             const price = item.priceFull || item.priceSingle;
 
@@ -120,6 +125,17 @@ export default function SignaturesShowcase() {
               </div>
             );
           })}
+        </div>
+
+        {/* Explore Full Menu & Specialty Preparations CTA */}
+        <div className="mt-10 sm:mt-12 text-center">
+          <a
+            href="/all-categories"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white border border-[#0F0F0F]/15 hover:border-[#D01B1B] hover:text-[#D01B1B] text-[#0F0F0F] font-display text-xs sm:text-sm font-bold uppercase tracking-wider transition shadow-sm"
+          >
+            <span>Explore Full Menu &amp; Specialty Dishes</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
 
       </div>
