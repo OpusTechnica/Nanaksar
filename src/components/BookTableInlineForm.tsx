@@ -105,20 +105,20 @@ export default function BookTableInlineForm() {
   }
 
   return (
-    <form onSubmit={handleBookingSubmit} className="bg-[#0D0D0D] rounded-2xl border border-white/15 p-5 sm:p-6 space-y-4 shadow-2xl">
+    <form onSubmit={handleBookingSubmit} className="bg-[#0D0D0D] rounded-2xl border border-white/15 p-3.5 sm:p-6 space-y-3 sm:space-y-4 shadow-2xl">
       
-      {/* 1. Select Indore Outlet (Clean Single-Line Chips in Pure Obsidian) */}
+      {/* 1. Select Indore Outlet (Sleek Horizontal Scroll on Mobile, Wrapped on Desktop) */}
       <div>
-        <label className="block text-xs font-display font-bold uppercase tracking-wider text-[#E4A834] mb-2">
+        <label className="block text-[11px] sm:text-xs font-display font-bold uppercase tracking-wider text-[#E4A834] mb-1.5 sm:mb-2">
           1. Select Indore Branch:
         </label>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex gap-2 overflow-x-auto no-scrollbar py-0.5 sm:flex-wrap">
           {OUTLETS.map((o) => (
             <button
               key={o.id}
               type="button"
               onClick={() => setOutletId(o.id)}
-              className={`px-3.5 py-2 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider min-h-[44px] ${
+              className={`whitespace-nowrap shrink-0 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider min-h-[38px] sm:min-h-[44px] ${
                 outletId === o.id
                   ? 'bg-[#181818] border-[#E4A834] text-[#E4A834] ring-1 ring-[#E4A834]'
                   : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
@@ -131,10 +131,10 @@ export default function BookTableInlineForm() {
       </div>
 
       {/* 2. Party Size & Custom Luxury Date Picker */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
         {/* Party Size */}
         <div>
-          <label className="block text-xs font-display font-bold uppercase tracking-wider text-[#E4A834] mb-1.5">
+          <label className="block text-[11px] sm:text-xs font-display font-bold uppercase tracking-wider text-[#E4A834] mb-1 sm:mb-1.5">
             2. Party Size:
           </label>
           <div className="grid grid-cols-4 gap-1.5">
@@ -148,7 +148,7 @@ export default function BookTableInlineForm() {
                   key={p.value}
                   type="button"
                   onClick={() => setPartySize(p.value)}
-                  className={`py-2 px-1 rounded-xl border text-center font-display text-xs font-bold transition min-h-[44px] ${
+                  className={`py-1.5 sm:py-2 px-1 rounded-xl border text-center font-display text-xs font-bold transition min-h-[38px] sm:min-h-[44px] ${
                   partySize === p.value
                     ? 'bg-[#D01B1B] border-[#D01B1B] text-white'
                     : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
@@ -169,7 +169,7 @@ export default function BookTableInlineForm() {
       </div>
 
       {/* 3. Time Slot & Dietary Prep (Custom Luxury Popover Selects) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
         <LuxurySelect
           label="4. Time Slot:"
           value={timeSlot}
@@ -188,9 +188,9 @@ export default function BookTableInlineForm() {
       </div>
 
       {/* 4. Contact Name & WhatsApp Mobile */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3 pt-0.5 sm:pt-1">
         <div>
-          <label className="block text-xs font-display font-bold uppercase tracking-wider text-white/80 mb-1">
+          <label className="block text-[11px] sm:text-xs font-display font-bold uppercase tracking-wider text-white/80 mb-1">
             Contact Name:
           </label>
           <input
@@ -199,12 +199,12 @@ export default function BookTableInlineForm() {
             placeholder="e.g. Gurpreet Singh"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full bg-[#121212] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-base md:text-xs text-white placeholder-white/40"
+            className="w-full bg-[#121212] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 text-base md:text-xs text-white placeholder-white/40 min-h-[40px] sm:min-h-[44px]"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-display font-bold uppercase tracking-wider text-white/80 mb-1">
+          <label className="block text-[11px] sm:text-xs font-display font-bold uppercase tracking-wider text-white/80 mb-1">
             WhatsApp Mobile:
           </label>
           <input
@@ -214,22 +214,22 @@ export default function BookTableInlineForm() {
             placeholder="e.g. 98260 00000"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full bg-[#121212] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-base md:text-xs text-white placeholder-white/40"
+            className="w-full bg-[#121212] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3 py-2 sm:px-3.5 sm:py-2.5 text-base md:text-xs text-white placeholder-white/40 min-h-[40px] sm:min-h-[44px]"
           />
         </div>
       </div>
 
       {/* Policy Reassurance & Submit Button */}
-      <div className="pt-1 space-y-2.5">
+      <div className="pt-1 space-y-2">
         <button
           type="submit"
-          className="w-full bg-[#D01B1B] hover:bg-[#B81414] active:scale-[0.98] text-white font-display font-bold uppercase tracking-wider text-xs sm:text-sm py-3.5 rounded-xl transition flex items-center justify-center gap-2 min-h-[46px] shadow-lg focus:outline-none focus:ring-2 focus:ring-[#E4A834]"
+          className="w-full bg-[#D01B1B] hover:bg-[#B81414] active:scale-[0.98] text-white font-display font-bold uppercase tracking-wider text-xs sm:text-sm py-3 sm:py-3.5 rounded-xl transition flex items-center justify-center gap-2 min-h-[44px] sm:min-h-[46px] shadow-lg focus:outline-none focus:ring-2 focus:ring-[#E4A834]"
         >
           <span>CONFIRM TABLE &amp; GENERATE PASS</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg>
         </button>
 
-        <p className="text-xs text-center text-white/70 font-display tracking-wide flex items-center justify-center gap-1.5">
+        <p className="text-[11px] sm:text-xs text-center text-white/70 font-display tracking-wide flex items-center justify-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[#E4A834]"></span>
           <span>Tables are held for 15 mins past reserved time</span>
         </p>

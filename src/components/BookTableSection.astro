@@ -3,14 +3,14 @@ import { BRAND_INFO } from '../data/restaurantData';
 import BookTableInlineForm from './BookTableInlineForm';
 ---
 
-<section id="book-table" class="py-14 sm:py-20 bg-[#0A0A0A] text-white border-t border-white/10 relative overflow-hidden">
+<section id="book-table" class="py-8 sm:py-20 bg-[#0A0A0A] text-white border-t border-white/10 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Premium Obsidian Black Container Card -->
-    <div class="rounded-2xl sm:rounded-3xl bg-[#0D0D0D] border border-white/15 p-4 sm:p-8 md:p-12 relative overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
+    <div class="rounded-2xl sm:rounded-3xl bg-[#0D0D0D] border border-white/15 p-3.5 sm:p-8 md:p-12 relative overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)]">
       
       <!-- Top Decorative Eyebrow Ribbon -->
-      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between items-start gap-2.5 sm:gap-4 mb-6 sm:mb-8 border-b border-white/10 pb-4">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between items-start gap-2 sm:gap-4 mb-4 sm:mb-8 border-b border-white/10 pb-3 sm:pb-4">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141414] border border-[#E4A834]/40 shrink-0">
           <span class="w-1.5 h-1.5 rounded-full bg-[#E4A834]"></span>
           <span class="font-display text-[10px] sm:text-xs font-bold tracking-[0.2em] sm:tracking-[0.25em] text-[#E4A834] uppercase">
@@ -25,23 +25,23 @@ import BookTableInlineForm from './BookTableInlineForm';
       </div>
 
       <!-- Main Grid: Narrative (Left) & Direct Booking Form (Right) -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 items-center">
         
         <!-- Left Column: Heritage Hospitality Narrative -->
-        <div class="lg:col-span-5 space-y-3.5 sm:space-y-4">
+        <div class="lg:col-span-5 space-y-2.5 sm:space-y-4">
           <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-white leading-tight">
             Reserve Your <span class="text-[#D01B1B]">Table</span>
           </h2>
 
-          <p class="font-editorial italic text-base sm:text-lg text-[#F7F4EB]/90 leading-relaxed">
+          <p class="font-editorial italic text-base sm:text-lg text-[#F7F4EB]/90 leading-relaxed hidden lg:block">
             "{BRAND_INFO.motto}"
           </p>
 
-          <p class="text-xs sm:text-sm text-white/70 font-sans leading-relaxed">
+          <p class="text-xs sm:text-sm text-white/70 font-sans leading-relaxed hidden lg:block">
             Direct family seating across all 5 Indore locations. Enjoy slow-simmered 24-hour Dal Makhani, hand-crushed Chur Chur Naan, and authentic Malwa dishes with zero waiting hassle.
           </p>
 
-          <div class="pt-3 flex flex-wrap items-center gap-2.5">
+          <div class="pt-3 hidden lg:flex flex-wrap items-center gap-2.5">
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#15803D]/15 border border-[#15803D]/30 font-display text-[11px] font-bold uppercase tracking-wider text-emerald-400">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
               100% Pure Veg
@@ -55,6 +55,11 @@ import BookTableInlineForm from './BookTableInlineForm';
               15-Min Hold
             </span>
           </div>
+
+          <!-- Mobile Compact Subtitle -->
+          <p class="lg:hidden text-xs text-[#E4A834] font-display font-medium tracking-wide">
+            Direct family seating across all 5 Indore hubs with instant WhatsApp confirmation.
+          </p>
         </div>
 
         <!-- Right Column: Direct Interactive Booking Form Island -->

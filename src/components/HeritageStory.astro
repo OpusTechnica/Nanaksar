@@ -49,8 +49,8 @@ import { BRAND_INFO } from '../data/restaurantData';
             </p>
           </div>
 
-          <!-- Bespoke Editorial Pullquote: Retires the Old "Alert Box" -->
-          <div class="p-5 sm:p-7 rounded-2xl bg-[#F4EBD0]/45 border border-[#E4A834]/30 relative overflow-hidden">
+          <!-- Bespoke Editorial Pullquote: Retires the Old "Alert Box" (Desktop Viewport) -->
+          <div class="hidden lg:block p-5 sm:p-7 rounded-2xl bg-[#F4EBD0]/45 border border-[#E4A834]/30 relative overflow-hidden">
             <!-- Decorative Gold Quote Watermark Mark -->
             <span class="absolute -bottom-4 right-2 text-7xl sm:text-8xl font-editorial font-bold text-[#E4A834]/15 select-none pointer-events-none" aria-hidden="true">
               ”
@@ -133,6 +133,40 @@ import { BRAND_INFO } from '../data/restaurantData';
             </div>
           </div>
 
+        </div>
+      </div>
+
+      <!-- Mobile Viewport Fork: Pullquote relocated below the entire Founder Container -->
+      <div class="block lg:hidden mt-2">
+        <div class="p-5 sm:p-7 rounded-2xl bg-[#F4EBD0]/45 border border-[#E4A834]/30 relative overflow-hidden">
+          <!-- Decorative Gold Quote Watermark Mark -->
+          <span class="absolute -bottom-4 right-2 text-7xl sm:text-8xl font-editorial font-bold text-[#E4A834]/15 select-none pointer-events-none" aria-hidden="true">
+            ”
+          </span>
+
+          <div class="relative z-10">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[#842F06]">
+                THE GUIDING CUSTODIAL CREED
+              </span>
+              <span class="font-sans text-xs text-[#965C00] font-medium">
+                {BRAND_INFO.hindiMotto}
+              </span>
+            </div>
+
+            <p class="font-display text-xl sm:text-2xl font-bold uppercase text-[#D01B1B] tracking-tight leading-tight">
+              “{BRAND_INFO.motto}”
+            </p>
+
+            <p class="font-editorial italic text-base sm:text-lg text-[#0F0F0F]/90 leading-relaxed mt-2.5">
+              "A meal is never just about taste. It is about how you feel when you sit down at our table, and the quiet comfort you carry with you when you leave."
+            </p>
+
+            <div class="mt-3.5 pt-3 border-t border-[#0F0F0F]/10 flex items-center justify-between text-xs font-mono text-[#842F06]">
+              <span class="font-bold tracking-wider uppercase">— AVTAR SINGH (VEER JI)</span>
+              <span class="text-[#0F0F0F]/50">ORIGINAL DEWAS NAKA HEARTH</span>
+            </div>
+          </div>
         </div>
       </div>
 
