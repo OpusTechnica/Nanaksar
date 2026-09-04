@@ -11,8 +11,8 @@ const { mode = 'overlay' } = Astro.props;
   class="threshold-root fixed inset-0 z-[99999] w-screen h-screen overflow-hidden select-none cursor-pointer bg-[#070707]"
   data-mode={mode}
   role="region"
-  aria-label="Nanaksar Dhaba Sacred Sarovar Entrance"
-  title="Touch anywhere to enter the dining room"
+  aria-label="Nanaksar Dhaba Welcome Entrance"
+  title="Click anywhere to enter immediately"
 >
   <script is:inline>
     if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('nanaksar_entered') === 'true' && window.location.pathname !== '/welcome') {
@@ -22,300 +22,144 @@ const { mode = 'overlay' } = Astro.props;
     }
   </script>
 
-  <!-- 1. LEFT OBSIDIAN SAROVAR WATER VEIL (0% -> 50.3%) -->
-  <div id="sarovar-veil-left" class="sarovar-panel sarovar-veil-left absolute top-0 left-0 w-[50.3%] h-full z-10 overflow-hidden">
-    <!-- Deep Obsidian Water Base with Subtle Caustic Shimmer -->
-    <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#0A0A0A] to-[#0E0E0E]"></div>
-    
-    <!-- Organic Water Caustic Waves Vector -->
-    <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 500 1000" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <radialGradient id="sarovar-depth-left" cx="100%" cy="50%" r="90%">
-          <stop offset="0%" stop-color="#1A150D" stop-opacity="0.6" />
-          <stop offset="40%" stop-color="#0E0B07" stop-opacity="0.3" />
-          <stop offset="100%" stop-color="#050505" stop-opacity="0" />
-        </radialGradient>
-      </defs>
-      <rect width="500" height="1000" fill="url(#sarovar-depth-left)" />
-      <!-- Stylized Sacred Water Ripples -->
-      <path d="M 500 200 C 350 205, 200 215, 0 210" stroke="#E4A834" stroke-opacity="0.12" stroke-width="1" fill="none" />
-      <path d="M 500 350 C 320 358, 180 370, 0 365" stroke="#E4A834" stroke-opacity="0.16" stroke-width="1.2" fill="none" />
-      <path d="M 500 500 C 300 510, 150 525, 0 520" stroke="#E4A834" stroke-opacity="0.22" stroke-width="1.5" fill="none" />
-      <path d="M 500 650 C 320 658, 180 670, 0 665" stroke="#E4A834" stroke-opacity="0.16" stroke-width="1.2" fill="none" />
-      <path d="M 500 800 C 350 805, 200 815, 0 810" stroke="#E4A834" stroke-opacity="0.12" stroke-width="1" fill="none" />
-    </svg>
-
-    <!-- Golden Liquid Seam Trim on Right Edge -->
-    <div class="absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b from-[#7A4E12] via-[#E4A834] to-[#7A4E12] shadow-[-2px_0_12px_rgba(228,168,52,0.8)] pointer-events-none" aria-hidden="true"></div>
+  <!-- 1. LEFT POLISHED OBSIDIAN LEAF (0% -> 50.2%) -->
+  <div id="obsidian-leaf-left" class="obsidian-leaf obsidian-leaf-left absolute top-0 left-0 w-[50.2%] h-full z-10 overflow-hidden">
+    <!-- Subtle luxury edge lighting on the meeting seam -->
+    <div class="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#E4A834]/35 to-transparent pointer-events-none" aria-hidden="true"></div>
   </div>
 
-  <!-- 2. RIGHT OBSIDIAN SAROVAR WATER VEIL (50% -> 100%) -->
-  <div id="sarovar-veil-right" class="sarovar-panel sarovar-veil-right absolute top-0 right-0 w-[50.3%] h-full z-[9] overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-l from-[#050505] via-[#0A0A0A] to-[#0E0E0E]"></div>
-    
-    <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 500 1000" preserveAspectRatio="none" aria-hidden="true">
-      <defs>
-        <radialGradient id="sarovar-depth-right" cx="0%" cy="50%" r="90%">
-          <stop offset="0%" stop-color="#1A150D" stop-opacity="0.6" />
-          <stop offset="40%" stop-color="#0E0B07" stop-opacity="0.3" />
-          <stop offset="100%" stop-color="#050505" stop-opacity="0" />
-        </radialGradient>
-      </defs>
-      <rect width="500" height="1000" fill="url(#sarovar-depth-right)" />
-      <!-- Mirrored Sacred Water Ripples -->
-      <path d="M 0 200 C 150 205, 300 215, 500 210" stroke="#E4A834" stroke-opacity="0.12" stroke-width="1" fill="none" />
-      <path d="M 0 350 C 180 358, 320 370, 500 365" stroke="#E4A834" stroke-opacity="0.16" stroke-width="1.2" fill="none" />
-      <path d="M 0 500 C 200 510, 350 525, 500 520" stroke="#E4A834" stroke-opacity="0.22" stroke-width="1.5" fill="none" />
-      <path d="M 0 650 C 180 658, 320 670, 500 665" stroke="#E4A834" stroke-opacity="0.16" stroke-width="1.2" fill="none" />
-      <path d="M 0 800 C 150 805, 300 815, 500 810" stroke="#E4A834" stroke-opacity="0.12" stroke-width="1" fill="none" />
-    </svg>
-
-    <!-- Golden Liquid Seam Trim on Left Edge -->
-    <div class="absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b from-[#7A4E12] via-[#E4A834] to-[#7A4E12] shadow-[2px_0_12px_rgba(228,168,52,0.8)] pointer-events-none" aria-hidden="true"></div>
+  <!-- 2. RIGHT POLISHED OBSIDIAN LEAF (50% -> 100%) -->
+  <div id="obsidian-leaf-right" class="obsidian-leaf obsidian-leaf-right absolute top-0 right-0 w-[50.2%] h-full z-[9] overflow-hidden">
+    <!-- Subtle luxury edge lighting on the meeting seam -->
+    <div class="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#E4A834]/35 to-transparent pointer-events-none" aria-hidden="true"></div>
   </div>
 
-  <!-- 3. CONCENTRIC SACRED RIPPLES (AMRIT TARANG) EXPANDING FROM CENTER -->
-  <div class="sarovar-ripple-container absolute inset-0 z-15 flex items-center justify-center pointer-events-none" aria-hidden="true">
-    <div class="sarovar-ripple sarovar-ripple-1"></div>
-    <div class="sarovar-ripple sarovar-ripple-2"></div>
-    <div class="sarovar-ripple sarovar-ripple-3"></div>
-    <div class="sarovar-ripple sarovar-ripple-4"></div>
-  </div>
-
-  <!-- 4. CENTERPIECE: THE SACRED GOLDEN LOTUS & OBSIDIAN SEAL (कमल सरोवर) -->
+  <!-- 3. CENTERPIECE: THE GRAND OBSIDIAN & GOLD MEDALLION (Undisputed Hero Focal Point) -->
   <div id="curtain-center-stack" class="absolute inset-0 z-20 flex items-center justify-center p-4 my-auto pointer-events-none">
     
-    <!-- Outer Floating Golden Lotus Halo (कमल दल) -->
-    <div class="relative flex items-center justify-center">
+    <!-- Grand Obsidian Medallion Canvas: Deep Piano Lacquer Black #0A0A0A -->
+    <div class="medallion-body relative w-[min(90vw,360px)] h-[min(90vw,360px)] xs:w-[400px] xs:h-[400px] sm:w-[480px] sm:h-[480px] md:w-[520px] md:h-[520px] rounded-full bg-[#0A0A0A] border-2 border-[#E4A834]/70 shadow-[0_30px_90px_rgba(0,0,0,1),0_0_50px_rgba(228,168,52,0.12)] p-5 xs:p-7 sm:p-10 flex flex-col items-center justify-center text-center pointer-events-auto overflow-hidden">
       
-      <!-- 16-Petal Sacred Golden Lotus SVG Halo -->
-      <svg class="lotus-halo absolute w-[min(98vw,420px)] h-[min(98vw,420px)] xs:w-[460px] xs:h-[460px] sm:w-[560px] sm:h-[560px] md:w-[610px] md:h-[610px] pointer-events-none" viewBox="0 0 600 600" aria-hidden="true">
-        <defs>
-          <!-- 24K Liquid Gold Petal Gradient -->
-          <linearGradient id="lotus-gold-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#FFF8E0" />
-            <stop offset="25%" stop-color="#E4A834" />
-            <stop offset="65%" stop-color="#B87B19" />
-            <stop offset="100%" stop-color="#5E3809" />
-          </linearGradient>
-          <filter id="lotus-glow">
-            <feGaussianBlur stdDeviation="3" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
+      <!-- Inner Specular Hairline Ring (Double-bezel luxury coin / watch dial rim) -->
+      <div class="absolute inset-2 sm:inset-3.5 rounded-full border border-[#E4A834]/35 pointer-events-none" aria-hidden="true"></div>
 
-        <!-- 16 Symmetrical Lotus Petals Radiating Outward -->
-        <g transform="translate(300, 300)" filter="url(#lotus-glow)">
-          <!-- Petal 1 (0 deg) -->
-          <g transform="rotate(0)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 2 (22.5 deg) -->
-          <g transform="rotate(22.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 3 (45 deg) -->
-          <g transform="rotate(45)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 4 (67.5 deg) -->
-          <g transform="rotate(67.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 5 (90 deg) -->
-          <g transform="rotate(90)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 6 (112.5 deg) -->
-          <g transform="rotate(112.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 7 (135 deg) -->
-          <g transform="rotate(135)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 8 (157.5 deg) -->
-          <g transform="rotate(157.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 9 (180 deg) -->
-          <g transform="rotate(180)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 10 (202.5 deg) -->
-          <g transform="rotate(202.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 11 (225 deg) -->
-          <g transform="rotate(225)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 12 (247.5 deg) -->
-          <g transform="rotate(247.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 13 (270 deg) -->
-          <g transform="rotate(270)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 14 (292.5 deg) -->
-          <g transform="rotate(292.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 15 (315 deg) -->
-          <g transform="rotate(315)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-          <!-- Petal 16 (337.5 deg) -->
-          <g transform="rotate(337.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
-        </g>
-      </svg>
+      <!-- Premium corner light: crisp specular arc where light catches the rim (~2 o'clock) -->
+      <div class="medallion-rim-light absolute inset-0 rounded-full pointer-events-none" aria-hidden="true"></div>
+      <!-- Single restrained glint diamond seated on the rim -->
+      <div class="medallion-glint absolute top-[8%] right-[13%] pointer-events-none" aria-hidden="true"></div>
 
-      <!-- Grand Obsidian Medallion Canvas: Solid Crisp Luxury Black #0B0B0B -->
-      <div class="medallion-body relative w-[min(90vw,360px)] h-[min(90vw,360px)] xs:w-[400px] xs:h-[400px] sm:w-[480px] sm:h-[480px] md:w-[520px] md:h-[520px] rounded-full bg-[#0B0B0B] border-2 border-[#E4A834]/70 shadow-[0_25px_70px_rgba(0,0,0,0.98),0_0_40px_rgba(228,168,52,0.15)] p-5 xs:p-7 sm:p-10 flex flex-col items-center justify-center text-center pointer-events-auto overflow-hidden">
+      <!-- Circle Content Stack (Harmonious vertical rhythm, zero crowding) -->
+      <div class="relative z-10 flex flex-col items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[280px] xs:max-w-[320px] sm:max-w-[420px]">
         
-        <!-- Inner Specular Hairline Ring -->
-        <div class="absolute inset-2 sm:inset-3.5 rounded-full border border-[#E4A834]/35 pointer-events-none" aria-hidden="true"></div>
-
-        <!-- Premium corner light: crisp specular arc (~2 o'clock) -->
-        <div class="medallion-rim-light absolute inset-0 rounded-full pointer-events-none" aria-hidden="true"></div>
-        <!-- Single restrained glint diamond seated on the rim -->
-        <div class="medallion-glint absolute top-[8%] right-[13%] pointer-events-none" aria-hidden="true"></div>
-
-        <!-- Circle Content Stack -->
-        <div class="relative z-10 flex flex-col items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[280px] xs:max-w-[320px] sm:max-w-[420px]">
-          
-          <!-- 1. Heritage Seal: Crisp, authoritatively sized, perfectly centered -->
-          <div class="threshold-anim-seal">
-            <div class="relative p-1 rounded-full bg-[#141414] border border-[#E4A834]/40 shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
-              <img
-                src="/assets/Logo.webp"
-                alt="Nanaksar Dhaba Heritage Seal"
-                width="280"
-                height="280"
-                class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 object-contain select-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.85)]"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
-          </div>
-
-          <!-- 2. Eyebrow Timestamp: Desi Ghee Amber #E4A834 -->
-          <div class="threshold-anim-eyebrow">
-            <span class="font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#E4A834] uppercase tracking-[0.28em] font-bold select-none drop-shadow">
-              ESTD. 1980 — INDORE
-            </span>
-          </div>
-
-          <!-- 3. Headline: "Welcome to" with gold hairline accents -->
-          <div class="threshold-anim-welcome flex items-center gap-2 -my-0.5">
-            <span class="h-px w-3 sm:w-5 bg-gradient-to-r from-transparent to-[#E4A834]/60" aria-hidden="true"></span>
-            <span class="font-serif text-[9.5px] xs:text-[10.5px] sm:text-[12px] text-[#F7F4EB]/90 uppercase tracking-[0.32em] font-medium select-none">
-              Welcome to
-            </span>
-            <span class="h-px w-3 sm:w-5 bg-gradient-to-l from-transparent to-[#E4A834]/60" aria-hidden="true"></span>
-          </div>
-
-          <!-- 4. Wordmark: Brand_Name.webp -->
-          <div class="threshold-anim-wordmark">
+        <!-- 1. Heritage Seal: Crisp, authoritatively sized, perfectly centered -->
+        <div class="threshold-anim-seal">
+          <div class="relative p-1 rounded-full bg-[#121212] border border-[#E4A834]/40 shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
             <img
-              src="/assets/Brand_Name.webp"
-              alt="Nanaksar Dhaba"
-              width="480"
-              height="120"
-              class="w-38 xs:w-42 sm:w-50 h-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+              src="/assets/Logo.webp"
+              alt="Nanaksar Dhaba Heritage Seal"
+              width="280"
+              height="280"
+              class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 object-contain select-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.85)]"
               loading="eager"
               decoding="async"
             />
           </div>
+        </div>
 
-          <!-- 5. Hairline Gold Rule: scaleX draw -->
-          <div class="threshold-anim-rule h-px w-10 sm:w-14 bg-gradient-to-r from-transparent via-[#E4A834] to-transparent my-0.5"></div>
+        <!-- 2. Eyebrow Timestamp: Desi Ghee Amber #E4A834 -->
+        <div class="threshold-anim-eyebrow">
+          <span class="font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#E4A834] uppercase tracking-[0.28em] font-bold select-none drop-shadow">
+            ESTD. 1980 — INDORE
+          </span>
+        </div>
 
-          <!-- 6. Dual-Color Hindi Quote: "स्वाद" and "प्यार" in Shining Ruby Foil, rest in Warm Cream -->
-          <div class="threshold-anim-belief min-h-[30px] sm:min-h-[38px] flex items-center justify-center">
-            <p
-              id="threshold-hindi-quote"
-              class="font-devanagari text-[13.5px] xs:text-[15px] sm:text-[17.5px] tracking-wide leading-normal select-none text-center whitespace-nowrap"
-            >
-              <span id="typed-container"></span><span id="typed-cursor" class="inline-block w-[2px] h-[1em] bg-[#E4A834] ml-0.5 align-middle animate-pulse"></span>
-            </p>
-          </div>
+        <!-- 3. Headline: "Welcome to" with gold hairline accents -->
+        <div class="threshold-anim-welcome flex items-center gap-2 -my-0.5">
+          <span class="h-px w-3 sm:w-5 bg-gradient-to-r from-transparent to-[#E4A834]/60" aria-hidden="true"></span>
+          <span class="font-serif text-[9.5px] xs:text-[10.5px] sm:text-[12px] text-[#F7F4EB]/90 uppercase tracking-[0.32em] font-medium select-none">
+            Welcome to
+          </span>
+          <span class="h-px w-3 sm:w-5 bg-gradient-to-l from-transparent to-[#E4A834]/60" aria-hidden="true"></span>
+        </div>
 
+        <!-- 4. Wordmark: Brand_Name.webp -->
+        <div class="threshold-anim-wordmark">
+          <img
+            src="/assets/Brand_Name.webp"
+            alt="Nanaksar Dhaba"
+            width="480"
+            height="120"
+            class="w-38 xs:w-42 sm:w-50 h-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+
+        <!-- 5. Hairline Gold Rule: scaleX draw -->
+        <div class="threshold-anim-rule h-px w-10 sm:w-14 bg-gradient-to-r from-transparent via-[#E4A834] to-transparent my-0.5"></div>
+
+        <!-- 6. Dual-Color Hindi Quote: "स्वाद" and "प्यार" in Shining Ruby Foil, rest in Warm Cream -->
+        <div class="threshold-anim-belief min-h-[30px] sm:min-h-[38px] flex items-center justify-center">
+          <p
+            id="threshold-hindi-quote"
+            class="font-devanagari text-[13.5px] xs:text-[15px] sm:text-[17.5px] tracking-wide leading-normal select-none text-center whitespace-nowrap"
+          >
+            <span id="typed-container"></span><span id="typed-cursor" class="inline-block w-[2px] h-[1em] bg-[#E4A834] ml-0.5 align-middle animate-pulse"></span>
+          </p>
         </div>
 
       </div>
 
     </div>
-
   </div>
 </div>
 
 <style>
   /* ==========================================================================
-     The Golden Sarovar & Lotus Portal (नानकसर अमृत सरोवर)
-     Pure sacred obsidian water with expanding 24K liquid gold ripples & lotus halo
+     Pure Polished Obsidian Black Entrance
+     Flawless piano lacquer black with zero distractions, channeling 100% focus
+     into the central gold-rimmed medallion.
      ========================================================================== */
 
   .font-devanagari {
     font-family: 'Noto Serif Devanagari', 'Cinzel', serif;
   }
 
-  .sarovar-panel {
-    background-color: #080808;
+  .obsidian-leaf {
+    position: absolute;
+    top: 0;
+    width: 50.2%;
+    height: 100%;
+    z-index: 10;
     will-change: transform;
+    background-color: #080808;
   }
 
-  /* Left Obsidian Water Veil */
-  .sarovar-veil-left {
+  /* Left Polished Obsidian Leaf with Soft Radial Light Falloff */
+  .obsidian-leaf-left {
+    left: 0;
+    background: radial-gradient(ellipse at 100% 50%, #131313 0%, #090909 50%, #050505 100%);
     box-shadow: 25px 0 60px rgba(0, 0, 0, 0.98);
-    transition: transform 1200ms cubic-bezier(0.72, 0, 0.18, 1);
+    transition: transform 1150ms cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: left center;
   }
 
-  /* Right Obsidian Water Veil */
-  .sarovar-veil-right {
-    transition: transform 1200ms cubic-bezier(0.72, 0, 0.18, 1);
+  /* Right Polished Obsidian Leaf with Soft Radial Light Falloff */
+  .obsidian-leaf-right {
+    right: 0;
+    background: radial-gradient(ellipse at 0% 50%, #131313 0%, #090909 50%, #050505 100%);
+    box-shadow: -25px 0 60px rgba(0, 0, 0, 0.98);
+    transition: transform 1150ms cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: right center;
   }
 
-  /* Theatrical Liquid Gold Dissolve & Parting */
-  .threshold-root.is-opened .sarovar-veil-left {
-    transform: translateX(-104%) scaleX(0.96);
+  /* Stately Silent Parting */
+  .threshold-root.is-opened .obsidian-leaf-left {
+    transform: translateX(-101%);
   }
 
-  .threshold-root.is-opened .sarovar-veil-right {
-    transform: translateX(104%) scaleX(0.96);
-  }
-
-  /* Concentric Golden Sarovar Ripples */
-  .sarovar-ripple {
-    position: absolute;
-    width: min(85vw, 360px);
-    height: min(85vw, 360px);
-    border-radius: 9999px;
-    border: 1.5px solid rgba(228, 168, 52, 0.45);
-    box-shadow: 0 0 20px rgba(228, 168, 52, 0.25), inset 0 0 15px rgba(228, 168, 52, 0.15);
-    pointer-events: none;
-  }
-
-  .sarovar-ripple-1 {
-    animation: sarovarRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
-  }
-
-  .sarovar-ripple-2 {
-    animation: sarovarRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) 0.9s infinite;
-  }
-
-  .sarovar-ripple-3 {
-    animation: sarovarRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) 1.8s infinite;
-  }
-
-  .sarovar-ripple-4 {
-    animation: sarovarRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) 2.7s infinite;
-  }
-
-  @keyframes sarovarRipple {
-    0% {
-      transform: scale(0.92);
-      opacity: 0.75;
-    }
-    50% {
-      opacity: 0.40;
-    }
-    100% {
-      transform: scale(2.3);
-      opacity: 0;
-    }
-  }
-
-  /* Sacred Golden Lotus Halo Breathing Pulse */
-  .lotus-halo {
-    animation: lotusBreathe 4s ease-in-out infinite;
-    transform-origin: center center;
-  }
-
-  @keyframes lotusBreathe {
-    0%, 100% {
-      transform: scale(1) rotate(0deg);
-      opacity: 0.85;
-      filter: drop-shadow(0 0 10px rgba(228, 168, 52, 0.3));
-    }
-    50% {
-      transform: scale(1.03) rotate(1.5deg);
-      opacity: 1;
-      filter: drop-shadow(0 0 24px rgba(228, 168, 52, 0.65));
-    }
+  .threshold-root.is-opened .obsidian-leaf-right {
+    transform: translateX(101%);
   }
 
   /* --- REFINED METALLIC RUBY FOIL SHINE FOR 'स्वाद' AND 'प्यार' --- */
@@ -372,6 +216,7 @@ const { mode = 'overlay' } = Astro.props;
     animation: medallionSettle 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
+  /* Specular Rim Light Arc (~2 o'clock) */
   .medallion-rim-light {
     background: conic-gradient(
       from 0deg,
@@ -387,6 +232,7 @@ const { mode = 'overlay' } = Astro.props;
     mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
   }
 
+  /* Diamond Glint on Rim */
   .medallion-glint {
     width: 7px;
     height: 7px;
@@ -460,12 +306,12 @@ const { mode = 'overlay' } = Astro.props;
     animation: textFadeIn 500ms cubic-bezier(0.16, 1, 0.3, 1) 680ms both;
   }
 
-  /* Center Lotus Medallion Golden Bloom on Open */
+  /* Medallion Scale and Dissolve on Opening */
   .threshold-root.is-opened #curtain-center-stack {
     opacity: 0;
-    transform: scale(1.1);
+    transform: scale(1.06);
     pointer-events: none;
-    transition: opacity 400ms ease, transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 350ms ease, transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .threshold-root.is-opened {
@@ -474,9 +320,8 @@ const { mode = 'overlay' } = Astro.props;
 
   /* Prefers Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
-    .sarovar-veil-left, .sarovar-veil-right, .sarovar-ripple, .lotus-halo {
+    .obsidian-leaf-left, .obsidian-leaf-right {
       transition: none !important;
-      animation: none !important;
     }
     .medallion-body, .threshold-anim-seal, .threshold-anim-eyebrow, .threshold-anim-welcome, .threshold-anim-wordmark, .threshold-anim-rule, .threshold-anim-belief, .crimson-ruby-shine, .medallion-glint {
       animation: none !important;
@@ -607,7 +452,7 @@ const { mode = 'overlay' } = Astro.props;
 
     let hasOpened = false;
 
-    function openSarovar(type) {
+    function openEntrance(type) {
       if (hasOpened) return;
       hasOpened = true;
 
@@ -623,14 +468,14 @@ const { mode = 'overlay' } = Astro.props;
         recordMetric('entered', { timeMs: elapsed });
       }
 
-      // SACRED LIQUID GOLD DISSOLVE & WATER PARTING
+      // STATELY SILENT PARTING: Left & right obsidian leaves glide open
       thresholdEl.classList.add('is-opened');
       thresholdEl.classList.remove('bg-[#070707]');
       thresholdEl.classList.add('bg-transparent');
       document.documentElement.classList.remove('curtain-gate-active');
       window.dispatchEvent(new CustomEvent('threshold:entered', { detail: { type, elapsed } }));
 
-      // Complete cleanup: Remove threshold completely after water veils part
+      // Complete cleanup: Remove threshold completely after leaves part
       setTimeout(function () {
         thresholdEl.style.display = 'none';
         thresholdEl.remove();
@@ -645,19 +490,19 @@ const { mode = 'overlay' } = Astro.props;
 
     // AUTOMATIC LUXURY TIMING: 2.5 seconds total (as requested by user)
     const autoTimer = setTimeout(function () {
-      openSarovar('auto');
+      openEntrance('auto');
     }, 2500);
 
     // Clicking anywhere on the screen immediately enters
     thresholdEl.addEventListener('click', function () {
-      openSarovar('tap');
+      openEntrance('tap');
     });
 
     // Keyboard support: Esc, Space, Enter
     window.addEventListener('keydown', function (e) {
       if (thresholdEl.style.display === 'none') return;
       if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
-        openSarovar('key');
+        openEntrance('key');
       }
     });
   })();
