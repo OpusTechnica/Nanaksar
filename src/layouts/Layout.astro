@@ -61,9 +61,25 @@ const {
         opacity: 0 !important;
         visibility: hidden !important;
       }
-      #home,
-      main > :not(#nanaksar-threshold) {
+      /* Cinematic Gentle Push-In: Hero starts subtly elevated in scale */
+      html.curtain-gate-active #home {
+        transform: scale(1.035);
+        transform-origin: center 35%;
+      }
+      #home {
+        transform: scale(1);
+        transform-origin: center 35%;
+        transition: opacity 850ms cubic-bezier(0.16, 1, 0.3, 1), transform 1200ms cubic-bezier(0.16, 1, 0.3, 1), visibility 850ms ease;
+        will-change: transform, opacity;
+      }
+      main > :not(#nanaksar-threshold):not(#home) {
         transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), visibility 600ms ease;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #home, header, main > :not(#nanaksar-threshold) {
+          transition: none !important;
+          transform: none !important;
+        }
       }
       /* Instant suppression of threshold for returning visitors */
       html:not(.curtain-gate-active) #nanaksar-threshold:not([data-mode="page"]) {
@@ -152,7 +168,7 @@ const {
     <Header client:load transition:persist />
 
     <!-- Main Page Content Slot -->
-    <main>
+    <main class="overflow-x-hidden">
       <slot />
     </main>
 
