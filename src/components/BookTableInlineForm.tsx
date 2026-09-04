@@ -118,7 +118,7 @@ export default function BookTableInlineForm() {
               key={o.id}
               type="button"
               onClick={() => setOutletId(o.id)}
-              className={`px-3.5 py-2 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider ${
+              className={`px-3.5 py-2 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider min-h-[44px] ${
                 outletId === o.id
                   ? 'bg-[#181818] border-[#E4A834] text-[#E4A834] ring-1 ring-[#E4A834]'
                   : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
@@ -138,17 +138,17 @@ export default function BookTableInlineForm() {
             2. Party Size:
           </label>
           <div className="grid grid-cols-4 gap-1.5">
-            {[
-              { value: '2', label: '2 Guests' },
-              { value: '3-4', label: '3-4' },
-              { value: '5-8', label: '5-8' },
-              { value: '9+', label: '9+' },
-            ].map((p) => (
-              <button
-                key={p.value}
-                type="button"
-                onClick={() => setPartySize(p.value)}
-                className={`py-2 px-1 rounded-xl border text-center font-display text-xs font-bold transition ${
+              {[
+                { value: '2', label: '2' },
+                { value: '3-4', label: '3-4' },
+                { value: '5-8', label: '5-8' },
+                { value: '9+', label: '9+' },
+              ].map((p) => (
+                <button
+                  key={p.value}
+                  type="button"
+                  onClick={() => setPartySize(p.value)}
+                  className={`py-2 px-1 rounded-xl border text-center font-display text-xs font-bold transition min-h-[44px] ${
                   partySize === p.value
                     ? 'bg-[#D01B1B] border-[#D01B1B] text-white'
                     : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
@@ -226,7 +226,7 @@ export default function BookTableInlineForm() {
           className="w-full bg-[#D01B1B] hover:bg-[#B81414] active:scale-[0.98] text-white font-display font-bold uppercase tracking-wider text-xs sm:text-sm py-3.5 rounded-xl transition flex items-center justify-center gap-2 min-h-[46px] shadow-lg focus:outline-none focus:ring-2 focus:ring-[#E4A834]"
         >
           <span>CONFIRM TABLE &amp; GENERATE PASS</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><use href="/assets/icons.svg#arrow-right"/></svg>
         </button>
 
         <p className="text-xs text-center text-white/70 font-display tracking-wide flex items-center justify-center gap-1.5">

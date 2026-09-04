@@ -1,0 +1,723 @@
+---
+interface Props {
+  mode?: 'page' | 'overlay';
+}
+
+const { mode = 'overlay' } = Astro.props;
+---
+
+<div
+  id="nanaksar-threshold"
+  class="threshold-root fixed inset-0 z-[99999] w-screen h-screen overflow-hidden select-none cursor-pointer bg-transparent"
+  data-mode={mode}
+  role="region"
+  aria-label="Nanaksar Dhaba Theatrical Entrance"
+  title="Click anywhere to enter immediately"
+>
+  <script is:inline>
+    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('nanaksar_entered') === 'true' && window.location.pathname !== '/welcome') {
+      const el = document.getElementById('nanaksar-threshold');
+      if (el) el.remove();
+    }
+  </script>
+
+  <!-- 1. SOLID ZERO-LEAK LEFT VELVET CURTAIN (0% -> 50.5% with organic sculpted SVG drapery) -->
+  <div id="curtain-left" class="curtain-panel curtain-left absolute top-0 left-0 w-[50.5%] h-full z-10 overflow-hidden">
+    <!-- Sculpted SVG Drapery Vector Canvas -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <!-- Master Velvet Flute Gradients (Brand Tandoor Charcoal #0F0F0F & Obsidian Harmony) -->
+        <linearGradient id="v-flute-1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="18%" stop-color="#0B0B0B" />
+          <stop offset="46%" stop-color="#181818" />
+          <stop offset="56%" stop-color="#242424" />
+          <stop offset="74%" stop-color="#141414" />
+          <stop offset="92%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="16%" stop-color="#0C0C0C" />
+          <stop offset="44%" stop-color="#1A1A1A" />
+          <stop offset="54%" stop-color="#262626" />
+          <stop offset="72%" stop-color="#141414" />
+          <stop offset="90%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-3" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="20%" stop-color="#0D0D0D" />
+          <stop offset="48%" stop-color="#1C1C1C" />
+          <stop offset="58%" stop-color="#282828" />
+          <stop offset="76%" stop-color="#161616" />
+          <stop offset="94%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-4" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="17%" stop-color="#0C0C0C" />
+          <stop offset="45%" stop-color="#191919" />
+          <stop offset="55%" stop-color="#252525" />
+          <stop offset="73%" stop-color="#131313" />
+          <stop offset="91%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-5" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="19%" stop-color="#0D0D0D" />
+          <stop offset="47%" stop-color="#1B1B1B" />
+          <stop offset="57%" stop-color="#272727" />
+          <stop offset="75%" stop-color="#151515" />
+          <stop offset="93%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-6" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="16%" stop-color="#0B0B0B" />
+          <stop offset="44%" stop-color="#181818" />
+          <stop offset="54%" stop-color="#232323" />
+          <stop offset="72%" stop-color="#131313" />
+          <stop offset="90%" stop-color="#0A0A0A" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-7" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="18%" stop-color="#0C0C0C" />
+          <stop offset="46%" stop-color="#1A1A1A" />
+          <stop offset="56%" stop-color="#262626" />
+          <stop offset="74%" stop-color="#151515" />
+          <stop offset="92%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <!-- Crease Shadow (Ambient Occlusion in Folds) -->
+        <linearGradient id="crease-left" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#080808" stop-opacity="0.65" />
+          <stop offset="100%" stop-color="#080808" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+
+      <!-- Base Brand Charcoal Fill (#0F0F0F Foundation) -->
+      <rect width="1000" height="1000" fill="#0A0A0A" />
+
+      <!-- Sculpted Organic Flutes (Parabolic Bezier Curves) -->
+      <path d="M 0 0 L 145 0 C 142 320, 149 680, 156 1000 L 0 1000 Z" fill="url(#v-flute-1)" />
+      <path d="M 137 0 C 134 320, 141 680, 148 1000 L 164 1000 C 157 680, 150 320, 153 0 Z" fill="url(#crease-left)" />
+
+      <path d="M 145 0 C 142 320, 149 680, 156 1000 L 298 1000 C 291 680, 283 320, 288 0 Z" fill="url(#v-flute-2)" />
+      <path d="M 280 0 C 275 320, 283 680, 290 1000 L 306 1000 C 299 680, 291 320, 296 0 Z" fill="url(#crease-left)" />
+
+      <path d="M 288 0 C 283 320, 291 680, 298 1000 L 444 1000 C 437 680, 427 320, 432 0 Z" fill="url(#v-flute-3)" />
+      <path d="M 424 0 C 419 320, 429 680, 436 1000 L 452 1000 C 445 680, 435 320, 440 0 Z" fill="url(#crease-left)" />
+
+      <path d="M 432 0 C 427 320, 437 680, 444 1000 L 590 1000 C 583 680, 572 320, 576 0 Z" fill="url(#v-flute-4)" />
+      <path d="M 568 0 C 564 320, 575 680, 582 1000 L 598 1000 C 591 680, 580 320, 584 0 Z" fill="url(#crease-left)" />
+
+      <path d="M 576 0 C 572 320, 583 680, 590 1000 L 736 1000 C 729 680, 717 320, 720 0 Z" fill="url(#v-flute-5)" />
+      <path d="M 712 0 C 709 320, 721 680, 728 1000 L 744 1000 C 737 680, 725 320, 728 0 Z" fill="url(#crease-left)" />
+
+      <path d="M 720 0 C 717 320, 729 680, 736 1000 L 878 1000 C 871 680, 859 320, 862 0 Z" fill="url(#v-flute-6)" />
+      <path d="M 854 0 C 851 320, 863 680, 870 1000 L 886 1000 C 879 680, 867 320, 870 0 Z" fill="url(#crease-left)" />
+
+      <path d="M 862 0 C 859 320, 871 680, 878 1000 L 1000 1000 L 1000 0 Z" fill="url(#v-flute-7)" />
+    </svg>
+
+    <!-- Theatrical Valance & Floor Vignette Overlay -->
+    <div class="absolute inset-0 pointer-events-none curtain-theatrical-vignette" aria-hidden="true"></div>
+
+    <!-- Subtle tactile weave grain (Spun fabric depth, zero digital flatness) -->
+    <div class="absolute inset-0 opacity-[0.035] pointer-events-none mix-blend-overlay" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 4px 4px;" aria-hidden="true"></div>
+    <!-- Tailored leading edge satin piping (Crisp Charcoal-Obsidian) -->
+    <div class="absolute top-0 right-0 w-[2.5px] h-full bg-gradient-to-b from-[#181818] via-[#282828] to-[#121212] pointer-events-none shadow-[-2px_0_8px_rgba(0,0,0,0.95)]" aria-hidden="true"></div>
+    <!-- Natural velvet drape overlap shadow -->
+    <div class="absolute top-0 right-0 w-14 h-full bg-gradient-to-r from-transparent to-black/95 pointer-events-none" aria-hidden="true"></div>
+  </div>
+
+  <!-- 2. SOLID ZERO-LEAK RIGHT VELVET CURTAIN (50% -> 100% with mirrored organic sculpted SVG drapery) -->
+  <div id="curtain-right" class="curtain-panel curtain-right absolute top-0 right-0 w-[50.5%] h-full z-[9] overflow-hidden">
+    <!-- Mirrored Sculpted SVG Drapery Vector Canvas -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <!-- Master Velvet Flute Gradients (Mirrored Brand Tandoor Charcoal #0F0F0F) -->
+        <linearGradient id="v-flute-r-7" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="18%" stop-color="#0C0C0C" />
+          <stop offset="46%" stop-color="#1A1A1A" />
+          <stop offset="56%" stop-color="#262626" />
+          <stop offset="74%" stop-color="#151515" />
+          <stop offset="92%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-r-6" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="16%" stop-color="#0B0B0B" />
+          <stop offset="44%" stop-color="#181818" />
+          <stop offset="54%" stop-color="#232323" />
+          <stop offset="72%" stop-color="#131313" />
+          <stop offset="90%" stop-color="#0A0A0A" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-r-5" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="19%" stop-color="#0D0D0D" />
+          <stop offset="47%" stop-color="#1B1B1B" />
+          <stop offset="57%" stop-color="#272727" />
+          <stop offset="75%" stop-color="#151515" />
+          <stop offset="93%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-r-4" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="17%" stop-color="#0C0C0C" />
+          <stop offset="45%" stop-color="#191919" />
+          <stop offset="55%" stop-color="#252525" />
+          <stop offset="73%" stop-color="#131313" />
+          <stop offset="91%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-r-3" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="20%" stop-color="#0D0D0D" />
+          <stop offset="48%" stop-color="#1C1C1C" />
+          <stop offset="58%" stop-color="#282828" />
+          <stop offset="76%" stop-color="#161616" />
+          <stop offset="94%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-r-2" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="16%" stop-color="#0C0C0C" />
+          <stop offset="44%" stop-color="#1A1A1A" />
+          <stop offset="54%" stop-color="#262626" />
+          <stop offset="72%" stop-color="#141414" />
+          <stop offset="90%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <linearGradient id="v-flute-r-1" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#050505" />
+          <stop offset="18%" stop-color="#0B0B0B" />
+          <stop offset="46%" stop-color="#181818" />
+          <stop offset="56%" stop-color="#242424" />
+          <stop offset="74%" stop-color="#141414" />
+          <stop offset="92%" stop-color="#0B0B0B" />
+          <stop offset="100%" stop-color="#050505" />
+        </linearGradient>
+        <!-- Crease Shadow Right -->
+        <linearGradient id="crease-right" x1="100%" y1="0%" x2="0%" y2="0%">
+          <stop offset="0%" stop-color="#000000" stop-opacity="0.95" />
+          <stop offset="35%" stop-color="#080808" stop-opacity="0.65" />
+          <stop offset="100%" stop-color="#080808" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+
+      <!-- Base Brand Charcoal Fill (#0F0F0F Foundation) -->
+      <rect width="1000" height="1000" fill="#0A0A0A" />
+
+      <!-- Sculpted Organic Flutes (Mirrored Parabolic Curves) -->
+      <path d="M 0 0 L 138 0 C 141 320, 129 680, 122 1000 L 0 1000 Z" fill="url(#v-flute-r-7)" />
+      <path d="M 130 0 C 133 320, 121 680, 114 1000 L 146 1000 C 153 680, 141 320, 138 0 Z" fill="url(#crease-right)" />
+
+      <path d="M 138 0 C 141 320, 129 680, 122 1000 L 264 1000 C 271 680, 283 320, 280 0 Z" fill="url(#v-flute-r-6)" />
+      <path d="M 272 0 C 275 320, 263 680, 256 1000 L 288 1000 C 295 680, 283 320, 280 0 Z" fill="url(#crease-right)" />
+
+      <path d="M 280 0 C 283 320, 271 680, 264 1000 L 410 1000 C 417 680, 428 320, 424 0 Z" fill="url(#v-flute-r-5)" />
+      <path d="M 416 0 C 419 320, 407 680, 400 1000 L 432 1000 C 439 680, 427 320, 424 0 Z" fill="url(#crease-right)" />
+
+      <path d="M 424 0 C 428 320, 417 680, 410 1000 L 556 1000 C 563 680, 573 320, 568 0 Z" fill="url(#v-flute-r-4)" />
+      <path d="M 560 0 C 564 320, 553 680, 546 1000 L 578 1000 C 585 680, 574 320, 570 0 Z" fill="url(#crease-right)" />
+
+      <path d="M 568 0 C 573 320, 563 680, 556 1000 L 702 1000 C 709 680, 717 320, 712 0 Z" fill="url(#v-flute-r-3)" />
+      <path d="M 704 0 C 708 320, 699 680, 692 1000 L 724 1000 C 731 680, 722 320, 718 0 Z" fill="url(#crease-right)" />
+
+      <path d="M 712 0 C 717 320, 709 680, 702 1000 L 844 1000 C 851 680, 858 320, 855 0 Z" fill="url(#v-flute-r-2)" />
+      <path d="M 846 0 C 850 320, 843 680, 836 1000 L 868 1000 C 875 680, 868 320, 864 0 Z" fill="url(#crease-right)" />
+
+      <path d="M 855 0 C 858 320, 851 680, 844 1000 L 1000 1000 L 1000 0 Z" fill="url(#v-flute-r-1)" />
+    </svg>
+
+    <!-- Theatrical Valance & Floor Vignette Overlay -->
+    <div class="absolute inset-0 pointer-events-none curtain-theatrical-vignette" aria-hidden="true"></div>
+
+    <!-- Subtle tactile weave grain -->
+    <div class="absolute inset-0 opacity-[0.035] pointer-events-none mix-blend-overlay" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 4px 4px;" aria-hidden="true"></div>
+    <!-- Natural edge shadow receiver -->
+    <div class="absolute top-0 left-0 w-14 h-full bg-gradient-to-l from-transparent to-black/90 pointer-events-none" aria-hidden="true"></div>
+  </div>
+
+  <!-- 3. CENTERPIECE: THE GRAND OBSIDIAN MEDALLION (Pure Piano Black, Zero Blurry Radial Hazes) -->
+  <div id="curtain-center-stack" class="absolute inset-0 z-20 flex items-center justify-center p-4 my-auto pointer-events-none">
+    
+    <!-- Grand Obsidian Medallion Canvas: Solid Crisp Luxury Black #0B0B0B (Enlarged for Perfect Fit) -->
+    <div class="medallion-body relative w-[min(90vw,360px)] h-[min(90vw,360px)] xs:w-[400px] xs:h-[400px] sm:w-[480px] sm:h-[480px] md:w-[520px] md:h-[520px] rounded-full bg-[#0B0B0B] border-2 border-[#E4A834]/65 shadow-[0_20px_60px_rgba(0,0,0,0.98)] p-5 xs:p-7 sm:p-10 flex flex-col items-center justify-center text-center pointer-events-auto overflow-hidden">
+      
+      <!-- Inner Specular Hairline Ring (Double-bezel luxury coin / watch dial rim) -->
+      <div class="absolute inset-2 sm:inset-3.5 rounded-full border border-[#E4A834]/30 pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Premium corner light: crisp specular arc where light catches the rim (~2 o'clock) -->
+      <div class="medallion-rim-light absolute inset-0 rounded-full pointer-events-none" aria-hidden="true"></div>
+      <!-- Single restrained glint diamond seated on the rim -->
+      <div class="medallion-glint absolute top-[8%] right-[13%] pointer-events-none" aria-hidden="true"></div>
+
+      <!-- Circle Content Stack (Harmonious vertical rhythm, zero crowding) -->
+      <div class="relative z-10 flex flex-col items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[280px] xs:max-w-[320px] sm:max-w-[420px]">
+        
+        <!-- 1. Heritage Seal: Crisp, authoritatively sized, perfectly centered -->
+        <div class="threshold-anim-seal">
+          <div class="relative p-1 rounded-full bg-[#141414] border border-[#E4A834]/40 shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+            <img
+              src="/assets/Logo.webp"
+              alt="Nanaksar Dhaba Heritage Seal"
+              width="280"
+              height="280"
+              class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 object-contain select-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.85)]"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+
+        <!-- 2. Eyebrow Timestamp: Desi Ghee Amber #E4A834 -->
+        <div class="threshold-anim-eyebrow">
+          <span class="font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#E4A834] uppercase tracking-[0.28em] font-bold select-none drop-shadow">
+            ESTD. 1980 — INDORE
+          </span>
+        </div>
+
+        <!-- 3. Headline: "Welcome to" with gold hairline accents -->
+        <div class="threshold-anim-welcome flex items-center gap-2 -my-0.5">
+          <span class="h-px w-3 sm:w-5 bg-gradient-to-r from-transparent to-[#E4A834]/50" aria-hidden="true"></span>
+          <span class="font-serif text-[9.5px] xs:text-[10.5px] sm:text-[12px] text-[#F7F4EB]/90 uppercase tracking-[0.32em] font-medium select-none">
+            Welcome to
+          </span>
+          <span class="h-px w-3 sm:w-5 bg-gradient-to-l from-transparent to-[#E4A834]/50" aria-hidden="true"></span>
+        </div>
+
+        <!-- 4. Wordmark: Brand_Name.webp -->
+        <div class="threshold-anim-wordmark">
+          <img
+            src="/assets/Brand_Name.webp"
+            alt="Nanaksar Dhaba"
+            width="480"
+            height="120"
+            class="w-38 xs:w-42 sm:w-50 h-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+
+        <!-- 5. Hairline Gold Rule: scaleX draw -->
+        <div class="threshold-anim-rule h-px w-10 sm:w-14 bg-gradient-to-r from-transparent via-[#E4A834] to-transparent my-0.5"></div>
+
+        <!-- 6. Dual-Color Hindi Quote: "स्वाद" and "प्यार" in Shining Ruby Foil, rest in Warm Cream -->
+        <div class="threshold-anim-belief min-h-[30px] sm:min-h-[38px] flex items-center justify-center">
+          <p
+            id="threshold-hindi-quote"
+            class="font-devanagari text-[13.5px] xs:text-[15px] sm:text-[17.5px] tracking-wide leading-normal select-none text-center whitespace-nowrap"
+          >
+            <span id="typed-container"></span><span id="typed-cursor" class="inline-block w-[2px] h-[1em] bg-[#E4A834] ml-0.5 align-middle animate-pulse"></span>
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ==========================================================================
+     Theatrical Velvet Curtains & Pure Obsidian Medallion
+     Zero blurry overlays: 100% crisp solid black with razor-sharp gold hairline rim.
+     ========================================================================== */
+
+  .font-devanagari {
+    font-family: 'Noto Serif Devanagari', 'Cinzel', serif;
+  }
+
+  .curtain-panel {
+    background-color: #0F0F0F;
+    will-change: transform;
+  }
+
+  /* Left Velvet Curtain (Host for Organic Sculpted SVG Drapery in Brand #0F0F0F) */
+  .curtain-left {
+    background-color: #0F0F0F;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.98);
+    transition: transform 1150ms cubic-bezier(0.72, 0, 0.18, 1);
+    transform-origin: left center;
+  }
+
+  /* Right Velvet Curtain (Host for Mirrored Organic Sculpted SVG Drapery in Brand #0F0F0F) */
+  .curtain-right {
+    background-color: #0F0F0F;
+    transition: transform 1150ms cubic-bezier(0.72, 0, 0.18, 1);
+    transform-origin: right center;
+  }
+
+  /* Theatrical Proscenium Valance & Floor Vignette (Pure Neutral Charcoal / Black) */
+  .curtain-theatrical-vignette {
+    background: linear-gradient(
+      to bottom,
+      rgba(4, 4, 4, 0.96) 0%,
+      rgba(15, 15, 15, 0.25) 16%,
+      transparent 45%,
+      rgba(10, 10, 10, 0.65) 86%,
+      rgba(4, 4, 4, 0.98) 100%
+    );
+  }
+
+  /* --- REFINED METALLIC RUBY FOIL SHINE FOR 'स्वाद' AND 'प्यार' --- */
+  .crimson-ruby-shine {
+    background: linear-gradient(
+      135deg,
+      #B91C1C 0%,
+      #E11D48 18%,
+      #FFF5D6 46%, /* Pristine champagne-gold specular crest */
+      #FF2A2A 68%,
+      #991B1B 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    /* Crisp subpixel depth, zero blurry haze */
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95));
+    font-weight: 800;
+    display: inline-block;
+    animation: rubyFoilShimmer 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes rubyFoilShimmer {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: -100% 50%;
+    }
+  }
+
+  /* Warm Makkhan Cream Text */
+  .cream-text-warm {
+    color: #F7F4EB;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    display: inline-block;
+  }
+
+  /* --- CRISP MEDALLION SETTLE --- */
+
+  @keyframes medallionSettle {
+    0% {
+      opacity: 0;
+      transform: scale(0.92);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .medallion-body {
+    animation: medallionSettle 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* --- Premium corner light: crisp specular arc on the rim (~2 o'clock) ---
+     Static conic sheen masked to the outer 3px ring. Same Desi Ghee Amber,
+     zero blur, zero animation: light catching a coin edge. */
+  .medallion-rim-light {
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      transparent 30deg,
+      rgba(228, 168, 52, 0.55) 41deg,
+      rgba(255, 240, 200, 0.95) 47deg,
+      rgba(228, 168, 52, 0.55) 53deg,
+      transparent 64deg,
+      transparent 360deg
+    );
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
+  }
+
+  /* Single restrained glint diamond seated on the rim. One slow breath,
+     barely-there: opacity 0.55 -> 1 over 4s. */
+  .medallion-glint {
+    width: 7px;
+    height: 7px;
+    transform: rotate(45deg);
+    background: linear-gradient(135deg, #fff6dd 0%, #e4a834 55%, #965c00 100%);
+    box-shadow: 0 0 6px rgba(228, 168, 52, 0.65);
+    animation: glintBreath 4s ease-in-out 1.2s infinite;
+  }
+
+  @keyframes glintBreath {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+
+  /* Synchronized Content Reveals */
+  @keyframes sealReveal {
+    0% {
+      opacity: 0;
+      transform: scale(0.85);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes textFadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ruleExpand {
+    0% {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    100% {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+
+  .threshold-anim-seal {
+    animation: sealReveal 600ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+  }
+
+  .threshold-anim-eyebrow {
+    animation: textFadeIn 450ms cubic-bezier(0.16, 1, 0.3, 1) 320ms both;
+  }
+
+  .threshold-anim-welcome {
+    animation: textFadeIn 450ms cubic-bezier(0.16, 1, 0.3, 1) 400ms both;
+  }
+
+  .threshold-anim-wordmark {
+    animation: textFadeIn 500ms cubic-bezier(0.16, 1, 0.3, 1) 480ms both;
+  }
+
+  .threshold-anim-rule {
+    transform-origin: center;
+    animation: ruleExpand 500ms cubic-bezier(0.16, 1, 0.3, 1) 580ms both;
+  }
+
+  .threshold-anim-belief {
+    animation: textFadeIn 500ms cubic-bezier(0.16, 1, 0.3, 1) 680ms both;
+  }
+
+  /* Curtain Opening Physics (Gather & Draw) */
+  .threshold-root.is-opened .curtain-left {
+    transform: translateX(-104%) scaleX(0.95);
+  }
+
+  .threshold-root.is-opened .curtain-right {
+    transform: translateX(104%) scaleX(0.95);
+  }
+
+  .threshold-root.is-opened #curtain-center-stack {
+    opacity: 0;
+    transform: scale(1.04);
+    pointer-events: none;
+    transition: opacity 350ms ease, transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .threshold-root.is-opened {
+    pointer-events: none;
+  }
+
+  /* Prefers Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .curtain-left, .curtain-right {
+      transition: none !important;
+    }
+    .medallion-body, .threshold-anim-seal, .threshold-anim-eyebrow, .threshold-anim-welcome, .threshold-anim-wordmark, .threshold-anim-rule, .threshold-anim-belief, .crimson-ruby-shine, .medallion-glint {
+      animation: none !important;
+    }
+    .threshold-root.is-opened {
+      display: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    const startTime = performance.now();
+    const thresholdEl = document.getElementById('nanaksar-threshold');
+    if (!thresholdEl) return;
+
+    // Analytics Sink
+    function recordMetric(eventName, extra) {
+      try {
+        const key = 'nanaksar_threshold_analytics';
+        const raw = localStorage.getItem(key);
+        const data = raw ? JSON.parse(raw) : { shown: 0, entered: 0, autoEntered: 0, ctaTimes: [] };
+        if (eventName === 'shown') data.shown = (data.shown || 0) + 1;
+        if (eventName === 'entered') {
+          data.entered = (data.entered || 0) + 1;
+          if (extra && extra.timeMs) data.ctaTimes.push(Math.round(extra.timeMs));
+        }
+        if (eventName === 'auto_entered') {
+          data.autoEntered = (data.autoEntered || 0) + 1;
+        }
+        data.lastUpdated = new Date().toISOString();
+        localStorage.setItem(key, JSON.stringify(data));
+      } catch (e) {}
+    }
+
+    // Skip check for session or ?skip=1
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('skip') === '1' || sessionStorage.getItem('nanaksar_entered') === 'true') {
+      if (window.location.pathname !== '/welcome') {
+        thresholdEl.style.display = 'none';
+        thresholdEl.remove();
+        document.body.classList.remove('overflow-hidden');
+        return;
+      }
+    }
+
+    // Lock body scroll while entrance ritual is actively running
+    document.body.classList.add('overflow-hidden');
+    recordMetric('shown', {});
+
+    // --- DUAL-COLOR TYPEWRITER EFFECT WITH METALLIC SHINE ---
+    // "स्वाद" and "प्यार" in Shining Metallic Ruby Crimson; remaining in Warm Cream
+    const segments = [
+      { text: '“घर जैसा ', isShine: false },
+      { text: 'स्वाद', isShine: true },
+      { text: ', सेवा वाला ', isShine: false },
+      { text: 'प्यार', isShine: true },
+      { text: '”', isShine: false }
+    ];
+
+    const typedContainer = document.getElementById('typed-container');
+    const typedCursor = document.getElementById('typed-cursor');
+
+    // Pre-decompose segments into grapheme units
+    const decomposed = [];
+    segments.forEach(function (seg) {
+      let gList = [];
+      try {
+        if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+          const segger = new Intl.Segmenter('hi', { granularity: 'grapheme' });
+          gList = Array.from(segger.segment(seg.text), function (s) { return s.segment; });
+        } else {
+          gList = Array.from(seg.text);
+        }
+      } catch (e) {
+        gList = Array.from(seg.text);
+      }
+      decomposed.push({ isShine: seg.isShine, graphemes: gList });
+    });
+
+    let segIndex = 0;
+    let charInSegIndex = 0;
+    let currentSpan = null;
+    let typeTimer = null;
+
+    // Start typing after medallion settles (at 700ms)
+    setTimeout(function () {
+      if (!typedContainer) return;
+
+      function typeNext() {
+        if (segIndex >= decomposed.length) {
+          // Finished: Fade out cursor softly
+          setTimeout(function () {
+            if (typedCursor) {
+              typedCursor.style.transition = 'opacity 300ms ease';
+              typedCursor.style.opacity = '0';
+            }
+          }, 350);
+          return;
+        }
+
+        const curSeg = decomposed[segIndex];
+
+        if (charInSegIndex === 0) {
+          currentSpan = document.createElement('span');
+          if (curSeg.isShine) {
+            currentSpan.className = 'crimson-ruby-shine';
+          } else {
+            currentSpan.className = 'cream-text-warm';
+          }
+          typedContainer.appendChild(currentSpan);
+        }
+
+        if (charInSegIndex < curSeg.graphemes.length) {
+          currentSpan.textContent += curSeg.graphemes[charInSegIndex];
+          charInSegIndex++;
+          typeTimer = setTimeout(typeNext, 45); // 45ms per grapheme
+        } else {
+          segIndex++;
+          charInSegIndex = 0;
+          typeNext();
+        }
+      }
+
+      typeNext();
+    }, 700);
+
+    let hasOpened = false;
+
+    function openCurtains(type) {
+      if (hasOpened) return;
+      hasOpened = true;
+
+      if (autoTimer) clearTimeout(autoTimer);
+      if (typeTimer) clearTimeout(typeTimer);
+
+      const elapsed = performance.now() - startTime;
+      sessionStorage.setItem('nanaksar_entered', 'true');
+
+      if (type === 'auto') {
+        recordMetric('auto_entered', { timeMs: elapsed });
+      } else {
+        recordMetric('entered', { timeMs: elapsed });
+      }
+
+      // THEATRICAL PARTING: Left & right curtains glide open
+      thresholdEl.classList.add('is-opened');
+      window.dispatchEvent(new CustomEvent('threshold:entered', { detail: { type, elapsed } }));
+
+      // Complete cleanup: Remove threshold completely after curtains part
+      setTimeout(function () {
+        thresholdEl.style.display = 'none';
+        thresholdEl.remove();
+        document.body.classList.remove('overflow-hidden');
+        const mainContent = document.querySelector('main') || document.querySelector('#home');
+        if (mainContent) {
+          mainContent.setAttribute('tabindex', '-1');
+          mainContent.focus();
+        }
+      }, 1050);
+    }
+
+    // AUTOMATIC LUXURY TIMING: 2.6 seconds total
+    const autoTimer = setTimeout(function () {
+      openCurtains('auto');
+    }, 2600);
+
+    // Clicking anywhere on the screen immediately parts the curtains
+    thresholdEl.addEventListener('click', function () {
+      openCurtains('tap');
+    });
+
+    // Keyboard support: Esc, Space, Enter
+    window.addEventListener('keydown', function (e) {
+      if (thresholdEl.style.display === 'none') return;
+      if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
+        openCurtains('key');
+      }
+    });
+  })();
+</script>

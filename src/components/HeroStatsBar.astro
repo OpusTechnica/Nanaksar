@@ -27,8 +27,8 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
       <span class="text-[9px] xs:text-[10px] font-mono text-[#E4A834] uppercase tracking-widest font-bold block mb-0.5 sm:mb-1">
         RATING
       </span>
-      <span class="font-display text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-[#E4A834] block leading-tight">
-        <span data-counter="num" data-target="4.5" data-start="0" data-decimals="1">4.5</span>★ Rating
+      <span class="font-display text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-[#E4A834] flex items-center gap-1.5 leading-tight">
+        <span data-counter="num" data-target="4.5" data-start="0" data-decimals="1">4.5</span><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid"/></svg><span class="sr-only">star</span> Rating
       </span>
       <p class="text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         5,000+ Diners
@@ -72,8 +72,20 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
     const container = document.getElementById('hero-stats-container');
     if (!container) return;
 
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const counters = container.querySelectorAll('[data-counter="num"]');
     if (!counters.length) return;
+
+    // Reduced motion: render final values instantly, no animation.
+    if (reduceMotion) {
+      counters.forEach((el) => {
+        const target = parseFloat(el.getAttribute('data-target') || '0');
+        const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+        el.textContent = decimals > 0 ? target.toFixed(decimals) : Math.round(target).toString();
+      });
+      return;
+    }
 
     // Reset counters to 0 initially
     counters.forEach((el) => {

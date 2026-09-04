@@ -22,7 +22,7 @@ export default function BestsellersShowcase() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
           <div>
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#965C00]/10 border border-[#965C00]/30 text-[#965C00] text-xs font-bold uppercase tracking-wider mb-3">
-              <Star className="w-3.5 h-3.5 fill-current" />
+              <Star className="w-3.5 h-3.5" />
               <span>INDORE DINING FAVORITES</span>
             </div>
             <h2 className="font-display text-4xl sm:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-[0.95]">
@@ -57,8 +57,11 @@ export default function BestsellersShowcase() {
                     <img
                       src={item.image}
                       alt={item.name}
+                      width={700}
+                      height={560}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute top-3 left-3 flex gap-1.5">
                       <span className="inline-flex items-center gap-1 bg-white text-green-700 font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-green-600/30">

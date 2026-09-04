@@ -50,14 +50,18 @@ export default function Header() {
             className="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none focus:ring-1 focus:ring-[#E4A834] rounded-lg p-0.5 shrink-0"
           >
             <img
-              src="/assets/Logo.png"
+              src="/assets/Logo.webp"
               alt="Nanaksar Dhaba Seal"
+              width={56}
+              height={56}
               className="h-11 w-11 sm:h-13 sm:w-13 md:h-14 md:w-14 object-contain group-hover:scale-105 transition-transform shrink-0"
             />
             <div className="flex flex-col justify-center">
               <img
-                src="/assets/Brand_Name.png"
+                src="/assets/Brand_Name.webp"
                 alt="Nanaksar Dhaba"
+                width={180}
+                height={60}
                 className="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain"
               />
               <span className="text-[9px] sm:text-[10px] md:text-[11px] font-display font-semibold tracking-widest text-[#E4A834] uppercase -mt-0.5">
@@ -92,7 +96,7 @@ export default function Header() {
             <button
               onClick={() => $isReservationOpen.set(true)}
               type="button"
-              className="hidden sm:inline-flex items-center gap-1.5 border border-[#E4A834] text-[#E4A834] hover:bg-[#E4A834] hover:text-[#0F0F0F] px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg font-display text-xs font-bold tracking-wider uppercase transition-colors min-h-[42px] focus:outline-none focus:ring-1 focus:ring-[#E4A834]"
+              className="hidden sm:inline-flex items-center gap-1.5 border border-[#E4A834] text-[#E4A834] hover:bg-[#E4A834] hover:text-[#0F0F0F] px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-lg font-display text-xs font-bold tracking-wider uppercase transition-colors min-h-[44px] focus:outline-none focus:ring-1 focus:ring-[#E4A834]"
             >
               <Utensils className="w-3.5 h-3.5" />
               <span>Book Table</span>
@@ -102,7 +106,7 @@ export default function Header() {
             <button
               onClick={() => $isCartOpen.set(true)}
               type="button"
-              className="relative flex items-center gap-1.5 bg-[#D01B1B] hover:bg-[#B81414] text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg font-display text-xs sm:text-sm font-bold tracking-wider uppercase transition min-h-[42px] focus:outline-none focus:ring-1 focus:ring-[#E4A834]"
+              className="relative flex items-center gap-1.5 bg-[#D01B1B] hover:bg-[#B81414] text-white px-3 py-2 sm:px-4 sm:py-2.5 rounded-lg font-display text-xs sm:text-sm font-bold tracking-wider uppercase transition min-h-[44px] focus:outline-none focus:ring-1 focus:ring-[#E4A834]"
               aria-label={`View Cart (${summary.itemCount} items)`}
             >
               <ShoppingBag className="w-4 h-4" />
@@ -118,8 +122,9 @@ export default function Header() {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
-              className="lg:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 text-white hover:bg-white/15 focus:outline-none focus:ring-1 focus:ring-[#E4A834]"
+              className="lg:hidden flex items-center justify-center w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-white/10 text-white hover:bg-white/15 focus:outline-none focus:ring-1 focus:ring-[#E4A834]"
               aria-label="Toggle Navigation Menu"
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
             </button>
@@ -133,8 +138,8 @@ export default function Header() {
         <div className="fixed inset-0 z-50 lg:hidden flex flex-col bg-[#0F0F0F] animate-fadeIn">
           <div className="flex items-center justify-between p-5 border-b border-white/10 bg-[#0F0F0F]">
             <div className="flex items-center gap-3">
-              <img src="/assets/Logo.png" alt="Logo" className="h-10 w-10 object-contain" />
-              <img src="/assets/Brand_Name.png" alt="Nanaksar" className="h-8 w-auto object-contain" />
+              <img src="/assets/Logo.webp" alt="Logo" width={40} height={40} className="h-10 w-10 object-contain" />
+              <img src="/assets/Brand_Name.webp" alt="Nanaksar" width={120} height={32} className="h-8 w-auto object-contain" />
             </div>
             <button
               onClick={() => {

@@ -21,7 +21,7 @@ export default function SignaturesShowcase() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#D01B1B]/10 border border-[#D01B1B]/30 text-[#D01B1B] text-xs font-bold uppercase tracking-wider mb-3">
-            <Flame className="w-3.5 h-3.5 fill-current" />
+            <Flame className="w-3.5 h-3.5" />
             <span>HERITAGE CRAFT • ROOTS SINCE 1980</span>
           </div>
           <h2 className="font-display text-4xl sm:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-[0.95]">
@@ -48,8 +48,11 @@ export default function SignaturesShowcase() {
                     <img
                       src={item.image}
                       alt={item.name}
+                      width={700}
+                      height={560}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute top-3 left-3 flex flex-wrap gap-1.5">
                       <span className="inline-flex items-center gap-1 bg-white text-green-700 font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-green-600/30">
@@ -94,7 +97,7 @@ export default function SignaturesShowcase() {
                   <button
                     type="button"
                     onClick={() => handleAdd(item)}
-                    className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-display font-bold uppercase tracking-wider text-xs transition min-h-[42px] ${
+                    className={`w-full flex items-center justify-center gap-2 py-2.5 rounded-xl font-display font-bold uppercase tracking-wider text-xs transition min-h-[44px] ${
                       addedItem === item.id
                         ? 'bg-green-700 text-white'
                         : 'bg-[#0F0F0F] hover:bg-[#D01B1B] text-white'

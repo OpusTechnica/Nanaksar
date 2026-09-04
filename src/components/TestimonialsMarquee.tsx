@@ -88,8 +88,10 @@ export default function TestimonialsMarquee() {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#0F0F0F]/10 bg-white px-4 py-1.5 mb-4 shadow-sm">
-            <div className="flex text-[#D01B1B] text-xs tracking-wider">
-              ★★★★★
+            <div className="flex text-[#D01B1B] gap-0.5" aria-label="Rated 5 out of 5 stars" role="img">
+              {[0, 1, 2, 3, 4].map((i) => (
+                <svg key={i} className="w-3 h-3 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid" /></svg>
+              ))}
             </div>
             <span className="text-xs font-display font-bold uppercase tracking-wider text-[#0F0F0F]">
               4.5 / 5.0 Rating Across 5,000+ Verified Diners
@@ -97,15 +99,11 @@ export default function TestimonialsMarquee() {
           </div>
 
           <h2 className="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase text-[#0F0F0F] tracking-tight">
-            Loved Across Indore
+            Loved Across <span className="text-[#D01B1B]">Indore</span>
           </h2>
           
           <p className="mt-3 text-sm sm:text-base text-[#0F0F0F]/70 font-sans max-w-xl mx-auto leading-relaxed">
             From early highway travelers on AB Road to multi-generational family feasts today across our 5 Indore dining rooms.
-          </p>
-
-          <p className="mt-2 text-[11px] font-mono text-[#E4A834] uppercase tracking-wider font-bold">
-            Hover or touch any card to pause and read
           </p>
         </div>
 

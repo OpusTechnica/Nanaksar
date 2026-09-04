@@ -4,12 +4,13 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://nanaksardhaba.com',
   server: {
     host: '127.0.0.1',
     port: 4321,
   },
   prefetch: {
-    prefetchAll: true,
+    prefetchAll: false,
     defaultStrategy: 'hover',
   },
   integrations: [
@@ -20,7 +21,7 @@ export default defineConfig({
   ],
   vite: {
     optimizeDeps: {
-      include: ['lucide-react', 'react', 'react-dom', '@nanostores/react', 'nanostores'],
+      include: ['react', 'react-dom', '@nanostores/react', 'nanostores'],
     },
   },
 });

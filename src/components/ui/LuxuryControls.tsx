@@ -14,13 +14,13 @@ export function LuxurySelect({ label, value, onChange, options, icon }: LuxurySe
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleDismiss = (event: PointerEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('pointerdown', handleDismiss);
+    return () => document.removeEventListener('pointerdown', handleDismiss);
   }, []);
 
   const currentOption = options.find((o) => o.value === value) || options[0];
@@ -33,7 +33,7 @@ export function LuxurySelect({ label, value, onChange, options, icon }: LuxurySe
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full bg-[#121212] hover:bg-[#181818] border rounded-xl px-3.5 py-2.5 text-xs text-white flex items-center justify-between transition min-h-[42px] focus:outline-none ${
+        className={`w-full bg-[#121212] hover:bg-[#181818] border rounded-xl px-3.5 py-2.5 text-xs text-white flex items-center justify-between transition min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E4A834] ${
           isOpen ? 'border-[#E4A834] ring-1 ring-[#E4A834]' : 'border-white/15'
         }`}
       >
@@ -60,7 +60,7 @@ export function LuxurySelect({ label, value, onChange, options, icon }: LuxurySe
                   onChange(opt.value);
                   setIsOpen(false);
                 }}
-                className={`w-full text-left px-3.5 py-2.5 text-xs transition-all flex items-center justify-between ${
+                className={`w-full text-left px-3.5 py-3 text-xs transition-all flex items-center justify-between min-h-[44px] ${
                   isSelected
                     ? 'bg-[#D01B1B]/25 text-[#E4A834] font-bold border-l-2 border-[#E4A834]'
                     : 'text-white/80 hover:bg-[#E4A834]/15 hover:text-[#E4A834] hover:pl-4.5'
@@ -99,13 +99,13 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
   min.setHours(0, 0, 0, 0);
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleDismiss = (event: PointerEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('pointerdown', handleDismiss);
+    return () => document.removeEventListener('pointerdown', handleDismiss);
   }, []);
 
   const monthNames = [
@@ -180,7 +180,7 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-full bg-[#121212] hover:bg-[#181818] border rounded-xl px-3.5 py-2.5 text-xs text-white flex items-center justify-between transition min-h-[42px] focus:outline-none ${
+        className={`w-full bg-[#121212] hover:bg-[#181818] border rounded-xl px-3.5 py-2.5 text-xs text-white flex items-center justify-between transition min-h-[44px] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E4A834] ${
           isOpen ? 'border-[#E4A834] ring-1 ring-[#E4A834]' : 'border-white/15'
         }`}
       >
@@ -207,7 +207,7 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
               <button
                 type="button"
                 onClick={prevMonth}
-                className="w-6 h-6 flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#E4A834]/20 text-white hover:text-[#E4A834] transition"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#E4A834]/20 text-white hover:text-[#E4A834] transition"
                 aria-label="Previous Month"
               >
                 <ChevronLeft className="w-3.5 h-3.5" />
@@ -215,7 +215,7 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
               <button
                 type="button"
                 onClick={nextMonth}
-                className="w-6 h-6 flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#E4A834]/20 text-white hover:text-[#E4A834] transition"
+                className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-white/5 hover:bg-[#E4A834]/20 text-white hover:text-[#E4A834] transition"
                 aria-label="Next Month"
               >
                 <ChevronRight className="w-3.5 h-3.5" />
@@ -237,7 +237,7 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
           {/* Days Grid */}
           <div className="grid grid-cols-7 gap-1 text-center">
             {Array.from({ length: firstDayIndex }).map((_, i) => (
-              <div key={`empty-${i}`} className="w-7 h-7" />
+              <div key={`empty-${i}`} className="w-11 h-11" />
             ))}
 
             {days.map((item) => (
@@ -249,13 +249,14 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
                   onChange(item.dateStr);
                   setIsOpen(false);
                 }}
-                className={`w-7 h-7 rounded-lg text-[11px] font-mono font-medium flex items-center justify-center transition-all ${
+                className={`w-11 h-11 rounded-lg text-[11px] font-mono font-medium flex items-center justify-center transition-all focus-visible:ring-2 focus-visible:ring-[#E4A834] ${
                   item.isSelected
                     ? 'bg-[#D01B1B] text-white font-bold ring-1 ring-[#E4A834] scale-105'
                     : item.isPast
                     ? 'text-white/20 cursor-not-allowed'
                     : 'text-white hover:bg-[#E4A834]/20 hover:text-[#E4A834]'
                 }`}
+                aria-disabled={item.isPast}
               >
                 {item.day}
               </button>
@@ -264,20 +265,20 @@ export function LuxuryDatePicker({ label, value, onChange, minDate }: LuxuryDate
 
           {/* Quick Shortcuts: Today / Tomorrow */}
           <div className="mt-2.5 pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
-            <button
-              type="button"
-              onClick={() => setShortcutDate(0)}
-              className="text-[#E4A834] hover:underline"
-            >
-              Today
-            </button>
-            <button
-              type="button"
-              onClick={() => setShortcutDate(1)}
-              className="text-white/70 hover:text-white hover:underline"
-            >
-              Tomorrow
-            </button>
+              <button
+                type="button"
+                onClick={() => setShortcutDate(0)}
+                className="text-[#E4A834] hover:underline min-h-[44px] px-2"
+              >
+                Today
+              </button>
+              <button
+                type="button"
+                onClick={() => setShortcutDate(1)}
+                className="text-white/70 hover:text-white hover:underline min-h-[44px] px-2"
+              >
+                Tomorrow
+              </button>
           </div>
 
         </div>

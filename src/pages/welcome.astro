@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Threshold from '../components/Threshold.astro';
+---
+
+<Layout title="Nanaksar Dhaba | The Grand Unveil" noindex={true} preloadHero={false}>
+  <!-- THEATRICAL ROYAL CURTAINS (Splits Left & Right over 2.6s) -->
+  <Threshold mode="overlay" />
+
+  <!-- GRAND DINING ROOM HERO REVEALED AS CURTAINS PART -->
+  <Hero />
+</Layout>

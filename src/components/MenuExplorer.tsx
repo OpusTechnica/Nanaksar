@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useStore } from '@nanostores/react';
-import { Search, Plus, Minus, Check, ChevronDown, X, Menu, Utensils, ShoppingBag } from './ui/Icon';
+import { Search, Plus, Minus, Check, ChevronDown, X, Menu, Utensils, ShoppingBag, ArrowRight } from './ui/Icon';
 import { MENU_ITEMS, type MenuItem } from '../data/restaurantData';
 import { $cart, addToCart, updateCartQuantity, openCart } from '../data/cartStore';
 
@@ -313,11 +313,12 @@ export default function MenuExplorer() {
                   />
                   {searchQuery && (
                     <button
+                      type="button"
                       onClick={() => setSearchQuery('')}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-mono text-[#0F0F0F]/40 hover:text-[#0F0F0F]"
+                      className="absolute right-1 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-xs font-mono text-[#0F0F0F]/40 hover:text-[#0F0F0F]"
                       aria-label="Clear search"
                     >
-                      ✕
+                      <X className="w-4 h-4" />
                     </button>
                   )}
                 </div>
@@ -332,7 +333,7 @@ export default function MenuExplorer() {
                       aria-haspopup="listbox"
                       aria-expanded={isSortOpen}
                       onClick={() => setIsSortOpen(!isSortOpen)}
-                      className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-[#0F0F0F] text-white hover:bg-[#222222] transition min-h-[40px] shadow-sm"
+                      className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-[#0F0F0F] text-white hover:bg-[#222222] transition min-h-[44px] shadow-sm"
                     >
                       <span className="text-[#E4A834] hidden xs:inline">Sort:</span>
                       <span className="truncate max-w-[130px] sm:max-w-none">{currentSortLabel}</span>
@@ -342,7 +343,7 @@ export default function MenuExplorer() {
                     {isSortOpen && (
                       <div
                         role="listbox"
-                        className="absolute right-0 top-full mt-2 w-64 bg-[#0D0D0D] text-white rounded-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.95)] p-2 z-50 animate-fadeIn"
+                        className="absolute right-0 top-full mt-2 w-64 max-w-[calc(100vw-2rem)] bg-[#0D0D0D] text-white rounded-2xl border border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.95)] p-2 z-50 animate-fadeIn"
                       >
                         <div className="px-3 py-2 border-b border-white/10 text-[10px] font-mono text-[#E4A834] uppercase tracking-widest font-bold flex items-center justify-between">
                           <span>Sort Dishes By</span>
@@ -358,7 +359,7 @@ export default function MenuExplorer() {
                                 setSortBy(opt.id);
                                 setIsSortOpen(false);
                               }}
-                              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs text-left transition font-display tracking-wide ${
+                              className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-xs text-left transition font-display tracking-wide min-h-[44px] ${
                                 sortBy === opt.id
                                   ? 'bg-[#141414] text-[#E4A834] font-bold border border-[#E4A834]/40 shadow-sm'
                                   : 'text-white/80 hover:bg-white/10 hover:text-white'
@@ -377,7 +378,7 @@ export default function MenuExplorer() {
                   <button
                     type="button"
                     onClick={() => setJainOnly(!jainOnly)}
-                    className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-mono font-bold transition min-h-[40px] border ${
+                    className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-mono font-bold transition min-h-[44px] border ${
                       jainOnly
                         ? 'bg-green-700 text-white border-green-700 shadow-sm'
                         : 'bg-[#F7F4EB] text-green-900 border-green-600/30 hover:bg-green-50'
@@ -400,19 +401,19 @@ export default function MenuExplorer() {
                 {selectedCategory !== 'all' && (
                   <span className="inline-flex items-center gap-1 bg-[#0F0F0F] text-white px-2.5 py-0.5 rounded-full text-[11px] font-display font-bold uppercase">
                     {currentCategoryLabel}
-                    <button onClick={() => setSelectedCategory('all')} className="text-white/70 hover:text-white ml-0.5">✕</button>
+                    <button onClick={() => setSelectedCategory('all')} className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-['']" aria-label="Remove filter"><X className="w-3.5 h-3.5" /></button>
                   </span>
                 )}
                 {priceFilter !== 'all' && (
                   <span className="inline-flex items-center gap-1 bg-[#D01B1B] text-white px-2.5 py-0.5 rounded-full text-[11px] font-display font-bold uppercase">
                     {PRICE_TIERS.find((t) => t.id === priceFilter)?.label}
-                    <button onClick={() => setPriceFilter('all')} className="text-white/70 hover:text-white ml-0.5">✕</button>
+                    <button onClick={() => setPriceFilter('all')} className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-['']" aria-label="Remove filter"><X className="w-3.5 h-3.5" /></button>
                   </span>
                 )}
                 {jainOnly && (
                   <span className="inline-flex items-center gap-1 bg-green-700 text-white px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold">
                     Jain Only
-                    <button onClick={() => setJainOnly(false)} className="text-white/70 hover:text-white ml-0.5">✕</button>
+                    <button onClick={() => setJainOnly(false)} className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-['']" aria-label="Remove filter"><X className="w-3.5 h-3.5" /></button>
                   </span>
                 )}
               </div>
@@ -471,6 +472,8 @@ export default function MenuExplorer() {
                           <img
                             src={item.image}
                             alt={item.name}
+                            width={700}
+                            height={560}
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
@@ -511,7 +514,7 @@ export default function MenuExplorer() {
                                 <button
                                   type="button"
                                   onClick={() => setSelectedPortions((prev) => ({ ...prev, [item.id]: 'half' }))}
-                                  className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold transition ${
+                                  className={`px-3 py-2.5 rounded text-[10px] font-mono font-bold transition min-h-[44px] ${
                                     chosenPortion === 'half'
                                       ? 'bg-[#0F0F0F] text-white shadow-xs'
                                       : 'text-[#0F0F0F]/60 hover:text-[#0F0F0F]'
@@ -522,7 +525,7 @@ export default function MenuExplorer() {
                                 <button
                                   type="button"
                                   onClick={() => setSelectedPortions((prev) => ({ ...prev, [item.id]: 'full' }))}
-                                  className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold transition ${
+                                  className={`px-3 py-2.5 rounded text-[10px] font-mono font-bold transition min-h-[44px] ${
                                     chosenPortion === 'full'
                                       ? 'bg-[#0F0F0F] text-white shadow-xs'
                                       : 'text-[#0F0F0F]/60 hover:text-[#0F0F0F]'
@@ -549,20 +552,20 @@ export default function MenuExplorer() {
                               <button
                                 type="button"
                                 onClick={() => handleAdd(item)}
-                                className="px-3.5 py-1.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider transition flex items-center gap-1.5 min-h-[36px] bg-[#0F0F0F] hover:bg-[#D01B1B] text-white active:scale-95 shadow-sm"
+                                className="px-4 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider transition flex items-center gap-1.5 min-h-[44px] bg-[#0F0F0F] hover:bg-[#D01B1B] text-white active:scale-95 shadow-sm"
                               >
                                 <Plus className="w-3.5 h-3.5" />
                                 <span>ADD</span>
                               </button>
                             ) : (
-                              <div className="flex items-center gap-1.5 bg-[#0F0F0F] rounded-xl p-1 border border-[#E4A834]/50 shadow-sm min-h-[36px]">
+                              <div className="flex items-center gap-1.5 bg-[#0F0F0F] rounded-xl p-1 border border-[#E4A834]/50 shadow-sm min-h-[44px]">
                                 <button
                                   type="button"
                                   onClick={() => updateCartQuantity(existingCartItem!.id, -1)}
-                                  className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#D01B1B] text-white transition active:scale-95"
+                                  className="w-11 h-11 min-w-[44px] flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#D01B1B] text-white transition active:scale-95"
                                   aria-label="Decrease quantity"
                                 >
-                                  <Minus className="w-3.5 h-3.5" />
+                                  <Minus className="w-4 h-4" />
                                 </button>
                                 <span className="w-5 text-center font-mono text-xs font-bold text-white">
                                   {currentQty}
@@ -570,7 +573,7 @@ export default function MenuExplorer() {
                                 <button
                                   type="button"
                                   onClick={() => updateCartQuantity(existingCartItem!.id, 1)}
-                                  className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#E4A834] hover:text-black text-white transition active:scale-95"
+                                  className="w-11 h-11 min-w-[44px] flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#E4A834] hover:text-black text-white transition active:scale-95"
                                   aria-label="Increase quantity"
                                 >
                                   <Plus className="w-3.5 h-3.5" />
@@ -644,7 +647,7 @@ export default function MenuExplorer() {
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20"
                   aria-label="Close menu sheet"
                 >
                   <X className="w-4 h-4" />
@@ -656,12 +659,12 @@ export default function MenuExplorer() {
                 <span className="text-[10px] font-mono text-white/50 uppercase tracking-wider block mb-2 font-bold">
                   Filter By Price:
                 </span>
-                <div className="grid grid-cols-4 gap-1.5">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
                   {PRICE_TIERS.map((tier) => (
                     <button
                       key={tier.id}
                       onClick={() => setPriceFilter(tier.id)}
-                      className={`py-2 px-1 rounded-xl text-center text-[10px] font-mono font-bold transition border ${
+                      className={`py-3 px-2 rounded-xl text-center text-[10px] font-mono font-bold transition border min-h-[44px] ${
                         priceFilter === tier.id
                           ? 'bg-[#D01B1B] text-white border-[#D01B1B]'
                           : 'bg-[#181818] text-white/70 border-white/10'
@@ -757,7 +760,7 @@ export default function MenuExplorer() {
 
               <div className="flex items-center gap-1.5 text-xs font-display font-bold uppercase tracking-wider text-[#E4A834] group-hover:translate-x-1 transition-transform">
                 <span>VIEW CART</span>
-                <span className="text-sm">→</span>
+                <ArrowRight className="w-4 h-4" />
               </div>
             </button>
           </aside>

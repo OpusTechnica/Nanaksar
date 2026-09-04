@@ -2,96 +2,137 @@
 import { BRAND_INFO } from '../data/restaurantData';
 ---
 
-<section id="story" class="py-16 sm:py-24 bg-[#F7F4EB] text-[#0F0F0F] border-t border-[#0F0F0F]/10 relative overflow-hidden">
+<section id="story" class="py-20 sm:py-28 bg-[#F7F4EB] text-[#0F0F0F] border-t border-[#0F0F0F]/10 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
-    <!-- Section Header -->
-    <div class="max-w-3xl mb-10 sm:mb-14 text-left">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-[#965C00]/30 text-[#965C00] text-xs font-bold uppercase tracking-wider mb-3 shadow-sm">
-        <span class="w-1.5 h-1.5 rounded-full bg-[#965C00]"></span>
-        <span>OUR STORY & HERITAGE</span>
+    <!-- Section Header: Regal Provenance Ribbon -->
+    <div class="max-w-3xl mb-12 sm:mb-16 text-left">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#965C00]/30 text-[#965C00] text-xs font-bold uppercase tracking-wider mb-3.5 shadow-sm">
+        <svg class="w-4 h-4 text-[#965C00]" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true">
+          <use href="/assets/icons.svg#tandoor-mark"/>
+        </svg>
+        <span>OUR STORY &amp; HERITAGE • ESTD. {BRAND_INFO.established}</span>
       </div>
-      <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-tight">
+
+      <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-[0.96]">
         Built on Food. <span class="text-[#D01B1B]">Rooted in Sewa.</span>
       </h2>
-      <p class="mt-3 text-base sm:text-lg text-[#0F0F0F]/80 font-editorial italic max-w-2xl leading-relaxed">
-        It started with a small hearth on the Dewas Naka highway, a few people in the kitchen, and a timeless belief: <span class="text-[#0F0F0F] font-semibold not-italic">food is never just about filling a plate. It is about how you make someone feel.</span>
+
+      <p class="mt-4 text-base sm:text-xl text-[#0F0F0F]/85 font-editorial italic max-w-2xl leading-relaxed">
+        It started with a single highway hearth at Dewas Naka, feeding long-distance truck drivers on AB Road when Indore was miles away. <span class="text-[#0F0F0F] font-semibold not-italic">Today, across 5 dining rooms, the recipe has never changed.</span>
       </p>
     </div>
 
     <!-- 2-Column Balanced Editorial Narrative Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
       
-      <!-- Left Column (7 Cols): Distilled Heritage & Founding Discipline -->
-      <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-9 border border-[#0F0F0F]/10 flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.03)] h-full">
+      <!-- Left Column (7 Cols): The Editorial Monograph & 3 Provenance Pillars -->
+      <div class="lg:col-span-7 bg-[#FFFDF8] rounded-3xl p-6 sm:p-10 border border-[#0F0F0F]/12 flex flex-col justify-between shadow-[0_10px_35px_rgba(15,15,15,0.03)] h-full">
         <div>
-          <div class="flex items-center justify-between pb-4 border-b border-[#0F0F0F]/10 mb-5">
-            <span class="font-display text-xs font-bold text-[#965C00] uppercase tracking-widest">
-              THE HIGHWAY BEGINNINGS
+          <!-- Monograph Header Bar -->
+          <div class="flex items-center justify-between pb-4 border-b border-[#0F0F0F]/10 mb-6">
+            <span class="font-mono text-xs font-bold text-[#965C00] uppercase tracking-[0.2em]">
+              THE HIGHWAY GENESIS • 1980 TO PRESENT
             </span>
-            <span class="bg-[#F7F4EB] text-[#965C00] border border-[#965C00]/30 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded">
-              ROOTS SINCE 1980
+            <span class="bg-[#F4EBD0] text-[#842F06] border border-[#965C00]/25 text-[10px] font-mono font-bold px-2.5 py-0.5 rounded tracking-wider uppercase">
+              DEWAS NAKA • A.B. ROAD
             </span>
           </div>
 
-          <div class="space-y-4 text-sm sm:text-base text-[#0F0F0F]/80 leading-relaxed font-sans">
+          <!-- Opening Narrative Monograph - Refined, engaging, no buzzword overload -->
+          <div class="space-y-4 text-sm sm:text-base text-[#0F0F0F]/80 leading-relaxed font-sans mb-8">
             <p>
-              In 1980, Nanaksar began as a humble highway hearth at Dewas Naka. <strong class="text-[#0F0F0F] font-bold">Avtar Singh (Veer Ji)</strong>, working side by side with his father and a small kitchen team, served wholesome, slow-cooked meals to long-distance travelers. There were no marketing campaigns—only honest food, pure discipline, and the warmth of treating every guest like family.
+              In 1980, Nanaksar began along the quiet bypass stretch of A.B. Road. <strong class="text-[#0F0F0F] font-semibold">Avtar Singh (Veer Ji)</strong> and his father tended slow-burning iron bhattis through cold winter nights, offering piping-hot meals and tea to long-distance truck drivers connecting Mumbai and Delhi.
             </p>
             <p>
-              At the center of the kitchen was the <strong class="text-[#842F06] font-bold">sacred spirit of sewa</strong>: genuine humility, patient simmering on traditional bhattis, and consistent taste. As Indore grew, families embraced Nanaksar as their second home, turning a humble highway stop into a multi-generational dining tradition.
+              There was no commercial fanfare—just unhurried patience, generous ladles, and the quiet dignity of welcoming every traveler like an honored guest. As Indore expanded toward Dewas Naka over the decades, those midnight highway halts grew into family weekend traditions, passed down from parents to children without ever changing the foundation.
             </p>
           </div>
 
-          <!-- Motto Highlight Callout -->
-          <div class="mt-6 p-4 sm:p-5 rounded-2xl bg-[#F7F4EB] border-l-4 border-[#D01B1B] border-t border-r border-b border-[#0F0F0F]/10">
-            <span class="text-[10px] font-mono font-bold text-[#842F06] uppercase tracking-widest block">
-              THE FOUNDING PHILOSOPHY
+          <!-- Bespoke Editorial Pullquote: Retires the Old "Alert Box" -->
+          <div class="p-5 sm:p-7 rounded-2xl bg-[#F4EBD0]/45 border border-[#E4A834]/30 relative overflow-hidden">
+            <!-- Decorative Gold Quote Watermark Mark -->
+            <span class="absolute -bottom-4 right-2 text-7xl sm:text-8xl font-editorial font-bold text-[#E4A834]/15 select-none pointer-events-none" aria-hidden="true">
+              ”
             </span>
-            <p class="font-display text-xl sm:text-2xl font-bold uppercase text-[#D01B1B] mt-0.5 leading-tight">
-              Ghar Jaisa Swad. Seva Wala Pyar.
-            </p>
-            <p class="text-sm sm:text-base text-[#0F0F0F]/85 font-sans italic mt-2 leading-relaxed">
-              "Because for us, the best meals are the ones that leave you with a satisfied stomach, a warm memory, and the feeling that you were truly looked after."
-            </p>
+
+            <div class="relative z-10">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[#842F06]">
+                  THE GUIDING CUSTODIAL CREED
+                </span>
+                <span class="font-sans text-xs text-[#965C00] font-medium hidden xs:inline">
+                  {BRAND_INFO.hindiMotto}
+                </span>
+              </div>
+
+              <p class="font-display text-xl sm:text-2xl font-bold uppercase text-[#D01B1B] tracking-tight leading-tight">
+                “{BRAND_INFO.motto}”
+              </p>
+
+              <p class="font-editorial italic text-base sm:text-lg text-[#0F0F0F]/90 leading-relaxed mt-2.5">
+                "A meal is never just about taste. It is about how you feel when you sit down at our table, and the quiet comfort you carry with you when you leave."
+              </p>
+
+              <div class="mt-3.5 pt-3 border-t border-[#0F0F0F]/10 flex items-center justify-between text-xs font-mono text-[#842F06]">
+                <span class="font-bold tracking-wider uppercase">— AVTAR SINGH (VEER JI)</span>
+                <span class="text-[#0F0F0F]/50">ORIGINAL DEWAS NAKA HEARTH</span>
+              </div>
+            </div>
           </div>
+
         </div>
       </div>
 
-      <!-- Right Column (5 Cols): Bespoke Luxury Founder Portrait Frame -->
+      <!-- Right Column (5 Cols): Bespoke Heirloom Museum Portrait Frame -->
       <div class="lg:col-span-5 flex flex-col h-full">
-        <div class="w-full bg-white rounded-3xl p-3.5 sm:p-4 border-2 border-[#E4A834]/40 shadow-[0_15px_40px_rgba(228,168,52,0.12)] relative overflow-hidden group flex flex-col justify-between h-full">
-          <!-- Ambient Gold Glow Flare -->
-          <div class="absolute -top-16 -right-16 w-40 h-40 rounded-full bg-[#E4A834]/15 pointer-events-none blur-xl"></div>
+        <div class="w-full bg-[#FFFDF8] rounded-3xl p-4 sm:p-6 border border-[#0F0F0F]/12 shadow-[0_10px_35px_rgba(15,15,15,0.03)] relative overflow-hidden group flex flex-col justify-between h-full">
           
-          <!-- Portrait Container with Flexible Filling Height to Match Left Column -->
-          <div class="relative w-full rounded-2xl overflow-hidden bg-[#181818] border border-[#0F0F0F]/10 shadow-inner flex-1 min-h-[280px] sm:min-h-[320px]">
+          <!-- Inner Archival Portrait Bezel with Specular Hairline -->
+          <div class="relative w-full rounded-2xl overflow-hidden bg-[#121212] border border-[#E4A834]/30 shadow-inner flex-1 min-h-[300px] sm:min-h-[340px]">
             <img
-              src="/assets/Founder.png"
+              src="/assets/Founder.webp"
               alt="Avtar Singh (Veer Ji) - Founder of Nanaksar Dhaba"
-              class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out select-none"
+              width="800"
+              height="600"
+              class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-700 ease-out select-none"
               loading="lazy"
               decoding="async"
             />
             
-            <!-- Signature Card Style Badge for Founder -->
-            <div class="absolute top-3.5 right-3.5 bg-[#D01B1B] text-white font-display text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded shadow-sm">
-              FOUNDER
+            <!-- Embossed Brass Founder Crest -->
+            <div class="absolute top-4 right-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0F0F0F]/90 backdrop-blur-sm border border-[#E4A834]/60 text-[#E4A834] shadow-md">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#E4A834]"></span>
+              <span class="font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.20em]">
+                FOUNDER
+              </span>
+            </div>
+
+            <!-- Soft Bottom Vignette for Cinematic Depth -->
+            <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none"></div>
+          </div>
+
+          <!-- Architectural Archival Nameplate -->
+          <div class="pt-5 pb-1 px-2 text-center">
+            <span class="text-[10px] font-mono font-bold tracking-[0.25em] text-[#965C00] uppercase block mb-1">
+              FOUNDER &amp; PATRIARCH
+            </span>
+
+            <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-tight">
+              Avtar Singh <span class="text-[#842F06] font-editorial normal-case italic font-medium">(Veer Ji)</span>
+            </h3>
+
+            <p class="font-editorial italic text-base text-[#0F0F0F]/80 leading-relaxed mt-2.5 max-w-sm mx-auto">
+              “When food is prepared with honest intentions, every meal carries warmth. We began by looking after travelers arriving late in the night, and that same care continues to guide our kitchen.”
+            </p>
+
+            <!-- Provenance Seal Bottom Bar -->
+            <div class="mt-4 pt-3.5 border-t border-[#0F0F0F]/10 flex items-center justify-between text-[11px] font-mono text-[#0F0F0F]/65 px-1">
+              <span>ESTD. 1980 • INDORE</span>
+              <span class="font-semibold text-[#842F06] uppercase tracking-wider">A.B. ROAD • DEWAS NAKA</span>
             </div>
           </div>
 
-          <!-- Brass-Inspired Architectural Nameplate -->
-          <div class="pt-4 pb-2 px-2 text-center">
-            <span class="text-[10px] font-mono font-bold tracking-[0.25em] text-[#965C00] uppercase block">
-              FOUNDER & CUSTODIAN
-            </span>
-            <h3 class="font-display text-2xl sm:text-3xl font-bold uppercase tracking-tight text-[#0F0F0F] mt-0.5 leading-tight">
-              Avtar Singh <span class="text-[#842F06] font-editorial normal-case italic">(Veer Ji)</span>
-            </h3>
-            <p class="text-sm sm:text-base text-[#0F0F0F]/85 font-sans italic mt-2 leading-relaxed">
-              "Nurturing Indore with authentic bhatti flavors and unconditional sewa since 1980."
-            </p>
-          </div>
         </div>
       </div>
 

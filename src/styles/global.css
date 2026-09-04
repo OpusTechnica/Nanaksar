@@ -501,10 +501,34 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   perspective: 1000px;
 }
 
-/* Instant Silk Pause on Hover & Active Touch (Preserves exact subpixel position without jumping) */
+/* Instant Silk Pause on Hover, Keyboard Focus & Active Touch (Preserves exact subpixel position without jumping) */
 .marquee-group:hover .marquee-track,
-.marquee-group:active .marquee-track {
+.marquee-group:active .marquee-track,
+.marquee-group:focus-within .marquee-track {
   animation-play-state: paused;
+}
+
+/* Reduced-motion safety: static content, no marquee/drawer/kinetic animation */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .animate-drawer-mobile,
+  .animate-drawer-desktop {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  ::before,
+  ::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  .kinetic-footer-btn .clone-wrap > *,
+  .kinetic-hero-btn .clone-wrap > * {
+    transform: none;
+  }
 }
 
 

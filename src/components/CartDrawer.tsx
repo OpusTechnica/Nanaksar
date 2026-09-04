@@ -37,7 +37,7 @@ const POPULAR_ACCOMPANIMENTS = [
     portion: 'single' as const,
     portionLabel: '1 Pc (Desi Ghee Hand-Crushed)',
     price: 50,
-    image: '/assets/menu/chur-chur-naan.png',
+    image: '/assets/menu/thumbs/chur-chur-naan.webp',
   },
   {
     id: 'shahi-kheer',
@@ -45,7 +45,7 @@ const POPULAR_ACCOMPANIMENTS = [
     portion: 'half' as const,
     portionLabel: 'Half (Rich Almond & Pistachio)',
     price: 110,
-    image: '/assets/menu/shahi-kheer.png',
+    image: '/assets/menu/thumbs/shahi-kheer.webp',
   },
 ];
 
@@ -152,7 +152,7 @@ export default function CartDrawer() {
       isVegetarian: true,
       isJainAvailable: true,
       spiceLevel: 'mild' as const,
-      image: '/assets/menu/chur-chur-naan.png',
+      image: '/assets/menu/chur-chur-naan.webp',
       packagingFee: 10,
     };
 
@@ -236,7 +236,7 @@ export default function CartDrawer() {
               <button
                 type="button"
                 onClick={() => setShowClearConfirm(true)}
-                className="text-[11px] font-mono font-bold text-white/50 hover:text-red-400 px-2.5 py-1.5 rounded-xl border border-white/10 hover:border-red-500/30 transition flex items-center gap-1.5 active:scale-95"
+                className="text-[11px] font-mono font-bold text-white/50 hover:text-red-400 px-2.5 py-1.5 rounded-xl border border-white/10 hover:border-red-500/30 transition flex items-center gap-1.5 active:scale-95 min-h-[44px] min-w-[44px] justify-center"
                 aria-label="Clear all items from tray"
               >
                 <Trash2 className="w-3.5 h-3.5 text-red-400" />
@@ -277,14 +277,14 @@ export default function CartDrawer() {
                   clearCart();
                   setShowClearConfirm(false);
                 }}
-                className="px-3.5 py-2 rounded-xl bg-[#D01B1B] hover:bg-[#B81414] text-white font-display text-xs font-bold uppercase tracking-wider transition min-h-[40px] active:scale-95"
+                className="px-3.5 py-2 rounded-xl bg-[#D01B1B] hover:bg-[#B81414] text-white font-display text-xs font-bold uppercase tracking-wider transition min-h-[44px] active:scale-95"
               >
                 Yes, Clear All
               </button>
               <button
                 type="button"
                 onClick={() => setShowClearConfirm(false)}
-                className="px-3.5 py-2 rounded-xl bg-[#121212] border border-white/15 text-white/80 hover:text-white font-display text-xs uppercase tracking-wider transition min-h-[40px] active:scale-95"
+                className="px-3.5 py-2 rounded-xl bg-[#121212] border border-white/15 text-white/80 hover:text-white font-display text-xs uppercase tracking-wider transition min-h-[44px] active:scale-95"
               >
                 Cancel &amp; Keep Items
               </button>
@@ -328,7 +328,7 @@ export default function CartDrawer() {
                   <div className="space-y-3">
                     {summary.items.map((item) => {
                       const menuItem = menuDictionary.get(item.menuItemId);
-                      const imageUrl = menuItem?.image || '/assets/menu/dal-makhani.png';
+                      const imageUrl = menuItem?.image || '/assets/menu/dal-makhani.webp';
 
                       return (
                         <div
@@ -340,16 +340,27 @@ export default function CartDrawer() {
                             {/* 60px Fixed Thumbnail with Branded Skeleton Fallback */}
                             <div className="w-[60px] h-[60px] shrink-0 rounded-xl bg-[#121212] border border-white/10 overflow-hidden relative flex items-center justify-center">
                               <TrayIcon className="absolute w-6 h-6 text-[#E4A834]/20" />
-                              <img
-                                src={imageUrl}
-                                alt={item.name}
-                                loading="eager"
-                                decoding="sync"
-                                className="relative z-10 w-full h-full object-cover"
-                                onError={(e) => {
-                                  e.currentTarget.style.display = 'none';
-                                }}
-                              />
+                              {(() => {
+                                const thumbUrl = imageUrl ? imageUrl.replace('/assets/menu/', '/assets/menu/thumbs/').replace(/\.png$/, '.webp') : '';
+                                return (
+                                  <img
+                                    src={thumbUrl || imageUrl}
+                                    alt={item.name}
+                                    loading="eager"
+                                    decoding="async"
+                                    width={60}
+                                    height={60}
+                                    className="relative z-10 w-full h-full object-cover"
+                                    onError={(e) => {
+                                      if (imageUrl && e.currentTarget.src !== imageUrl) {
+                                        e.currentTarget.src = imageUrl;
+                                      } else {
+                                        e.currentTarget.style.display = 'none';
+                                      }
+                                    }}
+                                  />
+                                );
+                              })()}
                             </div>
 
                             {/* Title & Badges */}
@@ -444,7 +455,9 @@ export default function CartDrawer() {
                                   src={acc.image}
                                   alt={acc.name}
                                   loading="eager"
-                                  decoding="sync"
+                                  decoding="async"
+                                  width={40}
+                                  height={40}
                                   className="relative z-10 w-full h-full object-cover"
                                   onError={(e) => {
                                     e.currentTarget.style.display = 'none';
@@ -464,7 +477,7 @@ export default function CartDrawer() {
                             <button
                               type="button"
                               onClick={() => handleQuickAddAccompaniment(acc)}
-                              className={`w-full py-1.5 px-2 rounded-lg font-display text-[10px] font-bold uppercase tracking-wider transition flex items-center justify-center gap-1 ${
+                              className={`w-full py-2.5 px-2 rounded-lg font-display text-[10px] font-bold uppercase tracking-wider transition flex items-center justify-center gap-1 min-h-[44px] ${
                                 isJustAdded
                                   ? 'bg-emerald-600 text-white'
                                   : 'bg-[#181818] border border-white/15 text-white hover:border-[#E4A834] hover:text-[#E4A834]'
@@ -583,7 +596,7 @@ export default function CartDrawer() {
                       key={o.id}
                       type="button"
                       onClick={() => handleRequestOutletSwitch(o.id)}
-                      className={`px-3 py-1.5 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider ${
+                      className={`px-3 py-2.5 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider min-h-[44px] flex items-center justify-center ${
                         selectedOutletId === o.id
                           ? 'bg-[#181818] border-[#E4A834] text-[#E4A834] ring-1 ring-[#E4A834]'
                           : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
@@ -613,14 +626,14 @@ export default function CartDrawer() {
                     <button
                       type="button"
                       onClick={handleConfirmOutletSwitch}
-                      className="px-3.5 py-2 rounded-xl bg-[#D01B1B] hover:bg-[#B81414] text-white font-display text-xs font-bold uppercase tracking-wider transition min-h-[40px] active:scale-95"
+                      className="px-3.5 py-2 rounded-xl bg-[#D01B1B] hover:bg-[#B81414] text-white font-display text-xs font-bold uppercase tracking-wider transition min-h-[44px] active:scale-95"
                     >
                       Yes, Switch Branch
                     </button>
                     <button
                       type="button"
                       onClick={() => setPendingOutletSwitch(null)}
-                      className="px-3.5 py-2 rounded-xl bg-[#121212] border border-white/15 text-white/80 hover:text-white font-display text-xs uppercase tracking-wider transition min-h-[40px] active:scale-95"
+                      className="px-3.5 py-2 rounded-xl bg-[#121212] border border-white/15 text-white/80 hover:text-white font-display text-xs uppercase tracking-wider transition min-h-[44px] active:scale-95"
                     >
                       Cancel &amp; Stay Here
                     </button>
@@ -648,7 +661,7 @@ export default function CartDrawer() {
                         placeholder="Your Name *"
                         value={customerName}
                         onChange={(e) => handleNameChange(e.target.value)}
-                        className="w-full bg-[#141414] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 font-medium"
+                        className="w-full bg-[#141414] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-base md:text-xs text-white placeholder-white/40 font-medium"
                       />
                     </div>
                     <div>
@@ -659,7 +672,7 @@ export default function CartDrawer() {
                         placeholder="WhatsApp Mobile No. *"
                         value={customerPhone}
                         onChange={(e) => handlePhoneChange(e.target.value)}
-                        className="w-full bg-[#141414] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 font-mono font-medium"
+                        className="w-full bg-[#141414] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-base md:text-xs text-white placeholder-white/40 font-mono font-medium"
                       />
                     </div>
                   </div>
@@ -677,7 +690,7 @@ export default function CartDrawer() {
                         placeholder="e.g. Extra napkins, less spicy, prepare for 8:30 PM"
                         value={orderNotes}
                         onChange={(e) => setOrderNotes(e.target.value)}
-                        className="w-full bg-[#141414] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-white/40 font-medium"
+                        className="w-full bg-[#141414] border border-white/15 focus:border-[#E4A834] outline-none rounded-xl px-3.5 py-2.5 text-base md:text-xs text-white placeholder-white/40 font-medium"
                       />
                     </div>
                   ) : (

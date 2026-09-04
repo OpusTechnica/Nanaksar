@@ -18,7 +18,7 @@ export const TestimonialsColumn = (props: {
   const duration = props.duration || 45;
 
   return (
-    <div className={`marquee-group relative overflow-hidden select-none ${props.className || ''}`}>
+    <div className={`marquee-group relative overflow-hidden select-none ${props.className || ''}`} tabIndex={0} aria-label="Customer testimonials, scrolling. Focus pauses the motion.">
       {/* Silky 60fps hardware-composited vertical track with instant pause on hover */}
       <div
         style={{ '--marquee-duration': `${duration}s` } as React.CSSProperties}
@@ -32,8 +32,10 @@ export const TestimonialsColumn = (props: {
           >
             <div>
               {/* 5-Star Rating */}
-              <div className="flex items-center gap-1 text-[#D01B1B] text-xs mb-3">
-                {"★".repeat(item.rating || 5)}
+              <div className="flex items-center gap-1 text-[#D01B1B] mb-3" role="img" aria-label={`Rated ${item.rating || 5} out of 5 stars`}>
+                {Array.from({ length: item.rating || 5 }).map((_, s) => (
+                  <svg key={s} className="w-3 h-3 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid" /></svg>
+                ))}
               </div>
 
               {/* Editorial Quote */}
@@ -79,8 +81,10 @@ export const TestimonialsColumn = (props: {
           >
             <div>
               {/* 5-Star Rating */}
-              <div className="flex items-center gap-1 text-[#D01B1B] text-xs mb-3">
-                {"★".repeat(item.rating || 5)}
+              <div className="flex items-center gap-1 text-[#D01B1B] mb-3">
+                {Array.from({ length: item.rating || 5 }).map((_, s) => (
+                  <svg key={s} className="w-3 h-3 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid" /></svg>
+                ))}
               </div>
 
               {/* Editorial Quote */}

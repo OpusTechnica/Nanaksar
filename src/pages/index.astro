@@ -9,18 +9,24 @@ import HeritageStory from '../components/HeritageStory.astro';
 import PlatformsSection from '../components/PlatformsSection.astro';
 import BookTableSection from '../components/BookTableSection.astro';
 import Footer from '../components/Footer.astro';
+import Threshold from '../components/Threshold.astro';
+
+// Single-file kill switch for Homepage Overlay (Enabled for live entrance gate)
+const THRESHOLD_ENABLED = true;
 ---
 
 <Layout>
+  {THRESHOLD_ENABLED && <Threshold mode="overlay" />}
+
   <!-- Hero & 4-Pillar Verified Trust Stats Bar -->
   <Hero />
 
   <!-- ZONE 1: The Daytime Feast & Menu Discovery (#F7F4EB Warm Makkhan Cream) -->
   <!-- 1. Crown Signatures (6 Flagship Dishes in 3x2 Grid) -->
-  <SignaturesShowcase client:load />
+  <SignaturesShowcase client:visible />
 
   <!-- 2. Top Bestsellers & Highway Combos -->
-  <BestsellersShowcase client:load />
+  <BestsellersShowcase client:visible />
 
   <!-- 3. Loved Across Indore (Verified Reviews) -->
   <ReviewsSection />
