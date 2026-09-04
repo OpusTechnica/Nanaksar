@@ -8,11 +8,11 @@ const { mode = 'overlay' } = Astro.props;
 
 <div
   id="nanaksar-threshold"
-  class="threshold-root fixed inset-0 z-[99999] w-screen h-screen overflow-hidden select-none cursor-pointer bg-[#0A0A0A]"
+  class="threshold-root fixed inset-0 z-[99999] w-screen h-screen overflow-hidden select-none cursor-pointer bg-[#070707]"
   data-mode={mode}
   role="region"
-  aria-label="Nanaksar Dhaba Royal Haveli Entrance"
-  title="Click anywhere to open doors immediately"
+  aria-label="Nanaksar Dhaba Sacred Sarovar Entrance"
+  title="Touch anywhere to enter the dining room"
 >
   <script is:inline>
     if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('nanaksar_entered') === 'true' && window.location.pathname !== '/welcome') {
@@ -22,505 +22,300 @@ const { mode = 'overlay' } = Astro.props;
     }
   </script>
 
-  <!-- 1. LEFT HAVELI SHEESHAM DOOR LEAF (0% -> 50.3% with 3D Perspective Outward Swing) -->
-  <div id="door-left" class="door-leaf door-leaf-left absolute top-0 left-0 w-[50.3%] h-full z-10 overflow-hidden">
-    <!-- Handcrafted Sheesham Wood Vector Canvas -->
-    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 500 1000" preserveAspectRatio="none" aria-hidden="true">
+  <!-- 1. LEFT OBSIDIAN SAROVAR WATER VEIL (0% -> 50.3%) -->
+  <div id="sarovar-veil-left" class="sarovar-panel sarovar-veil-left absolute top-0 left-0 w-[50.3%] h-full z-10 overflow-hidden">
+    <!-- Deep Obsidian Water Base with Subtle Caustic Shimmer -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#050505] via-[#0A0A0A] to-[#0E0E0E]"></div>
+    
+    <!-- Organic Water Caustic Waves Vector -->
+    <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 500 1000" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        <!-- Aged Sheesham Timber Gradients -->
-        <linearGradient id="sheesham-stiles-left" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#0E0906" />
-          <stop offset="12%" stop-color="#1A120B" />
-          <stop offset="35%" stop-color="#24190F" />
-          <stop offset="50%" stop-color="#1D140D" />
-          <stop offset="70%" stop-color="#261A11" />
-          <stop offset="88%" stop-color="#160E08" />
-          <stop offset="100%" stop-color="#0F0906" />
-        </linearGradient>
-
-        <linearGradient id="sheesham-panel-left" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#150E09" />
-          <stop offset="25%" stop-color="#1E140D" />
-          <stop offset="50%" stop-color="#18100A" />
-          <stop offset="80%" stop-color="#22170F" />
-          <stop offset="100%" stop-color="#120B07" />
-        </linearGradient>
-
-        <!-- Antique Brass Stud Radial (Gul-Mekh) -->
-        <radialGradient id="brass-stud" cx="35%" cy="35%" r="65%">
-          <stop offset="0%" stop-color="#FFF5D6" />
-          <stop offset="25%" stop-color="#F5C862" />
-          <stop offset="60%" stop-color="#C68A24" />
-          <stop offset="85%" stop-color="#784E0F" />
-          <stop offset="100%" stop-color="#3B2202" />
+        <radialGradient id="sarovar-depth-left" cx="100%" cy="50%" r="90%">
+          <stop offset="0%" stop-color="#1A150D" stop-opacity="0.6" />
+          <stop offset="40%" stop-color="#0E0B07" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#050505" stop-opacity="0" />
         </radialGradient>
-
-        <!-- Forged Brass Ring Knocker Metallic Gradient -->
-        <linearGradient id="brass-ring-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#6B4B18" />
-          <stop offset="30%" stop-color="#E4A834" />
-          <stop offset="50%" stop-color="#FFF0BE" />
-          <stop offset="70%" stop-color="#B87B19" />
-          <stop offset="100%" stop-color="#4A2F08" />
-        </linearGradient>
-
-        <!-- Cast Iron/Brass Corner Strap Gradient -->
-        <linearGradient id="brass-strap" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#2C1D0B" />
-          <stop offset="40%" stop-color="#8C5C18" />
-          <stop offset="60%" stop-color="#D49929" />
-          <stop offset="100%" stop-color="#362207" />
-        </linearGradient>
-
-        <!-- Carved Wood Inner Bevel Shadow Gradients -->
-        <linearGradient id="bevel-top-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#000000" stop-opacity="0.92" />
-          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-        </linearGradient>
-
-        <linearGradient id="bevel-left-shadow" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#000000" stop-opacity="0.88" />
-          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-        </linearGradient>
-
-        <linearGradient id="bevel-bottom-light" x1="0%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="#E4A834" stop-opacity="0.18" />
-          <stop offset="100%" stop-color="#E4A834" stop-opacity="0" />
-        </linearGradient>
-
-        <linearGradient id="bevel-right-shadow" x1="100%" y1="0%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="#000000" stop-opacity="0.75" />
-          <stop offset="100%" stop-color="#000000" stop-opacity="0" />
-        </linearGradient>
       </defs>
-
-      <!-- Foundation Wood Slab -->
-      <rect width="500" height="1000" fill="url(#sheesham-stiles-left)" />
-
-      <!-- Vertical Grain Overlay Stripes (Organic Handcrafted Timber Fibers) -->
-      <g opacity="0.15">
-        <line x1="18" y1="0" x2="18" y2="1000" stroke="#000" stroke-width="1.5" />
-        <line x1="38" y1="0" x2="38" y2="1000" stroke="#FFF" stroke-width="0.75" />
-        <line x1="140" y1="0" x2="140" y2="1000" stroke="#000" stroke-width="1.2" />
-        <line x1="285" y1="0" x2="285" y2="1000" stroke="#000" stroke-width="1.5" />
-        <line x1="390" y1="0" x2="390" y2="1000" stroke="#FFF" stroke-width="0.6" />
-        <line x1="475" y1="0" x2="475" y2="1000" stroke="#000" stroke-width="2" />
-      </g>
-
-      <!-- 4 RECESSED COFFERED WOOD PANELS -->
-      <!-- Panel 1 (Top) -->
-      <g class="coffered-panel">
-        <rect x="52" y="55" width="388" height="195" rx="5" fill="url(#sheesham-panel-left)" />
-        <rect x="52" y="55" width="388" height="24" fill="url(#bevel-top-shadow)" />
-        <rect x="52" y="55" width="24" height="195" fill="url(#bevel-left-shadow)" />
-        <rect x="52" y="226" width="388" height="24" fill="url(#bevel-bottom-light)" />
-        <rect x="416" y="55" width="24" height="195" fill="url(#bevel-right-shadow)" />
-        <!-- Inner Raised Boss -->
-        <polygon points="246,140 258,152 246,164 234,152" fill="#2A1C12" stroke="#120A05" stroke-width="1.5" />
-        <circle cx="246" cy="152" r="5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- Panel 2 (Upper-Mid) -->
-      <g class="coffered-panel">
-        <rect x="52" y="285" width="388" height="195" rx="5" fill="url(#sheesham-panel-left)" />
-        <rect x="52" y="285" width="388" height="24" fill="url(#bevel-top-shadow)" />
-        <rect x="52" y="285" width="24" height="195" fill="url(#bevel-left-shadow)" />
-        <rect x="52" y="456" width="388" height="24" fill="url(#bevel-bottom-light)" />
-        <rect x="416" y="285" width="24" height="195" fill="url(#bevel-right-shadow)" />
-        <polygon points="246,370 258,382 246,394 234,382" fill="#2A1C12" stroke="#120A05" stroke-width="1.5" />
-        <circle cx="246" cy="382" r="5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- Panel 3 (Lower-Mid) -->
-      <g class="coffered-panel">
-        <rect x="52" y="515" width="388" height="195" rx="5" fill="url(#sheesham-panel-left)" />
-        <rect x="52" y="515" width="388" height="24" fill="url(#bevel-top-shadow)" />
-        <rect x="52" y="515" width="24" height="195" fill="url(#bevel-left-shadow)" />
-        <rect x="52" y="686" width="388" height="24" fill="url(#bevel-bottom-light)" />
-        <rect x="416" y="515" width="24" height="195" fill="url(#bevel-right-shadow)" />
-        <polygon points="246,600 258,612 246,624 234,612" fill="#2A1C12" stroke="#120A05" stroke-width="1.5" />
-        <circle cx="246" cy="612" r="5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- Panel 4 (Bottom Kick) -->
-      <g class="coffered-panel">
-        <rect x="52" y="745" width="388" height="195" rx="5" fill="url(#sheesham-panel-left)" />
-        <rect x="52" y="745" width="388" height="24" fill="url(#bevel-top-shadow)" />
-        <rect x="52" y="745" width="24" height="195" fill="url(#bevel-left-shadow)" />
-        <rect x="52" y="916" width="388" height="24" fill="url(#bevel-bottom-light)" />
-        <rect x="416" y="745" width="24" height="195" fill="url(#bevel-right-shadow)" />
-        <polygon points="246,830 258,842 246,854 234,842" fill="#2A1C12" stroke="#120A05" stroke-width="1.5" />
-        <circle cx="246" cy="842" r="5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- HAND-HAMMERED ANTIQUE BRASS STUDS (GUL-MEKH) -->
-      <!-- Vertical Center Meeting Stile Studs (x=468) -->
-      <g class="brass-studs-meeting">
-        <circle cx="468" cy="85" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="468" cy="180" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="468" cy="275" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="468" cy="370" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="468" cy="625" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="468" cy="720" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="468" cy="815" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="468" cy="910" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-      </g>
-
-      <!-- Outer Hinge Stile Studs (x=26) -->
-      <g class="brass-studs-hinge">
-        <circle cx="26" cy="85" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="26" cy="205" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="26" cy="325" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="26" cy="445" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="26" cy="565" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="26" cy="685" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="26" cy="805" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="26" cy="925" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-      </g>
-
-      <!-- Horizontal Divider Rail Studs -->
-      <circle cx="160" cy="265" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="330" cy="265" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="160" cy="495" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="330" cy="495" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="160" cy="725" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="330" cy="725" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-
-      <!-- FORGED BRASS & IRON RING KNOCKER (KUNDI - LEFT LEAF) -->
-      <g class="door-knocker-left" filter="drop-shadow(0 8px 12px rgba(0,0,0,0.95))">
-        <!-- Octagonal Star Escutcheon Backplate -->
-        <polygon points="468,482 481,487 486,500 481,513 468,518 455,513 450,500 455,487" fill="url(#brass-stud)" stroke="#5E3809" stroke-width="2" />
-        <circle cx="468" cy="500" r="9" fill="#1C120A" stroke="#C68A24" stroke-width="1.5" />
-        <!-- Solid Cast Hanging Ring -->
-        <path d="M 468 506 C 452 506, 440 520, 440 538 C 440 556, 452 570, 468 570 C 484 570, 496 556, 496 538 C 496 520, 484 506, 468 506 Z" fill="none" stroke="url(#brass-ring-grad)" stroke-width="7" stroke-linecap="round" />
-        <!-- Anvil Striker Boss underneath -->
-        <circle cx="468" cy="566" r="4.5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- CAST BRASS CORNER REINFORCEMENT STRAPS -->
-      <!-- Top-Left Corner Bracket -->
-      <path d="M 0 0 L 80 0 L 80 22 L 22 22 L 22 80 L 0 80 Z" fill="url(#brass-strap)" stroke="#1A1005" stroke-width="1.5" />
-      <circle cx="50" cy="11" r="3.5" fill="url(#brass-stud)" />
-      <circle cx="11" cy="50" r="3.5" fill="url(#brass-stud)" />
-      <!-- Bottom-Left Corner Bracket -->
-      <path d="M 0 1000 L 80 1000 L 80 978 L 22 978 L 22 920 L 0 920 Z" fill="url(#brass-strap)" stroke="#1A1005" stroke-width="1.5" />
-      <circle cx="50" cy="989" r="3.5" fill="url(#brass-stud)" />
-      <circle cx="11" cy="950" r="3.5" fill="url(#brass-stud)" />
+      <rect width="500" height="1000" fill="url(#sarovar-depth-left)" />
+      <!-- Stylized Sacred Water Ripples -->
+      <path d="M 500 200 C 350 205, 200 215, 0 210" stroke="#E4A834" stroke-opacity="0.12" stroke-width="1" fill="none" />
+      <path d="M 500 350 C 320 358, 180 370, 0 365" stroke="#E4A834" stroke-opacity="0.16" stroke-width="1.2" fill="none" />
+      <path d="M 500 500 C 300 510, 150 525, 0 520" stroke="#E4A834" stroke-opacity="0.22" stroke-width="1.5" fill="none" />
+      <path d="M 500 650 C 320 658, 180 670, 0 665" stroke="#E4A834" stroke-opacity="0.16" stroke-width="1.2" fill="none" />
+      <path d="M 500 800 C 350 805, 200 815, 0 810" stroke="#E4A834" stroke-opacity="0.12" stroke-width="1" fill="none" />
     </svg>
 
-    <!-- Warm Edge Shadow & Timber Vignette Overlay -->
-    <div class="absolute inset-0 pointer-events-none door-timber-vignette" aria-hidden="true"></div>
-    <!-- Meeting edge brass strike plate hairline -->
-    <div class="absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b from-[#7A4E12] via-[#E4A834] to-[#7A4E12] pointer-events-none shadow-[-2px_0_10px_rgba(0,0,0,0.95)]" aria-hidden="true"></div>
+    <!-- Golden Liquid Seam Trim on Right Edge -->
+    <div class="absolute top-0 right-0 w-[2px] h-full bg-gradient-to-b from-[#7A4E12] via-[#E4A834] to-[#7A4E12] shadow-[-2px_0_12px_rgba(228,168,52,0.8)] pointer-events-none" aria-hidden="true"></div>
   </div>
 
-  <!-- 2. RIGHT HAVELI SHEESHAM DOOR LEAF (50% -> 100% with Mirrored 3D Perspective Outward Swing) -->
-  <div id="door-right" class="door-leaf door-leaf-right absolute top-0 right-0 w-[50.3%] h-full z-[9] overflow-hidden">
-    <!-- Handcrafted Sheesham Wood Vector Canvas (Mirrored) -->
-    <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 500 1000" preserveAspectRatio="none" aria-hidden="true">
+  <!-- 2. RIGHT OBSIDIAN SAROVAR WATER VEIL (50% -> 100%) -->
+  <div id="sarovar-veil-right" class="sarovar-panel sarovar-veil-right absolute top-0 right-0 w-[50.3%] h-full z-[9] overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-l from-[#050505] via-[#0A0A0A] to-[#0E0E0E]"></div>
+    
+    <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20" viewBox="0 0 500 1000" preserveAspectRatio="none" aria-hidden="true">
       <defs>
-        <!-- Mirrored Sheesham Timber Gradients -->
-        <linearGradient id="sheesham-stiles-right" x1="100%" y1="0%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="#0E0906" />
-          <stop offset="12%" stop-color="#1A120B" />
-          <stop offset="35%" stop-color="#24190F" />
-          <stop offset="50%" stop-color="#1D140D" />
-          <stop offset="70%" stop-color="#261A11" />
-          <stop offset="88%" stop-color="#160E08" />
-          <stop offset="100%" stop-color="#0F0906" />
-        </linearGradient>
-
-        <linearGradient id="sheesham-panel-right" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#150E09" />
-          <stop offset="25%" stop-color="#1E140D" />
-          <stop offset="50%" stop-color="#18100A" />
-          <stop offset="80%" stop-color="#22170F" />
-          <stop offset="100%" stop-color="#120B07" />
-        </linearGradient>
+        <radialGradient id="sarovar-depth-right" cx="0%" cy="50%" r="90%">
+          <stop offset="0%" stop-color="#1A150D" stop-opacity="0.6" />
+          <stop offset="40%" stop-color="#0E0B07" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#050505" stop-opacity="0" />
+        </radialGradient>
       </defs>
-
-      <!-- Foundation Wood Slab -->
-      <rect width="500" height="1000" fill="url(#sheesham-stiles-right)" />
-
-      <!-- Vertical Grain Overlay Stripes -->
-      <g opacity="0.15">
-        <line x1="25" y1="0" x2="25" y2="1000" stroke="#000" stroke-width="2" />
-        <line x1="110" y1="0" x2="110" y2="1000" stroke="#FFF" stroke-width="0.6" />
-        <line x1="215" y1="0" x2="215" y2="1000" stroke="#000" stroke-width="1.5" />
-        <line x1="360" y1="0" x2="360" y2="1000" stroke="#000" stroke-width="1.2" />
-        <line x1="462" y1="0" x2="462" y2="1000" stroke="#FFF" stroke-width="0.75" />
-        <line x1="482" y1="0" x2="482" y2="1000" stroke="#000" stroke-width="1.5" />
-      </g>
-
-      <!-- 4 RECESSED COFFERED WOOD PANELS (RIGHT LEAF) -->
-      <!-- Panel 1 (Top) -->
-      <g class="coffered-panel">
-        <rect x="60" y="55" width="388" height="195" rx="5" fill="url(#sheesham-panel-right)" />
-        <rect x="60" y="55" width="388" height="24" fill="url(#bevel-top-shadow)" />
-        <rect x="60" y="55" width="24" height="195" fill="url(#bevel-left-shadow)" />
-        <rect x="60" y="226" width="388" height="24" fill="url(#bevel-bottom-light)" />
-        <rect x="424" y="55" width="24" height="195" fill="url(#bevel-right-shadow)" />
-        <polygon points="254,140 266,152 254,164 242,152" fill="#2A1C12" stroke="#120A05" stroke-width="1.5" />
-        <circle cx="254" cy="152" r="5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- Panel 2 (Upper-Mid) -->
-      <g class="coffered-panel">
-        <rect x="60" y="285" width="388" height="195" rx="5" fill="url(#sheesham-panel-right)" />
-        <rect x="60" y="285" width="388" height="24" fill="url(#bevel-top-shadow)" />
-        <rect x="60" y="285" width="24" height="195" fill="url(#bevel-left-shadow)" />
-        <rect x="60" y="456" width="388" height="24" fill="url(#bevel-bottom-light)" />
-        <rect x="424" y="285" width="24" height="195" fill="url(#bevel-right-shadow)" />
-        <polygon points="254,370 266,382 254,394 242,382" fill="#2A1C12" stroke="#120A05" stroke-width="1.5" />
-        <circle cx="254" cy="382" r="5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- Panel 3 (Lower-Mid) -->
-      <g class="coffered-panel">
-        <rect x="60" y="515" width="388" height="195" rx="5" fill="url(#sheesham-panel-right)" />
-        <rect x="60" y="515" width="388" height="24" fill="url(#bevel-top-shadow)" />
-        <rect x="60" y="515" width="24" height="195" fill="url(#bevel-left-shadow)" />
-        <rect x="60" y="686" width="388" height="24" fill="url(#bevel-bottom-light)" />
-        <rect x="424" y="515" width="24" height="195" fill="url(#bevel-right-shadow)" />
-        <polygon points="254,600 266,612 254,624 242,612" fill="#2A1C12" stroke="#120A05" stroke-width="1.5" />
-        <circle cx="254" cy="612" r="5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- Panel 4 (Bottom Kick) -->
-      <g class="coffered-panel">
-        <rect x="60" y="745" width="388" height="195" rx="5" fill="url(#sheesham-panel-right)" />
-        <rect x="60" y="745" width="388" height="24" fill="url(#bevel-top-shadow)" />
-        <rect x="60" y="745" width="24" height="195" fill="url(#bevel-left-shadow)" />
-        <rect x="60" y="916" width="388" height="24" fill="url(#bevel-bottom-light)" />
-        <rect x="424" y="745" width="24" height="195" fill="url(#bevel-right-shadow)" />
-        <polygon points="254,830 266,842 254,854 242,842" fill="#2A1C12" stroke="#120A05" stroke-width="1.5" />
-        <circle cx="254" cy="842" r="5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- HAND-HAMMERED ANTIQUE BRASS STUDS (GUL-MEKH) -->
-      <!-- Vertical Center Meeting Stile Studs (x=32) -->
-      <g class="brass-studs-meeting">
-        <circle cx="32" cy="85" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="32" cy="180" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="32" cy="275" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="32" cy="370" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="32" cy="625" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="32" cy="720" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="32" cy="815" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="32" cy="910" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-      </g>
-
-      <!-- Outer Hinge Stile Studs (x=474) -->
-      <g class="brass-studs-hinge">
-        <circle cx="474" cy="85" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="474" cy="205" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="474" cy="325" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="474" cy="445" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="474" cy="565" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="474" cy="685" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="474" cy="805" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-        <circle cx="474" cy="925" r="7.5" fill="url(#brass-stud)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.85))" />
-      </g>
-
-      <!-- Horizontal Divider Rail Studs -->
-      <circle cx="170" cy="265" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="340" cy="265" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="170" cy="495" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="340" cy="495" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="170" cy="725" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-      <circle cx="340" cy="725" r="6" fill="url(#brass-stud)" filter="drop-shadow(0 2px 3px rgba(0,0,0,0.8))" />
-
-      <!-- FORGED BRASS & IRON RING KNOCKER (KUNDI - RIGHT LEAF) -->
-      <g class="door-knocker-right" filter="drop-shadow(0 8px 12px rgba(0,0,0,0.95))">
-        <!-- Octagonal Star Escutcheon Backplate -->
-        <polygon points="32,482 45,487 50,500 45,513 32,518 19,513 14,500 19,487" fill="url(#brass-stud)" stroke="#5E3809" stroke-width="2" />
-        <circle cx="32" cy="500" r="9" fill="#1C120A" stroke="#C68A24" stroke-width="1.5" />
-        <!-- Solid Cast Hanging Ring -->
-        <path d="M 32 506 C 16 506, 4 520, 4 538 C 4 556, 16 570, 32 570 C 48 570, 60 556, 60 538 C 60 520, 48 506, 32 506 Z" fill="none" stroke="url(#brass-ring-grad)" stroke-width="7" stroke-linecap="round" />
-        <!-- Anvil Striker Boss underneath -->
-        <circle cx="32" cy="566" r="4.5" fill="url(#brass-stud)" />
-      </g>
-
-      <!-- CAST BRASS CORNER REINFORCEMENT STRAPS -->
-      <!-- Top-Right Corner Bracket -->
-      <path d="M 500 0 L 420 0 L 420 22 L 478 22 L 478 80 L 500 80 Z" fill="url(#brass-strap)" stroke="#1A1005" stroke-width="1.5" />
-      <circle cx="450" cy="11" r="3.5" fill="url(#brass-stud)" />
-      <circle cx="489" cy="50" r="3.5" fill="url(#brass-stud)" />
-      <!-- Bottom-Right Corner Bracket -->
-      <path d="M 500 1000 L 420 1000 L 420 978 L 478 978 L 478 920 L 500 920 Z" fill="url(#brass-strap)" stroke="#1A1005" stroke-width="1.5" />
-      <circle cx="450" cy="989" r="3.5" fill="url(#brass-stud)" />
-      <circle cx="489" cy="950" r="3.5" fill="url(#brass-stud)" />
+      <rect width="500" height="1000" fill="url(#sarovar-depth-right)" />
+      <!-- Mirrored Sacred Water Ripples -->
+      <path d="M 0 200 C 150 205, 300 215, 500 210" stroke="#E4A834" stroke-opacity="0.12" stroke-width="1" fill="none" />
+      <path d="M 0 350 C 180 358, 320 370, 500 365" stroke="#E4A834" stroke-opacity="0.16" stroke-width="1.2" fill="none" />
+      <path d="M 0 500 C 200 510, 350 525, 500 520" stroke="#E4A834" stroke-opacity="0.22" stroke-width="1.5" fill="none" />
+      <path d="M 0 650 C 180 658, 320 670, 500 665" stroke="#E4A834" stroke-opacity="0.16" stroke-width="1.2" fill="none" />
+      <path d="M 0 800 C 150 805, 300 815, 500 810" stroke="#E4A834" stroke-opacity="0.12" stroke-width="1" fill="none" />
     </svg>
 
-    <!-- Warm Edge Shadow & Timber Vignette Overlay -->
-    <div class="absolute inset-0 pointer-events-none door-timber-vignette" aria-hidden="true"></div>
-    <!-- Meeting edge brass strike plate hairline -->
-    <div class="absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b from-[#7A4E12] via-[#E4A834] to-[#7A4E12] pointer-events-none shadow-[2px_0_10px_rgba(0,0,0,0.95)]" aria-hidden="true"></div>
+    <!-- Golden Liquid Seam Trim on Left Edge -->
+    <div class="absolute top-0 left-0 w-[2px] h-full bg-gradient-to-b from-[#7A4E12] via-[#E4A834] to-[#7A4E12] shadow-[2px_0_12px_rgba(228,168,52,0.8)] pointer-events-none" aria-hidden="true"></div>
   </div>
 
-  <!-- CENTER SEAM WARM TANDOOR LIGHT GLOW (Anticipation of Hearth Warmth) -->
-  <div class="door-center-light-seam absolute top-0 left-1/2 -translate-x-1/2 w-4 h-full z-15 pointer-events-none flex items-center justify-center" aria-hidden="true">
-    <div class="w-[2px] h-full bg-gradient-to-b from-transparent via-[#E4A834] to-transparent door-light-pulse"></div>
+  <!-- 3. CONCENTRIC SACRED RIPPLES (AMRIT TARANG) EXPANDING FROM CENTER -->
+  <div class="sarovar-ripple-container absolute inset-0 z-15 flex items-center justify-center pointer-events-none" aria-hidden="true">
+    <div class="sarovar-ripple sarovar-ripple-1"></div>
+    <div class="sarovar-ripple sarovar-ripple-2"></div>
+    <div class="sarovar-ripple sarovar-ripple-3"></div>
+    <div class="sarovar-ripple sarovar-ripple-4"></div>
   </div>
 
-  <!-- 3. CENTERPIECE: THE GRAND OBSIDIAN & GOLD MEDALLION CLASP -->
+  <!-- 4. CENTERPIECE: THE SACRED GOLDEN LOTUS & OBSIDIAN SEAL (कमल सरोवर) -->
   <div id="curtain-center-stack" class="absolute inset-0 z-20 flex items-center justify-center p-4 my-auto pointer-events-none">
     
-    <!-- Grand Obsidian Medallion Canvas: Solid Crisp Luxury Black #0B0B0B -->
-    <div class="medallion-body relative w-[min(90vw,360px)] h-[min(90vw,360px)] xs:w-[400px] xs:h-[400px] sm:w-[480px] sm:h-[480px] md:w-[520px] md:h-[520px] rounded-full bg-[#0B0B0B] border-2 border-[#E4A834]/65 shadow-[0_20px_60px_rgba(0,0,0,0.98)] p-5 xs:p-7 sm:p-10 flex flex-col items-center justify-center text-center pointer-events-auto overflow-hidden">
+    <!-- Outer Floating Golden Lotus Halo (कमल दल) -->
+    <div class="relative flex items-center justify-center">
       
-      <!-- Inner Specular Hairline Ring (Double-bezel luxury coin / watch dial rim) -->
-      <div class="absolute inset-2 sm:inset-3.5 rounded-full border border-[#E4A834]/30 pointer-events-none" aria-hidden="true"></div>
+      <!-- 16-Petal Sacred Golden Lotus SVG Halo -->
+      <svg class="lotus-halo absolute w-[min(98vw,420px)] h-[min(98vw,420px)] xs:w-[460px] xs:h-[460px] sm:w-[560px] sm:h-[560px] md:w-[610px] md:h-[610px] pointer-events-none" viewBox="0 0 600 600" aria-hidden="true">
+        <defs>
+          <!-- 24K Liquid Gold Petal Gradient -->
+          <linearGradient id="lotus-gold-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFF8E0" />
+            <stop offset="25%" stop-color="#E4A834" />
+            <stop offset="65%" stop-color="#B87B19" />
+            <stop offset="100%" stop-color="#5E3809" />
+          </linearGradient>
+          <filter id="lotus-glow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
 
-      <!-- Premium corner light: crisp specular arc where light catches the rim (~2 o'clock) -->
-      <div class="medallion-rim-light absolute inset-0 rounded-full pointer-events-none" aria-hidden="true"></div>
-      <!-- Single restrained glint diamond seated on the rim -->
-      <div class="medallion-glint absolute top-[8%] right-[13%] pointer-events-none" aria-hidden="true"></div>
+        <!-- 16 Symmetrical Lotus Petals Radiating Outward -->
+        <g transform="translate(300, 300)" filter="url(#lotus-glow)">
+          <!-- Petal 1 (0 deg) -->
+          <g transform="rotate(0)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 2 (22.5 deg) -->
+          <g transform="rotate(22.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 3 (45 deg) -->
+          <g transform="rotate(45)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 4 (67.5 deg) -->
+          <g transform="rotate(67.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 5 (90 deg) -->
+          <g transform="rotate(90)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 6 (112.5 deg) -->
+          <g transform="rotate(112.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 7 (135 deg) -->
+          <g transform="rotate(135)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 8 (157.5 deg) -->
+          <g transform="rotate(157.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 9 (180 deg) -->
+          <g transform="rotate(180)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 10 (202.5 deg) -->
+          <g transform="rotate(202.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 11 (225 deg) -->
+          <g transform="rotate(225)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 12 (247.5 deg) -->
+          <g transform="rotate(247.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 13 (270 deg) -->
+          <g transform="rotate(270)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 14 (292.5 deg) -->
+          <g transform="rotate(292.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 15 (315 deg) -->
+          <g transform="rotate(315)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+          <!-- Petal 16 (337.5 deg) -->
+          <g transform="rotate(337.5)"><path d="M 0 -265 C 16 -285, 22 -300, 0 -315 C -22 -300, -16 -285, 0 -265 Z" fill="url(#lotus-gold-grad)" stroke="#2C1A05" stroke-width="1" /></g>
+        </g>
+      </svg>
 
-      <!-- Circle Content Stack (Harmonious vertical rhythm, zero crowding) -->
-      <div class="relative z-10 flex flex-col items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[280px] xs:max-w-[320px] sm:max-w-[420px]">
+      <!-- Grand Obsidian Medallion Canvas: Solid Crisp Luxury Black #0B0B0B -->
+      <div class="medallion-body relative w-[min(90vw,360px)] h-[min(90vw,360px)] xs:w-[400px] xs:h-[400px] sm:w-[480px] sm:h-[480px] md:w-[520px] md:h-[520px] rounded-full bg-[#0B0B0B] border-2 border-[#E4A834]/70 shadow-[0_25px_70px_rgba(0,0,0,0.98),0_0_40px_rgba(228,168,52,0.15)] p-5 xs:p-7 sm:p-10 flex flex-col items-center justify-center text-center pointer-events-auto overflow-hidden">
         
-        <!-- 1. Heritage Seal: Crisp, authoritatively sized, perfectly centered -->
-        <div class="threshold-anim-seal">
-          <div class="relative p-1 rounded-full bg-[#141414] border border-[#E4A834]/40 shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+        <!-- Inner Specular Hairline Ring -->
+        <div class="absolute inset-2 sm:inset-3.5 rounded-full border border-[#E4A834]/35 pointer-events-none" aria-hidden="true"></div>
+
+        <!-- Premium corner light: crisp specular arc (~2 o'clock) -->
+        <div class="medallion-rim-light absolute inset-0 rounded-full pointer-events-none" aria-hidden="true"></div>
+        <!-- Single restrained glint diamond seated on the rim -->
+        <div class="medallion-glint absolute top-[8%] right-[13%] pointer-events-none" aria-hidden="true"></div>
+
+        <!-- Circle Content Stack -->
+        <div class="relative z-10 flex flex-col items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[280px] xs:max-w-[320px] sm:max-w-[420px]">
+          
+          <!-- 1. Heritage Seal: Crisp, authoritatively sized, perfectly centered -->
+          <div class="threshold-anim-seal">
+            <div class="relative p-1 rounded-full bg-[#141414] border border-[#E4A834]/40 shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+              <img
+                src="/assets/Logo.webp"
+                alt="Nanaksar Dhaba Heritage Seal"
+                width="280"
+                height="280"
+                class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 object-contain select-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.85)]"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+
+          <!-- 2. Eyebrow Timestamp: Desi Ghee Amber #E4A834 -->
+          <div class="threshold-anim-eyebrow">
+            <span class="font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#E4A834] uppercase tracking-[0.28em] font-bold select-none drop-shadow">
+              ESTD. 1980 — INDORE
+            </span>
+          </div>
+
+          <!-- 3. Headline: "Welcome to" with gold hairline accents -->
+          <div class="threshold-anim-welcome flex items-center gap-2 -my-0.5">
+            <span class="h-px w-3 sm:w-5 bg-gradient-to-r from-transparent to-[#E4A834]/60" aria-hidden="true"></span>
+            <span class="font-serif text-[9.5px] xs:text-[10.5px] sm:text-[12px] text-[#F7F4EB]/90 uppercase tracking-[0.32em] font-medium select-none">
+              Welcome to
+            </span>
+            <span class="h-px w-3 sm:w-5 bg-gradient-to-l from-transparent to-[#E4A834]/60" aria-hidden="true"></span>
+          </div>
+
+          <!-- 4. Wordmark: Brand_Name.webp -->
+          <div class="threshold-anim-wordmark">
             <img
-              src="/assets/Logo.webp"
-              alt="Nanaksar Dhaba Heritage Seal"
-              width="280"
-              height="280"
-              class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 object-contain select-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.85)]"
+              src="/assets/Brand_Name.webp"
+              alt="Nanaksar Dhaba"
+              width="480"
+              height="120"
+              class="w-38 xs:w-42 sm:w-50 h-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
               loading="eager"
               decoding="async"
             />
           </div>
-        </div>
 
-        <!-- 2. Eyebrow Timestamp: Desi Ghee Amber #E4A834 -->
-        <div class="threshold-anim-eyebrow">
-          <span class="font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#E4A834] uppercase tracking-[0.28em] font-bold select-none drop-shadow">
-            ESTD. 1980 — INDORE
-          </span>
-        </div>
+          <!-- 5. Hairline Gold Rule: scaleX draw -->
+          <div class="threshold-anim-rule h-px w-10 sm:w-14 bg-gradient-to-r from-transparent via-[#E4A834] to-transparent my-0.5"></div>
 
-        <!-- 3. Headline: "Welcome to" with gold hairline accents -->
-        <div class="threshold-anim-welcome flex items-center gap-2 -my-0.5">
-          <span class="h-px w-3 sm:w-5 bg-gradient-to-r from-transparent to-[#E4A834]/50" aria-hidden="true"></span>
-          <span class="font-serif text-[9.5px] xs:text-[10.5px] sm:text-[12px] text-[#F7F4EB]/90 uppercase tracking-[0.32em] font-medium select-none">
-            Welcome to
-          </span>
-          <span class="h-px w-3 sm:w-5 bg-gradient-to-l from-transparent to-[#E4A834]/50" aria-hidden="true"></span>
-        </div>
+          <!-- 6. Dual-Color Hindi Quote: "स्वाद" and "प्यार" in Shining Ruby Foil, rest in Warm Cream -->
+          <div class="threshold-anim-belief min-h-[30px] sm:min-h-[38px] flex items-center justify-center">
+            <p
+              id="threshold-hindi-quote"
+              class="font-devanagari text-[13.5px] xs:text-[15px] sm:text-[17.5px] tracking-wide leading-normal select-none text-center whitespace-nowrap"
+            >
+              <span id="typed-container"></span><span id="typed-cursor" class="inline-block w-[2px] h-[1em] bg-[#E4A834] ml-0.5 align-middle animate-pulse"></span>
+            </p>
+          </div>
 
-        <!-- 4. Wordmark: Brand_Name.webp -->
-        <div class="threshold-anim-wordmark">
-          <img
-            src="/assets/Brand_Name.webp"
-            alt="Nanaksar Dhaba"
-            width="480"
-            height="120"
-            class="w-38 xs:w-42 sm:w-50 h-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
-            loading="eager"
-            decoding="async"
-          />
-        </div>
-
-        <!-- 5. Hairline Gold Rule: scaleX draw -->
-        <div class="threshold-anim-rule h-px w-10 sm:w-14 bg-gradient-to-r from-transparent via-[#E4A834] to-transparent my-0.5"></div>
-
-        <!-- 6. Dual-Color Hindi Quote: "स्वाद" and "प्यार" in Shining Ruby Foil, rest in Warm Cream -->
-        <div class="threshold-anim-belief min-h-[30px] sm:min-h-[38px] flex items-center justify-center">
-          <p
-            id="threshold-hindi-quote"
-            class="font-devanagari text-[13.5px] xs:text-[15px] sm:text-[17.5px] tracking-wide leading-normal select-none text-center whitespace-nowrap"
-          >
-            <span id="typed-container"></span><span id="typed-cursor" class="inline-block w-[2px] h-[1em] bg-[#E4A834] ml-0.5 align-middle animate-pulse"></span>
-          </p>
         </div>
 
       </div>
 
     </div>
+
   </div>
 </div>
 
 <style>
   /* ==========================================================================
-     The Royal Haveli Teakwood Darwaza (शाही शीशम देवरी दरवाज़ा)
-     Handcrafted Sheesham timber, coffered recessed panels, hammered brass studs
+     The Golden Sarovar & Lotus Portal (नानकसर अमृत सरोवर)
+     Pure sacred obsidian water with expanding 24K liquid gold ripples & lotus halo
      ========================================================================== */
 
   .font-devanagari {
     font-family: 'Noto Serif Devanagari', 'Cinzel', serif;
   }
 
-  .door-leaf {
-    position: absolute;
-    top: 0;
-    width: 50.3%;
-    height: 100%;
-    z-index: 10;
-    will-change: transform, box-shadow;
-    background-color: #120C08;
+  .sarovar-panel {
+    background-color: #080808;
+    will-change: transform;
   }
 
-  /* Left Heavy Sheesham Door Leaf */
-  .door-leaf-left {
-    left: 0;
-    transform-origin: left center;
+  /* Left Obsidian Water Veil */
+  .sarovar-veil-left {
     box-shadow: 25px 0 60px rgba(0, 0, 0, 0.98);
-    transition: transform 1250ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1250ms ease;
+    transition: transform 1200ms cubic-bezier(0.72, 0, 0.18, 1);
+    transform-origin: left center;
   }
 
-  /* Right Heavy Sheesham Door Leaf */
-  .door-leaf-right {
-    right: 0;
+  /* Right Obsidian Water Veil */
+  .sarovar-veil-right {
+    transition: transform 1200ms cubic-bezier(0.72, 0, 0.18, 1);
     transform-origin: right center;
-    box-shadow: -25px 0 60px rgba(0, 0, 0, 0.98);
-    transition: transform 1250ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1250ms ease;
   }
 
-  /* 3D Perspective Outward Swing Kinematics */
-  .threshold-root.is-opened .door-leaf-left {
-    transform: perspective(1400px) rotateY(-82deg) scale(0.98);
-    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.5);
+  /* Theatrical Liquid Gold Dissolve & Parting */
+  .threshold-root.is-opened .sarovar-veil-left {
+    transform: translateX(-104%) scaleX(0.96);
   }
 
-  .threshold-root.is-opened .door-leaf-right {
-    transform: perspective(1400px) rotateY(82deg) scale(0.98);
-    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+  .threshold-root.is-opened .sarovar-veil-right {
+    transform: translateX(104%) scaleX(0.96);
   }
 
-  /* Timber Vignette Overlay (Warm Tandoor Shadow Depth) */
-  .door-timber-vignette {
-    background: linear-gradient(
-      to bottom,
-      rgba(6, 4, 3, 0.94) 0%,
-      rgba(18, 12, 8, 0.20) 18%,
-      transparent 50%,
-      rgba(14, 9, 6, 0.40) 82%,
-      rgba(6, 4, 3, 0.96) 100%
-    );
+  /* Concentric Golden Sarovar Ripples */
+  .sarovar-ripple {
+    position: absolute;
+    width: min(85vw, 360px);
+    height: min(85vw, 360px);
+    border-radius: 9999px;
+    border: 1.5px solid rgba(228, 168, 52, 0.45);
+    box-shadow: 0 0 20px rgba(228, 168, 52, 0.25), inset 0 0 15px rgba(228, 168, 52, 0.15);
+    pointer-events: none;
   }
 
-  /* Center Seam Hearth Light Pulse */
-  .door-light-pulse {
-    animation: doorLightBreath 2.2s ease-in-out infinite;
+  .sarovar-ripple-1 {
+    animation: sarovarRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
   }
 
-  @keyframes doorLightBreath {
-    0%, 100% {
-      opacity: 0.35;
-      filter: drop-shadow(0 0 2px rgba(228, 168, 52, 0.4));
+  .sarovar-ripple-2 {
+    animation: sarovarRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) 0.9s infinite;
+  }
+
+  .sarovar-ripple-3 {
+    animation: sarovarRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) 1.8s infinite;
+  }
+
+  .sarovar-ripple-4 {
+    animation: sarovarRipple 3.6s cubic-bezier(0.1, 0.8, 0.3, 1) 2.7s infinite;
+  }
+
+  @keyframes sarovarRipple {
+    0% {
+      transform: scale(0.92);
+      opacity: 0.75;
     }
     50% {
-      opacity: 0.95;
-      filter: drop-shadow(0 0 8px rgba(228, 168, 52, 0.85));
+      opacity: 0.40;
+    }
+    100% {
+      transform: scale(2.3);
+      opacity: 0;
     }
   }
 
-  .threshold-root.is-opened .door-center-light-seam {
-    opacity: 0;
-    transition: opacity 250ms ease;
+  /* Sacred Golden Lotus Halo Breathing Pulse */
+  .lotus-halo {
+    animation: lotusBreathe 4s ease-in-out infinite;
+    transform-origin: center center;
+  }
+
+  @keyframes lotusBreathe {
+    0%, 100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 0.85;
+      filter: drop-shadow(0 0 10px rgba(228, 168, 52, 0.3));
+    }
+    50% {
+      transform: scale(1.03) rotate(1.5deg);
+      opacity: 1;
+      filter: drop-shadow(0 0 24px rgba(228, 168, 52, 0.65));
+    }
   }
 
   /* --- REFINED METALLIC RUBY FOIL SHINE FOR 'स्वाद' AND 'प्यार' --- */
@@ -665,12 +460,12 @@ const { mode = 'overlay' } = Astro.props;
     animation: textFadeIn 500ms cubic-bezier(0.16, 1, 0.3, 1) 680ms both;
   }
 
-  /* Center Medallion Release on Door Opening */
+  /* Center Lotus Medallion Golden Bloom on Open */
   .threshold-root.is-opened #curtain-center-stack {
     opacity: 0;
-    transform: scale(1.08);
+    transform: scale(1.1);
     pointer-events: none;
-    transition: opacity 350ms ease, transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition: opacity 400ms ease, transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .threshold-root.is-opened {
@@ -679,8 +474,9 @@ const { mode = 'overlay' } = Astro.props;
 
   /* Prefers Reduced Motion */
   @media (prefers-reduced-motion: reduce) {
-    .door-leaf-left, .door-leaf-right {
+    .sarovar-veil-left, .sarovar-veil-right, .sarovar-ripple, .lotus-halo {
       transition: none !important;
+      animation: none !important;
     }
     .medallion-body, .threshold-anim-seal, .threshold-anim-eyebrow, .threshold-anim-welcome, .threshold-anim-wordmark, .threshold-anim-rule, .threshold-anim-belief, .crimson-ruby-shine, .medallion-glint {
       animation: none !important;
@@ -811,7 +607,7 @@ const { mode = 'overlay' } = Astro.props;
 
     let hasOpened = false;
 
-    function openDoors(type) {
+    function openSarovar(type) {
       if (hasOpened) return;
       hasOpened = true;
 
@@ -827,14 +623,14 @@ const { mode = 'overlay' } = Astro.props;
         recordMetric('entered', { timeMs: elapsed });
       }
 
-      // ROYAL 3D HAVELI DOOR SWING: Left & right leaves swing open outward
+      // SACRED LIQUID GOLD DISSOLVE & WATER PARTING
       thresholdEl.classList.add('is-opened');
-      thresholdEl.classList.remove('bg-[#0A0A0A]');
+      thresholdEl.classList.remove('bg-[#070707]');
       thresholdEl.classList.add('bg-transparent');
       document.documentElement.classList.remove('curtain-gate-active');
       window.dispatchEvent(new CustomEvent('threshold:entered', { detail: { type, elapsed } }));
 
-      // Complete cleanup: Remove threshold completely after doors finish swing
+      // Complete cleanup: Remove threshold completely after water veils part
       setTimeout(function () {
         thresholdEl.style.display = 'none';
         thresholdEl.remove();
@@ -849,19 +645,19 @@ const { mode = 'overlay' } = Astro.props;
 
     // AUTOMATIC LUXURY TIMING: 2.5 seconds total (as requested by user)
     const autoTimer = setTimeout(function () {
-      openDoors('auto');
+      openSarovar('auto');
     }, 2500);
 
-    // Clicking anywhere on the screen immediately opens the doors
+    // Clicking anywhere on the screen immediately enters
     thresholdEl.addEventListener('click', function () {
-      openDoors('tap');
+      openSarovar('tap');
     });
 
     // Keyboard support: Esc, Space, Enter
     window.addEventListener('keydown', function (e) {
       if (thresholdEl.style.display === 'none') return;
       if (e.key === 'Escape' || e.key === ' ' || e.key === 'Enter') {
-        openDoors('key');
+        openSarovar('key');
       }
     });
   })();
