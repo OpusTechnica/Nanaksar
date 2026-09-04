@@ -556,14 +556,14 @@ export default function MenuExplorer() {
                               <button
                                 type="button"
                                 onClick={() => handleAdd(item)}
-                                className="relative overflow-hidden h-9 w-[100px] rounded-xl bg-[#0F0F0F] border border-[#0F0F0F] text-white flex items-center cursor-pointer group shadow-xs transition-all duration-300 active:scale-95"
+                                className="relative overflow-hidden h-9 w-[100px] rounded-xl bg-[#0F0F0F] border border-[#0F0F0F] text-white flex items-center cursor-pointer group/btn shadow-xs transition-all duration-300 active:scale-95"
                                 aria-label={`Add ${item.name} to tray`}
                               >
-                                <span className="font-display font-bold text-xs uppercase tracking-wider pl-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:-translate-x-2">
+                                <span className="font-display font-bold text-xs uppercase tracking-wider pl-3 transition-all duration-300 ease-out group-hover/btn:opacity-0 group-hover/btn:-translate-x-2">
                                   ADD
                                 </span>
-                                <span className="absolute right-0 top-0 bottom-0 w-8 h-full bg-[#D01B1B] flex items-center justify-center transition-all duration-300 ease-out group-hover:w-full group-hover:bg-[#B81414]">
-                                  <Plus className="w-3.5 h-3.5 text-white transition-transform duration-300 ease-out group-hover:scale-110" />
+                                <span className="absolute right-0 top-0 bottom-0 w-8 h-full bg-[#D01B1B] flex items-center justify-center transition-all duration-300 ease-out group-hover/btn:w-full group-hover/btn:bg-[#B81414]">
+                                  <Plus className="w-3.5 h-3.5 text-white transition-transform duration-300 ease-out group-hover/btn:scale-110" />
                                 </span>
                               </button>
                             ) : (
