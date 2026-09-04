@@ -3,19 +3,22 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
 ---
 
 <div class="relative z-20 w-full pt-3 sm:pt-8 pb-2 sm:pb-5">
-  <!-- Mobile: Sleek 4-Column Minimalist Trust Strip (Zero CTA Overpowering) | Desktop: 4-Pillar Pillar Cards -->
-  <div id="hero-stats-container" class="grid grid-cols-4 gap-1.5 xs:gap-2.5 sm:gap-3.5 lg:gap-4 w-full items-stretch">
+  <!-- Mobile: Integrated Minimalist Precision Ribbon | Desktop: 4-Pillar Authoritative Cards -->
+  <div
+    id="hero-stats-container"
+    class="grid grid-cols-4 sm:gap-3.5 lg:gap-4 w-full max-w-[370px] sm:max-w-none bg-[#141414]/75 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border border-white/10 sm:border-0 rounded-2xl sm:rounded-none divide-x divide-white/10 sm:divide-x-0 items-stretch shadow-[0_4px_20px_rgba(0,0,0,0.5)] sm:shadow-none"
+  >
     
     <!-- Card 1: 5 Outlets -->
     <a
       href="/outlets"
-      class="bg-[#141414]/90 sm:bg-white/[0.04] hover:bg-white/[0.08] sm:backdrop-blur-md border border-white/10 hover:border-[#E4A834]/50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] rounded-xl sm:rounded-2xl p-2 xs:p-2.5 sm:p-4 lg:p-5 transition-all duration-200 group flex flex-col justify-center text-center sm:text-left"
+      class="py-2.5 px-1 sm:p-4 lg:p-5 flex flex-col justify-center text-center sm:text-left sm:bg-white/[0.04] sm:hover:bg-white/[0.08] sm:backdrop-blur-md sm:border sm:border-white/10 sm:hover:border-[#E4A834]/50 sm:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] sm:rounded-2xl transition-all duration-200 group"
     >
-      <span class="text-[7.5px] xs:text-[9px] sm:text-xs font-mono text-[#E4A834] uppercase tracking-wider font-bold block mb-0.5 sm:mb-1 truncate">
+      <span class="hidden sm:block text-[9px] xs:text-[10px] sm:text-xs font-mono text-[#E4A834] uppercase tracking-widest font-bold mb-1">
         LOCATIONS
       </span>
       <span class="font-display text-xs xs:text-sm sm:text-2xl lg:text-3xl font-bold uppercase text-white group-hover:text-[#E4A834] transition block leading-tight">
-        <span data-counter="num" data-target="5" data-start="1" class="tabular-nums">5</span> <span class="hidden xs:inline text-[11px] sm:text-lg lg:text-3xl font-medium sm:font-bold">Outlets</span>
+        <span data-counter="num" data-target="5" data-start="1" class="tabular-nums">5</span> <span class="text-[10px] xs:text-xs sm:text-lg lg:text-3xl font-medium sm:font-bold text-white/85 sm:text-white">Outlets</span>
       </span>
       <p class="hidden sm:block text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         Across Indore Hubs
@@ -23,12 +26,12 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
     </a>
 
     <!-- Card 2: 4.5 Star Rating -->
-    <div class="bg-[#141414]/90 sm:bg-white/[0.04] sm:backdrop-blur-md border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] rounded-xl sm:rounded-2xl p-2 xs:p-2.5 sm:p-4 lg:p-5 flex flex-col justify-center text-center sm:text-left">
-      <span class="text-[7.5px] xs:text-[9px] sm:text-xs font-mono text-[#E4A834] uppercase tracking-wider font-bold block mb-0.5 sm:mb-1 truncate">
+    <div class="py-2.5 px-1 sm:p-4 lg:p-5 flex flex-col justify-center text-center sm:text-left sm:bg-white/[0.04] sm:backdrop-blur-md sm:border sm:border-white/10 sm:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] sm:rounded-2xl">
+      <span class="hidden sm:block text-[9px] xs:text-[10px] sm:text-xs font-mono text-[#E4A834] uppercase tracking-widest font-bold mb-1">
         RATING
       </span>
-      <span class="font-display text-xs xs:text-sm sm:text-2xl lg:text-3xl font-bold uppercase text-[#E4A834] flex items-center justify-center sm:justify-start gap-1 leading-tight">
-        <span data-counter="num" data-target="4.5" data-start="3.8" data-decimals="1" class="tabular-nums">4.5</span><svg class="w-3 h-3 xs:w-3.5 xs:h-3.5 sm:w-5 sm:h-5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid"/></svg><span class="hidden xs:inline text-[11px] sm:text-lg lg:text-3xl font-medium sm:font-bold">Rating</span>
+      <span class="font-display text-xs xs:text-sm sm:text-2xl lg:text-3xl font-bold uppercase text-[#E4A834] flex items-center justify-center sm:justify-start gap-0.5 leading-tight">
+        <span data-counter="num" data-target="4.5" data-start="3.8" data-decimals="1" class="tabular-nums">4.5</span><svg class="w-2.5 h-2.5 xs:w-3 xs:h-3 sm:w-5 sm:h-5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid"/></svg><span class="hidden sm:inline text-lg lg:text-3xl font-bold"> Rating</span>
       </span>
       <p class="hidden sm:block text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         5,000+ Diners
@@ -36,12 +39,12 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
     </div>
 
     <!-- Card 3: 100% Pure Veg -->
-    <div class="bg-[#141414]/90 sm:bg-white/[0.04] sm:backdrop-blur-md border border-white/10 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] rounded-xl sm:rounded-2xl p-2 xs:p-2.5 sm:p-4 lg:p-5 flex flex-col justify-center text-center sm:text-left">
-      <span class="text-[7.5px] xs:text-[9px] sm:text-xs font-mono text-green-400 uppercase tracking-wider font-bold block mb-0.5 sm:mb-1 truncate">
+    <div class="py-2.5 px-1 sm:p-4 lg:p-5 flex flex-col justify-center text-center sm:text-left sm:bg-white/[0.04] sm:backdrop-blur-md sm:border sm:border-white/10 sm:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] sm:rounded-2xl">
+      <span class="hidden sm:block text-[9px] xs:text-[10px] sm:text-xs font-mono text-green-400 uppercase tracking-widest font-bold mb-1">
         PURITY
       </span>
       <span class="font-display text-xs xs:text-sm sm:text-2xl lg:text-3xl font-bold uppercase text-white block leading-tight">
-        <span data-counter="num" data-target="100" data-start="75" class="tabular-nums">100</span>% <span class="hidden xs:inline text-[11px] sm:text-lg lg:text-3xl font-medium sm:font-bold">Veg</span>
+        <span data-counter="num" data-target="100" data-start="75" class="tabular-nums">100</span>% <span class="text-[10px] xs:text-xs sm:text-lg lg:text-3xl font-medium sm:font-bold text-white/85 sm:text-white">Veg</span>
       </span>
       <p class="hidden sm:block text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         Pure Desi Ghee
@@ -51,13 +54,13 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
     <!-- Card 4: Since 1980 -->
     <a
       href="/story"
-      class="bg-[#141414]/90 sm:bg-white/[0.04] hover:bg-white/[0.08] sm:backdrop-blur-md border border-white/10 hover:border-[#E4A834]/50 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] rounded-xl sm:rounded-2xl p-2 xs:p-2.5 sm:p-4 lg:p-5 transition-all duration-200 group flex flex-col justify-center text-center sm:text-left"
+      class="py-2.5 px-1 sm:p-4 lg:p-5 flex flex-col justify-center text-center sm:text-left sm:bg-white/[0.04] sm:hover:bg-white/[0.08] sm:backdrop-blur-md sm:border sm:border-white/10 sm:hover:border-[#E4A834]/50 sm:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.08)] sm:rounded-2xl transition-all duration-200 group"
     >
-      <span class="text-[7.5px] xs:text-[9px] sm:text-xs font-mono text-[#E4A834] uppercase tracking-wider font-bold block mb-0.5 sm:mb-1 truncate">
+      <span class="hidden sm:block text-[9px] xs:text-[10px] sm:text-xs font-mono text-[#E4A834] uppercase tracking-widest font-bold mb-1">
         HERITAGE
       </span>
       <span class="font-display text-xs xs:text-sm sm:text-2xl lg:text-3xl font-bold uppercase text-white group-hover:text-[#E4A834] transition block leading-tight">
-        <span class="hidden xs:inline text-[11px] sm:text-lg lg:text-3xl font-medium sm:font-bold">Since </span><span data-counter="num" data-target="1980" data-start="1950" class="tabular-nums">1980</span>
+        <span class="text-[10px] xs:text-xs sm:text-lg lg:text-3xl font-medium sm:font-bold text-white/85 sm:text-white">Est. </span><span data-counter="num" data-target="1980" data-start="1950" class="tabular-nums">1980</span>
       </span>
       <p class="hidden sm:block text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         45+ Yrs Indore Swad
