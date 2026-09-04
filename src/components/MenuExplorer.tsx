@@ -514,11 +514,11 @@ export default function MenuExplorer() {
 
                             {/* Portion Selector Pill if multiple sizes available */}
                             {hasMultiplePortions && (
-                              <div className="flex items-center gap-1 mt-2 bg-[#F7F4EB] p-0.5 rounded-lg border border-[#0F0F0F]/10 w-fit">
+                              <div className="inline-flex items-center gap-1 mt-2.5 bg-[#F7F4EB] p-0.5 rounded-lg border border-[#0F0F0F]/10 w-fit">
                                 <button
                                   type="button"
                                   onClick={() => setSelectedPortions((prev) => ({ ...prev, [item.id]: 'half' }))}
-                                  className={`px-3 py-2.5 rounded text-[10px] font-mono font-bold transition min-h-[44px] ${
+                                  className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold transition-all ${
                                     chosenPortion === 'half'
                                       ? 'bg-[#0F0F0F] text-white shadow-xs'
                                       : 'text-[#0F0F0F]/60 hover:text-[#0F0F0F]'
@@ -529,7 +529,7 @@ export default function MenuExplorer() {
                                 <button
                                   type="button"
                                   onClick={() => setSelectedPortions((prev) => ({ ...prev, [item.id]: 'full' }))}
-                                  className={`px-3 py-2.5 rounded text-[10px] font-mono font-bold transition min-h-[44px] ${
+                                  className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold transition-all ${
                                     chosenPortion === 'full'
                                       ? 'bg-[#0F0F0F] text-white shadow-xs'
                                       : 'text-[#0F0F0F]/60 hover:text-[#0F0F0F]'
@@ -556,13 +556,18 @@ export default function MenuExplorer() {
                               <button
                                 type="button"
                                 onClick={() => handleAdd(item)}
-                                className="h-9 px-4 rounded-xl text-xs font-display font-bold uppercase tracking-wider transition flex items-center gap-1.5 bg-[#0F0F0F] hover:bg-[#D01B1B] text-white active:scale-95 shadow-xs"
+                                className="relative overflow-hidden h-9 w-[100px] rounded-xl bg-[#0F0F0F] border border-[#0F0F0F] text-white flex items-center cursor-pointer group shadow-xs transition-all duration-300 active:scale-95"
+                                aria-label={`Add ${item.name} to tray`}
                               >
-                                <Plus className="w-3.5 h-3.5" />
-                                <span>ADD</span>
+                                <span className="font-display font-bold text-xs uppercase tracking-wider pl-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:-translate-x-2">
+                                  ADD
+                                </span>
+                                <span className="absolute right-0 top-0 bottom-0 w-8 h-full bg-[#D01B1B] flex items-center justify-center transition-all duration-300 ease-out group-hover:w-full group-hover:bg-[#B81414]">
+                                  <Plus className="w-3.5 h-3.5 text-white transition-transform duration-300 ease-out group-hover:scale-110" />
+                                </span>
                               </button>
                             ) : (
-                              <div className="h-9 flex items-center bg-[#0F0F0F] rounded-xl p-0.5 border border-[#E4A834]/40 shadow-xs">
+                              <div className="h-9 w-[100px] flex items-center justify-between bg-[#0F0F0F] rounded-xl p-1 border border-[#E4A834]/40 shadow-xs">
                                 <button
                                   type="button"
                                   onClick={() => updateCartQuantity(existingCartItem!.id, -1)}
