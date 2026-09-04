@@ -114,6 +114,61 @@ export function removeFromCart(cartItemId: string) {
   $cart.set($cart.get().filter((item) => item.id !== cartItemId));
 }
 
+export function updateCartItemPortion(
+  cartItemId: string,
+  newPortion: 'half' | 'full',
+  menuItem?: MenuItem
+) {
+  const current = $cart.get();
+  const existingItemIndex = current.findIndex((item) => item.id === cartItemId);
+  if (existingItemIndex === -1) return;
+
+  const currentItem = current[existingItemIndex];
+  if (currentItem.portion === newPortion) return;
+
+  const dietaryTag = currentItem.isJain ? 'jain' : currentItem.isSwaminarayan ? 'swaminarayan' : 'regular';
+  const targetCartItemId = `${currentItem.menuItemId}-${newPortion}-${dietaryTag}`;
+
+  let newPrice = currentItem.price;
+  if (menuItem) {
+    if (newPortion === 'half' && menuItem.priceHalf) {
+      newPrice = menuItem.priceHalf;
+    } else if (newPortion === 'full' && menuItem.priceFull) {
+      newPrice = menuItem.priceFull;
+    }
+  }
+
+  const targetExistingIndex = current.findIndex((item) => item.id === targetCartItemId);
+
+  if (targetExistingIndex > -1 && targetExistingIndex !== existingItemIndex) {
+    const updated = current
+      .map((item, idx) => {
+        if (idx === targetExistingIndex) {
+          return {
+            ...item,
+            quantity: item.quantity + currentItem.quantity,
+          };
+        }
+        if (idx === existingItemIndex) {
+          return null;
+        }
+        return item;
+      })
+      .filter(Boolean) as CartItem[];
+    $cart.set(updated);
+  } else {
+    const updated = [...current];
+    updated[existingItemIndex] = {
+      ...currentItem,
+      id: targetCartItemId,
+      portion: newPortion,
+      portionLabel: newPortion === 'half' ? 'Half' : 'Full',
+      price: newPrice,
+    };
+    $cart.set(updated);
+  }
+}
+
 export function clearCart() {
   $cart.set([]);
 }

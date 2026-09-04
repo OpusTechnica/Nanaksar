@@ -26,6 +26,7 @@ import {
   getCartSummary,
   buildWhatsAppOrderUrl,
   closeCart,
+  updateCartItemPortion,
 } from '../data/cartStore';
 import { OUTLETS, BRAND_INFO, MENU_ITEMS, type MenuItem } from '../data/restaurantData';
 
@@ -329,6 +330,7 @@ export default function CartDrawer() {
                     {summary.items.map((item) => {
                       const menuItem = menuDictionary.get(item.menuItemId);
                       const imageUrl = menuItem?.image || '/assets/menu/dal-makhani.webp';
+                      const hasMultiplePortions = Boolean(menuItem?.priceHalf && menuItem?.priceFull);
 
                       return (
                         <div
@@ -369,9 +371,38 @@ export default function CartDrawer() {
                                 {item.name}
                               </h4>
                               <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
-                                <span className="text-[10px] font-mono font-bold text-[#E4A834] bg-[#E4A834]/10 px-2 py-0.5 rounded border border-[#E4A834]/20">
-                                  {item.portionLabel}
-                                </span>
+                                {hasMultiplePortions ? (
+                                  <div className="inline-flex items-center bg-[#101010] p-0.5 rounded-lg border border-white/15 shadow-xs">
+                                    <button
+                                      type="button"
+                                      onClick={() => updateCartItemPortion(item.id, 'half', menuItem)}
+                                      className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold transition-all ${
+                                        item.portion === 'half'
+                                          ? 'bg-[#E4A834] text-[#0F0F0F] shadow-xs'
+                                          : 'text-white/60 hover:text-white'
+                                      }`}
+                                      aria-label={`Switch ${item.name} to Half portion`}
+                                    >
+                                      Half ₹{menuItem?.priceHalf}
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => updateCartItemPortion(item.id, 'full', menuItem)}
+                                      className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold transition-all ${
+                                        item.portion === 'full' || item.portion === 'single'
+                                          ? 'bg-[#E4A834] text-[#0F0F0F] shadow-xs'
+                                          : 'text-white/60 hover:text-white'
+                                      }`}
+                                      aria-label={`Switch ${item.name} to Full portion`}
+                                    >
+                                      Full ₹{menuItem?.priceFull}
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <span className="text-[10px] font-mono font-bold text-[#E4A834] bg-[#E4A834]/10 px-2 py-0.5 rounded border border-[#E4A834]/20">
+                                    {item.portionLabel}
+                                  </span>
+                                )}
                                 {item.isJain && (
                                   <span className="text-[9px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800">
                                     JAIN PREP
