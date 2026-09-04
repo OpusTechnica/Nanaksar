@@ -43,6 +43,7 @@ export interface MenuItem {
   categoryLabel: string;
   description: string;
   image: string;
+  thumbImage?: string;
   priceHalf?: number;
   priceFull?: number;
   priceSingle?: number;
@@ -131,7 +132,7 @@ export const OUTLETS: Outlet[] = [
   },
 ];
 
-export const MENU_ITEMS: MenuItem[] = [
+const RAW_MENU_ITEMS: MenuItem[] = [
   // CROWN SIGNATURES (6 Flagship Dishes for Symmetric 3x2 Grid)
   {
     id: 'dal-makhani',
@@ -781,3 +782,9 @@ export const MENU_ITEMS: MenuItem[] = [
     packagingFee: 20,
   },
 ];
+
+export const MENU_ITEMS: MenuItem[] = RAW_MENU_ITEMS.map((item) => ({
+  ...item,
+  thumbImage: item.thumbImage || item.image.replace('/assets/menu/', '/assets/menu/thumbs/'),
+}));
+

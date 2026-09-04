@@ -1,95 +1,69 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useStore } from '@nanostores/react';
-import { Search, Plus, Minus, Check, ChevronDown, X, Menu, Utensils, ShoppingBag, ArrowRight } from './ui/Icon';
+import { Search, ChevronDown, X, Menu, Utensils, ArrowRight, Check } from './ui/Icon';
 import { MENU_ITEMS, type MenuItem } from '../data/restaurantData';
 import { $cart, addToCart, updateCartQuantity, openCart } from '../data/cartStore';
-
-const PAGE_CHUNK_SIZE = 18;
-
-// Exact physical menu sections matching Menu.webp through Menu-3.webp
-const CATEGORIES = [
-  { id: 'all', label: 'All Items' },
-  { id: 'dal', label: 'Dal' },
-  { id: 'paneer', label: 'Paneer Main Course' },
-  { id: 'sabjiya', label: 'Sabjiya' },
-  { id: 'chaap', label: 'Dhaba Style Soya Chaap' },
-  { id: 'tandoori-chaap', label: 'Tandoori Chaap' },
-  { id: 'kofta', label: 'Kofta' },
-  { id: 'roti', label: 'Roti' },
-  { id: 'rice-pulao', label: 'Rice & Pulao' },
-  { id: 'chinese-starter', label: 'Chinese Starter' },
-  { id: 'tandoori-starter', label: 'Tandoori Starter' },
-  { id: 'starter', label: 'Starter' },
-  { id: 'soups', label: "Soup's" },
-  { id: 'salad', label: 'Salad' },
-  { id: 'sweets', label: 'Sweets' },
-  { id: 'coldrinks', label: 'Coldrinks' },
-  { id: 'combos', label: 'Thalis & Combos' },
-];
-
-const SORT_OPTIONS = [
-  { id: 'recommended', label: "Chef's Recommendation" },
-  { id: 'price-asc', label: 'Price: Low to High' },
-  { id: 'price-desc', label: 'Price: High to Low' },
-  { id: 'popular', label: 'Bestsellers & Popular' },
-  { id: 'spicy', label: 'Spiciness: Mild to Spicy' },
-];
-
-const PRICE_TIERS = [
-  { id: 'all', label: 'All Prices' },
-  { id: 'under-150', label: 'Under ₹150' },
-  { id: '150-250', label: '₹150 – ₹250' },
-  { id: 'above-250', label: '₹250+' },
-];
-
-// Helper to check category affiliation
-function itemMatchesCategory(item: MenuItem, catId: string): boolean {
-  if (catId === 'all') return true;
-  if (catId === 'roti') return item.category === 'roti' || item.category === 'breads';
-  if (catId === 'rice-pulao') return item.category === 'rice-pulao' || item.category === 'rice';
-  if (catId === 'sweets') return item.category === 'sweets' || item.category === 'desserts';
-  return item.category === catId;
-}
-
-// Helper to check price tier affiliation
-function itemMatchesPrice(item: MenuItem, tierId: string): boolean {
-  if (tierId === 'all') return true;
-  const p = item.priceSingle || item.priceHalf || item.priceFull || 0;
-  if (tierId === 'under-150') return p < 150;
-  if (tierId === '150-250') return p >= 150 && p <= 250;
-  if (tierId === 'above-250') return p > 250;
-  return true;
-}
+import {
+  CATEGORIES,
+  SORT_OPTIONS,
+  PRICE_TIERS,
+  PAGE_CHUNK_SIZE,
+  itemMatchesCategory,
+  itemMatchesPrice,
+  filterAndSortMenuItems,
+} from './menu/MenuFilters';
+import DishCard from './menu/DishCard';
 
 export default function MenuExplorer() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [jainOnly, setJainOnly] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [debouncedQuery, setDebouncedQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<string>('recommended');
   const [priceFilter, setPriceFilter] = useState<string>('all');
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [addedItem, setAddedItem] = useState<string | null>(null);
-  const [selectedPortions, setSelectedPortions] = useState<Record<string, 'half' | 'full'>>({});
   const [visibleCount, setVisibleCount] = useState<number>(PAGE_CHUNK_SIZE);
 
   const cart = useStore($cart);
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
+  // O(1) quantity lookup map to pass primitive quantities to memoized DishCard
+  const cartQtyMap = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const ci of cart) {
+      map.set(ci.id, ci.quantity);
+      map.set(`${ci.menuItemId}-${ci.portion}`, ci.quantity);
+      map.set(ci.menuItemId, (map.get(ci.menuItemId) || 0) + ci.quantity);
+    }
+    return map;
+  }, [cart]);
+
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const sortPopoverRef = useRef<HTMLDivElement | null>(null);
 
-  // Dynamic Item Counts per category (prevents dead-end 0-item states)
-  const getCategoryCount = (catId: string) => {
-    return MENU_ITEMS.filter((item) => {
-      if (!itemMatchesCategory(item, catId)) return false;
-      if (jainOnly && !item.isJainAvailable) return false;
-      if (!itemMatchesPrice(item, priceFilter)) return false;
-      return true;
-    }).length;
-  };
+  // Debounce search query by 150ms to eliminate keystroke render thrashing
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedQuery(searchQuery);
+    }, 150);
+    return () => clearTimeout(handler);
+  }, [searchQuery]);
 
-  // Outside click listener for Sort Popover (handles hybrid touch laptops & desktops)
+  // Dynamic Item Counts per category (prevents dead-end 0-item states)
+  const getCategoryCount = useCallback(
+    (catId: string) => {
+      return MENU_ITEMS.filter((item) => {
+        if (!itemMatchesCategory(item, catId)) return false;
+        if (jainOnly && !item.isJainAvailable) return false;
+        if (!itemMatchesPrice(item, priceFilter)) return false;
+        return true;
+      }).length;
+    },
+    [jainOnly, priceFilter]
+  );
+
+  // Outside click listener for Sort Popover
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       if (sortPopoverRef.current && !sortPopoverRef.current.contains(e.target as Node)) {
@@ -110,49 +84,23 @@ export default function MenuExplorer() {
     };
   }, [isSortOpen]);
 
-  // Filter and Sort Engine
-  const filteredItems = MENU_ITEMS.filter((item) => {
-    if (!itemMatchesCategory(item, selectedCategory)) return false;
-    if (jainOnly && !item.isJainAvailable) return false;
-    if (!itemMatchesPrice(item, priceFilter)) return false;
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      return (
-        item.name.toLowerCase().includes(q) ||
-        item.description.toLowerCase().includes(q) ||
-        item.categoryLabel.toLowerCase().includes(q)
-      );
-    }
-    return true;
-  }).sort((a, b) => {
-    const priceA = a.priceSingle || a.priceHalf || a.priceFull || 0;
-    const priceB = b.priceSingle || b.priceHalf || b.priceFull || 0;
+  // Memoized Filter and Sort Engine (only runs when actual filter criteria change)
+  const filteredItems = useMemo(() => {
+    return filterAndSortMenuItems(MENU_ITEMS, {
+      selectedCategory,
+      jainOnly,
+      priceFilter,
+      searchQuery: debouncedQuery,
+      sortBy,
+    });
+  }, [selectedCategory, jainOnly, priceFilter, debouncedQuery, sortBy]);
 
-    if (sortBy === 'price-asc') return priceA - priceB;
-    if (sortBy === 'price-desc') return priceB - priceA;
-    if (sortBy === 'popular') {
-      if (a.isBestseller && !b.isBestseller) return -1;
-      if (!a.isBestseller && b.isBestseller) return 1;
-      return 0;
-    }
-    if (sortBy === 'spicy') {
-      const spiceOrder: Record<string, number> = { mild: 1, medium: 2, spicy: 3 };
-      return (spiceOrder[a.spiceLevel] || 2) - (spiceOrder[b.spiceLevel] || 2);
-    }
-    // 'recommended' default: signatures first, then bestsellers
-    if (a.isSignature && !b.isSignature) return -1;
-    if (!a.isSignature && b.isSignature) return 1;
-    if (a.isBestseller && !b.isBestseller) return -1;
-    if (!a.isBestseller && b.isBestseller) return 1;
-    return 0;
-  });
-
-  // Reset visible slice when filters change (< 16ms render loop)
+  // Reset visible slice when filters change
   useEffect(() => {
     setVisibleCount(PAGE_CHUNK_SIZE);
-  }, [selectedCategory, jainOnly, searchQuery, sortBy, priceFilter]);
+  }, [selectedCategory, jainOnly, debouncedQuery, sortBy, priceFilter]);
 
-  // Windowed progressive loading
+  // Windowed progressive loading via IntersectionObserver
   useEffect(() => {
     if (!sentinelRef.current) return;
     const observer = new IntersectionObserver(
@@ -167,24 +115,33 @@ export default function MenuExplorer() {
     return () => observer.disconnect();
   }, [filteredItems.length]);
 
-  const handleAdd = (item: MenuItem) => {
-    const portion = selectedPortions[item.id] || (item.priceHalf ? 'half' : (item.priceSingle ? 'single' : 'full'));
-    const diet = jainOnly ? 'jain' : 'regular';
-    addToCart(item, portion, diet, false);
-    setAddedItem(item.id);
-    setTimeout(() => setAddedItem(null), 1500);
-  };
+  // Stable callbacks for memoized DishCards
+  const handleAddToCart = useCallback(
+    (item: MenuItem, portion: 'single' | 'half' | 'full', diet: 'jain' | 'regular') => {
+      addToCart(item, portion, diet, false);
+    },
+    []
+  );
+
+  const handleUpdateQty = useCallback((cartItemId: string, delta: number) => {
+    updateCartQuantity(cartItemId, delta);
+  }, []);
 
   const handleResetAll = () => {
     setSelectedCategory('all');
     setJainOnly(false);
     setSearchQuery('');
+    setDebouncedQuery('');
     setPriceFilter('all');
     setSortBy('recommended');
   };
 
   const hasActiveFilters =
-    selectedCategory !== 'all' || jainOnly || searchQuery.trim() !== '' || priceFilter !== 'all' || sortBy !== 'recommended';
+    selectedCategory !== 'all' ||
+    jainOnly ||
+    searchQuery.trim() !== '' ||
+    priceFilter !== 'all' ||
+    sortBy !== 'recommended';
 
   const currentCategoryLabel =
     CATEGORIES.find((c) => c.id === selectedCategory)?.label || 'All Items';
@@ -195,8 +152,7 @@ export default function MenuExplorer() {
   return (
     <section id="full-menu" className="pt-20 sm:pt-28 pb-20 sm:pb-28 bg-[#F7F4EB] text-[#0F0F0F]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        {/* Compact Hero Header (Zero Breadcrumb Noise) */}
+        {/* Compact Hero Header */}
         <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
           <span className="font-display text-xs font-bold uppercase tracking-[0.25em] text-[#D01B1B] block mb-1">
             AUTHENTIC SCANNED MENU DIRECTORY
@@ -211,12 +167,11 @@ export default function MenuExplorer() {
 
         {/* 2-Column Catalog Grid: Left Sticky Sidebar (Desktop) + Main Product Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-
           {/* ========================================= */}
           {/* DESKTOP LEFT SIDEBAR (lg:col-span-3 sticky) */}
           {/* ========================================= */}
           <aside className="hidden lg:flex lg:flex-col lg:col-span-3 sticky top-24 max-h-[calc(100dvh-7rem)] bg-white rounded-2xl border border-[#0F0F0F]/10 shadow-sm overflow-hidden">
-            {/* Frozen Fixed Header (Never disappears on scroll) */}
+            {/* Frozen Fixed Header */}
             <div className="shrink-0 flex items-center justify-between p-4 pb-3 border-b border-[#0F0F0F]/10 bg-white z-10">
               <div className="flex items-center gap-2">
                 <Utensils className="w-4 h-4 text-[#D01B1B]" />
@@ -227,7 +182,7 @@ export default function MenuExplorer() {
               {hasActiveFilters && (
                 <button
                   onClick={handleResetAll}
-                  className="text-[11px] font-mono font-bold text-[#D01B1B] hover:underline"
+                  className="text-[11px] font-mono font-bold text-[#D01B1B] hover:underline cursor-pointer"
                 >
                   Reset All
                 </button>
@@ -296,12 +251,10 @@ export default function MenuExplorer() {
           {/* MAIN CONTENT AREA (lg:col-span-9)        */}
           {/* ========================================= */}
           <main className="lg:col-span-9 w-full">
-
             {/* Controls Bar: Search + Sort Popover + Jain Toggle */}
             <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-[#0F0F0F]/10 mb-6 shadow-sm">
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
-                
-                {/* Search Box (16px base on iOS to prevent canvas zoom) */}
+                {/* Search Box */}
                 <div className="relative flex-1">
                   <Search className="w-4 h-4 text-[#0F0F0F]/40 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <input
@@ -314,7 +267,10 @@ export default function MenuExplorer() {
                   {searchQuery && (
                     <button
                       type="button"
-                      onClick={() => setSearchQuery('')}
+                      onClick={() => {
+                        setSearchQuery('');
+                        setDebouncedQuery('');
+                      }}
                       className="absolute right-1 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-xs font-mono text-[#0F0F0F]/40 hover:text-[#0F0F0F]"
                       aria-label="Clear search"
                     >
@@ -323,21 +279,24 @@ export default function MenuExplorer() {
                   )}
                 </div>
 
-                {/* Right Controls: Premium Sort Popover + Jain Toggle */}
+                {/* Right Controls: Sort Popover + Jain Toggle */}
                 <div className="flex items-center gap-2 shrink-0 justify-between sm:justify-start">
-                  
-                  {/* WAI-ARIA Compliant Sort Popover */}
+                  {/* Sort Popover */}
                   <div className="relative" ref={sortPopoverRef}>
                     <button
                       type="button"
                       aria-haspopup="listbox"
                       aria-expanded={isSortOpen}
                       onClick={() => setIsSortOpen(!isSortOpen)}
-                      className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-[#0F0F0F] text-white hover:bg-[#222222] transition min-h-[44px] shadow-sm"
+                      className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-display font-bold uppercase tracking-wider bg-[#0F0F0F] text-white hover:bg-[#222222] transition min-h-[44px] shadow-sm cursor-pointer"
                     >
                       <span className="text-[#E4A834] hidden xs:inline">Sort:</span>
                       <span className="truncate max-w-[130px] sm:max-w-none">{currentSortLabel}</span>
-                      <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${isSortOpen ? 'rotate-180 text-[#E4A834]' : 'text-white/60'}`} />
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 shrink-0 transition-transform duration-200 ${
+                          isSortOpen ? 'rotate-180 text-[#E4A834]' : 'text-white/60'
+                        }`}
+                      />
                     </button>
 
                     {isSortOpen && (
@@ -359,7 +318,7 @@ export default function MenuExplorer() {
                                 setSortBy(opt.id);
                                 setIsSortOpen(false);
                               }}
-                              className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-xs text-left transition font-display tracking-wide min-h-[44px] ${
+                              className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-xs text-left transition font-display tracking-wide min-h-[44px] cursor-pointer ${
                                 sortBy === opt.id
                                   ? 'bg-[#141414] text-[#E4A834] font-bold border border-[#E4A834]/40 shadow-sm'
                                   : 'text-white/80 hover:bg-white/10 hover:text-white'
@@ -378,7 +337,7 @@ export default function MenuExplorer() {
                   <button
                     type="button"
                     onClick={() => setJainOnly(!jainOnly)}
-                    className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-mono font-bold transition min-h-[44px] border ${
+                    className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-mono font-bold transition min-h-[44px] border cursor-pointer ${
                       jainOnly
                         ? 'bg-green-700 text-white border-green-700 shadow-sm'
                         : 'bg-[#F7F4EB] text-green-900 border-green-600/30 hover:bg-green-50'
@@ -387,7 +346,6 @@ export default function MenuExplorer() {
                     <span className={`w-2 h-2 rounded-full ${jainOnly ? 'bg-white' : 'bg-green-600'}`}></span>
                     <span>Jain Friendly</span>
                   </button>
-
                 </div>
               </div>
             </div>
@@ -396,24 +354,43 @@ export default function MenuExplorer() {
             <div className="flex flex-wrap items-center justify-between text-xs font-mono text-[#0F0F0F]/60 mb-4 px-1 gap-2">
               <div className="flex items-center gap-2 flex-wrap">
                 <span>
-                  Showing <strong className="text-[#0F0F0F]">{filteredItems.length}</strong> {filteredItems.length === 1 ? 'dish' : 'authentic dishes'}
+                  Showing <strong className="text-[#0F0F0F]">{filteredItems.length}</strong>{' '}
+                  {filteredItems.length === 1 ? 'dish' : 'authentic dishes'}
                 </span>
                 {selectedCategory !== 'all' && (
                   <span className="inline-flex items-center gap-1 bg-[#0F0F0F] text-white px-2.5 py-0.5 rounded-full text-[11px] font-display font-bold uppercase">
                     {currentCategoryLabel}
-                    <button onClick={() => setSelectedCategory('all')} className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-['']" aria-label="Remove filter"><X className="w-3.5 h-3.5" /></button>
+                    <button
+                      onClick={() => setSelectedCategory('all')}
+                      className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-[''] cursor-pointer"
+                      aria-label="Remove filter"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
                   </span>
                 )}
                 {priceFilter !== 'all' && (
                   <span className="inline-flex items-center gap-1 bg-[#D01B1B] text-white px-2.5 py-0.5 rounded-full text-[11px] font-display font-bold uppercase">
                     {PRICE_TIERS.find((t) => t.id === priceFilter)?.label}
-                    <button onClick={() => setPriceFilter('all')} className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-['']" aria-label="Remove filter"><X className="w-3.5 h-3.5" /></button>
+                    <button
+                      onClick={() => setPriceFilter('all')}
+                      className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-[''] cursor-pointer"
+                      aria-label="Remove filter"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
                   </span>
                 )}
                 {jainOnly && (
                   <span className="inline-flex items-center gap-1 bg-green-700 text-white px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold">
                     Jain Only
-                    <button onClick={() => setJainOnly(false)} className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-['']" aria-label="Remove filter"><X className="w-3.5 h-3.5" /></button>
+                    <button
+                      onClick={() => setJainOnly(false)}
+                      className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-[''] cursor-pointer"
+                      aria-label="Remove filter"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
                   </span>
                 )}
               </div>
@@ -421,7 +398,7 @@ export default function MenuExplorer() {
               {hasActiveFilters && (
                 <button
                   onClick={handleResetAll}
-                  className="text-[#D01B1B] hover:underline font-bold text-xs"
+                  className="text-[#D01B1B] hover:underline font-bold text-xs cursor-pointer"
                 >
                   Clear All Filters
                 </button>
@@ -438,171 +415,36 @@ export default function MenuExplorer() {
                 <button
                   type="button"
                   onClick={handleResetAll}
-                  className="mt-4 bg-[#D01B1B] text-white px-5 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider hover:bg-[#B81414] transition"
+                  className="mt-4 bg-[#D01B1B] text-white px-5 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider hover:bg-[#B81414] transition cursor-pointer"
                 >
                   Reset All Filters
                 </button>
               </div>
             ) : (
-              <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                  {filteredItems.slice(0, visibleCount).map((item) => {
-                    const hasMultiplePortions = Boolean(item.priceHalf && item.priceFull);
-                    const chosenPortion = selectedPortions[item.id] || (item.priceHalf ? 'half' : (item.priceSingle ? 'single' : 'full'));
-                    const displayPrice =
-                      chosenPortion === 'half' && item.priceHalf
-                        ? item.priceHalf
-                        : chosenPortion === 'full' && item.priceFull
-                        ? item.priceFull
-                        : item.priceSingle || item.priceHalf || item.priceFull;
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
+                {filteredItems.slice(0, visibleCount).map((item) => {
+                  const hasMultiplePortions = Boolean(item.priceHalf && item.priceFull);
+                  const defaultPortion = item.priceHalf ? 'half' : (item.priceSingle ? 'single' : 'full');
+                  const cartItemId = `${item.id}-${defaultPortion}-${jainOnly ? 'jain' : 'regular'}`;
+                  const currentQty = cartQtyMap.get(item.id) || 0;
 
-                    const cartItemId = `${item.id}-${chosenPortion}-${jainOnly ? 'jain' : 'regular'}`;
-                    const existingCartItem = cart.find(
-                      (ci) => ci.id === cartItemId || (ci.menuItemId === item.id && ci.portion === chosenPortion)
-                    );
-                    const currentQty = existingCartItem ? existingCartItem.quantity : 0;
-
-                    return (
-                      <div
-                        key={item.id}
-                        className="bg-white rounded-2xl overflow-hidden border border-[#0F0F0F]/10 hover:border-[#D01B1B] transition-all duration-200 flex flex-col group shadow-sm hover:shadow-md"
-                      >
-                        {/* Compact Luxury Aspect Image Frame */}
-                        <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#181818] shrink-0">
-                          <img
-                            src={item.image}
-                            alt={item.name}
-                            width={700}
-                            height={560}
-                            loading="lazy"
-                            decoding="async"
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
-                          />
-                          <div className="absolute top-2.5 left-2.5 flex gap-1 z-10">
-                            <span className="bg-white text-green-700 font-mono text-[9px] font-bold px-2 py-0.5 rounded shadow-sm border border-green-600/30">
-                              100% VEG
-                            </span>
-                            {item.isJainAvailable && (
-                              <span className="bg-amber-100 text-[#965C00] font-mono text-[9px] font-bold px-2 py-0.5 rounded shadow-sm border border-amber-300">
-                                JAIN
-                              </span>
-                            )}
-                          </div>
-                          {item.isSignature ? (
-                            <div className="absolute top-2.5 right-2.5 bg-[#D01B1B] text-white font-display text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
-                              SIGNATURE
-                            </div>
-                          ) : item.isBestseller ? (
-                            <div className="absolute top-2.5 right-2.5 bg-[#965C00] text-white font-display text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
-                              BESTSELLER
-                            </div>
-                          ) : null}
-                        </div>
-
-                        {/* Snug Content & Pricing Details */}
-                        <div className="p-4 flex flex-col flex-1 justify-between">
-                          <div>
-                            <span className="text-[10px] font-mono text-[#D01B1B] uppercase tracking-wider font-bold block mb-1">
-                              {item.categoryLabel}
-                            </span>
-                            <h2 className="font-display text-sm sm:text-base font-bold uppercase text-[#0F0F0F] leading-snug line-clamp-1">
-                              {item.name}
-                            </h2>
-                            <p className="mt-1 text-xs text-[#0F0F0F]/65 line-clamp-2 leading-relaxed">
-                              {item.description}
-                            </p>
-
-                            {/* Portion Selector Pill if multiple sizes available */}
-                            {hasMultiplePortions && (
-                              <div className="inline-flex items-center gap-1 mt-2.5 bg-[#F7F4EB] p-0.5 rounded-lg border border-[#0F0F0F]/10 w-fit">
-                                <button
-                                  type="button"
-                                  onClick={() => setSelectedPortions((prev) => ({ ...prev, [item.id]: 'half' }))}
-                                  className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold transition-all ${
-                                    chosenPortion === 'half'
-                                      ? 'bg-[#0F0F0F] text-white shadow-xs'
-                                      : 'text-[#0F0F0F]/60 hover:text-[#0F0F0F]'
-                                  }`}
-                                >
-                                  Half ₹{item.priceHalf}
-                                </button>
-                                <button
-                                  type="button"
-                                  onClick={() => setSelectedPortions((prev) => ({ ...prev, [item.id]: 'full' }))}
-                                  className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold transition-all ${
-                                    chosenPortion === 'full'
-                                      ? 'bg-[#0F0F0F] text-white shadow-xs'
-                                      : 'text-[#0F0F0F]/60 hover:text-[#0F0F0F]'
-                                  }`}
-                                >
-                                  Full ₹{item.priceFull}
-                                </button>
-                              </div>
-                            )}
-                          </div>
-
-                          {/* Compact Attached Bottom CTA with Stepper Support */}
-                          <div className="pt-3 mt-3 border-t border-[#0F0F0F]/8 flex items-center justify-between">
-                            <div>
-                              <span className="text-[9px] font-mono text-[#0F0F0F]/45 uppercase block leading-none mb-0.5">
-                                {hasMultiplePortions ? `${chosenPortion.toUpperCase()} PORTION` : 'PRICE'}
-                              </span>
-                              <span className="font-mono text-base font-bold text-[#0F0F0F]">
-                                ₹{displayPrice}/-
-                              </span>
-                            </div>
-
-                            {currentQty === 0 ? (
-                              <button
-                                type="button"
-                                onClick={() => handleAdd(item)}
-                                className="relative overflow-hidden h-9 w-[100px] rounded-xl bg-[#0F0F0F] border border-[#0F0F0F] text-white flex items-center cursor-pointer group/btn shadow-xs transition-all duration-300 active:scale-95"
-                                aria-label={`Add ${item.name} to tray`}
-                              >
-                                <span className="font-display font-bold text-xs uppercase tracking-wider pl-3 transition-all duration-300 ease-out group-hover/btn:opacity-0 group-hover/btn:-translate-x-2">
-                                  ADD
-                                </span>
-                                <span className="absolute right-0 top-0 bottom-0 w-8 h-full bg-[#D01B1B] flex items-center justify-center transition-all duration-300 ease-out group-hover/btn:w-full group-hover/btn:bg-[#B81414]">
-                                  <Plus className="w-3.5 h-3.5 text-white transition-transform duration-300 ease-out group-hover/btn:scale-110" />
-                                </span>
-                              </button>
-                            ) : (
-                              <div className="h-9 w-[100px] flex items-center justify-between bg-[#0F0F0F] rounded-xl p-1 border border-[#E4A834]/40 shadow-xs">
-                                <button
-                                  type="button"
-                                  onClick={() => updateCartQuantity(existingCartItem!.id, -1)}
-                                  className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#D01B1B] text-white transition active:scale-90"
-                                  aria-label="Decrease quantity"
-                                >
-                                  <Minus className="w-3.5 h-3.5" />
-                                </button>
-                                <span className="w-6 text-center font-mono text-xs font-bold text-white">
-                                  {currentQty}
-                                </span>
-                                <button
-                                  type="button"
-                                  onClick={() => updateCartQuantity(existingCartItem!.id, 1)}
-                                  className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#E4A834] hover:text-black text-white transition active:scale-90"
-                                  aria-label="Increase quantity"
-                                >
-                                  <Plus className="w-3.5 h-3.5" />
-                                </button>
-                              </div>
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-
-
-              </>
+                  return (
+                    <DishCard
+                      key={item.id}
+                      item={item}
+                      currentQty={currentQty}
+                      jainOnly={jainOnly}
+                      cartItemId={cartItemId}
+                      onAddToCart={handleAddToCart}
+                      onUpdateQuantity={handleUpdateQty}
+                    />
+                  );
+                })}
+              </div>
             )}
 
             {/* Scroll Sentinel */}
             <div ref={sentinelRef} className="h-10" />
-
           </main>
         </div>
 
@@ -615,7 +457,7 @@ export default function MenuExplorer() {
           style={{
             bottom: cartCount > 0 ? 'calc(5.5rem + env(safe-area-inset-bottom, 0px))' : 'calc(1.5rem + env(safe-area-inset-bottom, 0px))',
           }}
-          className="lg:hidden fixed z-30 right-4 bg-[#0D0D0D] text-white border border-[#E4A834]/40 px-4 py-3 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.85)] flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider active:scale-95 transition-all duration-300"
+          className="lg:hidden fixed z-30 right-4 bg-[#0D0D0D] text-white border border-[#E4A834]/40 px-4 py-3 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.85)] flex items-center gap-2 font-display text-xs font-bold uppercase tracking-wider active:scale-95 transition-all duration-300 cursor-pointer"
           aria-label="Browse Menu Categories"
         >
           <Menu className="w-4 h-4 text-[#E4A834]" />
@@ -640,7 +482,7 @@ export default function MenuExplorer() {
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20"
+                  className="w-11 h-11 min-w-[44px] min-h-[44px] rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20 cursor-pointer"
                   aria-label="Close menu sheet"
                 >
                   <X className="w-4 h-4" />
@@ -657,7 +499,7 @@ export default function MenuExplorer() {
                     <button
                       key={tier.id}
                       onClick={() => setPriceFilter(tier.id)}
-                      className={`py-3 px-2 rounded-xl text-center text-[10px] font-mono font-bold transition border min-h-[44px] ${
+                      className={`py-3 px-2 rounded-xl text-center text-[10px] font-mono font-bold transition border min-h-[44px] cursor-pointer ${
                         priceFilter === tier.id
                           ? 'bg-[#D01B1B] text-white border-[#D01B1B]'
                           : 'bg-[#181818] text-white/70 border-white/10'
@@ -684,7 +526,7 @@ export default function MenuExplorer() {
                         setSelectedCategory(cat.id);
                         setIsMobileMenuOpen(false);
                       }}
-                      className={`p-3 rounded-xl text-left flex items-center justify-between transition border ${
+                      className={`p-3 rounded-xl text-left flex items-center justify-between transition border cursor-pointer ${
                         isSelected
                           ? 'bg-[#181818] border-[#E4A834] text-[#E4A834] ring-1 ring-[#E4A834]'
                           : isDisabled
@@ -713,7 +555,7 @@ export default function MenuExplorer() {
                     handleResetAll();
                     setIsMobileMenuOpen(false);
                   }}
-                  className="w-full mt-4 bg-[#D01B1B] text-white py-3 rounded-xl font-display text-xs font-bold uppercase tracking-wider"
+                  className="w-full mt-4 bg-[#D01B1B] text-white py-3 rounded-xl font-display text-xs font-bold uppercase tracking-wider cursor-pointer"
                 >
                   Reset All Filters
                 </button>
@@ -722,8 +564,7 @@ export default function MenuExplorer() {
           </div>
         )}
 
-
-        {/* Floating Takeaway Cart Bar (Swiggy / Zomato Pattern) */}
+        {/* Floating Takeaway Cart Bar */}
         {cartCount > 0 && (
           <aside
             aria-label="Takeaway order cart summary"
@@ -735,7 +576,7 @@ export default function MenuExplorer() {
             <button
               type="button"
               onClick={() => openCart()}
-              className="w-full bg-[#0D0D0D] text-white border border-[#E4A834] px-4 py-3 rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] flex items-center justify-between hover:bg-[#181818] transition active:scale-98 group"
+              className="w-full bg-[#0D0D0D] text-white border border-[#E4A834] px-4 py-3 rounded-2xl shadow-[0_12px_40px_rgba(0,0,0,0.85)] flex items-center justify-between hover:bg-[#181818] transition active:scale-98 group cursor-pointer"
             >
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-xl bg-[#D01B1B] text-white flex items-center justify-center font-mono text-xs font-bold shadow-sm">
