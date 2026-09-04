@@ -15,7 +15,7 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
         LOCATIONS
       </span>
       <span class="font-display text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-white group-hover:text-[#E4A834] transition block leading-tight">
-        <span data-counter="num" data-target="5" data-start="0">5</span> Outlets
+        <span data-counter="num" data-target="5" data-start="1" class="tabular-nums">5</span> Outlets
       </span>
       <p class="text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         Across Indore Hubs
@@ -28,7 +28,7 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
         RATING
       </span>
       <span class="font-display text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-[#E4A834] flex items-center gap-1.5 leading-tight">
-        <span data-counter="num" data-target="4.5" data-start="0" data-decimals="1">4.5</span><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid"/></svg><span class="sr-only">star</span> Rating
+        <span data-counter="num" data-target="4.5" data-start="3.8" data-decimals="1" class="tabular-nums">4.5</span><svg class="w-4 h-4 sm:w-5 sm:h-5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid"/></svg><span class="sr-only">star</span> Rating
       </span>
       <p class="text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         5,000+ Diners
@@ -41,7 +41,7 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
         PURITY
       </span>
       <span class="font-display text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-white block leading-tight">
-        <span data-counter="num" data-target="100" data-start="0">100</span>% Pure Veg
+        <span data-counter="num" data-target="100" data-start="75" class="tabular-nums">100</span>% Pure Veg
       </span>
       <p class="text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         Pure Desi Ghee
@@ -57,7 +57,7 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
         HERITAGE
       </span>
       <span class="font-display text-lg xs:text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-white group-hover:text-[#E4A834] transition block leading-tight">
-        Since <span data-counter="num" data-target="1980" data-start="0">1980</span>
+        Since <span data-counter="num" data-target="1980" data-start="1950" class="tabular-nums">1980</span>
       </span>
       <p class="text-[10px] xs:text-[11px] sm:text-xs text-white/70 font-sans mt-0.5 truncate">
         45+ Yrs Indore Swad
@@ -73,11 +73,10 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
     if (!container) return;
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const counters = container.querySelectorAll('[data-counter="num"]');
     if (!counters.length) return;
 
-    // Reduced motion: render final values instantly, no animation.
+    // Reduced motion: render final target values immediately
     if (reduceMotion) {
       counters.forEach((el) => {
         const target = parseFloat(el.getAttribute('data-target') || '0');
@@ -87,49 +86,74 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
       return;
     }
 
-    // Reset counters to 0 initially
-    counters.forEach((el) => {
-      const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-      el.textContent = decimals > 0 ? (0).toFixed(decimals) : '0';
-    });
+    let hasRun = false;
 
-    let hasAnimated = false;
+    function runCounters() {
+      if (hasRun) return;
+      hasRun = true;
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !hasAnimated) {
-          hasAnimated = true;
-          observer.disconnect();
+      // Silky-smooth Quintic Ease-Out (fast initial glide, ultra-soft gentle deceleration)
+      const easeOutQuint = (t) => 1 - Math.pow(1 - t, 5);
 
-          const duration = 1400; // ms
-          const startTime = performance.now();
-          const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+      counters.forEach((el, index) => {
+        const target = parseFloat(el.getAttribute('data-target') || '0');
+        const start = parseFloat(el.getAttribute('data-start') || '0');
+        const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
 
-          function update(now) {
+        // Set baseline start immediately
+        el.textContent = decimals > 0 ? start.toFixed(decimals) : Math.round(start).toString();
+
+        // 60ms natural cascade stagger between cards
+        const delay = index * 60;
+        const duration = 1100 + index * 80; // 1100ms - 1340ms calibrated duration
+
+        setTimeout(() => {
+          let startTime = null;
+
+          function frame(now) {
+            if (!startTime) startTime = now;
             const elapsed = now - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            const eased = easeOutCubic(progress);
+            const eased = easeOutQuint(progress);
+            const currentVal = start + (target - start) * eased;
 
-            counters.forEach((el) => {
-              const target = parseFloat(el.getAttribute('data-target') || '0');
-              const start = parseFloat(el.getAttribute('data-start') || '0');
-              const decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-              const val = start + (target - start) * eased;
-
-              el.textContent = decimals > 0 ? val.toFixed(decimals) : Math.round(val).toString();
-            });
+            el.textContent = decimals > 0 ? currentVal.toFixed(decimals) : Math.round(currentVal).toString();
 
             if (progress < 1) {
-              requestAnimationFrame(update);
+              requestAnimationFrame(frame);
+            } else {
+              // Lock into exact target
+              el.textContent = decimals > 0 ? target.toFixed(decimals) : target.toString();
+
+              // Micro-settle kinetic feedback: subtle tactile finish
+              el.animate([
+                { transform: 'scale(1.06)', opacity: 0.95 },
+                { transform: 'scale(1)', opacity: 1 }
+              ], { duration: 320, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
             }
           }
 
-          requestAnimationFrame(update);
-        }
+          requestAnimationFrame(frame);
+        }, delay);
       });
-    }, { threshold: 0.15 });
+    }
 
-    observer.observe(container);
+    // Coordinate with Welcome Entrance Screen
+    if (document.documentElement.classList.contains('curtain-gate-active')) {
+      // User is on welcome entrance: wait for curtains to part before counting!
+      window.addEventListener('threshold:entered', () => {
+        setTimeout(runCounters, 200);
+      }, { once: true });
+    } else {
+      // Direct visitor or returning user: trigger when scrolled into view
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0] && entries[0].isIntersecting) {
+          observer.disconnect();
+          runCounters();
+        }
+      }, { threshold: 0.15 });
+      observer.observe(container);
+    }
   }
 
   if (document.readyState === 'loading') {
