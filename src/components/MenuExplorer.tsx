@@ -598,18 +598,34 @@ export default function MenuExplorer() {
 
                 {/* Smart Dhaba Cross-Sell Callout when isolated category has few items */}
                 {selectedCategory !== 'all' && filteredItems.length <= 3 && (
-                  <div className="mt-8 p-4 sm:p-5 rounded-2xl bg-amber-50/80 border border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-amber-950 shadow-sm">
-                    <div className="flex items-center gap-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0"></span>
-                      <span>
-                        <strong>Dhaba Meal-Building Pairing:</strong> Complete your {currentCategoryLabel} meal with hot clay-oven <em>Chur Chur Naan</em>, <em>Dal Makhani</em>, or chilled <em>Shahi Kheer</em>.
-                      </span>
+                  <div className="mt-8 p-5 sm:p-6 rounded-2xl bg-[#FFFDF9] border border-[#E4A834]/30 shadow-[0_4px_24px_-4px_rgba(228,168,52,0.12)] relative overflow-hidden flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6">
+                    <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#E4A834]/60 to-transparent" />
+                    <div className="flex items-start sm:items-center gap-3.5 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-[#F7F2E4] border border-[#E4A834]/30 flex items-center justify-center shrink-0 text-[#965C00] shadow-xs">
+                        <Utensils className="w-4 h-4 sm:w-5 sm:h-5 text-[#965C00]" />
+                      </div>
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-widest text-[#965C00]">
+                            Dhaba Meal-Building Pairing
+                          </span>
+                          <span className="w-1 h-1 rounded-full bg-[#E4A834]/60 hidden sm:inline-block"></span>
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-[#8A7550] hidden sm:inline">
+                            Authentic Accompaniments
+                          </span>
+                        </div>
+                        <p className="text-xs sm:text-[13px] text-[#2C2417] font-sans leading-relaxed">
+                          Complete your <strong className="font-bold text-[#0F0F0F]">{currentCategoryLabel}</strong> feast with hot clay-oven <span className="font-semibold text-[#8F2800]">Chur Chur Naan</span>, 24-hr slow-simmered <span className="font-semibold text-[#8F2800]">Dal Makhani</span>, or chilled <span className="font-semibold text-[#8F2800]">Shahi Kheer</span>.
+                        </p>
+                      </div>
                     </div>
                     <button
+                      type="button"
                       onClick={() => setSelectedCategory('all')}
-                      className="shrink-0 bg-[#0F0F0F] hover:bg-[#D01B1B] text-white px-4 py-2 rounded-xl font-display font-bold uppercase text-[11px] tracking-wider transition"
+                      className="shrink-0 self-start md:self-auto px-4 py-2.5 rounded-xl bg-[#0F0F0F] hover:bg-[#D01B1B] text-white border border-[#0F0F0F] hover:border-[#D01B1B] font-display font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-xs flex items-center gap-2 group active:scale-95"
                     >
-                      Browse Full Menu
+                      <span>Browse Full Menu</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#E4A834] group-hover:text-white group-hover:translate-x-0.5 transition-transform duration-200" />
                     </button>
                   </div>
                 )}

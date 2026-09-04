@@ -215,10 +215,10 @@ export default function CartDrawer() {
               <button
                 type="button"
                 onClick={() => setStage('review')}
-                className="w-10 h-10 rounded-xl bg-[#181818] border border-white/15 text-white hover:text-[#E4A834] hover:border-[#E4A834]/40 flex items-center justify-center transition active:scale-95 shrink-0"
+                className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 hover:border-[#E4A834]/40 text-white/70 hover:text-[#E4A834] flex items-center justify-center transition-all duration-200 active:scale-95 shrink-0 group"
                 aria-label="Return to tray review"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform duration-200" />
               </button>
               <div>
                 <span className="text-[10px] font-mono text-[#E4A834] uppercase tracking-widest block font-bold">
@@ -231,25 +231,25 @@ export default function CartDrawer() {
             </div>
           )}
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             {stage === 'review' && summary.items.length > 0 && !showClearConfirm && (
               <button
                 type="button"
                 onClick={() => setShowClearConfirm(true)}
-                className="text-[11px] font-mono font-bold text-white/50 hover:text-red-400 px-2.5 py-1.5 rounded-xl border border-white/10 hover:border-red-500/30 transition flex items-center gap-1.5 active:scale-95 min-h-[44px] min-w-[44px] justify-center"
+                className="h-10 px-3 rounded-xl bg-white/[0.04] hover:bg-red-500/10 border border-white/10 hover:border-red-500/30 text-white/60 hover:text-red-300 transition-all duration-200 flex items-center gap-2 active:scale-95 text-[11px] font-mono font-bold uppercase tracking-wider group shrink-0"
                 aria-label="Clear all items from tray"
               >
-                <Trash2 className="w-3.5 h-3.5 text-red-400" />
-                <span className="hidden sm:inline uppercase">Clear</span>
+                <Trash2 className="w-3.5 h-3.5 text-white/40 group-hover:text-red-400 transition-colors" />
+                <span className="hidden sm:inline">Clear</span>
               </button>
             )}
 
             <button
               onClick={closeCart}
-              className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl bg-[#181818] border border-white/15 text-white hover:bg-white/10 transition active:scale-95"
+              className="w-10 h-10 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] border border-white/10 hover:border-white/25 text-white/70 hover:text-white flex items-center justify-center transition-all duration-200 active:scale-95 group shrink-0"
               aria-label="Close takeaway tray"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 text-white/70 group-hover:text-white group-hover:rotate-90 transition-all duration-200" />
             </button>
           </div>
         </div>
