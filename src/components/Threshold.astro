@@ -22,17 +22,11 @@ const { mode = 'overlay' } = Astro.props;
     }
   </script>
 
-  <!-- 1. LEFT POLISHED OBSIDIAN LEAF (0% -> 50.2%) -->
-  <div id="obsidian-leaf-left" class="obsidian-leaf obsidian-leaf-left absolute top-0 left-0 w-[50.2%] h-full z-10 overflow-hidden">
-    <!-- Subtle luxury edge lighting on the meeting seam -->
-    <div class="absolute top-0 right-0 w-px h-full bg-gradient-to-b from-transparent via-[#E4A834]/35 to-transparent pointer-events-none" aria-hidden="true"></div>
-  </div>
+  <!-- 1. LEFT POLISHED OBSIDIAN LEAF (0% -> 50.5%) -->
+  <div id="obsidian-leaf-left" class="obsidian-leaf obsidian-leaf-left absolute top-0 left-0 w-[50.5%] h-full z-10 overflow-hidden"></div>
 
   <!-- 2. RIGHT POLISHED OBSIDIAN LEAF (50% -> 100%) -->
-  <div id="obsidian-leaf-right" class="obsidian-leaf obsidian-leaf-right absolute top-0 right-0 w-[50.2%] h-full z-[9] overflow-hidden">
-    <!-- Subtle luxury edge lighting on the meeting seam -->
-    <div class="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#E4A834]/35 to-transparent pointer-events-none" aria-hidden="true"></div>
-  </div>
+  <div id="obsidian-leaf-right" class="obsidian-leaf obsidian-leaf-right absolute top-0 right-0 w-[50.5%] h-full z-10 overflow-hidden"></div>
 
   <!-- 3. CENTERPIECE: THE GRAND OBSIDIAN & GOLD MEDALLION (Undisputed Hero Focal Point) -->
   <div id="curtain-center-stack" class="absolute inset-0 z-20 flex items-center justify-center p-4 my-auto pointer-events-none">
@@ -128,27 +122,25 @@ const { mode = 'overlay' } = Astro.props;
   .obsidian-leaf {
     position: absolute;
     top: 0;
-    width: 50.2%;
+    width: 50.5%;
     height: 100%;
     z-index: 10;
     will-change: transform;
-    background-color: #080808;
+    background-color: #070707;
   }
 
-  /* Left Polished Obsidian Leaf with Soft Radial Light Falloff */
+  /* Left Polished Obsidian Leaf */
   .obsidian-leaf-left {
     left: 0;
-    background: radial-gradient(ellipse at 100% 50%, #131313 0%, #090909 50%, #050505 100%);
-    box-shadow: 25px 0 60px rgba(0, 0, 0, 0.98);
+    background-color: #070707;
     transition: transform 1150ms cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: left center;
   }
 
-  /* Right Polished Obsidian Leaf with Soft Radial Light Falloff */
+  /* Right Polished Obsidian Leaf */
   .obsidian-leaf-right {
     right: 0;
-    background: radial-gradient(ellipse at 0% 50%, #131313 0%, #090909 50%, #050505 100%);
-    box-shadow: -25px 0 60px rgba(0, 0, 0, 0.98);
+    background-color: #070707;
     transition: transform 1150ms cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: right center;
   }
