@@ -26,36 +26,6 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-
-    <!-- Zero-FOUC Smart Welcome Gate Script (Synchronous Head Guard) -->
-    <script is:inline>
-      (function () {
-        try {
-          var entered = sessionStorage.getItem('nanaksar_entered') === 'true';
-          var isWelcome = window.location.pathname === '/welcome';
-          var isHome = window.location.pathname === '/' || window.location.pathname === '';
-          if (isWelcome || (isHome && !entered)) {
-            document.documentElement.classList.add('has-welcome-gate');
-          }
-        } catch (e) {}
-      })();
-    </script>
-    <style is:inline>
-      /* Ensure Header stays completely invisible during welcome gate */
-      html.has-welcome-gate header {
-        opacity: 0 !important;
-        pointer-events: none !important;
-        visibility: hidden !important;
-      }
-      header {
-        transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), visibility 600ms ease;
-      }
-      /* Hard-prevent returning visitors from ever rendering the threshold element */
-      html:not(.has-welcome-gate) #nanaksar-threshold:not([data-mode="page"]) {
-        display: none !important;
-      }
-    </style>
-
     <title>{title}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
