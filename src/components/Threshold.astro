@@ -28,80 +28,66 @@ const { mode = 'overlay' } = Astro.props;
   <!-- 2. RIGHT POLISHED OBSIDIAN LEAF (50% -> 100%) -->
   <div id="obsidian-leaf-right" class="obsidian-leaf obsidian-leaf-right absolute top-0 right-0 w-[50.5%] h-full z-10 overflow-hidden"></div>
 
-  <!-- 3. CENTERPIECE: THE GRAND OBSIDIAN & GOLD MEDALLION (Undisputed Hero Focal Point) -->
-  <div id="curtain-center-stack" class="absolute inset-0 z-20 flex items-center justify-center p-4 my-auto pointer-events-none">
+  <!-- 3. CENTERPIECE: MINIMALIST ROYAL TYPOGRAPHIC LOCKUP (Floating Pure Luxury) -->
+  <div id="curtain-center-stack" class="absolute inset-0 z-20 flex items-center justify-center p-6 my-auto pointer-events-none">
     
-    <!-- Grand Obsidian Medallion Canvas: Deep Piano Lacquer Black #0A0A0A -->
-    <div class="medallion-body relative w-[min(90vw,360px)] h-[min(90vw,360px)] xs:w-[400px] xs:h-[400px] sm:w-[480px] sm:h-[480px] md:w-[520px] md:h-[520px] rounded-full bg-[#0A0A0A] border-2 border-[#E4A834]/70 shadow-[0_30px_90px_rgba(0,0,0,1),0_0_50px_rgba(228,168,52,0.12)] p-5 xs:p-7 sm:p-10 flex flex-col items-center justify-center text-center pointer-events-auto overflow-hidden">
+    <div class="brand-lockup-body relative flex flex-col items-center justify-center text-center pointer-events-auto max-w-[320px] xs:max-w-[380px] sm:max-w-[480px] gap-2 sm:gap-2.5">
       
-      <!-- Inner Specular Hairline Ring (Double-bezel luxury coin / watch dial rim) -->
-      <div class="absolute inset-2 sm:inset-3.5 rounded-full border border-[#E4A834]/35 pointer-events-none" aria-hidden="true"></div>
-
-      <!-- Premium corner light: crisp specular arc where light catches the rim (~2 o'clock) -->
-      <div class="medallion-rim-light absolute inset-0 rounded-full pointer-events-none" aria-hidden="true"></div>
-      <!-- Single restrained glint diamond seated on the rim -->
-      <div class="medallion-glint absolute top-[8%] right-[13%] pointer-events-none" aria-hidden="true"></div>
-
-      <!-- Circle Content Stack (Harmonious vertical rhythm, zero crowding) -->
-      <div class="relative z-10 flex flex-col items-center gap-1.5 xs:gap-2 sm:gap-2.5 max-w-[280px] xs:max-w-[320px] sm:max-w-[420px]">
-        
-        <!-- 1. Heritage Seal: Crisp, authoritatively sized, perfectly centered -->
-        <div class="threshold-anim-seal">
-          <div class="relative p-1 rounded-full bg-[#121212] border border-[#E4A834]/40 shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
-            <img
-              src="/assets/Logo.webp"
-              alt="Nanaksar Dhaba Heritage Seal"
-              width="280"
-              height="280"
-              class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 object-contain select-none filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.85)]"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-        </div>
-
-        <!-- 2. Eyebrow Timestamp: Desi Ghee Amber #E4A834 -->
-        <div class="threshold-anim-eyebrow">
-          <span class="font-mono text-[8px] xs:text-[9px] sm:text-[10px] text-[#E4A834] uppercase tracking-[0.28em] font-bold select-none drop-shadow">
-            ESTD. 1980 — INDORE
-          </span>
-        </div>
-
-        <!-- 3. Headline: "Welcome to" with gold hairline accents -->
-        <div class="threshold-anim-welcome flex items-center gap-2 -my-0.5">
-          <span class="h-px w-3 sm:w-5 bg-gradient-to-r from-transparent to-[#E4A834]/60" aria-hidden="true"></span>
-          <span class="font-serif text-[9.5px] xs:text-[10.5px] sm:text-[12px] text-[#F7F4EB]/90 uppercase tracking-[0.32em] font-medium select-none">
-            Welcome to
-          </span>
-          <span class="h-px w-3 sm:w-5 bg-gradient-to-l from-transparent to-[#E4A834]/60" aria-hidden="true"></span>
-        </div>
-
-        <!-- 4. Wordmark: Brand_Name.webp -->
-        <div class="threshold-anim-wordmark">
+      <!-- 1. Heritage Seal: Crisp, authoritatively sized, perfectly centered -->
+      <div class="threshold-anim-seal">
+        <div class="relative p-1.5 rounded-full bg-[#121212] border border-[#E4A834]/40 shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
           <img
-            src="/assets/Brand_Name.webp"
-            alt="Nanaksar Dhaba"
-            width="480"
-            height="120"
-            class="w-38 xs:w-42 sm:w-50 h-auto object-contain select-none filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]"
+            src="/assets/Logo.webp"
+            alt="Nanaksar Dhaba Heritage Seal"
+            width="280"
+            height="280"
+            class="w-16 h-16 xs:w-18 xs:h-18 sm:w-22 sm:h-22 object-contain select-none filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]"
             loading="eager"
             decoding="async"
           />
         </div>
+      </div>
 
-        <!-- 5. Hairline Gold Rule: scaleX draw -->
-        <div class="threshold-anim-rule h-px w-10 sm:w-14 bg-gradient-to-r from-transparent via-[#E4A834] to-transparent my-0.5"></div>
+      <!-- 2. Eyebrow Timestamp: Desi Ghee Amber #E4A834 -->
+      <div class="threshold-anim-eyebrow">
+        <span class="font-mono text-[9px] xs:text-[10px] sm:text-[11px] text-[#E4A834] uppercase tracking-[0.3em] font-bold select-none drop-shadow">
+          ESTD. 1980 — INDORE
+        </span>
+      </div>
 
-        <!-- 6. Dual-Color Hindi Quote: "स्वाद" and "प्यार" in Shining Ruby Foil, rest in Warm Cream -->
-        <div class="threshold-anim-belief min-h-[30px] sm:min-h-[38px] flex items-center justify-center">
-          <p
-            id="threshold-hindi-quote"
-            class="font-devanagari text-[13.5px] xs:text-[15px] sm:text-[17.5px] tracking-wide leading-normal select-none text-center whitespace-nowrap"
-          >
-            <span id="typed-container"></span><span id="typed-cursor" class="inline-block w-[2px] h-[1em] bg-[#E4A834] ml-0.5 align-middle animate-pulse"></span>
-          </p>
-        </div>
+      <!-- 3. Headline: "Welcome to" with gold hairline accents -->
+      <div class="threshold-anim-welcome flex items-center gap-2.5 my-0.5">
+        <span class="h-px w-4 sm:w-7 bg-gradient-to-r from-transparent to-[#E4A834]/70" aria-hidden="true"></span>
+        <span class="font-serif text-[10px] xs:text-[11.5px] sm:text-[13px] text-[#F7F4EB]/90 uppercase tracking-[0.35em] font-medium select-none">
+          Welcome to
+        </span>
+        <span class="h-px w-4 sm:w-7 bg-gradient-to-l from-transparent to-[#E4A834]/70" aria-hidden="true"></span>
+      </div>
 
+      <!-- 4. Wordmark: Brand_Name.webp -->
+      <div class="threshold-anim-wordmark my-0.5">
+        <img
+          src="/assets/Brand_Name.webp"
+          alt="Nanaksar Dhaba"
+          width="480"
+          height="120"
+          class="w-42 xs:w-48 sm:w-56 h-auto object-contain select-none filter drop-shadow-[0_4px_14px_rgba(0,0,0,0.9)]"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      <!-- 5. Hairline Gold Rule: scaleX draw -->
+      <div class="threshold-anim-rule h-px w-12 sm:w-16 bg-gradient-to-r from-transparent via-[#E4A834] to-transparent my-1"></div>
+
+      <!-- 6. Dual-Color Hindi Quote: "स्वाद" and "प्यार" in Shining Ruby Foil, rest in Warm Cream -->
+      <div class="threshold-anim-belief min-h-[32px] sm:min-h-[40px] flex items-center justify-center">
+        <p
+          id="threshold-hindi-quote"
+          class="font-devanagari text-[14px] xs:text-[16px] sm:text-[19px] tracking-wide leading-normal select-none text-center whitespace-nowrap"
+        >
+          <span id="typed-container"></span><span id="typed-cursor" class="inline-block w-[2px] h-[1em] bg-[#E4A834] ml-0.5 align-middle animate-pulse"></span>
+        </p>
       </div>
 
     </div>
@@ -192,11 +178,11 @@ const { mode = 'overlay' } = Astro.props;
     display: inline-block;
   }
 
-  /* --- CRISP MEDALLION SETTLE --- */
-  @keyframes medallionSettle {
+  /* --- CRISP BRAND LOCKUP SETTLE --- */
+  @keyframes lockupSettle {
     0% {
       opacity: 0;
-      transform: scale(0.92);
+      transform: scale(0.96);
     }
     100% {
       opacity: 1;
@@ -204,39 +190,8 @@ const { mode = 'overlay' } = Astro.props;
     }
   }
 
-  .medallion-body {
-    animation: medallionSettle 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  /* Specular Rim Light Arc (~2 o'clock) */
-  .medallion-rim-light {
-    background: conic-gradient(
-      from 0deg,
-      transparent 0deg,
-      transparent 30deg,
-      rgba(228, 168, 52, 0.55) 41deg,
-      rgba(255, 240, 200, 0.95) 47deg,
-      rgba(228, 168, 52, 0.55) 53deg,
-      transparent 64deg,
-      transparent 360deg
-    );
-    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
-    mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 3px));
-  }
-
-  /* Diamond Glint on Rim */
-  .medallion-glint {
-    width: 7px;
-    height: 7px;
-    transform: rotate(45deg);
-    background: linear-gradient(135deg, #fff6dd 0%, #e4a834 55%, #965c00 100%);
-    box-shadow: 0 0 6px rgba(228, 168, 52, 0.65);
-    animation: glintBreath 4s ease-in-out 1.2s infinite;
-  }
-
-  @keyframes glintBreath {
-    0%, 100% { opacity: 0.55; }
-    50% { opacity: 1; }
+  .brand-lockup-body {
+    animation: lockupSettle 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
 
   /* Synchronized Content Reveals */
@@ -315,7 +270,7 @@ const { mode = 'overlay' } = Astro.props;
     .obsidian-leaf-left, .obsidian-leaf-right {
       transition: none !important;
     }
-    .medallion-body, .threshold-anim-seal, .threshold-anim-eyebrow, .threshold-anim-welcome, .threshold-anim-wordmark, .threshold-anim-rule, .threshold-anim-belief, .crimson-ruby-shine, .medallion-glint {
+    .brand-lockup-body, .threshold-anim-seal, .threshold-anim-eyebrow, .threshold-anim-welcome, .threshold-anim-wordmark, .threshold-anim-rule, .threshold-anim-belief, .crimson-ruby-shine {
       animation: none !important;
     }
     .threshold-root.is-opened {
