@@ -151,7 +151,7 @@ export default function TableReservationModal() {
                     onClick={() => setOutletId(o.id)}
                     className={`px-3 py-2 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider min-h-[44px] ${
                       outletId === o.id
-                        ? 'bg-[#D01B1B] border-[#D01B1B] text-white shadow-sm'
+                        ? 'bg-[#E4A834]/15 border-[#E4A834] text-[#E4A834]'
                         : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
                     }`}
                   >
@@ -180,7 +180,7 @@ export default function TableReservationModal() {
                       onClick={() => setPartySize(p.value)}
                       className={`py-2 px-1 rounded-xl border text-center font-display text-xs font-bold transition min-h-[44px] ${
                         partySize === p.value
-                          ? 'bg-[#D01B1B] border-[#D01B1B] text-white'
+                          ? 'bg-[#D01B1B]/20 border-[#D01B1B] text-white'
                           : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
                       }`}
                     >
