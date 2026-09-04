@@ -556,28 +556,28 @@ export default function MenuExplorer() {
                               <button
                                 type="button"
                                 onClick={() => handleAdd(item)}
-                                className="px-4 py-2.5 rounded-xl text-xs font-display font-bold uppercase tracking-wider transition flex items-center gap-1.5 min-h-[44px] bg-[#0F0F0F] hover:bg-[#D01B1B] text-white active:scale-95 shadow-sm"
+                                className="h-9 px-4 rounded-xl text-xs font-display font-bold uppercase tracking-wider transition flex items-center gap-1.5 bg-[#0F0F0F] hover:bg-[#D01B1B] text-white active:scale-95 shadow-xs"
                               >
                                 <Plus className="w-3.5 h-3.5" />
                                 <span>ADD</span>
                               </button>
                             ) : (
-                              <div className="flex items-center gap-1.5 bg-[#0F0F0F] rounded-xl p-1 border border-[#E4A834]/50 shadow-sm min-h-[44px]">
+                              <div className="h-9 flex items-center bg-[#0F0F0F] rounded-xl p-0.5 border border-[#E4A834]/40 shadow-xs">
                                 <button
                                   type="button"
                                   onClick={() => updateCartQuantity(existingCartItem!.id, -1)}
-                                  className="w-11 h-11 min-w-[44px] flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#D01B1B] text-white transition active:scale-95"
+                                  className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#D01B1B] text-white transition active:scale-90"
                                   aria-label="Decrease quantity"
                                 >
-                                  <Minus className="w-4 h-4" />
+                                  <Minus className="w-3.5 h-3.5" />
                                 </button>
-                                <span className="w-5 text-center font-mono text-xs font-bold text-white">
+                                <span className="w-6 text-center font-mono text-xs font-bold text-white">
                                   {currentQty}
                                 </span>
                                 <button
                                   type="button"
                                   onClick={() => updateCartQuantity(existingCartItem!.id, 1)}
-                                  className="w-11 h-11 min-w-[44px] flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#E4A834] hover:text-black text-white transition active:scale-95"
+                                  className="w-7 h-7 flex items-center justify-center rounded-lg bg-white/10 hover:bg-[#E4A834] hover:text-black text-white transition active:scale-90"
                                   aria-label="Increase quantity"
                                 >
                                   <Plus className="w-3.5 h-3.5" />
