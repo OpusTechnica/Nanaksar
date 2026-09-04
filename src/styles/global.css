@@ -19,6 +19,8 @@
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     scroll-padding-top: 80px;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
   }
 
   @media (min-width: 768px) {
