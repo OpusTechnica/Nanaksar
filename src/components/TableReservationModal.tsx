@@ -151,7 +151,7 @@ export default function TableReservationModal() {
                     onClick={() => setOutletId(o.id)}
                     className={`px-3 py-2 rounded-xl border text-center transition font-display text-xs font-bold uppercase tracking-wider min-h-[44px] ${
                       outletId === o.id
-                        ? 'bg-[#181818] border-[#E4A834] text-[#E4A834] ring-1 ring-[#E4A834]'
+                        ? 'bg-[#D01B1B] border-[#D01B1B] text-white shadow-sm'
                         : 'bg-[#121212] border-white/10 text-white/70 hover:border-white/25 hover:text-white'
                     }`}
                   >
