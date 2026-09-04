@@ -8,7 +8,7 @@ const { mode = 'overlay' } = Astro.props;
 
 <div
   id="nanaksar-threshold"
-  class="threshold-root fixed inset-0 z-[99999] w-screen h-screen overflow-hidden select-none cursor-pointer bg-transparent"
+  class="threshold-root fixed inset-0 z-[99999] w-screen h-screen overflow-hidden select-none cursor-pointer bg-[#0A0A0A]"
   data-mode={mode}
   role="region"
   aria-label="Nanaksar Dhaba Theatrical Entrance"
@@ -18,6 +18,7 @@ const { mode = 'overlay' } = Astro.props;
     if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('nanaksar_entered') === 'true' && window.location.pathname !== '/welcome') {
       const el = document.getElementById('nanaksar-threshold');
       if (el) el.remove();
+      document.documentElement.classList.remove('curtain-gate-active');
     }
   </script>
 
@@ -582,6 +583,7 @@ const { mode = 'overlay' } = Astro.props;
         thresholdEl.style.display = 'none';
         thresholdEl.remove();
         document.body.classList.remove('overflow-hidden');
+        document.documentElement.classList.remove('curtain-gate-active');
         return;
       }
     }
@@ -687,6 +689,9 @@ const { mode = 'overlay' } = Astro.props;
 
       // THEATRICAL PARTING: Left & right curtains glide open
       thresholdEl.classList.add('is-opened');
+      thresholdEl.classList.remove('bg-[#0A0A0A]');
+      thresholdEl.classList.add('bg-transparent');
+      document.documentElement.classList.remove('curtain-gate-active');
       window.dispatchEvent(new CustomEvent('threshold:entered', { detail: { type, elapsed } }));
 
       // Complete cleanup: Remove threshold completely after curtains part
