@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The No-Website Gap — 10 Indore Dhabas & How We Sell Them Websites | Nanaksar Critique</title>
+<meta name="description" content="Research briefing + sales playbook: Indore multi-outlet dhabas with no owned website, and how Nanaksar's stack wins them." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@1,600&family=JetBrains+Mono:wght@600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --crimson:#D01B1B; --crimson-hover:#B81414; --crimson-dark:#C62828;
+  --gold:#E4A834; --gold-vintage:#C89B53; --gold-dark:#965C00;
+  --charcoal:#0F0F0F; --card:#181818; --elev:#202020; --slate:#161616;
+  --cream:#F7F4EB; --cream-accent:#F4EBD0; --veg:#15803D;
+  --line-d:rgba(228,168,52,.22); --line-l:rgba(15,15,15,.12);
+  --f-disp:'Plus Jakarta Sans',sans-serif; --f-sans:'Plus Jakarta Sans',sans-serif;
+  --f-serif:'Cinzel','Cormorant Garamond',serif; --f-edit:'Cormorant Garamond',serif;
+  --f-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--charcoal);color:var(--cream);font-family:var(--f-sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(15,15,15,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line-d)}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--f-disp);font-weight:800;letter-spacing:.14em;font-size:12px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.brand small{display:block;font-family:var(--f-mono);font-weight:600;color:var(--gold);letter-spacing:.22em;font-size:10px}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-decoration:none;border:1px solid rgba(255,255,255,.16);padding:8px 12px;border-radius:10px;color:rgba(247,244,235,.85)}
+.nav a.hot{background:var(--crimson);border-color:var(--crimson);color:#fff}
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line-d);
+  background:linear-gradient(100deg,#0F0F0F 0%,rgba(15,15,15,.96) 42%,rgba(15,15,15,.55) 72%,rgba(208,27,27,.28) 100%)}
+.hero-in{padding:56px 0 30px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#141414;border:1px solid rgba(228,168,52,.5);border-radius:999px;padding:6px 14px;font-family:var(--f-disp);font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--gold)}
+h1{font-family:var(--f-disp);font-weight:800;text-transform:uppercase;line-height:.95;letter-spacing:-.01em;margin:18px 0 10px;font-size:clamp(2.1rem,5.4vw,4.2rem)}
+h1 .l1{color:var(--cream);display:block} h1 .l2{color:var(--crimson);display:block}
+.sub{font-family:var(--f-edit);font-style:italic;font-size:clamp(1rem,2.2vw,1.3rem);color:rgba(247,244,235,.92);max-width:44rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.meta span{font-family:var(--f-mono);font-size:11px;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:6px 10px;color:rgba(247,244,235,.8)}
+.meta b{color:var(--gold)}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0 34px}
+.stat{background:rgba(24,24,24,.85);border:1px solid rgba(255,255,255,.1);border-top:2px solid var(--gold);border-radius:14px;padding:14px}
+.stat .n{font-family:var(--f-disp);font-weight:800;font-size:1.7rem;color:#fff}
+.stat .n em{color:var(--gold);font-style:normal}
+.stat .t{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;color:rgba(247,244,235,.65);text-transform:uppercase}
+/* zones */
+.zone-cream{background:var(--cream);color:#141414}
+.zone-cream .wrap{padding-top:44px;padding-bottom:44px}
+.kicker{font-family:var(--f-disp);font-size:12px;font-weight:800;letter-spacing:.25em;color:var(--crimson)}
+h2{font-family:var(--f-disp);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1.02;font-size:clamp(1.5rem,3.4vw,2.4rem);margin:8px 0 6px}
+.lede{color:rgba(15,15,15,.72);max-width:46rem;font-size:.95rem}
+.conf{display:inline-block;font-family:var(--f-mono);font-size:10px;font-weight:600;letter-spacing:.08em;padding:4px 8px;border-radius:999px;margin-top:10px}
+.conf.high{background:#e7f5ec;color:#0f6a2e;border:1px solid #0f6a2e33}
+.conf.med{background:#fdf3dd;color:#7a5200;border:1px solid #965C0033}
+.conf.low{background:#fbe7e7;color:#a11212;border:1px solid #D01B1B33}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:20px}
+.card{background:#fff;border:1px solid var(--line-l);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.card-top{padding:18px 18px 0}
+.card-top .cat{font-family:var(--f-mono);font-size:10px;font-weight:600;color:var(--crimson);letter-spacing:.14em}
+.card-top h3{font-family:var(--f-disp);font-size:1.12rem;font-weight:800;text-transform:uppercase;line-height:1.2;margin:4px 0}
+.card-top p{font-size:.86rem;color:rgba(15,15,15,.7)}
+.outlets{margin:12px 18px 0;background:var(--cream);border:1px solid var(--line-l);border-radius:12px;padding:10px 12px;font-size:.8rem}
+.outlets li{margin-left:16px;margin-bottom:2px}
+.card-ft{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding:14px 18px;border-top:1px solid var(--line-l)}
+.pain{font-family:var(--f-mono);font-size:11px;color:#5b5b5b}
+.hook{font-family:var(--f-disp);font-size:12px;font-weight:800;color:var(--crimson);text-transform:uppercase;letter-spacing:.06em}
+/* table */
+.tablewrap{overflow-x:auto;margin-top:18px;border:1px solid var(--line-l);border-radius:14px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:.84rem;min-width:720px}
+th{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;text-align:left;background:#141414;color:var(--gold);padding:10px 12px}
+td{padding:10px 12px;border-top:1px solid var(--line-l);vertical-align:top}
+td b{font-family:var(--f-disp)}
+/* dark playbook */
+.zone-dark{background:var(--charcoal)}
+.zone-dark .wrap{padding:48px 20px}
+.playgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.play{background:var(--card);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:18px}
+.play h3{font-family:var(--f-disp);text-transform:uppercase;font-size:.98rem;margin:6px 0 8px;color:#fff}
+.play h3 i{color:var(--gold);font-style:normal}
+.play p,.play li{font-size:.85rem;color:rgba(247,244,235,.78)}
+.play ul{margin:8px 0 0 16px}
+.step{font-family:var(--f-mono);font-size:11px;color:var(--gold);letter-spacing:.14em}
+.price{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tier{border-radius:16px;padding:20px;border:1px solid rgba(255,255,255,.12);background:#141414}
+.tier.hot{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.tier h4{font-family:var(--f-disp);text-transform:uppercase;color:#fff}
+.tier .amt{font-family:var(--f-mono);font-weight:600;color:var(--gold);margin:6px 0}
+.tier ul{margin:8px 0 0 16px;font-size:.83rem;color:rgba(247,244,235,.78)}
+.script{background:#101010;border:1px dashed rgba(228,168,52,.5);border-radius:14px;padding:16px 18px;margin-top:14px;font-size:.86rem;color:rgba(247,244,235,.85)}
+.script b{color:var(--gold)}
+.note{margin-top:14px;font-family:var(--f-edit);font-style:italic;color:rgba(247,244,235,.75)}
+footer{border-top:1px solid var(--line-d);padding:22px 0 40px;color:rgba(247,244,235,.6);font-size:.78rem}
+footer code{font-family:var(--f-mono);color:var(--gold)}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}.grid,.playgrid,.price{grid-template-columns:1fr}}
+@media print{.topbar,.nav{display:none}body{background:#fff;color:#111}.zone-dark{background:#fff;color:#111}.play,.tier{background:#fff;color:#111;border-color:#ccc}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="wrap topbar-in">
+  <div class="brand"><span class="dot"></span><span>NANAKSAR CRITIQUE<small>NO-WEBSITE GAP • SALES BRIEF</small></span></div>
+  <nav class="nav"><a href="#research">Research</a><a href="#watchlist">Watchlist</a><a href="#playbook" class="hot">Sales Playbook</a></nav>
+</div></div>
+
+<header class="hero"><div class="wrap hero-in">
+  <span class="eyebrow"><span class="dot" style="width:7px;height:7px"></span> INDORE DHABA CENSUS • SEPT 2026 • 4 CONFIRMED + 6 WATCHLIST</span>
+  <h1><span class="l1">10 dhabas.</span><span class="l2">Zero funnels.</span></h1>
+  <p class="sub">They scaled to 2–3 outlets on Zomato rent — then stalled on repeat orders, catering and Google ownership. Nanaksar already solved it with 5 outlets + an owned site. This page is the research and the pitch.</p>
+  <div class="meta"><span>Method: <b>Zomato / District / Guru / magicpin</b></span><span>Own site = <b>brand domain only</b></span><span>Honesty: <b>4 high-confidence</b>, rest labeled</span><span>File: <b>Critique/ only</b></span></div>
+  <div class="stats">
+    <div class="stat"><div class="n">4<em>★</em></div><div class="t">Confirmed multi-outlet, no domain</div></div>
+    <div class="stat"><div class="n">10</div><div class="t">Profiled (4 + 6 watchlist)</div></div>
+    <div class="stat"><div class="n">5</div><div class="t">Nanaksar outlets, 1 owned site</div></div>
+    <div class="stat"><div class="n">0<em>%</em></div><div class="t">Commission on owned orders</div></div>
+  </div>
+</div></header>
+
+<main>
+<section class="zone-cream" id="research"><div class="wrap">
+  <span class="kicker">TIER A — ACT ON THESE</span>
+  <h2 style="color:#0F0F0F">Confirmed: multi-outlet,<br/>no own website</h2>
+  <p class="lede">Every card = outlets, evidence, web-check, and the one-line hook that opens the sale. Cite freely.</p>
+  <div class="grid">
+    <article class="card"><div class="card-top">
+      <span class="cat">01 • SINCE 1976 • VEG PUNJABI</span>
+      <h3>Gyani Ji Ka Khalsa Dhaba — 3 outlets</h3>
+      <p>Direct Nanaksar comp: veg Punjabi, Jain options, family dining, 4.4★ Google. Heritage 1976 vs Nanaksar 1980.</p>
+      <span class="conf high">HIGH CONFIDENCE • NO DOMAIN FOUND</span>
+      <ul class="outlets"><li>Rooftop, Shiv Om Bldg, MG Rd / Race Course</li><li>5th Fl, The Hub, Scheme 78, Vijay Nagar</li><li>44-B Bhawar Kuan Sq, Aditya Nagar</li></ul>
+      <p style="margin:10px 0 16px;font-size:.8rem;color:#555">Found only on Zomato / Swiggy Dineout / District / Restaurant-Guru / menucard.in. Zomato "See all 2" + Guru "all three branches".</p>
+    </div><div class="card-ft"><span class="pain">Pain: 100% aggregator rent</span><span class="hook">Hook → "3 kitchens, 0 repeat funnel"</span></div></article>
+    <article class="card"><div class="card-top">
+      <span class="cat">02 • PURE VEG • EXPANDING</span>
+      <h3>No. 1 Apna Dhaaba — 3 branches</h3>
+      <p>Closest positioning to Nanaksar (pure-veg, thali, family). 3rd branch press release, still Facebook marketing.</p>
+      <span class="conf high">HIGH CONFIDENCE • NO INDORE DOMAIN</span>
+      <ul class="outlets"><li>Scheme 78</li><li>78/A/SL-1, near Arihant School, Vijay Nagar</li><li>3rd branch (June 2024, UP18 News)</li></ul>
+      <p style="margin:10px 0 16px;font-size:.8rem;color:#555">Only Facebook <span style="font-family:var(--f-mono)">apnadhaba2864</span> + press. Note: <span style="font-family:var(--f-mono)">apnadhabapureveg.com</span> is a different Bangalore firm — don't conflate.</p>
+    </div><div class="card-ft"><span class="pain">Pain: expansion, no booking engine</span><span class="hook">Hook → "You open outlets faster than pages"</span></div></article>
+    <article class="card"><div class="card-top">
+      <span class="cat">03 • NORTH INDIAN + CHINESE • ₹500/2</span>
+      <h3>Indori Pal Sahab Ka Dhaba — 2 sites</h3>
+      <p>MR10 + Vijay Nagar dual listing. Same name, same cuisines, aggregator-only discovery.</p>
+      <span class="conf med">MEDIUM-HIGH • VERIFY SAME OWNER</span>
+      <ul class="outlets"><li>Shop-4, 813 Sch-136, MR10 Rd</li><li>Shop 22, Scheme 54, Vijay Nagar</li></ul>
+      <p style="margin:10px 0 16px;font-size:.8rem;color:#555">magicpin + Zomato. Flag franchise-split risk — one phone call confirms.</p>
+    </div><div class="card-ft"><span class="pain">Pain: split listings, split reviews</span><span class="hook">Hook → "One brand, two halves on Google"</span></div></article>
+    <article class="card"><div class="card-top">
+      <span class="cat">04 • DHABA + SWEETS • 4.2★</span>
+      <h3>Raja Ram Dhaba Sweets &amp; Namkeen — 2 sites</h3>
+      <p>Dewas Naka cluster + sweets/namkeen retail — highest catering upside of the four.</p>
+      <span class="conf med">MEDIUM • NAME VARIANTS</span>
+      <ul class="outlets"><li>312/2 Dewas Naka, Vijay Nagar</li><li>Niranjanpur Cir, Lasudia Mori</li><li>Variant: Shri Raja Ram Ji, Opp Prestige Clg</li></ul>
+      <p style="margin:10px 0 16px;font-size:.8rem;color:#555">eazydiner + Zomato sweet-shop + worldorgs. Field-check GST boards to merge #4/#10.</p>
+    </div><div class="card-ft"><span class="pain">Pain: sweets = bulk orders, no funnel</span><span class="hook">Hook → "Diwali orders over phone?"</span></div></article>
+  </div>
+</div></section>
+
+<section class="zone-cream" id="watchlist" style="background:#EFE7D3"><div class="wrap">
+  <span class="kicker">TIER B — WATCHLIST, DON'T OVERCLAIM</span>
+  <h2 style="color:#0F0F0F">6 names that look multi — verify first</h2>
+  <p class="lede">Use for pattern-pitching ("dhabas like you stall at 2 outlets"), not as confirmed-chain claims.</p>
+  <div class="tablewrap"><table>
+    <tr><th>#</th><th>Brand</th><th>What we know</th><th>Verdict</th></tr>
+    <tr><td><b>5</b></td><td><b>Monu Gyaniji Ka Dhaba</b></td><td>Base Bhawarkua (5 Indrapuri Col). Eazydiner hints Vijay Nagar. No domain. 11AM–2AM veg.</td><td><span class="conf med">LOW-MED • CALL FIRST</span></td></tr>
+    <tr><td><b>6</b></td><td><b>Meghdoot Dhaba</b></td><td>KM101 Dewas Naka single icon. Zomato Vijay Nagar + Rau = same address duplicate. Only free vyaparify page.</td><td><span class="conf low">SINGLE • NEGATIVE EXAMPLE</span></td></tr>
+    <tr><td><b>7</b></td><td><b>Mama Ji Ka Dhaba, Rau</b></td><td>Opp Mamaji Complex, AB Rd. 3.8★ / 3,400+ reviews. No 2nd outlet, no domain.</td><td><span class="conf low">FAMOUS SINGLE</span></td></tr>
+    <tr><td><b>8</b></td><td><b>Pishori Dhaba &amp; Bar</b></td><td>910 Khatiwala Tank, Sapna Sangeeta only. 4.0★ / 3,300+. No domain.</td><td><span class="conf low">SINGLE</span></td></tr>
+    <tr><td><b>9</b></td><td><b>Rajput Dhaba, Rau</b></td><td>Near Medicaps. ₹300/2. No domain.</td><td><span class="conf low">SINGLE WATCHLIST</span></td></tr>
+    <tr><td><b>10</b></td><td><b>Shri Raja Ram Ji Dhaba</b></td><td>Opp Prestige College listing; likely merges with #4.</td><td><span class="conf med">MERGE WITH #4</span></td></tr>
+  </table></div>
+  <p class="lede" style="margin-top:12px"><b>Excluded (have sites):</b> Dhaba Singh — <span style="font-family:var(--f-mono)">dhabasingh.com</span> · Charpai — <span style="font-family:var(--f-mono)">charpaithedhaba.qsic.in</span> · Nakhrali / Chokhi / Apna Sweets / Shreemaya — all domained.</p>
+</div></section>
+
+<section class="zone-dark" id="playbook"><div class="wrap">
+  <span class="kicker" style="color:var(--gold)">SALES PLAYBOOK — HOW NANAKSAR STACK SELLS</span>
+  <h2 style="color:#fff">Don't sell "a website".<br/>Sell the leak they already feel.</h2>
+  <p class="note">Every multi-outlet dhaba above pays 18–25% aggregator cut, owns zero repeat data, and loses catering calls to phone chaos. Nanaksar's repo IS the demo: outlet pages + WhatsApp dispatch + reservation + schema.</p>
+  <div class="playgrid">
+    <div class="play"><span class="step">PITCH 01</span><h3><i>●</i> Commission → Direct</h3><p>Show <b>CartDrawer → WhatsApp dispatch</b> live. Math on one slide:</p><ul><li>200 orders/mo × ₹400 × 22% = <b>₹17,600/mo rent</b></li><li>Owned site pays back in &lt; 3 months</li><li>Repeat buyers skip Zomato next time</li></ul></div>
+    <div class="play"><span class="step">PITCH 02</span><h3><i>●</i> Split listings → One brand</h3><p>Show Nanaksar <b>OutletsDirectory + outlet pages + JSON-LD</b>. "One Google, five kitchens." Fixes #3/#4's exact pain: reviews scattered across duplicate Zomato pins.</p><ul><li>Outlet schema per branch</li><li>Menu indexable, not trapped in app</li><li>Maps → outlet page → call/WhatsApp</li></ul></div>
+    <div class="play"><span class="step">PITCH 03</span><h3><i>●</i> Phone chaos → Bookings</h3><p>Show <b>TableReservationModal + catering/notes flow</b>. Target sweets/thali players (#4, #2) before Diwali/wedding season.</p><ul><li>Bulk + Jain/Swaminarayan notes</li><li>Name/phone saved, no re-typing</li><li>Owner gets clean WhatsApp ticket</li></ul></div>
+  </div>
+  <div class="price">
+    <div class="tier"><h4>Starter — Menu Site</h4><div class="amt">₹24,999 • 7 days</div><ul><li>5-page Astro site (this stack)</li><li>Menu + outlets + Google schema</li><li>Call / Maps / WhatsApp CTAs</li></ul></div>
+    <div class="tier hot"><h4>Growth — Direct Orders ★</h4><div class="amt">₹49,999 • 14 days</div><ul><li>Everything in Starter</li><li>Takeaway tray + WhatsApp dispatch</li><li>Reservation modal + bill/GST split</li></ul></div>
+    <div class="tier"><h4>Chain — Multi-Outlet</h4><div class="amt">₹89,999 • 30 days</div><ul><li>Per-outlet pages + numbers</li><li>Catering enquiry pipeline</li><li>Care plan + menu updates</li></ul></div>
+  </div>
+  <div class="script"><b>Opener (45 sec, in-person):</b> "You run 3 kitchens but Zomato owns your customers — we built Nanaksar's site that takes the same order on WhatsApp with zero commission. 10 minutes — I show it on your own menu?"<br/><b>Objection "Zomato gives us orders":</b> "Keep Zomato for discovery. We move repeats + catering to direct. One channel pays the site."<br/><b>Sequence:</b> Day 1 visit + menu photo → Day 2 one-page mock with THEIR dishes → Day 4 owner demo on phone → close before festival rush.</div>
+  <p class="note">Proof asset: open this repo's homepage + CartDrawer on a phone. No slides needed — the dhaba owner taps "Add → WhatsApp" and gets it.</p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  Critique-only brief • Sources: Zomato / District / Restaurant-Guru / magicpin / JustDial / UP18 News 2024-06-24 / LinkedIn Dhaba Singh • Method: brand-domain = owned; aggregator/QSIC-template/FB-only ≠ owned • Honesty rule: cite Tier A as fact, Tier B as watchlist • <code>Critique/indore-dhabas-multi-outlet-no-website.md</code> is the source of record; this HTML is its sales skin in Nanaksar tokens.
+</div></footer>
+</body>
+</html>

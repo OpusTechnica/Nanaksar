@@ -6,33 +6,33 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Top Header Ribbon: Brand Seal + Dietary Guarantee & Kinetic Action Button -->
-    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pb-8 sm:pb-10 border-b border-white/10">
+    <div class="flex flex-row items-center justify-between gap-3 sm:gap-6 pb-8 sm:pb-10 border-b border-white/10">
       
       <!-- Brand Lockup -->
-      <a href="/" class="flex items-center gap-3 sm:gap-3.5 group focus:outline-none focus:ring-1 focus:ring-[#E4A834] rounded-lg p-0.5 shrink-0 inline-flex">
+      <a href="/" class="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none focus:ring-1 focus:ring-[#E4A834] rounded-lg p-0.5 shrink min-w-0 inline-flex">
         <img
           src="/assets/Logo.webp"
           alt="Nanaksar Dhaba Seal"
           width="56"
           height="56"
-          class="h-11 w-11 sm:h-13 sm:w-13 md:h-14 md:w-14 object-contain group-hover:scale-105 transition-transform shrink-0"
+          class="h-10 w-10 xs:h-11 xs:w-11 sm:h-13 sm:w-13 md:h-14 md:w-14 object-contain group-hover:scale-105 transition-transform shrink-0"
         />
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-center min-w-0">
           <img
             src="/assets/Brand_Name.webp"
             alt="Nanaksar Dhaba"
             width="180"
             height="60"
-            class="h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain"
+            class="h-7 xs:h-8 sm:h-10 md:h-11 lg:h-12 w-auto object-contain"
           />
-          <span class="text-[9px] sm:text-[10px] md:text-[11px] font-display font-semibold tracking-widest text-[#E4A834] uppercase -mt-0.5">
+          <span class="text-[8px] xs:text-[9px] sm:text-[10px] md:text-[11px] font-display font-semibold tracking-widest text-[#E4A834] uppercase -mt-0.5 truncate">
             ESTD. {BRAND_INFO.established} • INDORE, M.P.
           </span>
         </div>
       </a>
 
       <!-- Kinetic Staggered Action Button -->
-      <div class="flex items-center">
+      <div class="flex items-center shrink-0">
 
         <!-- Premium Kinetic Staggered Action Button -->
         <a href="/all-categories" data-astro-prefetch="hover" class="kinetic-footer-btn" aria-label="Explore Menu">
@@ -128,7 +128,7 @@ import { BRAND_INFO, OUTLETS } from '../data/restaurantData';
       <!-- Col 4 (3 Cols): Socials & Community Section with Tailored Kinetic Animated Icons -->
       <div class="lg:col-span-3 space-y-3">
         <h4 class="font-display text-xs font-bold uppercase tracking-[0.2em] text-[#E4A834]">Connect With Us</h4>
-        <p class="text-xs text-white/70 font-sans leading-relaxed">
+        <p class="text-xs text-white/70 font-sans leading-relaxed max-w-xs sm:max-w-sm text-pretty">
           Follow our culinary journey, late-night highway updates, and family gatherings.
         </p>
 
