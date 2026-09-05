@@ -1,8 +1,14 @@
 ---
 import { BRAND_INFO } from '../data/restaurantData';
+
+interface Props {
+  isPage?: boolean;
+}
+
+const { isPage = false } = Astro.props;
 ---
 
-<section id="story" class="py-20 sm:py-28 bg-[#F7F4EB] text-[#0F0F0F] border-t border-[#0F0F0F]/10 relative overflow-hidden">
+<section id="story" class={`bg-[#F7F4EB] text-[#0F0F0F] relative overflow-hidden ${isPage ? 'pt-24 sm:pt-28 pb-20 sm:pb-28' : 'py-20 sm:py-28 border-t border-[#0F0F0F]/10'}`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Header: Regal Provenance Ribbon -->
@@ -14,9 +20,15 @@ import { BRAND_INFO } from '../data/restaurantData';
         <span>OUR STORY &amp; HERITAGE • ESTD. {BRAND_INFO.established}</span>
       </div>
 
-      <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-[0.96]">
-        Built on Food. <span class="text-[#D01B1B]">Rooted in Sewa.</span>
-      </h2>
+      {isPage ? (
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-[0.96]">
+          Built on Food. <span class="text-[#D01B1B]">Rooted in Sewa.</span>
+        </h1>
+      ) : (
+        <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-[0.96]">
+          Built on Food. <span class="text-[#D01B1B]">Rooted in Sewa.</span>
+        </h2>
+      )}
 
       <p class="mt-4 text-base sm:text-xl text-[#0F0F0F]/85 font-editorial italic max-w-2xl leading-relaxed">
         It started with a single highway hearth at Dewas Naka, feeding long-distance truck drivers on AB Road when Indore was miles away. <span class="text-[#0F0F0F] font-semibold not-italic">Today, across 5 dining rooms, the recipe has never changed.</span>

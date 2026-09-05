@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Plus, Minus, Trash2, TrayIcon } from '../ui/Icon';
+import { Plus, Minus, X, TrayIcon } from '../ui/Icon';
 import type { CartItem } from '../../data/cartStore';
 import type { MenuItem } from '../../data/restaurantData';
 
@@ -24,111 +24,122 @@ function TrayItemComponent({
   const hasMultiplePortions = Boolean(menuItem?.priceHalf && menuItem?.priceFull);
 
   return (
-    <div className="bg-[#181818] p-3.5 sm:p-4 rounded-2xl border border-white/10 hover:border-[#E4A834]/30 transition shadow-sm flex flex-col gap-3">
-      {/* ROW 1: 60px Fixed Thumbnail + Title/Badges + 44px Touch Trash */}
-      <div className="flex items-start gap-3 w-full">
-        {/* 60px Fixed Thumbnail with Branded Skeleton Fallback */}
-        <div className="w-[60px] h-[60px] shrink-0 rounded-xl bg-[#121212] border border-white/10 overflow-hidden relative flex items-center justify-center">
-          <TrayIcon className="absolute w-6 h-6 text-[#E4A834]/20" />
+    <div className="bg-white p-4 rounded-2xl border border-[#E4A834]/30 hover:border-[#E4A834]/60 transition-all duration-200 shadow-[0_2px_12px_rgba(0,0,0,0.03)] flex flex-col gap-3 group">
+      {/* ROW 1: 68px Food Thumbnail + Details (Title, Portion, Badges) + Subtle Dismiss */}
+      <div className="flex items-start gap-3.5 w-full">
+        {/* 68px Fixed Thumbnail with Branded Skeleton Fallback */}
+        <div className="w-[68px] h-[68px] shrink-0 rounded-xl bg-[#F7F4EB] border border-[#E4A834]/30 overflow-hidden relative flex items-center justify-center shadow-xs">
+          <TrayIcon className="absolute w-6 h-6 text-[#E4A834]/30" />
           <img
             src={thumbUrl}
             alt={item.name}
             loading="eager"
             decoding="async"
-            width={60}
-            height={60}
-            className="relative z-10 w-full h-full object-cover"
+            width={68}
+            height={68}
+            className="relative z-10 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
 
-        {/* Title & Badges */}
-        <div className="flex-1 min-w-0 pt-0.5">
-          <h4 className="font-display text-sm font-bold text-white uppercase tracking-wide leading-snug line-clamp-2">
-            {item.name}
-          </h4>
-          <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
+        {/* Title, Badges & Portion Selector */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-start justify-between gap-2">
+            <h4 className="font-display text-sm font-bold text-[#0F0F0F] uppercase tracking-wide leading-snug line-clamp-2">
+              {item.name}
+            </h4>
+            <button
+              type="button"
+              onClick={() => onRemove(item.id)}
+              className="text-[#0F0F0F]/30 hover:text-[#D01B1B] hover:bg-red-50 p-1.5 rounded-lg transition-colors cursor-pointer shrink-0 -mt-1 -mr-1"
+              title="Remove item"
+              aria-label={`Remove ${item.name} from tray`}
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="flex items-center gap-1.5 mt-2 flex-wrap">
             {hasMultiplePortions ? (
-              <div className="inline-flex items-center bg-[#101010] p-0.5 rounded-lg border border-white/15 shadow-xs">
+              <div className="inline-flex items-center bg-[#F7F4EB] p-0.5 rounded-lg border border-[#E4A834]/30 shadow-xs">
                 <button
                   type="button"
                   onClick={() => onUpdatePortion(item.id, 'half', menuItem)}
-                  className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-md text-[11px] font-display font-bold uppercase tracking-wider transition-all cursor-pointer ${
                     item.portion === 'half'
-                      ? 'bg-[#E4A834] text-[#0F0F0F] shadow-xs'
-                      : 'text-white/60 hover:text-white'
+                      ? 'bg-[#0F0F0F] text-[#E4A834] shadow-xs'
+                      : 'text-[#0F0F0F]/65 hover:text-[#0F0F0F]'
                   }`}
                   aria-label={`Switch ${item.name} to Half portion`}
                 >
-                  Half ₹{menuItem?.priceHalf}
+                  Half • ₹{menuItem?.priceHalf}
                 </button>
                 <button
                   type="button"
                   onClick={() => onUpdatePortion(item.id, 'full', menuItem)}
-                  className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold transition-all cursor-pointer ${
+                  className={`px-2.5 py-1 rounded-md text-[11px] font-display font-bold uppercase tracking-wider transition-all cursor-pointer ${
                     item.portion === 'full' || item.portion === 'single'
-                      ? 'bg-[#E4A834] text-[#0F0F0F] shadow-xs'
-                      : 'text-white/60 hover:text-white'
+                      ? 'bg-[#0F0F0F] text-[#E4A834] shadow-xs'
+                      : 'text-[#0F0F0F]/65 hover:text-[#0F0F0F]'
                   }`}
                   aria-label={`Switch ${item.name} to Full portion`}
                 >
-                  Full ₹{menuItem?.priceFull}
+                  Full • ₹{menuItem?.priceFull}
                 </button>
               </div>
             ) : (
-              <span className="text-[10px] font-mono font-bold text-[#E4A834] bg-[#E4A834]/10 px-2 py-0.5 rounded border border-[#E4A834]/20">
+              <span className="text-[10px] font-sans font-bold text-[#965C00] bg-[#E4A834]/15 px-2.5 py-1 rounded-md border border-[#E4A834]/30">
                 {item.portionLabel}
               </span>
             )}
             {item.isJain && (
-              <span className="text-[9px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded border border-emerald-800">
+              <span className="text-[9px] font-bold text-[#15803D] bg-emerald-50 px-2 py-1 rounded-md border border-emerald-200">
                 JAIN PREP
               </span>
             )}
             {item.isSwaminarayan && (
-              <span className="text-[9px] font-bold text-amber-300 bg-amber-950/80 px-1.5 py-0.5 rounded border border-amber-800">
+              <span className="text-[9px] font-bold text-[#965C00] bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
                 SWAMINARAYAN
               </span>
             )}
           </div>
         </div>
-
-        {/* 44px Touch Target Trash */}
-        <button
-          onClick={() => onRemove(item.id)}
-          className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center text-white/40 hover:text-red-400 rounded-xl hover:bg-white/5 transition -mt-1 -mr-1 shrink-0 active:scale-95 cursor-pointer"
-          title="Remove item"
-          aria-label={`Remove ${item.name} from tray`}
-        >
-          <Trash2 className="w-[18px] h-[18px]" />
-        </button>
       </div>
 
-      {/* ROW 2: 44px Stepper & Line Subtotal */}
-      <div className="flex items-center justify-between pt-2.5 border-t border-white/5">
-        <div className="flex items-center bg-[#121212] rounded-xl border border-white/15 overflow-hidden h-11">
+      {/* ROW 2: Tactile Stepper on Left & Price Display on Right */}
+      <div className="flex items-center justify-between pt-2.5 border-t border-[#0F0F0F]/8">
+        <div className="flex items-center bg-[#F7F4EB] rounded-xl border border-[#0F0F0F]/12 overflow-hidden h-9 shadow-xs">
           <button
+            type="button"
             onClick={() => onUpdateQuantity(item.id, -1)}
-            className="w-11 h-full min-w-[44px] flex items-center justify-center hover:bg-[#D01B1B] text-white transition active:scale-95 cursor-pointer"
+            className="w-9 h-full flex items-center justify-center hover:bg-[#D01B1B] hover:text-white text-[#0F0F0F]/80 transition active:scale-95 cursor-pointer"
             aria-label="Decrease quantity"
           >
-            {quantity === 1 ? <Trash2 className="w-4 h-4 text-red-400" /> : <Minus className="w-4 h-4" />}
+            <Minus className="w-3.5 h-3.5" />
           </button>
-          <span className="w-8 text-center font-mono text-xs font-bold text-white">
+          <span className="w-8 text-center font-sans text-xs font-bold text-[#0F0F0F]">
             {quantity}
           </span>
           <button
+            type="button"
             onClick={() => onUpdateQuantity(item.id, 1)}
-            className="w-11 h-full min-w-[44px] flex items-center justify-center hover:bg-[#E4A834] hover:text-black text-white transition active:scale-95 cursor-pointer"
+            className="w-9 h-full flex items-center justify-center hover:bg-[#0F0F0F] hover:text-white text-[#0F0F0F]/80 transition active:scale-95 cursor-pointer"
             aria-label="Increase quantity"
           >
-            <Plus className="w-4 h-4" />
+            <Plus className="w-3.5 h-3.5" />
           </button>
         </div>
 
         {/* Line Item Subtotal */}
-        <span className="font-mono text-base sm:text-lg font-bold text-[#E4A834]">
-          ₹{item.price * quantity}/-
-        </span>
+        <div className="text-right">
+          <span className="font-sans text-base sm:text-lg font-bold text-[#0F0F0F] tracking-tight">
+            ₹{item.price * quantity}/-
+          </span>
+          {quantity > 1 && (
+            <span className="text-[10px] font-sans text-[#0F0F0F]/50 block leading-none mt-0.5">
+              ₹{item.price} each
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

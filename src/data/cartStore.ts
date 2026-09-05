@@ -174,10 +174,6 @@ export function clearCart() {
 }
 
 export function switchOutlet(newOutletId: string): boolean {
-  const current = $cart.get();
-  if (current.length > 0 && $selectedOutletId.get() !== newOutletId) {
-    clearCart();
-  }
   $selectedOutletId.set(newOutletId);
   return true;
 }

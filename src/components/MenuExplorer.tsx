@@ -41,6 +41,52 @@ export default function MenuExplorer() {
 
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const sortPopoverRef = useRef<HTMLDivElement | null>(null);
+  const catalogRef = useRef<HTMLElement | null>(null);
+
+  // Smoothly anchor to the top of the dish catalog to prevent footer snapping
+  const scrollToCatalogTop = useCallback(() => {
+    if (typeof window === 'undefined') return;
+    requestAnimationFrame(() => {
+      if (catalogRef.current) {
+        const headerOffset = window.innerWidth < 1024 ? 80 : 100;
+        const targetY = Math.max(
+          0,
+          catalogRef.current.getBoundingClientRect().top + window.scrollY - headerOffset
+        );
+        window.scrollTo({
+          top: targetY,
+          behavior: 'smooth',
+        });
+      }
+    });
+  }, []);
+
+  const handleSelectCategory = useCallback(
+    (catId: string) => {
+      setSelectedCategory(catId);
+      setIsMobileMenuOpen(false);
+      scrollToCatalogTop();
+    },
+    [scrollToCatalogTop]
+  );
+
+  const handleSelectPriceTier = useCallback(
+    (tierId: string) => {
+      setPriceFilter(tierId);
+      scrollToCatalogTop();
+    },
+    [scrollToCatalogTop]
+  );
+
+  const handleResetAll = useCallback(() => {
+    setSelectedCategory('all');
+    setJainOnly(false);
+    setSearchQuery('');
+    setDebouncedQuery('');
+    setPriceFilter('all');
+    setSortBy('recommended');
+    scrollToCatalogTop();
+  }, [scrollToCatalogTop]);
 
   // Debounce search query by 150ms to eliminate keystroke render thrashing
   useEffect(() => {
@@ -127,15 +173,6 @@ export default function MenuExplorer() {
     updateCartQuantity(cartItemId, delta);
   }, []);
 
-  const handleResetAll = () => {
-    setSelectedCategory('all');
-    setJainOnly(false);
-    setSearchQuery('');
-    setDebouncedQuery('');
-    setPriceFilter('all');
-    setSortBy('recommended');
-  };
-
   const hasActiveFilters =
     selectedCategory !== 'all' ||
     jainOnly ||
@@ -190,7 +227,7 @@ export default function MenuExplorer() {
             </div>
 
             {/* Scrollable Categories List */}
-            <div className="flex-1 overflow-y-auto overscroll-contain sidebar-scrollbar p-4 space-y-1">
+            <div className="flex-1 overflow-y-auto overscroll-contain sidebar-scrollbar p-3.5 space-y-1">
               {CATEGORIES.map((cat) => {
                 const count = getCategoryCount(cat.id);
                 const isSelected = selectedCategory === cat.id;
@@ -200,21 +237,23 @@ export default function MenuExplorer() {
                   <button
                     key={cat.id}
                     disabled={isDisabled}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-left text-xs font-display tracking-wider transition ${
+                    onClick={() => handleSelectCategory(cat.id)}
+                    className={`group w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left transition-all duration-150 cursor-pointer ${
                       isSelected
                         ? 'bg-[#0F0F0F] text-white font-bold shadow-sm'
                         : isDisabled
-                        ? 'text-[#0F0F0F]/30 cursor-not-allowed'
-                        : 'text-[#0F0F0F]/80 hover:bg-[#0F0F0F]/5 hover:text-[#0F0F0F]'
+                        ? 'text-[#0F0F0F]/25 cursor-not-allowed opacity-40'
+                        : 'text-[#111111] font-semibold hover:bg-[#F7F4EB] hover:text-[#D01B1B]'
                     }`}
                   >
-                    <span className="truncate pr-2">{cat.label}</span>
+                    <span className="truncate pr-2 font-display text-[13px] tracking-wide">
+                      {cat.label}
+                    </span>
                     <span
-                      className={`text-[10px] font-mono px-2 py-0.5 rounded-full shrink-0 ${
+                      className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-full shrink-0 transition-colors ${
                         isSelected
-                          ? 'bg-white/20 text-white font-bold'
-                          : 'bg-[#F7F4EB] text-[#0F0F0F]/60'
+                          ? 'bg-[#E4A834] text-[#0F0F0F]'
+                          : 'bg-[#0F0F0F]/8 text-[#0F0F0F] group-hover:bg-[#D01B1B]/15 group-hover:text-[#D01B1B]'
                       }`}
                     >
                       {count}
@@ -226,18 +265,18 @@ export default function MenuExplorer() {
 
             {/* Pinned Bottom Price Filter */}
             <div className="shrink-0 p-4 border-t border-[#0F0F0F]/10 bg-white z-10">
-              <span className="text-[10px] font-mono text-[#0F0F0F]/50 uppercase tracking-wider block mb-2 font-bold">
+              <span className="text-[11px] font-mono text-[#0F0F0F]/70 uppercase tracking-wider block mb-2 font-bold">
                 Filter By Price
               </span>
               <div className="grid grid-cols-2 gap-1.5">
                 {PRICE_TIERS.map((tier) => (
                   <button
                     key={tier.id}
-                    onClick={() => setPriceFilter(tier.id)}
-                    className={`px-2.5 py-1.5 rounded-lg text-center text-[11px] font-mono font-bold transition border ${
+                    onClick={() => handleSelectPriceTier(tier.id)}
+                    className={`px-2.5 py-2 rounded-lg text-center text-[11px] font-mono font-bold transition border cursor-pointer ${
                       priceFilter === tier.id
-                        ? 'bg-[#D01B1B] text-white border-[#D01B1B]'
-                        : 'bg-[#F7F4EB] text-[#0F0F0F]/70 border-[#0F0F0F]/10 hover:border-[#0F0F0F]/25'
+                        ? 'bg-[#D01B1B] text-white border-[#D01B1B] shadow-sm'
+                        : 'bg-[#F7F4EB] text-[#0F0F0F] border-[#0F0F0F]/15 hover:border-[#0F0F0F]/30 hover:bg-[#EFECE1]'
                     }`}
                   >
                     {tier.label}
@@ -250,7 +289,7 @@ export default function MenuExplorer() {
           {/* ========================================= */}
           {/* MAIN CONTENT AREA (lg:col-span-9)        */}
           {/* ========================================= */}
-          <main className="lg:col-span-9 w-full">
+          <main ref={catalogRef} className="lg:col-span-9 w-full min-h-[700px] lg:min-h-[850px] scroll-mt-28">
             {/* Controls Bar: Search + Sort Popover + Jain Toggle */}
             <div className="bg-white p-3.5 sm:p-4 rounded-2xl border border-[#0F0F0F]/10 mb-6 shadow-sm">
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
@@ -337,14 +376,29 @@ export default function MenuExplorer() {
                   <button
                     type="button"
                     onClick={() => setJainOnly(!jainOnly)}
-                    className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl text-xs font-mono font-bold transition min-h-[44px] border cursor-pointer ${
+                    aria-pressed={jainOnly}
+                    className={`inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-display font-bold uppercase tracking-wider min-h-[44px] transition-all duration-200 cursor-pointer shadow-2xs ${
                       jainOnly
-                        ? 'bg-green-700 text-white border-green-700 shadow-sm'
-                        : 'bg-[#F7F4EB] text-green-900 border-green-600/30 hover:bg-green-50'
+                        ? 'bg-[#0F0F0F] text-white border border-[#E4A834] ring-1 ring-[#E4A834]/30 shadow-sm'
+                        : 'bg-white text-[#0F0F0F] border border-[#0F0F0F]/15 hover:border-[#E4A834] hover:bg-[#FAF8F5]'
                     }`}
                   >
-                    <span className={`w-2 h-2 rounded-full ${jainOnly ? 'bg-white' : 'bg-green-600'}`}></span>
-                    <span>Jain Friendly</span>
+                    <span
+                      className={`w-2 h-2 rounded-full transition-colors ${
+                        jainOnly
+                          ? 'bg-[#E4A834] ring-2 ring-[#E4A834]/30'
+                          : 'bg-emerald-600 ring-2 ring-emerald-600/20'
+                      }`}
+                    />
+                    <span>
+                      {jainOnly ? (
+                        <>
+                          <span className="text-[#E4A834]">Jain</span> Friendly
+                        </>
+                      ) : (
+                        'Jain Friendly'
+                      )}
+                    </span>
                   </button>
                 </div>
               </div>
@@ -361,7 +415,7 @@ export default function MenuExplorer() {
                   <span className="inline-flex items-center gap-1 bg-[#0F0F0F] text-white px-2.5 py-0.5 rounded-full text-[11px] font-display font-bold uppercase">
                     {currentCategoryLabel}
                     <button
-                      onClick={() => setSelectedCategory('all')}
+                      onClick={() => handleSelectCategory('all')}
                       className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-[''] cursor-pointer"
                       aria-label="Remove filter"
                     >
@@ -373,7 +427,7 @@ export default function MenuExplorer() {
                   <span className="inline-flex items-center gap-1 bg-[#D01B1B] text-white px-2.5 py-0.5 rounded-full text-[11px] font-display font-bold uppercase">
                     {PRICE_TIERS.find((t) => t.id === priceFilter)?.label}
                     <button
-                      onClick={() => setPriceFilter('all')}
+                      onClick={() => handleSelectPriceTier('all')}
                       className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-[''] cursor-pointer"
                       aria-label="Remove filter"
                     >
@@ -382,11 +436,12 @@ export default function MenuExplorer() {
                   </span>
                 )}
                 {jainOnly && (
-                  <span className="inline-flex items-center gap-1 bg-green-700 text-white px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold">
+                  <span className="inline-flex items-center gap-1.5 bg-[#0F0F0F] text-[#E4A834] border border-[#E4A834]/40 px-3 py-1 rounded-full text-[11px] font-display uppercase tracking-wider font-bold shadow-2xs">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#E4A834]" />
                     Jain Only
                     <button
                       onClick={() => setJainOnly(false)}
-                      className="text-white/70 hover:text-white ml-0.5 w-7 h-7 inline-flex items-center justify-center rounded-full shrink-0 relative after:absolute after:-inset-2 after:content-[''] cursor-pointer"
+                      className="text-white/70 hover:text-white ml-0.5 w-5 h-5 inline-flex items-center justify-center rounded-full shrink-0 cursor-pointer"
                       aria-label="Remove filter"
                     >
                       <X className="w-3.5 h-3.5" />
@@ -498,7 +553,7 @@ export default function MenuExplorer() {
                   {PRICE_TIERS.map((tier) => (
                     <button
                       key={tier.id}
-                      onClick={() => setPriceFilter(tier.id)}
+                      onClick={() => handleSelectPriceTier(tier.id)}
                       className={`py-3 px-2 rounded-xl text-center text-[10px] font-mono font-bold transition border min-h-[44px] cursor-pointer ${
                         priceFilter === tier.id
                           ? 'bg-[#D01B1B] text-white border-[#D01B1B]'
@@ -522,24 +577,21 @@ export default function MenuExplorer() {
                     <button
                       key={cat.id}
                       disabled={isDisabled}
-                      onClick={() => {
-                        setSelectedCategory(cat.id);
-                        setIsMobileMenuOpen(false);
-                      }}
+                      onClick={() => handleSelectCategory(cat.id)}
                       className={`p-3 rounded-xl text-left flex items-center justify-between transition border cursor-pointer ${
                         isSelected
                           ? 'bg-[#181818] border-[#E4A834] text-[#E4A834] ring-1 ring-[#E4A834]'
                           : isDisabled
                           ? 'bg-[#141414]/50 border-white/5 text-white/25 cursor-not-allowed'
-                          : 'bg-[#141414] border-white/10 text-white/80 hover:bg-white/10'
+                          : 'bg-[#141414] border-white/15 text-white font-medium hover:bg-white/10'
                       }`}
                     >
-                      <span className="font-display text-xs font-bold uppercase truncate pr-1">
+                      <span className="font-display text-xs font-bold uppercase tracking-wide truncate pr-1">
                         {cat.label}
                       </span>
                       <span
-                        className={`font-mono text-[10px] px-1.5 py-0.5 rounded-full ${
-                          isSelected ? 'bg-[#E4A834] text-black font-bold' : 'bg-white/10 text-white/60'
+                        className={`font-mono text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                          isSelected ? 'bg-[#E4A834] text-black' : 'bg-white/15 text-white'
                         }`}
                       >
                         {count}

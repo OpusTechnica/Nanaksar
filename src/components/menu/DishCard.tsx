@@ -52,11 +52,11 @@ function DishCardComponent({
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 select-none"
         />
         <div className="absolute top-2.5 left-2.5 flex gap-1 z-10">
-          <span className="bg-white text-green-700 font-mono text-[9px] font-bold px-2 py-0.5 rounded shadow-sm border border-green-600/30">
+          <span className="bg-white text-green-700 font-sans text-[9px] font-bold px-2 py-0.5 rounded shadow-sm border border-green-600/30">
             100% VEG
           </span>
           {item.isJainAvailable && (
-            <span className="bg-amber-100 text-[#965C00] font-mono text-[9px] font-bold px-2 py-0.5 rounded shadow-sm border border-amber-300">
+            <span className="bg-amber-100 text-[#965C00] font-sans text-[9px] font-bold px-2 py-0.5 rounded shadow-sm border border-amber-300">
               JAIN
             </span>
           )}
@@ -75,7 +75,7 @@ function DishCardComponent({
       {/* Snug Content & Pricing Details */}
       <div className="p-4 flex flex-col flex-1 justify-between">
         <div>
-          <span className="text-[10px] font-mono text-[#D01B1B] uppercase tracking-wider font-bold block mb-1">
+          <span className="text-[10px] font-sans text-[#D01B1B] uppercase tracking-wider font-bold block mb-1">
             {item.categoryLabel}
           </span>
           <h2 className="font-display text-sm sm:text-base font-bold uppercase text-[#0F0F0F] leading-snug line-clamp-1">
@@ -91,7 +91,7 @@ function DishCardComponent({
               <button
                 type="button"
                 onClick={() => setPortion('half')}
-                className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold transition-all ${
+                className={`px-2.5 py-1 rounded-md text-[10px] font-sans font-bold transition-all ${
                   portion === 'half'
                     ? 'bg-[#0F0F0F] text-white shadow-xs'
                     : 'text-[#0F0F0F]/60 hover:text-[#0F0F0F]'
@@ -102,7 +102,7 @@ function DishCardComponent({
               <button
                 type="button"
                 onClick={() => setPortion('full')}
-                className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold transition-all ${
+                className={`px-2.5 py-1 rounded-md text-[10px] font-sans font-bold transition-all ${
                   portion === 'full'
                     ? 'bg-[#0F0F0F] text-white shadow-xs'
                     : 'text-[#0F0F0F]/60 hover:text-[#0F0F0F]'
@@ -117,10 +117,10 @@ function DishCardComponent({
         {/* Compact Attached Bottom CTA with Stepper Support */}
         <div className="pt-3 mt-3 border-t border-[#0F0F0F]/8 flex items-center justify-between">
           <div>
-            <span className="text-[9px] font-mono text-[#0F0F0F]/45 uppercase block leading-none mb-0.5">
+            <span className="text-[9px] font-sans text-[#0F0F0F]/45 uppercase block leading-none mb-0.5">
               {hasMultiplePortions ? `${portion.toUpperCase()} PORTION` : 'PRICE'}
             </span>
-            <span className="font-mono text-base font-bold text-[#0F0F0F]">
+            <span className="font-sans text-base font-bold text-[#D01B1B]">
               ₹{displayPrice}/-
             </span>
           </div>
@@ -129,15 +129,11 @@ function DishCardComponent({
             <button
               type="button"
               onClick={handleAdd}
-              className="relative overflow-hidden h-9 w-[100px] rounded-xl bg-[#0F0F0F] border border-[#0F0F0F] text-white flex items-center cursor-pointer group/btn shadow-xs transition-all duration-300 active:scale-95"
+              className="h-9 w-[100px] rounded-xl bg-[#0F0F0F] hover:bg-[#D01B1B] text-white border border-[#0F0F0F] hover:border-[#D01B1B] flex items-center justify-center gap-1.5 font-display text-xs font-bold uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-xs cursor-pointer group"
               aria-label={`Add ${item.name} to tray`}
             >
-              <span className="font-display font-bold text-xs uppercase tracking-wider pl-3 transition-all duration-300 ease-out group-hover/btn:opacity-0 group-hover/btn:-translate-x-2">
-                ADD
-              </span>
-              <span className="absolute right-0 top-0 bottom-0 w-8 h-full bg-[#D01B1B] flex items-center justify-center transition-all duration-300 ease-out group-hover/btn:w-full group-hover/btn:bg-[#B81414]">
-                <Plus className="w-3.5 h-3.5 text-white transition-transform duration-300 ease-out group-hover/btn:scale-110" />
-              </span>
+              <span>ADD</span>
+              <Plus className="w-3.5 h-3.5 text-[#E4A834] group-hover:text-white transition-colors" />
             </button>
           ) : (
             <div className="h-9 w-[100px] flex items-center justify-between bg-[#0F0F0F] rounded-xl p-1 border border-[#E4A834]/40 shadow-xs">
@@ -149,7 +145,7 @@ function DishCardComponent({
               >
                 <Minus className="w-3.5 h-3.5" />
               </button>
-              <span className="w-6 text-center font-mono text-xs font-bold text-white">
+              <span className="w-6 text-center font-sans text-xs font-bold text-white">
                 {currentQty}
               </span>
               <button

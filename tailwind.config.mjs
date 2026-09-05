@@ -28,7 +28,7 @@ export default {
         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
         serif: ['"Cinzel"', '"Cormorant Garamond"', 'serif'],
         editorial: ['"Cormorant Garamond"', 'serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        mono: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       screens: {
         xs: '390px',

@@ -183,7 +183,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
    ========================================================================== */
 
 .kinetic-footer-btn {
-  width: 130px;
+  width: 98px;
   height: 44px;
   overflow: hidden;
   border: none;
@@ -286,7 +286,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 
 /* Tailored Kinetic Hero Nav Button (Back to Top / Hero Section) */
 .kinetic-hero-btn {
-  width: 175px;
+  width: 148px;
   height: 48px;
   overflow: hidden;
   border: none;
@@ -369,8 +369,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 .kinetic-hero-btn:hover .clone-wrap > :nth-child(11) { transition-delay: 0.34s; }
 
 .kinetic-hero-btn svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   right: 0;
   top: 50%;
   transform: translateY(-50%) rotate(-50deg);

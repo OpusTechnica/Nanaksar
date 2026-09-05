@@ -64,12 +64,12 @@ export default function BestsellersShowcase() {
                       decoding="async"
                     />
                     <div className="absolute top-3 left-3 flex gap-1.5">
-                      <span className="inline-flex items-center gap-1 bg-white text-green-700 font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-green-600/30">
+                      <span className="inline-flex items-center gap-1 bg-white text-green-700 font-sans text-[10px] font-bold px-2 py-0.5 rounded border border-green-600/30">
                         <span className="w-1.5 h-1.5 rounded-full bg-green-600"></span>
                         PURE VEG
                       </span>
                       {item.isJainAvailable && (
-                        <span className="bg-[#F4EBD0] text-[#965C00] font-mono text-[10px] font-bold px-2 py-0.5 rounded border border-[#965C00]/30">
+                        <span className="bg-[#F4EBD0] text-[#965C00] font-sans text-[10px] font-bold px-2 py-0.5 rounded border border-[#965C00]/30">
                           JAIN OK
                         </span>
                       )}
@@ -81,10 +81,10 @@ export default function BestsellersShowcase() {
 
                   <div className="p-5">
                     <div className="flex items-center justify-between gap-2 mb-1">
-                      <span className="text-[10px] font-mono text-[#965C00] uppercase tracking-wider font-bold">
+                      <span className="text-[10px] font-sans text-[#965C00] uppercase tracking-wider font-bold">
                         {item.categoryLabel}
                       </span>
-                      <span className="font-mono text-base font-bold text-[#D01B1B]">
+                      <span className="font-sans text-base font-bold text-[#D01B1B]">
                         ₹{price}/-
                       </span>
                     </div>

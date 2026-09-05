@@ -1,8 +1,14 @@
 ---
 import OutletsStack from './OutletsStack';
+
+interface Props {
+  isPage?: boolean;
+}
+
+const { isPage = false } = Astro.props;
 ---
 
-<section id="outlets" class="py-16 sm:py-24 bg-[#F7F4EB] text-[#0F0F0F] border-t border-[#0F0F0F]/10 relative overflow-hidden">
+<section id="outlets" class={`bg-[#F7F4EB] text-[#0F0F0F] relative overflow-hidden ${isPage ? 'pt-24 sm:pt-28 pb-16 sm:pb-24' : 'py-16 sm:py-24 border-t border-[#0F0F0F]/10'}`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
     <!-- Section Header -->
@@ -11,9 +17,15 @@ import OutletsStack from './OutletsStack';
         <span class="w-1.5 h-1.5 rounded-full bg-[#965C00]"></span>
         <span>FIVE STRATEGIC INDORE HUBS</span>
       </div>
-      <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-tight">
-        Five Outlets. <span class="text-[#D01B1B]">One Tradition.</span>
-      </h2>
+      {isPage ? (
+        <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-tight">
+          Five Outlets. <span class="text-[#D01B1B]">One Tradition.</span>
+        </h1>
+      ) : (
+        <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl font-bold uppercase tracking-tight text-[#0F0F0F] leading-tight">
+          Five Outlets. <span class="text-[#D01B1B]">One Tradition.</span>
+        </h2>
+      )}
       <p class="mt-2 text-xs sm:text-sm text-[#0F0F0F]/70 max-w-xl mx-auto font-sans leading-relaxed">
         From our 2005 highway hearth at Dewas Naka to city dining hubs across Indore. Open 365 days from 11:45 AM to 3:00 AM for dine-in, takeaway, and family meals.
       </p>
