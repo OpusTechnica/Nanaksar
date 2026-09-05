@@ -87,13 +87,13 @@ export default function TestimonialsMarquee() {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#0F0F0F]/10 bg-white px-4 py-1.5 mb-4 shadow-sm">
-            <div className="flex text-[#D01B1B] gap-0.5" aria-label="Rated 5 out of 5 stars" role="img">
+          <div className="inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-full border border-[#0F0F0F]/10 bg-white px-3 sm:px-4 py-1 sm:py-1.5 mb-4 shadow-sm max-w-[calc(100vw-2.5rem)]">
+            <div className="flex text-[#D01B1B] gap-0.5 shrink-0" aria-label="Rated 5 out of 5 stars" role="img">
               {[0, 1, 2, 3, 4].map((i) => (
-                <svg key={i} className="w-3 h-3 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid" /></svg>
+                <svg key={i} className="w-2.5 h-2.5 sm:w-3 sm:h-3 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#star-solid" /></svg>
               ))}
             </div>
-            <span className="text-xs font-display font-bold uppercase tracking-wider text-[#0F0F0F]">
+            <span className="text-[10px] sm:text-xs font-display font-bold uppercase tracking-wide sm:tracking-wider text-[#0F0F0F] truncate">
               4.5 / 5.0 Rating Across 5,000+ Verified Diners
             </span>
           </div>

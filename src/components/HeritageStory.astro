@@ -35,11 +35,11 @@ const { isPage = false } = Astro.props;
       </p>
     </div>
 
-    <!-- 2-Column Balanced Editorial Narrative Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+    <!-- 2-Column Balanced Editorial Narrative Grid (Unified Tailored Container on Mobile, 2-Col on Desktop) -->
+    <div class="bg-[#FFFDF8] rounded-3xl border border-[#0F0F0F]/12 shadow-[0_10px_35px_rgba(15,15,15,0.03)] overflow-hidden lg:bg-transparent lg:border-0 lg:shadow-none lg:rounded-none lg:overflow-visible grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-10 items-stretch">
       
       <!-- Left Column (7 Cols): The Editorial Monograph & 3 Provenance Pillars -->
-      <div class="lg:col-span-7 bg-[#FFFDF8] rounded-3xl p-6 sm:p-10 border border-[#0F0F0F]/12 flex flex-col justify-between shadow-[0_10px_35px_rgba(15,15,15,0.03)] h-full">
+      <div class="lg:col-span-7 lg:bg-[#FFFDF8] lg:rounded-3xl p-6 sm:p-10 lg:border lg:border-[#0F0F0F]/12 flex flex-col justify-between lg:shadow-[0_10px_35px_rgba(15,15,15,0.03)] h-full">
         <div>
           <!-- Monograph Header Bar -->
           <div class="flex items-center justify-between pb-4 border-b border-[#0F0F0F]/10 mb-6">
@@ -52,7 +52,7 @@ const { isPage = false } = Astro.props;
           </div>
 
           <!-- Opening Narrative Monograph - Refined, engaging, no buzzword overload -->
-          <div class="space-y-4 text-sm sm:text-base text-[#0F0F0F]/80 leading-relaxed font-sans mb-8">
+          <div class="space-y-4 text-sm sm:text-base text-[#0F0F0F]/80 leading-relaxed font-sans mb-0 lg:mb-8">
             <p>
               In 1980, Nanaksar began along the quiet bypass stretch of A.B. Road. <strong class="text-[#0F0F0F] font-semibold">Avtar Singh (Veer Ji)</strong> and his father tended slow-burning iron bhattis through cold winter nights, offering piping-hot meals and tea to long-distance truck drivers connecting Mumbai and Delhi.
             </p>
@@ -97,8 +97,8 @@ const { isPage = false } = Astro.props;
       </div>
 
       <!-- Right Column (5 Cols): Bespoke Heirloom Museum Portrait Frame -->
-      <div class="lg:col-span-5 flex flex-col h-full">
-        <div class="w-full bg-[#FFFDF8] rounded-3xl p-4 sm:p-6 border border-[#0F0F0F]/12 shadow-[0_10px_35px_rgba(15,15,15,0.03)] relative overflow-hidden group flex flex-col justify-between h-full">
+      <div class="lg:col-span-5 flex flex-col h-full border-t border-[#0F0F0F]/10 lg:border-t-0">
+        <div class="w-full bg-transparent p-4 sm:p-6 lg:bg-[#FFFDF8] lg:rounded-3xl lg:border lg:border-[#0F0F0F]/12 lg:shadow-[0_10px_35px_rgba(15,15,15,0.03)] relative overflow-hidden group flex flex-col justify-between h-full">
           
           <!-- Inner Archival Portrait Bezel with Specular Hairline -->
           <div class="relative w-full rounded-2xl overflow-hidden bg-[#121212] border border-[#E4A834]/30 shadow-inner flex-1 min-h-[300px] sm:min-h-[340px]">
@@ -145,40 +145,6 @@ const { isPage = false } = Astro.props;
             </div>
           </div>
 
-        </div>
-      </div>
-
-      <!-- Mobile Viewport Fork: Pullquote relocated below the entire Founder Container -->
-      <div class="block lg:hidden mt-2">
-        <div class="p-5 sm:p-7 rounded-2xl bg-[#F4EBD0]/45 border border-[#E4A834]/30 relative overflow-hidden">
-          <!-- Decorative Gold Quote Watermark Mark -->
-          <span class="absolute -bottom-4 right-2 text-7xl sm:text-8xl font-editorial font-bold text-[#E4A834]/15 select-none pointer-events-none" aria-hidden="true">
-            ”
-          </span>
-
-          <div class="relative z-10">
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-[#842F06]">
-                THE GUIDING CUSTODIAL CREED
-              </span>
-              <span class="font-sans text-xs text-[#965C00] font-medium">
-                {BRAND_INFO.hindiMotto}
-              </span>
-            </div>
-
-            <p class="font-display text-xl sm:text-2xl font-bold uppercase text-[#D01B1B] tracking-tight leading-tight">
-              “{BRAND_INFO.motto}”
-            </p>
-
-            <p class="font-editorial italic text-base sm:text-lg text-[#0F0F0F]/90 leading-relaxed mt-2.5">
-              "A meal is never just about taste. It is about how you feel when you sit down at our table, and the quiet comfort you carry with you when you leave."
-            </p>
-
-            <div class="mt-3.5 pt-3 border-t border-[#0F0F0F]/10 flex items-center justify-between text-xs font-mono text-[#842F06]">
-              <span class="font-bold tracking-wider uppercase">— AVTAR SINGH (VEER JI)</span>
-              <span class="text-[#0F0F0F]/50">ORIGINAL DEWAS NAKA HEARTH</span>
-            </div>
-          </div>
         </div>
       </div>
 
